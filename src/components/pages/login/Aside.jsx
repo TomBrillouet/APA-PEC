@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import { theme } from "../../theme"
-import Logo from "./Logo"
+import { theme } from "../../../theme"
+import Logo from "../../reusable/Logo"
 import LoginForm from "./LoginForm"
 
 export default function Aside() {

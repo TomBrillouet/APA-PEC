@@ -1,12 +1,13 @@
 import styled from "styled-components"
-import { theme } from "../../theme"
+import { theme } from "../../../theme"
 import { IoLockClosedOutline } from "react-icons/io5"
 import { GoPerson } from "react-icons/go"
+import { Navigate } from "react-router"
 
 export default function LoginForm() {
   const handleSubmit = (e) => {
     e.preventDefault()
-    // Logique de connexion
+    Navigate("/dashboard")
   }
   return (
     <LoginFormStyled>
