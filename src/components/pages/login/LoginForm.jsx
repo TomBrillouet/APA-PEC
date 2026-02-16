@@ -2,12 +2,13 @@ import styled from "styled-components"
 import { theme } from "../../../theme"
 import { IoLockClosedOutline } from "react-icons/io5"
 import { GoPerson } from "react-icons/go"
-import { Navigate } from "react-router"
+import { useNavigate } from "react-router"
 
 export default function LoginForm() {
+  const navigate = useNavigate()
   const handleSubmit = (e) => {
     e.preventDefault()
-    Navigate("/dashboard")
+    navigate("/dashboard")
   }
   return (
     <LoginFormStyled>
@@ -24,6 +25,7 @@ export default function LoginForm() {
           <input
             id="username"
             type="text"
+            autoComplete="username"
             placeholder="Entrez votre identifiant"
             required
           />
@@ -35,6 +37,7 @@ export default function LoginForm() {
           </label>
           <input
             id="password"
+            autoComplete="curren-password"
             type="password"
             placeholder="Entrez votre mot de passe"
           />
