@@ -1,5 +1,6 @@
 const colors = {
   primary: "#c32121",
+  text: "#64748b",
 }
 
 const spacing = {
