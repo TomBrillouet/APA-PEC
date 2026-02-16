@@ -1,10 +1,10 @@
 import styled from "styled-components"
 import { theme } from "../../theme"
 
-export default function Logo() {
+export default function Logo({ className }) {
   return (
     <LogoStyled>
-      <h1>
+      <h1 className={className}>
         APA<span>-</span>PEC
       </h1>
     </LogoStyled>
