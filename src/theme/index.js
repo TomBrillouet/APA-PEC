@@ -28,7 +28,6 @@ const fonts = {
   },
 }
 const borderRadius = {
-  subtle: 1,
   round: "5px",
   extraRound: "15px",
   circle: "50%",
