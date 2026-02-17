@@ -17,7 +17,7 @@ export const fakePatients = [
     goals: "retrouver de la mobilité",
     height: 180,
     weight: 65,
-    test: [],
+    tests: [],
   },
   {
     id: "2",
@@ -37,7 +37,7 @@ export const fakePatients = [
     goals: "retrouver de la motivation",
     height: 170,
     weight: 55,
-    test: [],
+    tests: [],
   },
   {
     id: "3",
@@ -57,7 +57,7 @@ export const fakePatients = [
     goals: "reconquérir son ex",
     height: 150,
     weight: 85,
-    test: [],
+    tests: [],
   },
   {
     id: "4",
@@ -77,7 +77,7 @@ export const fakePatients = [
     goals: "marquer plus de but au foot",
     height: 174,
     weight: 100,
-    test: [],
+    tests: [],
   },
   {
     id: "5",
@@ -97,7 +97,7 @@ export const fakePatients = [
     goals: "reconquérir son ex",
     height: 150,
     weight: 85,
-    test: [],
+    tests: [],
   },
   {
     id: "6",
@@ -117,7 +117,7 @@ export const fakePatients = [
     goals: "marquer plus de but au foot",
     height: 174,
     weight: 100,
-    test: [],
+    tests: [],
   },
   {
     id: "7",
@@ -137,7 +137,7 @@ export const fakePatients = [
     goals: "marquer plus de but au foot",
     height: 174,
     weight: 100,
-    test: [],
+    tests: [],
   },
   {
     id: "8",
@@ -157,7 +157,7 @@ export const fakePatients = [
     goals: "marquer plus de but au foot",
     height: 174,
     weight: 100,
-    test: [],
+    tests: [],
   },
   {
     id: "9",
@@ -177,7 +177,7 @@ export const fakePatients = [
     goals: "marquer plus de but au foot",
     height: 174,
     weight: 100,
-    test: [],
+    tests: [],
   },
   {
     id: "10",
@@ -197,6 +197,6 @@ export const fakePatients = [
     goals: "marquer plus de but au foot",
     height: 174,
     weight: 100,
-    test: [],
+    tests: [],
   },
 ]
