@@ -5,7 +5,7 @@ import { theme } from "../../../../theme"
 import { useState } from "react"
 import { EMPTY_PATIENT } from "../../../../enums/patient.jsx"
 
-export default function AddPatient({ addNewPatient, onClick, onCancel }) {
+export default function AddPatient({ addNewPatient, onClose }) {
   const [inputsValue, setInputsValue] = useState(EMPTY_PATIENT)
 
   const testOptions = tests.map((test) => ({
@@ -35,7 +35,7 @@ export default function AddPatient({ addNewPatient, onClick, onCancel }) {
     <AddPatientStyled>
       <div className="header-add">
         <h2>Nouveau patient</h2>
-        <span className="close" onClick={onClick}>
+        <span className="close" onClick={onClose}>
           X
         </span>
       </div>
@@ -186,7 +186,7 @@ export default function AddPatient({ addNewPatient, onClick, onCancel }) {
         </section>
 
         <div className="actions">
-          <button type="button" className="btn-cancel" onCancel={onCancel}>
+          <button type="button" className="btn-cancel" onClick={onClose}>
             Annuler
           </button>
           <button type="submit" className="btn-submit">

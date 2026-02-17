@@ -15,11 +15,7 @@ export default function Main() {
     a.lastName.localeCompare(b.lastName)
   )
 
-  const handleClick = () => {
-    setAddisOpen(!AddisOpen)
-  }
-
-  const closeAdd = () => {
+  const toggleAddPatient = () => {
     setAddisOpen(!AddisOpen)
   }
 
@@ -27,24 +23,23 @@ export default function Main() {
     const patientsCopy = [...patients]
     const patientsUpdated = [newPatient, ...patientsCopy]
     setPatients(patientsUpdated)
-    setAddisOpen(!AddisOpen)
+    toggleAddPatient()
   }
 
   return (
     <MainStyled>
       <Header />
-      {AddisOpen && <div className="overlay" onClick={closeAdd}></div>}
+      {AddisOpen && <div className="overlay" onClick={toggleAddPatient}></div>}
       {AddisOpen && (
-        <AddPatient
-          addNewPatient={addNewPatient}
-          onClick={closeAdd}
-          onCancel={closeAdd}
-        />
+        <AddPatient addNewPatient={addNewPatient} onClose={toggleAddPatient} />
       )}
       <div className="main-background">
         <div className="subtitle">
           <SectionTitle label={"PEC en cours"} />
-          <PrimaryButton label={"Ajouter un patient"} onClick={handleClick} />
+          <PrimaryButton
+            label={"Ajouter un patient"}
+            onClick={toggleAddPatient}
+          />
         </div>
         <div className="patients-container">
           {patientsSorted.map((patient) => (
