@@ -5,19 +5,49 @@ import Header from "../Header/Header.jsx"
 import PrimaryButton from "../../../reusable/PrimaryButton"
 import SectionTitle from "./SectionTitle"
 import PatientCard from "./PatientCard"
+import AddPatient from "./AddPatient.jsx"
 
 export default function Main() {
   const [patients, setPatients] = useState(fakePatients)
+  const [AddisOpen, setAddisOpen] = useState(false)
+
+  const patientsSorted = [...patients].sort((a, b) =>
+    a.lastName.localeCompare(b.lastName)
+  )
+
+  const handleClick = () => {
+    setAddisOpen(!AddisOpen)
+  }
+
+  const closeAdd = () => {
+    setAddisOpen(!AddisOpen)
+  }
+
+  const addNewPatient = (newPatient) => {
+    const patientsCopy = [...patients]
+    const patientsUpdated = [newPatient, ...patientsCopy]
+    setPatients(patientsUpdated)
+    setAddisOpen(!AddisOpen)
+  }
+
   return (
     <MainStyled>
       <Header />
+      {AddisOpen && <div className="overlay" onClick={closeAdd}></div>}
+      {AddisOpen && (
+        <AddPatient
+          addNewPatient={addNewPatient}
+          onClick={closeAdd}
+          onCancel={closeAdd}
+        />
+      )}
       <div className="main-background">
         <div className="subtitle">
           <SectionTitle label={"PEC en cours"} />
-          <PrimaryButton label={"Ajouter un patient"} />
+          <PrimaryButton label={"Ajouter un patient"} onClick={handleClick} />
         </div>
         <div className="patients-container">
-          {patients.map((patient) => (
+          {patientsSorted.map((patient) => (
             <PatientCard
               id={patient.id}
               key={patient.id}
@@ -36,7 +66,17 @@ const MainStyled = styled.main`
   flex: 1;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  background-color: #f1f1f1;
+
+  .overlay {
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    position: absolute;
+    z-index: 1;
+    background-color: #1e2a3878;
+  }
 
   .main-background {
     background-color: #f1f1f1;
