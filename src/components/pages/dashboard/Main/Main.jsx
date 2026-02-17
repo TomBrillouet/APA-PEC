@@ -1,9 +1,9 @@
 import styled from "styled-components"
 import { useState } from "react"
-import { fakePatients } from "../../../datas/fakePatients"
-import Header from "../../reusable/Header"
-import PrimaryButton from "../../reusable/PrimaryButton"
-import SectionTitle from "../../reusable/SectionTitle"
+import { fakePatients } from "../../../../datas/fakePatients"
+import Header from "../Header/Header.jsx"
+import PrimaryButton from "../../../reusable/PrimaryButton"
+import SectionTitle from "./SectionTitle"
 import PatientCard from "./PatientCard"
 
 export default function Main() {

@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { theme } from "../../../theme"
+import { theme } from "../../../../theme"
 import { IoIosMan, IoIosWoman } from "react-icons/io"
 
 export default function PatientCard({ id, isMan, firstName, lastName }) {

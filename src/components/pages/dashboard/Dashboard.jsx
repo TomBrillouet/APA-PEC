@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import Aside from "../../reusable/Aside"
-import Main from "./Main"
+import Main from "./Main/Main"
+import Aside from "./Aside/Aside.jsx"
 
 export default function Dashboard() {
   return (

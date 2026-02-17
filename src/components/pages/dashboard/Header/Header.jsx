@@ -1,7 +1,7 @@
 import { useState } from "react"
 import styled from "styled-components"
-import { fakePro } from "../../datas/fakePro"
-import { theme } from "../../theme"
+import { fakePro } from "../../../../datas/fakePro"
+import { theme } from "../../../../theme"
 
 export default function Header() {
   const [pro, setPro] = useState(fakePro)

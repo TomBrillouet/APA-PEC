@@ -1,8 +1,8 @@
 import React from "react"
-import Logo from "./Logo"
+import Logo from "../../../reusable/Logo"
 import styled from "styled-components"
-import { theme } from "../../theme"
-import { navItems } from "../pages/dashboard/navItems"
+import { theme } from "../../../../theme"
+import { navItems } from "./navItems.jsx"
 import NavItem from "./NavItem"
 
 export default function Aside() {
