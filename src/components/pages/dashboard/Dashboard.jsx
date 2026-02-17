@@ -2,68 +2,54 @@ import { useState } from "react"
 import { fakePatients } from "../../../datas/fakePatients"
 import { fakePro } from "../../../datas/fakePro"
 import styled from "styled-components"
-import Logo from "../../reusable/Logo"
 import { theme } from "../../../theme"
-import { IoIosMan, IoIosWoman, IoMdHome } from "react-icons/io"
-import { AiOutlineFileDone } from "react-icons/ai"
-import { IoStatsChartOutline } from "react-icons/io5"
+import { IoIosMan, IoIosWoman } from "react-icons/io"
+import Aside from "../../reusable/Aside"
 
 export default function Dashboard() {
   const [patients, setPatients] = useState(fakePatients)
   const [pro, setPro] = useState(fakePro)
 
   const isMan = (patient) => {
-    patient.sex === "man"
+    return patient.sex === "man"
   }
 
   return (
     <DashboardStyled>
-      <aside className="menu">
-        <Logo className={"logo"} />
-        <nav>
-          <div className="nav-item">
-            <span>
-              <IoMdHome />
-            </span>
-            <span>Accueil</span>
-          </div>
-          <div className="nav-item">
-            <span>
-              <AiOutlineFileDone />
-            </span>
-            <span>PEC terminées</span>
-          </div>
-          <div className="nav-item">
-            <span>
-              <IoStatsChartOutline />
-            </span>
-            <span>Stats</span>
-          </div>
-        </nav>
-      </aside>
+      <Aside />
       <main>
         <div className="info-pro">
           <img src={pro.image} alt={pro.firstName} />
-          <span>Nom: {pro.lastName}</span>
-          <span>Prénom: {pro.firstName}</span>
-          <b>{pro.job}</b>
-          <span>Mail: {pro.mail}</span>
-          <span>Tél: {pro.phone}</span>
-          <e>Nom Pro: {pro.society}</e>
-          <span>Site: {pro.website}</span>
+          <div className="pro-details">
+            <div className="pro-name">
+              {pro.firstName} {pro.lastName}
+            </div>
+            <b className="pro-job">{pro.job}</b>
+            <div className="pro-meta">
+              <span>{pro.mail}</span>
+              <span>{pro.phone}</span>
+              <span>{pro.society}</span>
+              <span>{pro.website}</span>
+            </div>
+          </div>
         </div>
         <div className="main-background">
-          <span className="subtitle">PEC en cours</span>
+          <div className="subtitle">
+            <span>PEC en cours</span>
+            <button>Ajouter un patient</button>
+          </div>
           <div className="patients-container">
-            {patients.map((patient) => {
-              return (
-                <div className="patient">
-                  <span>{patient.lastName}</span>
-                  <span>{patient.firstName}</span>
-                  <span>{isMan(patient) ? <IoIosMan /> : <IoIosWoman />}</span>
+            {patients.map((patient) => (
+              <div className="patient" key={patient.id ?? patient.lastName}>
+                <span className={`patient-icon ${isMan(patient) ? "man" : ""}`}>
+                  {isMan(patient) ? <IoIosMan /> : <IoIosWoman />}
+                </span>
+                <div className="patient-info">
+                  <span className="patient-name">{patient.firstName}</span>
+                  <span className="patient-name">{patient.lastName}</span>
                 </div>
-              )
-            })}
+              </div>
+            ))}
           </div>
         </div>
       </main>
@@ -73,80 +59,141 @@ export default function Dashboard() {
 
 const DashboardStyled = styled.div`
   display: flex;
-  .menu {
-    height: 100vh;
-    width: 12vw;
-    display: flex;
-    flex-direction: column;
-    padding: 0 2vw;
-    background-color: #252525;
-    .logo {
-      white-space: nowrap;
-      text-align: center;
-      font-size: 2rem;
-      margin-top: 2vh;
-    }
-    nav {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      flex: 1;
-      .nav-item {
-        margin-bottom: 10px;
-        color: white;
-        padding: 10px 5px;
-        display: flex;
-        gap: 10px;
-        font-size: ${theme.fonts.size.P2};
-        border-radius: ${theme.borderRadius.round};
-        &:hover {
-          background-color: ${theme.colors.primary};
-          cursor: pointer;
-        }
-      }
-    }
-  }
+  min-height: 100vh;
+
   main {
-    height: 100vh;
     flex: 1;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
+
     .info-pro {
-      height: 20vh;
       display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
+      align-items: center;
+      gap: 20px;
       background-color: ${theme.colors.primary};
-      padding: 10px;
+      padding: 18px 32px;
+
       img {
-        height: 50px;
-        width: 50px;
+        height: 56px;
+        width: 56px;
         border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid rgba(255, 255, 255, 0.4);
+        flex-shrink: 0;
+      }
+
+      .pro-details {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .pro-name {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #fff;
+      }
+
+      .pro-job {
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.75);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      .pro-meta {
+        display: flex;
+        gap: 16px;
+        margin-top: 2px;
+        flex-wrap: wrap;
+
+        span {
+          font-size: 0.78rem;
+          color: rgba(255, 255, 255, 0.6);
+        }
       }
     }
+
     .main-background {
       background-color: #f1f1f1;
-      padding: 20px;
+      padding: 28px 32px;
       flex: 1;
+
       .subtitle {
-        font-size: 2rem;
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #1e2a38;
+        margin-bottom: 20px;
       }
+
       .patients-container {
-        min-height: 86%;
-        background-color: white;
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
         display: grid;
-        grid-template-columns: repeat(8, 1fr);
+        grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
         align-content: start;
-        grid-gap: 20px;
-        padding: 20px;
+        gap: 16px;
+        padding: 24px;
+        min-height: 71%;
+
         .patient {
           display: flex;
           flex-direction: column;
-          border: dashed red 1px;
-          height: 25vh;
-          svg {
-            font-size: 7em;
-            color: white;
+          align-items: center;
+          gap: 10px;
+          padding: 41px 12px 41px 12px;
+          border-radius: 10px;
+          border: 1.5px solid #e9ecf0;
+          background: #fafafa;
+          cursor: pointer;
+          transition: transform 0.16s, box-shadow 0.16s, border-color 0.16s;
+
+          &:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.09);
+            border-color: ${theme.colors.primary};
+          }
+
+          .patient-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background-color: ${theme.colors.primary}22;
+
+            svg {
+              font-size: 2.2rem;
+              color: ${theme.colors.primary};
+            }
+
+            &.man {
+              background-color: #bfdbfe;
+
+              svg {
+                color: #1d4ed8;
+              }
+            }
+          }
+
+          .patient-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+          }
+
+          .patient-name {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #1e2a38;
+            text-align: center;
           }
         }
       }
