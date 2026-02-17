@@ -5,6 +5,7 @@ import { fakePatients } from "../../../datas/fakePatients"
 import { IoIosMan, IoIosWoman } from "react-icons/io"
 import Header from "../../reusable/Header"
 import PrimaryButton from "../../reusable/PrimaryButton"
+import SectionTitle from "../../reusable/SectionTitle"
 
 export default function Main() {
   const [patients, setPatients] = useState(fakePatients)
@@ -16,7 +17,7 @@ export default function Main() {
       <Header />
       <div className="main-background">
         <div className="subtitle">
-          <span>PEC en cours</span>
+          <SectionTitle label={"PEC en cours"} />
           <PrimaryButton label={"Ajouter un patient"} />
         </div>
         <div className="patients-container">
