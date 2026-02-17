@@ -9,8 +9,8 @@ export default function PatientCard({ id, isMan, firstName, lastName }) {
         {isMan ? <IoIosMan /> : <IoIosWoman />}
       </span>
       <div className="patient-info">
-        <span className="patient-name">{firstName}</span>
         <span className="patient-name">{lastName}</span>
+        <span className="patient-name">{firstName}</span>
       </div>
     </PatientCardStyled>
   )

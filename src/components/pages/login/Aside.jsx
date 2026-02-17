@@ -16,7 +16,6 @@ export default function Aside() {
 const AsideStyled = styled.aside`
   position: relative;
   z-index: 1;
-  min-height: 100vh;
   width: 100%;
   max-width: 25vw;
   background: linear-gradient(165deg, #ffffff 0%, #f8f9fa 100%);

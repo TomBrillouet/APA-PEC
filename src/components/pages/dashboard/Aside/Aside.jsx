@@ -25,7 +25,6 @@ export default function Aside() {
 }
 
 const AsideStyled = styled.aside`
-  height: 100vh;
   width: 14vw;
   min-width: 180px;
   display: flex;
