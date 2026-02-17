@@ -3,6 +3,7 @@ import Logo from "./Logo"
 import styled from "styled-components"
 import { theme } from "../../theme"
 import { navItems } from "../pages/dashboard/navItems"
+import NavItem from "./NavItem"
 
 export default function Aside() {
   return (
@@ -11,10 +12,11 @@ export default function Aside() {
       <nav>
         {navItems.map((navItem) => {
           return (
-            <div className="nav-item">
-              <span>{navItem.icon}</span>
-              <span>{navItem.label}</span>
-            </div>
+            <NavItem
+              icon={navItem.icon}
+              label={navItem.label}
+              key={navItem.label}
+            />
           )
         })}
       </nav>
