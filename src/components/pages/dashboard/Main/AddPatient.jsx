@@ -31,6 +31,21 @@ export default function AddPatient({ addNewPatient, onClose }) {
     }))
   }
 
+  const sexSelectChange = (selectedOption) =>
+    setInputsValue((prev) => ({
+      ...prev,
+      sex: selectedOption.value,
+    }))
+
+  const testsSelectChange = (selectedOptions) => {
+    const values = selectedOptions.map((option) => option.value)
+
+    setInputsValue((prev) => ({
+      ...prev,
+      tests: values,
+    }))
+  }
+
   return (
     <AddPatientStyled>
       <div className="header-add">
@@ -54,12 +69,7 @@ export default function AddPatient({ addNewPatient, onClose }) {
                   { value: "woman", label: "Femme" },
                 ]}
                 classNamePrefix="select"
-                onChange={(selectedOption) =>
-                  setInputsValue((prev) => ({
-                    ...prev,
-                    sex: selectedOption.value,
-                  }))
-                }
+                onChange={sexSelectChange}
               />
             </div>
             <div className="field">
@@ -165,14 +175,7 @@ export default function AddPatient({ addNewPatient, onClose }) {
                 options={testOptions}
                 classNamePrefix="select"
                 placeholder="Sélectionner des tests…"
-                onChange={(selectedOptions) => {
-                  const values = selectedOptions.map((option) => option.value)
-
-                  setInputsValue((prev) => ({
-                    ...prev,
-                    tests: values,
-                  }))
-                }}
+                onChange={testsSelectChange}
                 styles={{
                   menuList: (base) => ({
                     ...base,
