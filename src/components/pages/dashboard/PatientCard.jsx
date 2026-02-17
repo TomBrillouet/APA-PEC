@@ -1,0 +1,73 @@
+import styled from "styled-components"
+import { theme } from "../../../theme"
+import { IoIosMan, IoIosWoman } from "react-icons/io"
+
+export default function PatientCard({ id, isMan, firstName, lastName }) {
+  return (
+    <PatientCardStyled key={id}>
+      <span className={`patient-icon ${isMan ? "man" : ""}`}>
+        {isMan ? <IoIosMan /> : <IoIosWoman />}
+      </span>
+      <div className="patient-info">
+        <span className="patient-name">{firstName}</span>
+        <span className="patient-name">{lastName}</span>
+      </div>
+    </PatientCardStyled>
+  )
+}
+
+const PatientCardStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 41px 12px 41px 12px;
+  border-radius: 10px;
+  border: 1.5px solid #e9ecf0;
+  background: #fafafa;
+  cursor: pointer;
+  transition: transform 0.16s, box-shadow 0.16s, border-color 0.16s;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.09);
+    border-color: ${theme.colors.primary};
+  }
+
+  .patient-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: ${theme.colors.primary}22;
+
+    svg {
+      font-size: 2.2rem;
+      color: ${theme.colors.primary};
+    }
+
+    &.man {
+      background-color: #bfdbfe;
+
+      svg {
+        color: #1d4ed8;
+      }
+    }
+  }
+
+  .patient-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .patient-name {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #1e2a38;
+    text-align: center;
+  }
+`

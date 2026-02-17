@@ -1,17 +1,13 @@
 import styled from "styled-components"
-import { theme } from "../../../theme"
 import { useState } from "react"
 import { fakePatients } from "../../../datas/fakePatients"
-import { IoIosMan, IoIosWoman } from "react-icons/io"
 import Header from "../../reusable/Header"
 import PrimaryButton from "../../reusable/PrimaryButton"
 import SectionTitle from "../../reusable/SectionTitle"
+import PatientCard from "./PatientCard"
 
 export default function Main() {
   const [patients, setPatients] = useState(fakePatients)
-  const isMan = (patient) => {
-    return patient.sex === "man"
-  }
   return (
     <MainStyled>
       <Header />
@@ -22,15 +18,13 @@ export default function Main() {
         </div>
         <div className="patients-container">
           {patients.map((patient) => (
-            <div className="patient" key={patient.id ?? patient.lastName}>
-              <span className={`patient-icon ${isMan(patient) ? "man" : ""}`}>
-                {isMan(patient) ? <IoIosMan /> : <IoIosWoman />}
-              </span>
-              <div className="patient-info">
-                <span className="patient-name">{patient.firstName}</span>
-                <span className="patient-name">{patient.lastName}</span>
-              </div>
-            </div>
+            <PatientCard
+              id={patient.id}
+              key={patient.id}
+              isMan={patient.sex === "man"}
+              firstName={patient.firstName}
+              lastName={patient.lastName}
+            />
           ))}
         </div>
       </div>
@@ -68,62 +62,6 @@ const MainStyled = styled.main`
       gap: 16px;
       padding: 24px;
       min-height: 71%;
-
-      .patient {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        padding: 41px 12px 41px 12px;
-        border-radius: 10px;
-        border: 1.5px solid #e9ecf0;
-        background: #fafafa;
-        cursor: pointer;
-        transition: transform 0.16s, box-shadow 0.16s, border-color 0.16s;
-
-        &:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.09);
-          border-color: ${theme.colors.primary};
-        }
-
-        .patient-icon {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 52px;
-          height: 52px;
-          border-radius: 50%;
-          background-color: ${theme.colors.primary}22;
-
-          svg {
-            font-size: 2.2rem;
-            color: ${theme.colors.primary};
-          }
-
-          &.man {
-            background-color: #bfdbfe;
-
-            svg {
-              color: #1d4ed8;
-            }
-          }
-        }
-
-        .patient-info {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 2px;
-        }
-
-        .patient-name {
-          font-size: 0.8rem;
-          font-weight: 500;
-          color: #1e2a38;
-          text-align: center;
-        }
-      }
     }
   }
 `
