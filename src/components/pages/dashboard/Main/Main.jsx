@@ -6,14 +6,12 @@ import Button from "../../../reusable/Button"
 import PatientCard from "./PatientCard"
 import SectionTitle from "./AddPatient/Form/SectionTitle.jsx"
 import AddPatient from "./AddPatient/AddPatient.jsx"
+import Searchbar from "./Searchbar.jsx"
 
 export default function Main() {
   const [patients, setPatients] = useState(fakePatients)
   const [AddisOpen, setAddisOpen] = useState(false)
-
-  const patientsSorted = [...patients].sort((a, b) =>
-    a.lastName.localeCompare(b.lastName)
-  )
+  const [search, setSearch] = useState("")
 
   const toggleAddPatient = () => {
     setAddisOpen(!AddisOpen)
@@ -26,6 +24,16 @@ export default function Main() {
     toggleAddPatient()
   }
 
+  const patientsFiltered = patients.filter(
+    (patient) =>
+      patient.lastName.toLowerCase().includes(search.toLowerCase()) ||
+      patient.firstName.toLowerCase().includes(search.toLowerCase())
+  )
+
+  const patientsSorted = [...patientsFiltered].sort((a, b) =>
+    a.lastName.localeCompare(b.lastName)
+  )
+
   return (
     <MainStyled>
       <Header />
@@ -36,6 +44,7 @@ export default function Main() {
       <div className="main-background">
         <div className="subtitle">
           <SectionTitle label={"PEC en cours"} />
+          <Searchbar onChange={(e) => setSearch(e.target.value)} />
           <Button label={"Ajouter un patient"} onClick={toggleAddPatient} />
         </div>
         <div className="patients-container">
@@ -74,7 +83,7 @@ const MainStyled = styled.main`
     background-color: #f1f1f1;
     padding: 28px 32px;
     flex: 1;
-
+    box-shadow: inset 0 12px 16px rgba(0, 0, 0, 0.09);
     .subtitle {
       display: flex;
       justify-content: space-between;

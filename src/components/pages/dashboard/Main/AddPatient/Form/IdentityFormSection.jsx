@@ -1,11 +1,11 @@
 import Select from "react-select"
 import FormSection from "./FormSection"
+import InputField from "../../../../../reusable/InputField"
 
 export default function IdentityFormSection({ onChange, datas }) {
   return (
     <FormSection label={"Identité"}>
-      <div className="field">
-        <label>Sexe</label>
+      <InputField className="field" label={"Sexe"}>
         <Select
           required
           name="sex"
@@ -16,7 +16,7 @@ export default function IdentityFormSection({ onChange, datas }) {
           classNamePrefix="select"
           onChange={onChange}
         />
-      </div>
+      </InputField>
       {datas}
     </FormSection>
   )

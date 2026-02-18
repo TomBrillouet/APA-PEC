@@ -1,8 +1,7 @@
-import styled from "styled-components"
 import { tests } from "../../../../../../datas/tests"
-import TitleSection from "../../../../../reusable/TitleSection"
 import Select from "react-select"
 import FormSection from "./FormSection"
+import InputField from "../../../../../reusable/InputField"
 
 export default function TestsFormSection({ onChange }) {
   const testOptions = tests.map((test) => ({
@@ -11,8 +10,7 @@ export default function TestsFormSection({ onChange }) {
   }))
   return (
     <FormSection label={"Tests assignés"}>
-      <div className="field full">
-        <label>Tests</label>
+      <InputField className="field full" label={"Tests"}>
         <Select
           isMulti
           name="tests"
@@ -28,7 +26,7 @@ export default function TestsFormSection({ onChange }) {
             }),
           }}
         />
-      </div>
+      </InputField>
     </FormSection>
   )
 }

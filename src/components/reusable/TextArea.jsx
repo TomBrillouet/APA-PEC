@@ -1,12 +1,10 @@
-import styled from "styled-components"
+import InputField from "./InputField"
 
 export default function TextArea({ onChange, name, label, rows, className }) {
   return (
-    <TextAreaStyled className={className}>
+    <InputField className={className}>
       <label>{label}</label>
       <textarea name={name} rows={rows} onChange={onChange} />
-    </TextAreaStyled>
+    </InputField>
   )
 }
-
-const TextAreaStyled = styled.div``

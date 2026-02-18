@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import InputField from "./InputField"
 
 export default function Input({
   label,
@@ -10,7 +10,7 @@ export default function Input({
   className,
 }) {
   return (
-    <InputStyled className={className}>
+    <InputField className={className}>
       <label>{label}</label>
       <input
         type={type}
@@ -19,8 +19,6 @@ export default function Input({
         required={isRequired}
         placeholder={placeholder}
       />
-    </InputStyled>
+    </InputField>
   )
 }
-
-const InputStyled = styled.div``
