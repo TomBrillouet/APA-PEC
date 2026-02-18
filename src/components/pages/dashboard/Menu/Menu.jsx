@@ -1,13 +1,13 @@
 import React from "react"
-import Logo from "../../../reusable/Logo"
+import Logo from "../../../reusable/Logo.jsx"
 import styled from "styled-components"
-import { theme } from "../../../../theme"
+import { theme } from "../../../../theme/index.js"
 import { navItems } from "./navItems.jsx"
-import NavItem from "./NavItem"
+import NavItem from "./NavItem.jsx"
 
-export default function Aside() {
+export default function Menu() {
   return (
-    <AsideStyled>
+    <MenuStyled>
       <Logo className={"logo"} />
       <nav>
         {navItems.map((navItem) => {
@@ -20,11 +20,11 @@ export default function Aside() {
           )
         })}
       </nav>
-    </AsideStyled>
+    </MenuStyled>
   )
 }
 
-const AsideStyled = styled.aside`
+const MenuStyled = styled.aside`
   width: 14vw;
   min-width: 180px;
   display: flex;

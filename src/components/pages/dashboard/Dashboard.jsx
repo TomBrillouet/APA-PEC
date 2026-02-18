@@ -1,11 +1,11 @@
 import styled from "styled-components"
 import Main from "./Main/Main"
-import Aside from "./Aside/Aside.jsx"
+import Menu from "./Menu/Menu.jsx"
 
 export default function Dashboard() {
   return (
     <DashboardStyled>
-      <Aside />
+      <Menu />
       <Main />
     </DashboardStyled>
   )

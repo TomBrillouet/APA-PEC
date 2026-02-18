@@ -2,10 +2,10 @@ import styled from "styled-components"
 import { useState } from "react"
 import { fakePatients } from "../../../../datas/fakePatients"
 import Header from "../Header/Header.jsx"
-import PrimaryButton from "../../../reusable/PrimaryButton"
-import SectionTitle from "./SectionTitle"
+import Button from "../../../reusable/Button"
 import PatientCard from "./PatientCard"
-import AddPatient from "./AddPatient.jsx"
+import SectionTitle from "./AddPatient/Form/SectionTitle.jsx"
+import AddPatient from "./AddPatient/AddPatient.jsx"
 
 export default function Main() {
   const [patients, setPatients] = useState(fakePatients)
@@ -36,10 +36,7 @@ export default function Main() {
       <div className="main-background">
         <div className="subtitle">
           <SectionTitle label={"PEC en cours"} />
-          <PrimaryButton
-            label={"Ajouter un patient"}
-            onClick={toggleAddPatient}
-          />
+          <Button label={"Ajouter un patient"} onClick={toggleAddPatient} />
         </div>
         <div className="patients-container">
           {patientsSorted.map((patient) => (
