@@ -1,14 +1,11 @@
 import styled from "styled-components"
-import { theme } from "../../../../../../theme"
-import MainContext from "../../../../../../context/MainContext"
-import { useContext } from "react"
+import { theme } from "../../../../theme"
 
-export default function HeaderAddPatient() {
-  const { toggleAddPatient } = useContext(MainContext)
+export default function HeaderPatient({ patientFullName, onClick }) {
   return (
     <HeaderAddPatientStyled className="header-add">
-      <h2>Nouveau patient</h2>
-      <span className="close" onClick={toggleAddPatient}>
+      <h2>{patientFullName}</h2>
+      <span className="close" onClick={onClick}>
         X
       </span>
     </HeaderAddPatientStyled>

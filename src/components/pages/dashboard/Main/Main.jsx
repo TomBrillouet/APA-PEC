@@ -6,14 +6,22 @@ import MainContext from "../../../../context/MainContext.jsx"
 import PatientsGrid from "./PatientsGrid.jsx"
 import TopMainBar from "./TopMainBar.jsx"
 import { usePatients } from "../../../../hooks/usePatients.jsx"
+import PatientOpened from "./PatientOpened/PatientOpened.jsx"
 
 export default function Main() {
-  const [AddisOpen, setAddisOpen] = useState(false)
+  const [addPatient, setAddPatient] = useState(false)
+  const [patientOpen, setPatientOpen] = useState(false)
+  const [selectedPatient, setSelectedPatient] = useState(null)
   const [search, setSearch] = useState("")
   const { addNewPatient, patients } = usePatients()
 
   const toggleAddPatient = () => {
-    setAddisOpen(!AddisOpen)
+    setAddPatient(!addPatient)
+  }
+
+  const togglePatient = (patientToOpen) => {
+    setPatientOpen(!patientOpen)
+    setSelectedPatient(patientToOpen)
   }
 
   const patientsFiltered = patients.filter(
@@ -29,16 +37,23 @@ export default function Main() {
   const MainContextValue = {
     addNewPatient,
     toggleAddPatient,
+    togglePatient,
   }
 
   return (
     <MainStyled>
       <MainContext.Provider value={MainContextValue}>
         <Header />
-        {AddisOpen && (
+        {addPatient && (
           <>
             <div className="overlay" onClick={toggleAddPatient}></div>
             <AddPatient addNewPatient={addNewPatient} />
+          </>
+        )}
+        {patientOpen && (
+          <>
+            <div className="overlay" onClick={togglePatient}></div>
+            <PatientOpened patient={selectedPatient} />
           </>
         )}
         <div className="main-background">
@@ -47,7 +62,10 @@ export default function Main() {
             onClick={toggleAddPatient}
           />
 
-          <PatientsGrid patients={patientsSorted} />
+          <PatientsGrid
+            patients={patientsSorted}
+            togglePatient={togglePatient}
+          />
         </div>
       </MainContext.Provider>
     </MainStyled>

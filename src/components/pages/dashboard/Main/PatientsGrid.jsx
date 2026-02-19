@@ -1,7 +1,12 @@
 import styled from "styled-components"
 import PatientCard from "./PatientCard"
 
-export default function PatientsGrid({ patients }) {
+export default function PatientsGrid({ patients, togglePatient }) {
+  const handleOpen = (id) => {
+    const patientToOpen = patients.find((item) => id === item.id)
+    togglePatient(patientToOpen)
+  }
+
   return (
     <PatientsGridStyled>
       {patients.map((patient) => (
@@ -11,6 +16,7 @@ export default function PatientsGrid({ patients }) {
           isMan={patient.sex === "man"}
           firstName={patient.firstName}
           lastName={patient.lastName}
+          onClick={() => handleOpen(patient.id)}
         />
       ))}
     </PatientsGridStyled>

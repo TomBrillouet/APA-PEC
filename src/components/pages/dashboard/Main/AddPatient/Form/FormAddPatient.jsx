@@ -21,7 +21,14 @@ export default function FormAddPatient() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const newpatient = { ...inputsValue, id: crypto.randomUUID() }
+    const newpatient = {
+      ...inputsValue,
+      id: crypto.randomUUID(),
+      fullName: `${inputsValue.firstName} ${inputsValue.lastName}`,
+      imc: parseFloat(
+        inputsValue.weight / (inputsValue.height / 100) ** 2
+      ).toFixed(2),
+    }
     console.log(newpatient)
     addNewPatient(newpatient)
     toggleAddPatient()
@@ -29,13 +36,13 @@ export default function FormAddPatient() {
 
   const handleChange = (e) => {
     const { name, value } = e.target
+    const adressFields = ["street", "city", "cp"]
+    const isAdressField = adressFields.includes(name)
+
     setInputsValue((prev) => ({
       ...prev,
       [name]: value,
-      adress: {
-        ...prev.adress,
-        [name]: value,
-      },
+      adress: isAdressField ? { ...prev.adress, [name]: value } : prev.adress,
     }))
   }
 

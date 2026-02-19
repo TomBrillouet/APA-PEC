@@ -1,26 +1,19 @@
-import styled from "styled-components"
-import HeaderAddPatient from "./Header/HeaderAddPatient"
 import FormAddPatient from "./Form/FormAddPatient.jsx"
+import Popup from "../Popup.jsx"
+import MainContext from "../../../../../context/MainContext.jsx"
+import { useContext } from "react"
+import HeaderPatient from "../HeaderPatient.jsx"
 
 export default function AddPatient() {
+  const { toggleAddPatient } = useContext(MainContext)
   //render
   return (
-    <AddPatientStyled>
-      <HeaderAddPatient />
+    <Popup>
+      <HeaderPatient
+        patientFullName={"Nouveau patient"}
+        onClick={toggleAddPatient}
+      />
       <FormAddPatient />
-    </AddPatientStyled>
+    </Popup>
   )
 }
-
-const AddPatientStyled = styled.div`
-  position: absolute;
-  top: 10%;
-  max-height: 80%;
-  left: 25%;
-  width: 60vw;
-  background-color: aliceblue;
-  z-index: 2;
-  border-radius: 10px;
-  box-shadow: 0 8px 32px rgba(100, 149, 200, 0.18);
-  overflow-y: scroll;
-`
