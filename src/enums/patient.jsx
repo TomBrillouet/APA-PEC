@@ -1,0 +1,20 @@
+export const EMPTY_PATIENT = {
+  id: "",
+  sex: "",
+  lastName: "",
+  firstName: "",
+  adress: {
+    cp: 0,
+    city: "",
+    street: "",
+  },
+  mail: "",
+  phone: "",
+  birth: "",
+  problems: "",
+  history: "",
+  goals: "",
+  height: 0,
+  weight: 0,
+  tests: [],
+}
