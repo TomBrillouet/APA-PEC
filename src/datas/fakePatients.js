@@ -3,6 +3,7 @@ export const fakePatients = [
     id: "1",
     sex: "man",
     lastName: "Dupont",
+    fullName: "Alain Dupont",
     firstName: "Alain",
     adress: {
       cp: "67960",
@@ -17,12 +18,14 @@ export const fakePatients = [
     goals: "retrouver de la mobilité",
     height: 180,
     weight: 65,
+    imc: 20.06,
     tests: [],
   },
   {
     id: "2",
     sex: "woman",
     lastName: "Doe",
+    fullName: "Marie Doe",
     firstName: "Marie",
     adress: {
       cp: "67960",
@@ -37,12 +40,14 @@ export const fakePatients = [
     goals: "retrouver de la motivation",
     height: 170,
     weight: 55,
+    imc: 19.03,
     tests: [],
   },
   {
     id: "3",
     sex: "woman",
     lastName: "Ranik",
+    fullName: "Rosalie Ranik",
     firstName: "Rosalie",
     adress: {
       cp: "67960",
@@ -57,12 +62,14 @@ export const fakePatients = [
     goals: "reconquérir son ex",
     height: 150,
     weight: 85,
+    imc: 37.78,
     tests: [],
   },
   {
     id: "4",
     sex: "man",
     lastName: "Pita",
+    fullName: "John Pita",
     firstName: "John",
     adress: {
       cp: "67960",
@@ -77,12 +84,14 @@ export const fakePatients = [
     goals: "marquer plus de but au foot",
     height: 174,
     weight: 100,
+    imc: 33.03,
     tests: [],
   },
   {
     id: "5",
     sex: "woman",
     lastName: "Ranik",
+    fullName: "Rosalie Ranik",
     firstName: "Rosalie",
     adress: {
       cp: "67960",
@@ -97,12 +106,14 @@ export const fakePatients = [
     goals: "reconquérir son ex",
     height: 150,
     weight: 85,
+    imc: 37.78,
     tests: [],
   },
   {
     id: "6",
     sex: "man",
     lastName: "Pita",
+    fullName: "John Pita",
     firstName: "John",
     adress: {
       cp: "67960",
@@ -117,12 +128,14 @@ export const fakePatients = [
     goals: "marquer plus de but au foot",
     height: 174,
     weight: 100,
+    imc: 33.03,
     tests: [],
   },
   {
     id: "7",
     sex: "man",
     lastName: "Pita",
+    fullName: "John Pita",
     firstName: "John",
     adress: {
       cp: "67960",
@@ -137,12 +150,14 @@ export const fakePatients = [
     goals: "marquer plus de but au foot",
     height: 174,
     weight: 100,
+    imc: 33.03,
     tests: [],
   },
   {
     id: "8",
     sex: "man",
     lastName: "Pita",
+    fullName: "John Pita",
     firstName: "John",
     adress: {
       cp: "67960",
@@ -157,12 +172,14 @@ export const fakePatients = [
     goals: "marquer plus de but au foot",
     height: 174,
     weight: 100,
+    imc: 33.03,
     tests: [],
   },
   {
     id: "9",
     sex: "man",
     lastName: "Pita",
+    fullName: "John Pita",
     firstName: "John",
     adress: {
       cp: "67960",
@@ -177,12 +194,14 @@ export const fakePatients = [
     goals: "marquer plus de but au foot",
     height: 174,
     weight: 100,
+    imc: 33.03,
     tests: [],
   },
   {
     id: "10",
     sex: "man",
     lastName: "Pita",
+    fullName: "John Pita",
     firstName: "John",
     adress: {
       cp: "67960",
@@ -197,6 +216,7 @@ export const fakePatients = [
     goals: "marquer plus de but au foot",
     height: 174,
     weight: 100,
+    imc: 33.03,
     tests: [],
   },
 ]
