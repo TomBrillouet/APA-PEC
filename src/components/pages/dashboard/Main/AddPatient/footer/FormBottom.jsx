@@ -1,12 +1,15 @@
 import styled from "styled-components"
 import Button from "../../../../../reusable/Button.jsx"
+import MainContext from "../../../../../../context/MainContext.jsx"
+import { useContext } from "react"
 
-export default function FormBottom({ onClose }) {
+export default function FormBottom() {
+  const { toggleAddPatient } = useContext(MainContext)
   return (
     <FormBottomStyled className="actions">
       <Button
         label={"Annuler"}
-        onClick={onClose}
+        onClick={toggleAddPatient}
         version={"cancel"}
         type={"button"}
       />

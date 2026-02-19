@@ -7,6 +7,7 @@ export default function TestsFormSection({ onChange }) {
   const testOptions = tests.map((test) => ({
     value: test.name,
     label: test.name,
+    results: test.results,
   }))
   return (
     <FormSection label={"Tests assignés"}>

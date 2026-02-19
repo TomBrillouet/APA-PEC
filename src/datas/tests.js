@@ -2,61 +2,27 @@ export const tests = [
   {
     name: "Assis-debout",
     description: "Evaluer la forme des membres inférieurs",
-    results: {
-      repetitions: 0,
-      prInit: 0,
-      prFinal: 0,
-      prFinalDelay: 0,
-    },
+    results: [
+      { field: "Répétitions", value: 0 },
+      { field: "FC initiale", value: 0 },
+      { field: "FC finale", value: 0 },
+      { field: "FC après délai", value: 0 },
+      { field: "Sat initiale", value: 0 },
+      { field: "Sat finale", value: 0 },
+      { field: "Sat après délai", value: 0 },
+    ],
+    remarques: "",
   },
   {
-    name: "Assis-couché",
+    name: "Test d'équilibre unipodal",
     description: "Evaluer la forme des membres inférieurs",
-    results: {
-      repetitions: 0,
-      prInit: 0,
-      prFinal: 0,
-      prFinalDelay: 0,
-    },
-  },
-  {
-    name: "Assis-tandem ",
-    description: "Evaluer la forme des membres inférieurs",
-    results: {
-      repetitions: 0,
-      prInit: 0,
-      prFinal: 0,
-      prFinalDelay: 0,
-    },
-  },
-  {
-    name: "Assis-debout",
-    description: "Evaluer la forme des membres inférieurs",
-    results: {
-      repetitions: 0,
-      prInit: 0,
-      prFinal: 0,
-      prFinalDelay: 0,
-    },
-  },
-  {
-    name: "Assis-couché",
-    description: "Evaluer la forme des membres inférieurs",
-    results: {
-      repetitions: 0,
-      prInit: 0,
-      prFinal: 0,
-      prFinalDelay: 0,
-    },
-  },
-  {
-    name: "Assis-tandem ",
-    description: "Evaluer la forme des membres inférieurs",
-    results: {
-      repetitions: 0,
-      prInit: 0,
-      prFinal: 0,
-      prFinalDelay: 0,
-    },
+    results: [
+      { field: "Durée gauche", value: 0 },
+      { field: "Durée droite", value: 0 },
+      { field: "FC initiale", value: 0 },
+      { field: "FC finale", value: 0 },
+      { field: "FC après délai", value: 0 },
+    ],
+    remarques: "",
   },
 ]

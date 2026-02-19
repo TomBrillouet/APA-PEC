@@ -2,12 +2,12 @@ import styled from "styled-components"
 import HeaderAddPatient from "./Header/HeaderAddPatient"
 import FormAddPatient from "./Form/FormAddPatient.jsx"
 
-export default function AddPatient({ addNewPatient, onClose }) {
+export default function AddPatient() {
   //render
   return (
     <AddPatientStyled>
-      <HeaderAddPatient onClose={onClose} />
-      <FormAddPatient onClose={onClose} addNewPatient={addNewPatient} />
+      <HeaderAddPatient />
+      <FormAddPatient />
     </AddPatientStyled>
   )
 }

@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import TextArea from "../../../../../reusable/TextArea.jsx"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { EMPTY_PATIENT } from "../../../../../../enums/patient.jsx"
 import { identityInputs } from "../config/identityInputs.jsx"
 import { contactInputs } from "../config/contactInputs.jsx"
@@ -10,16 +10,21 @@ import InputSection from "./InputSection.jsx"
 import IdentityFormSection from "./IdentityFormSection.jsx"
 import TestsFormSection from "./TestsFormSection.jsx"
 import FormBottom from "../footer/FormBottom.jsx"
+import ResultsSection from "./ResultsSection.jsx"
+import MainContext from "../../../../../../context/MainContext.jsx"
 
-export default function FormAddPatient({ onClose, addNewPatient }) {
+export default function FormAddPatient() {
   //state
   const [inputsValue, setInputsValue] = useState(EMPTY_PATIENT)
+  const { toggleAddPatient, addNewPatient } = useContext(MainContext)
   //comportements
 
   const handleSubmit = (e) => {
     e.preventDefault()
     const newpatient = { ...inputsValue, id: crypto.randomUUID() }
+    console.log(newpatient)
     addNewPatient(newpatient)
+    toggleAddPatient()
   }
 
   const handleChange = (e) => {
@@ -41,11 +46,24 @@ export default function FormAddPatient({ onClose, addNewPatient }) {
     }))
 
   const testsSelectChange = (selectedOptions) => {
-    const values = selectedOptions.map((option) => option.value)
+    const formattedTests = selectedOptions.map((option) => ({
+      name: option.value,
+      results: [...option.results],
+      remarques: option.remarques ?? "",
+    }))
 
     setInputsValue((prev) => ({
       ...prev,
-      tests: values,
+      tests: formattedTests,
+    }))
+  }
+
+  const handleRemarquesChange = (testName, value) => {
+    setInputsValue((prev) => ({
+      ...prev,
+      tests: prev.tests.map((test) =>
+        test.name === testName ? { ...test, remarques: value } : test
+      ),
     }))
   }
 
@@ -76,6 +94,23 @@ export default function FormAddPatient({ onClose, addNewPatient }) {
       />
     ))
   }
+
+  const handleResultChange = (testName, field, value) => {
+    setInputsValue((prev) => ({
+      ...prev,
+      tests: prev.tests.map((test) =>
+        test.name === testName
+          ? {
+              ...test,
+              results: test.results.map((result) =>
+                result.field === field ? { ...result, value } : result
+              ),
+            }
+          : test
+      ),
+    }))
+  }
+
   //render
   return (
     <FormAddPatientStyled action="submit" onSubmit={handleSubmit}>
@@ -89,7 +124,13 @@ export default function FormAddPatient({ onClose, addNewPatient }) {
         label={"Informations médicales"}
       />
       <TestsFormSection onChange={testsSelectChange} />
-      <FormBottom onClose={onClose} />
+      <ResultsSection
+        inputsValue={inputsValue}
+        onChange={handleResultChange}
+        onRemarquesChange={handleRemarquesChange}
+      />
+
+      <FormBottom />
     </FormAddPatientStyled>
   )
 }
