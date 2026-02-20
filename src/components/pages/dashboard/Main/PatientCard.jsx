@@ -2,9 +2,15 @@ import styled from "styled-components"
 import { theme } from "../../../../theme"
 import { IoIosMan, IoIosWoman } from "react-icons/io"
 
-export default function PatientCard({ id, isMan, firstName, lastName }) {
+export default function PatientCard({
+  id,
+  isMan,
+  firstName,
+  lastName,
+  onClick,
+}) {
   return (
-    <PatientCardStyled key={id}>
+    <PatientCardStyled key={id} onClick={onClick}>
       <span className={`patient-icon ${isMan ? "man" : ""}`}>
         {isMan ? <IoIosMan /> : <IoIosWoman />}
       </span>

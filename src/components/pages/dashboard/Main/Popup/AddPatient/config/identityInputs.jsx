@@ -4,21 +4,18 @@ export const identityInputs = [
     type: "text",
     name: "lastName",
     isRequired: true,
-    placeholder: "",
   },
   {
     label: "Prénom",
     type: "text",
     name: "firstName",
     isRequired: true,
-    placeholder: "",
   },
   {
     label: "Date de naissance",
     type: "date",
     name: "birth",
     isRequired: true,
-    placeholder: "",
   },
   {
     label: "Taille",

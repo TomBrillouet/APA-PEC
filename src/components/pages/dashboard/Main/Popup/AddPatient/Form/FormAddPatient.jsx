@@ -1,56 +1,51 @@
 import styled from "styled-components"
-import TextArea from "../../../../../reusable/TextArea.jsx"
-import { useState } from "react"
-import { EMPTY_PATIENT } from "../../../../../../enums/patient.jsx"
+import TextArea from "../../../../../../reusable/TextArea.jsx"
+import { useContext } from "react"
 import { identityInputs } from "../config/identityInputs.jsx"
 import { contactInputs } from "../config/contactInputs.jsx"
 import { medicArea } from "../config/medicArea.jsx"
-import Input from "../../../../../reusable/Input.jsx"
+import Input from "../../../../../../reusable/Input.jsx"
 import InputSection from "./InputSection.jsx"
 import IdentityFormSection from "./IdentityFormSection.jsx"
 import TestsFormSection from "./TestsFormSection.jsx"
 import FormBottom from "../footer/FormBottom.jsx"
+import ResultsSection from "./ResultsSection.jsx"
+import { MainContext } from "../../../../../../../context/MainContext.jsx"
+import { useBilanForm } from "../../../../../../../hooks/useBilanForm.jsx"
+import { usePatientForm } from "../../../../../../../hooks/usePatientForm.jsx"
 
-export default function FormAddPatient({ onClose, addNewPatient }) {
-  //state
-  const [inputsValue, setInputsValue] = useState(EMPTY_PATIENT)
-  //comportements
+export default function FormAddPatient() {
+  const { toggleAddPatient, addNewPatient } = useContext(MainContext)
+
+  const {
+    handleResultChange,
+    handleRemarquesChange,
+    testsSelectChange,
+    handleBilanDateChange,
+    bilanData,
+  } = useBilanForm()
+  const { inputsValue, sexSelectChange, handleChange } = usePatientForm()
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const newpatient = { ...inputsValue, id: crypto.randomUUID() }
-    addNewPatient(newpatient)
+    const newPatient = {
+      ...inputsValue,
+      id: crypto.randomUUID(),
+      bilans: [
+        {
+          id: crypto.randomUUID(),
+          type: "initial",
+          ...bilanData,
+        },
+      ],
+    }
+    console.log(newPatient)
+    addNewPatient(newPatient)
+    toggleAddPatient()
   }
 
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setInputsValue((prev) => ({
-      ...prev,
-      [name]: value,
-      adress: {
-        ...prev.adress,
-        [name]: value,
-      },
-    }))
-  }
-
-  const sexSelectChange = (selectedOption) =>
-    setInputsValue((prev) => ({
-      ...prev,
-      sex: selectedOption.value,
-    }))
-
-  const testsSelectChange = (selectedOptions) => {
-    const values = selectedOptions.map((option) => option.value)
-
-    setInputsValue((prev) => ({
-      ...prev,
-      tests: values,
-    }))
-  }
-
-  const mapInputs = (array) => {
-    return array.map((input) => (
+  const mapInputs = (array) =>
+    array.map((input) => (
       <Input
         key={input.name}
         className={"field"}
@@ -62,10 +57,9 @@ export default function FormAddPatient({ onClose, addNewPatient }) {
         placeholder={input.placeholder}
       />
     ))
-  }
 
-  const mapTextArea = (array) => {
-    return array.map((textarea) => (
+  const mapTextArea = (array) =>
+    array.map((textarea) => (
       <TextArea
         onChange={handleChange}
         key={textarea.name}
@@ -75,10 +69,16 @@ export default function FormAddPatient({ onClose, addNewPatient }) {
         className={"field full"}
       />
     ))
-  }
-  //render
+
   return (
     <FormAddPatientStyled action="submit" onSubmit={handleSubmit}>
+      <Input
+        onChange={handleBilanDateChange}
+        type={"date"}
+        label={"Date du bilan initial"}
+        value={bilanData.date}
+        name={"date"}
+      />
       <IdentityFormSection
         onChange={sexSelectChange}
         datas={mapInputs(identityInputs)}
@@ -89,7 +89,12 @@ export default function FormAddPatient({ onClose, addNewPatient }) {
         label={"Informations médicales"}
       />
       <TestsFormSection onChange={testsSelectChange} />
-      <FormBottom onClose={onClose} />
+      <ResultsSection
+        bilanData={bilanData}
+        onChange={handleResultChange}
+        onRemarquesChange={handleRemarquesChange}
+      />
+      <FormBottom />
     </FormAddPatientStyled>
   )
 }

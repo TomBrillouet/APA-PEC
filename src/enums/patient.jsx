@@ -3,11 +3,7 @@ export const EMPTY_PATIENT = {
   sex: "",
   lastName: "",
   firstName: "",
-  adress: {
-    cp: 0,
-    city: "",
-    street: "",
-  },
+  address: { cp: "", city: "", street: "" },
   mail: "",
   phone: "",
   birth: "",
@@ -16,5 +12,5 @@ export const EMPTY_PATIENT = {
   goals: "",
   height: 0,
   weight: 0,
-  tests: [],
+  bilans: [],
 }
