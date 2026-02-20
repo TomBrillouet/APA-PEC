@@ -30,7 +30,7 @@ const ButtonStyled = styled.button`
   font-family: inherit;
   transition: background 0.15s, transform 0.1s;
   &:disabled {
-    opacity: 0.5;
+    opacity: 0.2;
   }
 
   ${({ version }) => extraStyle[version]}
@@ -40,7 +40,8 @@ const extraStyleCancel = css`
   background: transparent;
   border: 1.5px solid #b8d8f0;
   color: #4a90c4;
-  &:hover {
+
+  &:not(:disabled):hover {
     background: #daedf9;
   }
 `
@@ -49,11 +50,11 @@ const extraStyleSubmit = css`
   background: #4a90c4;
   color: #fff;
   box-shadow: 0 3px 10px rgba(74, 144, 196, 0.3);
-  &:hover {
+  &:not(:disabled):hover {
     background: #2c6ea0;
     transform: translateY(-1px);
   }
-  &:active {
+  &:not(:disabled):active {
     transform: translateY(0);
   }
 `
@@ -62,11 +63,11 @@ const extraStylePrimary = css`
   background: ${theme.colors.primary};
   color: #fff;
   box-shadow: 0 3px 10px rgba(196, 74, 74, 0.3);
-  &:hover {
+  &:not(:disabled):hover {
     background: #8a1717;
     transform: translateY(-1px);
   }
-  &:active {
+  &:not(:disabled):active {
     transform: translateY(0);
   }
 `
