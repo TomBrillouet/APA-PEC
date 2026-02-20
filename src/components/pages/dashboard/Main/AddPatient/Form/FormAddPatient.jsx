@@ -37,13 +37,13 @@ export default function FormAddPatient() {
   const handleChange = (e) => {
     const { name, value } = e.target
     const adressFields = ["street", "city", "cp"]
-    const isAdressField = adressFields.includes(name)
 
-    setInputsValue((prev) => ({
-      ...prev,
-      [name]: value,
-      adress: isAdressField ? { ...prev.adress, [name]: value } : prev.adress,
-    }))
+    setInputsValue((prev) => {
+      if (adressFields.includes(name)) {
+        return { ...prev, adress: { ...prev.adress, [name]: value } }
+      }
+      return { ...prev, [name]: value }
+    })
   }
 
   const sexSelectChange = (selectedOption) =>
