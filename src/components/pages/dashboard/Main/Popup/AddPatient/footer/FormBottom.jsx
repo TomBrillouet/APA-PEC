@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import Button from "../../../../../reusable/Button.jsx"
-import MainContext from "../../../../../../context/MainContext.jsx"
+import Button from "../../../../../../reusable/Button.jsx"
+import { MainContext } from "../../../../../../../context/MainContext.jsx"
 import { useContext } from "react"
 
 export default function FormBottom() {

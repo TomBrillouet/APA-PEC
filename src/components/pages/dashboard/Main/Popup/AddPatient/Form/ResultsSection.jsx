@@ -1,16 +1,16 @@
-import Input from "../../../../../reusable/Input"
-import TextArea from "../../../../../reusable/TextArea"
+import Input from "../../../../../../reusable/Input"
+import TextArea from "../../../../../../reusable/TextArea"
 
 export default function ResultsSection({
-  inputsValue,
+  bilanData,
   onChange,
   onRemarquesChange,
 }) {
-  if (!inputsValue.tests) return null
+  if (!bilanData.tests) return null
 
   return (
     <div className="results">
-      {inputsValue.tests.map((test) => (
+      {bilanData.tests.map((test) => (
         <div key={test.name}>
           <h4>{test.name}</h4>
 

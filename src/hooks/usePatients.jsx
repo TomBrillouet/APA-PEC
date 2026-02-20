@@ -8,8 +8,17 @@ export const usePatients = () => {
     setPatients((prev) => [newPatient, ...prev])
   }
 
+  const updatePatients = (patienToUpdate) => {
+    setPatients((prev) =>
+      prev.map((patient) =>
+        patient.id === patienToUpdate.id ? patienToUpdate : patient
+      )
+    )
+  }
+
   return {
     addNewPatient,
+    updatePatients,
     patients,
   }
 }

@@ -1,18 +1,21 @@
 import styled from "styled-components"
-import { theme } from "../../../../theme"
+import { theme } from "../../../../../theme"
 
-export default function HeaderPatient({ patientFullName, onClick }) {
+export default function HeaderPopup({ patientFullName, onClick, title }) {
   return (
-    <HeaderAddPatientStyled className="header-add">
-      <h2>{patientFullName}</h2>
+    <HeaderPopupStyled className="header-add">
+      <h2>
+        <em>{title}</em>
+        {patientFullName}
+      </h2>
       <span className="close" onClick={onClick}>
         X
       </span>
-    </HeaderAddPatientStyled>
+    </HeaderPopupStyled>
   )
 }
 
-const HeaderAddPatientStyled = styled.div`
+const HeaderPopupStyled = styled.div`
   border-bottom: 2px solid #cce0f5;
   display: flex;
   justify-content: space-between;
@@ -26,6 +29,7 @@ const HeaderAddPatientStyled = styled.div`
     color: #1a3a5c;
     letter-spacing: 0.01em;
   }
+
   span {
     font-weight: bold;
     transition: transform ease 0.2s;

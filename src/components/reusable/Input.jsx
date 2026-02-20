@@ -8,6 +8,8 @@ export default function Input({
   isRequired,
   placeholder,
   className,
+  value,
+  disabled,
 }) {
   return (
     <InputField className={className}>
@@ -18,6 +20,8 @@ export default function Input({
         onChange={onChange}
         required={isRequired}
         placeholder={placeholder}
+        value={value}
+        disabled={disabled}
       />
     </InputField>
   )

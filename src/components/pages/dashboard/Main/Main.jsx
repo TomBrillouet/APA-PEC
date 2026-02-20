@@ -1,19 +1,19 @@
 import styled from "styled-components"
 import { useState } from "react"
 import Header from "../Header/Header.jsx"
-import AddPatient from "./AddPatient/AddPatient.jsx"
-import MainContext from "../../../../context/MainContext.jsx"
+import { MainContext } from "../../../../context/MainContext.jsx"
 import PatientsGrid from "./PatientsGrid.jsx"
 import TopMainBar from "./TopMainBar.jsx"
 import { usePatients } from "../../../../hooks/usePatients.jsx"
-import PatientOpened from "./PatientOpened/PatientOpened.jsx"
+import PatientOpened from "./Popup/PatientOpened/PatientOpened.jsx"
+import AddPatient from "./Popup/AddPatient/AddPatient.jsx"
 
 export default function Main() {
   const [addPatient, setAddPatient] = useState(false)
   const [patientOpen, setPatientOpen] = useState(false)
   const [selectedPatient, setSelectedPatient] = useState(null)
   const [search, setSearch] = useState("")
-  const { addNewPatient, patients } = usePatients()
+  const { addNewPatient, updatePatients, patients } = usePatients()
 
   const toggleAddPatient = () => {
     setAddPatient(!addPatient)
@@ -36,6 +36,7 @@ export default function Main() {
 
   const MainContextValue = {
     addNewPatient,
+    updatePatients,
     toggleAddPatient,
     togglePatient,
   }
@@ -53,7 +54,7 @@ export default function Main() {
         {patientOpen && (
           <>
             <div className="overlay" onClick={togglePatient}></div>
-            <PatientOpened patient={selectedPatient} />
+            <PatientOpened selectedPatient={selectedPatient} />
           </>
         )}
         <div className="main-background">

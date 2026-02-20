@@ -11,7 +11,6 @@ export const tests = [
       { field: "Sat finale", value: null },
       { field: "Sat après délai", value: null },
     ],
-    remarques: "",
   },
   {
     name: "Test d'équilibre unipodal",
@@ -23,6 +22,5 @@ export const tests = [
       { field: "FC finale", value: null },
       { field: "FC après délai", value: null },
     ],
-    remarques: "",
   },
 ]

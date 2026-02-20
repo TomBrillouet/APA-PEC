@@ -1,9 +1,20 @@
 import styled, { css } from "styled-components"
 import { theme } from "../../theme"
 
-export default function Button({ onClick, label, type, version = "primary" }) {
+export default function Button({
+  onClick,
+  label,
+  type,
+  disabled,
+  version = "primary",
+}) {
   return (
-    <ButtonStyled type={type} onClick={onClick} version={version}>
+    <ButtonStyled
+      type={type}
+      onClick={onClick}
+      version={version}
+      disabled={disabled}
+    >
       {label}
     </ButtonStyled>
   )
@@ -18,6 +29,9 @@ const ButtonStyled = styled.button`
   border: none;
   font-family: inherit;
   transition: background 0.15s, transform 0.1s;
+  &:disabled {
+    opacity: 0.5;
+  }
 
   ${({ version }) => extraStyle[version]}
 `

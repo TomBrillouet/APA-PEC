@@ -1,7 +1,8 @@
 import { createContext } from "react"
 
-export default createContext({
+export const MainContext = createContext({
   addNewPatient: () => {},
+  updatePatients: () => {},
   toggleAddPatient: () => {},
   togglePatient: () => {},
 })
