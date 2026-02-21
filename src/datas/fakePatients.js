@@ -17,7 +17,75 @@ export const fakePatients = [
     goals: "Retrouver de la mobilité pour reprendre la randonnée",
     height: 180,
     weight: 82,
-    bilans: [],
+    bilans: [
+      {
+        id: "5025152a-3a7f-4f57-a721-0ab67c362786",
+        type: "initial",
+        date: "2026-02-21",
+        tests: [
+          {
+            name: "Assis-debout",
+            remarques: "6czcz8",
+            results: [
+              {
+                field: "Répétitions",
+                value: "5",
+              },
+              {
+                field: "FC initiale",
+                value: "4",
+              },
+              {
+                field: "FC finale",
+                value: "8",
+              },
+              {
+                field: "FC après délai",
+                value: "8",
+              },
+              {
+                field: "Sat initiale",
+                value: "6",
+              },
+              {
+                field: "Sat finale",
+                value: "4",
+              },
+              {
+                field: "Sat après délai",
+                value: "5",
+              },
+            ],
+          },
+          {
+            name: "Test d'équilibre unipodal",
+            remarques: "fke",
+            results: [
+              {
+                field: "Durée gauche",
+                value: "8",
+              },
+              {
+                field: "Durée droite",
+                value: "9",
+              },
+              {
+                field: "FC initiale",
+                value: "5",
+              },
+              {
+                field: "FC finale",
+                value: "2",
+              },
+              {
+                field: "FC après délai",
+                value: "5",
+              },
+            ],
+          },
+        ],
+      },
+    ],
     logbook: [],
   },
   {
