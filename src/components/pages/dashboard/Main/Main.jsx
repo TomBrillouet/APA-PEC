@@ -39,6 +39,7 @@ export default function Main() {
     updatePatients,
     toggleAddPatient,
     togglePatient,
+    selectedPatient,
   }
 
   return (
@@ -54,7 +55,7 @@ export default function Main() {
         {patientOpen && (
           <>
             <div className="overlay" onClick={togglePatient}></div>
-            <PatientOpened selectedPatient={selectedPatient} />
+            <PatientOpened />
           </>
         )}
         <div className="main-background">

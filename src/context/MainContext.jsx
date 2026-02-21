@@ -5,4 +5,5 @@ export const MainContext = createContext({
   updatePatients: () => {},
   toggleAddPatient: () => {},
   togglePatient: () => {},
+  selectedPatient: {},
 })

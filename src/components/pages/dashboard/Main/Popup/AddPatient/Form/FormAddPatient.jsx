@@ -39,7 +39,6 @@ export default function FormAddPatient() {
         },
       ],
     }
-    console.log(newPatient)
     addNewPatient(newPatient)
     toggleAddPatient()
   }
