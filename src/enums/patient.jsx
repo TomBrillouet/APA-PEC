@@ -13,4 +13,5 @@ export const EMPTY_PATIENT = {
   height: 0,
   weight: 0,
   bilans: [],
+  logbook: [],
 }

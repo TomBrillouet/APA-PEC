@@ -18,6 +18,7 @@ export const fakePatients = [
     height: 180,
     weight: 82,
     bilans: [],
+    logbook: [],
   },
   {
     id: "2",
@@ -38,6 +39,7 @@ export const fakePatients = [
     height: 168,
     weight: 62,
     bilans: [],
+    logbook: [],
   },
   {
     id: "3",
@@ -59,6 +61,7 @@ export const fakePatients = [
     height: 172,
     weight: 78,
     bilans: [],
+    logbook: [],
   },
   {
     id: "4",
@@ -79,6 +82,7 @@ export const fakePatients = [
     height: 165,
     weight: 58,
     bilans: [],
+    logbook: [],
   },
   {
     id: "5",
@@ -99,5 +103,6 @@ export const fakePatients = [
     height: 176,
     weight: 88,
     bilans: [],
+    logbook: [],
   },
 ]
