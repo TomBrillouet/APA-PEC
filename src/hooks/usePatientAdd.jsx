@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { EMPTY_PATIENT } from "../enums/patient"
 
-export const usePatientForm = (initialValues = EMPTY_PATIENT) => {
+export const usePatientAdd = (initialValues = EMPTY_PATIENT) => {
   const [inputsValue, setInputsValue] = useState(initialValues)
 
   const handleChange = (e) => {
@@ -19,10 +19,14 @@ export const usePatientForm = (initialValues = EMPTY_PATIENT) => {
   const sexSelectChange = (sexSelected) =>
     setInputsValue((prev) => ({ ...prev, sex: sexSelected.value }))
 
+  const handleSpecificInputsValue = (globalValue, key, specificValue) => {
+    setInputsValue({ ...globalValue, [key]: specificValue })
+  }
+
   return {
     inputsValue,
     sexSelectChange,
     handleChange,
-    setInputsValue,
+    handleSpecificInputsValue,
   }
 }
