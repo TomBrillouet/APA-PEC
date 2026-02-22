@@ -14,5 +14,6 @@ const PopupStyled = styled.div`
   z-index: 2;
   border-radius: 10px;
   box-shadow: 0 8px 32px rgba(100, 149, 200, 0.18);
-  overflow-y: scroll;
+  overflow-y: auto;
+  scrollbar-color: grey transparent;
 `

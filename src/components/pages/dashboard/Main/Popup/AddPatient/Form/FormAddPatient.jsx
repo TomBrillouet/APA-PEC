@@ -12,7 +12,7 @@ import FormBottom from "../footer/FormBottom.jsx"
 import ResultsSection from "./ResultsSection.jsx"
 import { MainContext } from "../../../../../../../context/MainContext.jsx"
 import { useBilanForm } from "../../../../../../../hooks/useBilanForm.jsx"
-import { usePatientForm } from "../../../../../../../hooks/usePatientForm.jsx"
+import { usePatientAdd } from "../../../../../../../hooks/usePatientAdd.jsx"
 
 export default function FormAddPatient() {
   const { toggleAddPatient, addNewPatient } = useContext(MainContext)
@@ -24,7 +24,7 @@ export default function FormAddPatient() {
     handleBilanDateChange,
     bilanData,
   } = useBilanForm()
-  const { inputsValue, sexSelectChange, handleChange } = usePatientForm()
+  const { inputsValue, sexSelectChange, handleChange } = usePatientAdd()
 
   const handleSubmit = (e) => {
     e.preventDefault()

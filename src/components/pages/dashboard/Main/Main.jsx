@@ -20,9 +20,13 @@ export default function Main() {
     setAddPatient(!addPatient)
   }
 
+  const handleSelectedPatient = (selectedPatient) => {
+    setSelectedPatient(selectedPatient)
+  }
+
   const togglePatient = (patientToOpen) => {
     setPatientOpen(!patientOpen)
-    setSelectedPatient(patientToOpen)
+    handleSelectedPatient(patientToOpen)
   }
 
   const patientsFiltered = patients.filter(
@@ -42,7 +46,7 @@ export default function Main() {
     toggleAddPatient,
     togglePatient,
     selectedPatient,
-    setSelectedPatient,
+    handleSelectedPatient,
     updateLogBook,
   }
 

@@ -3,12 +3,13 @@ import { MainContext } from "../../../../../../../context/MainContext"
 import { dateFr } from "../../../../../../../utils/math"
 import TextArea from "../../../../../../reusable/TextArea"
 import Button from "../../../../../../reusable/Button"
-import styled from "styled-components"
+import { toastSuccess } from "../../../../../../../datas/toastmessages"
 
-export default function Logbook({ isModifEnabled, togglePatient }) {
+export default function Logbook({ isModifEnabled }) {
   const [logbookInput, setLogbookInput] = useState("")
-  const { selectedPatient, updateLogBook, setSelectedPatient } =
+  const { selectedPatient, updateLogBook, handleSelectedPatient } =
     useContext(MainContext)
+  const patientFullName = `${selectedPatient.lastName} ${selectedPatient.firstName}`
 
   const handleLogBookUpdate = (selectedPatient) => {
     if (logbookInput.trim() !== "") {
@@ -18,14 +19,15 @@ export default function Logbook({ isModifEnabled, togglePatient }) {
         logbook: [...selectedPatient.logbook, "hr", newEntry],
       }
       updateLogBook(selectedPatient, logbookInput)
-      setSelectedPatient(updatedPatient)
+      handleSelectedPatient(updatedPatient)
       setLogbookInput("")
+      toastSuccess(`Nouveau compte rendu ajouté pour ${patientFullName}.`)
     }
   }
   return (
-    <LogbookStyled>
+    <div>
       <TextArea
-        label={"Ajouter au journal de bord"}
+        label={"Ajouter un compte rendu"}
         onChange={(e) => setLogbookInput(e.target.value)}
         value={logbookInput}
         name={"logbook"}
@@ -36,18 +38,12 @@ export default function Logbook({ isModifEnabled, togglePatient }) {
         <div className="actions">
           <Button
             version="submit"
-            label={"Enregistrer le journal de bord"}
+            label={"Enregistrer un nouveau compte rendu"}
             onClick={() => handleLogBookUpdate(selectedPatient)}
             disabled={!isModifEnabled}
           />
         </div>
       </div>
-    </LogbookStyled>
+    </div>
   )
 }
-
-const LogbookStyled = styled.div`
-  .logbook-buttons {
-    padding-top: 20px;
-  }
-`
