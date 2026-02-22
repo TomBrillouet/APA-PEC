@@ -4,9 +4,10 @@ import { MainContext } from "../../../../../../context/MainContext.jsx"
 import HeaderPatient from "../HeaderPopup.jsx"
 import BodyPatient from "./BodyPatient/BodyPatient.jsx"
 import { getAge } from "../../../../../../utils/math.js"
+import NewBilan from "./NewBilan/NewBilan.jsx"
 
 export default function PatientOpened() {
-  const { togglePatient, selectedPatient } = useContext(MainContext)
+  const { togglePatient, selectedPatient, isNewBilan } = useContext(MainContext)
   return (
     <Popup>
       <HeaderPatient
@@ -16,7 +17,7 @@ export default function PatientOpened() {
         } (${getAge(selectedPatient.birth)} ans)`}
         onClick={togglePatient}
       />
-      <BodyPatient />
+      {isNewBilan ? <NewBilan /> : <BodyPatient />}
     </Popup>
   )
 }

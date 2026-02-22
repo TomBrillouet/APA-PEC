@@ -7,12 +7,15 @@ import TopMainBar from "./TopMainBar.jsx"
 import { usePatients } from "../../../../hooks/usePatients.jsx"
 import PatientOpened from "./Popup/PatientOpened/PatientOpened.jsx"
 import AddPatient from "./Popup/AddPatient/AddPatient.jsx"
+import ProInfo from "./Popup/ProInfo/ProInfo.jsx"
 
 export default function Main() {
   const [addPatient, setAddPatient] = useState(false)
   const [patientOpen, setPatientOpen] = useState(false)
+  const [proInfo, setProInfo] = useState(false)
   const [selectedPatient, setSelectedPatient] = useState(null)
   const [search, setSearch] = useState("")
+  const [isNewBilan, setIsNewBilan] = useState(false)
   const { addNewPatient, updatePatients, patients, updateLogBook } =
     usePatients()
 
@@ -20,13 +23,22 @@ export default function Main() {
     setAddPatient(!addPatient)
   }
 
-  const handleSelectedPatient = (selectedPatient) => {
-    setSelectedPatient(selectedPatient)
+  const toggleProInfo = () => {
+    setProInfo(!proInfo)
   }
 
   const togglePatient = (patientToOpen) => {
     setPatientOpen(!patientOpen)
     handleSelectedPatient(patientToOpen)
+    setIsNewBilan(false)
+  }
+
+  const toggleNewBilan = () => {
+    setIsNewBilan(!isNewBilan)
+  }
+
+  const handleSelectedPatient = (selectedPatient) => {
+    setSelectedPatient(selectedPatient)
   }
 
   const patientsFiltered = patients.filter(
@@ -45,6 +57,9 @@ export default function Main() {
     updatePatients,
     toggleAddPatient,
     togglePatient,
+    toggleProInfo,
+    toggleNewBilan,
+    isNewBilan,
     selectedPatient,
     handleSelectedPatient,
     updateLogBook,
@@ -64,6 +79,12 @@ export default function Main() {
           <>
             <div className="overlay" onClick={togglePatient}></div>
             <PatientOpened />
+          </>
+        )}
+        {proInfo && (
+          <>
+            <div className="overlay" onClick={toggleProInfo}></div>
+            <ProInfo />
           </>
         )}
         <div className="main-background">

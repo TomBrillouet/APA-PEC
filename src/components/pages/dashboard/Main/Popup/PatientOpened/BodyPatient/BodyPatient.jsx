@@ -5,6 +5,7 @@ import { useContext, useState } from "react"
 import BilansPatient from "./BilansPatient.jsx"
 import LogBookHistory from "./LogBookHistory.jsx"
 import Logbook from "./Logbook.jsx"
+import FooterPatient from "./FooterPatient.jsx"
 
 export default function BodyPatient() {
   const { selectedPatient } = useContext(MainContext)
@@ -24,6 +25,7 @@ export default function BodyPatient() {
       <BilansPatient selectedPatient={selectedPatient} />
       <LogBookHistory selectedPatient={selectedPatient} />
       <Logbook isModifEnabled={isModifEnabled} />
+      <FooterPatient />
     </BodyPatientStyled>
   )
 }

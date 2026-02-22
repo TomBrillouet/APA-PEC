@@ -5,6 +5,9 @@ export const MainContext = createContext({
   updatePatients: () => {},
   toggleAddPatient: () => {},
   togglePatient: () => {},
+  toggleProInfo: () => {},
+  toggleNewBilan: () => {},
+  isNewBilan: false,
   selectedPatient: {},
   updateLogBook: () => {},
 })
