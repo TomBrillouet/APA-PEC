@@ -1,8 +1,8 @@
 import styled from "styled-components"
 
-export default function LogBookPatient({ selectedPatient }) {
+export default function LogBookHistory({ selectedPatient }) {
   return (
-    <LogBookPatientStyled>
+    <LogBookHistoryStyled>
       <h3>Journal de bord</h3>
       {selectedPatient.logbook.map((entry, index) =>
         entry === "hr" ? (
@@ -17,11 +17,11 @@ export default function LogBookPatient({ selectedPatient }) {
           </div>
         )
       )}
-    </LogBookPatientStyled>
+    </LogBookHistoryStyled>
   )
 }
 
-const LogBookPatientStyled = styled.div`
+const LogBookHistoryStyled = styled.div`
   max-width: 800px;
   p,
   b {

@@ -5,21 +5,14 @@ import { useContext, useState } from "react"
 import Button from "../../../../../../reusable/Button.jsx"
 import { usePatientForm } from "../../../../../../../hooks/usePatientForm.jsx"
 import BilansPatient from "./BilansPatient.jsx"
-import TextArea from "../../../../../../reusable/TextArea.jsx"
 import { toastError } from "../../../../../../../datas/toastmessages.js"
-import LogBookPatient from "./LogBookPatient.jsx"
-import { dateFr } from "../../../../../../../utils/math.js"
-//refacto
+import LogBookHistory from "./LogBookHistory.jsx"
+import Logbook from "./Logbook.jsx"
+
 export default function BodyPatient() {
-  const {
-    updatePatients,
-    selectedPatient,
-    setSelectedPatient,
-    togglePatient,
-    updateLogBook,
-  } = useContext(MainContext)
+  const { updatePatients, selectedPatient, setSelectedPatient, togglePatient } =
+    useContext(MainContext)
   const [isModifEnabled, setisModifEnabled] = useState(true)
-  const [logbookInput, setLogbookInput] = useState("")
 
   const { inputsValue, handleChange, setInputsValue } =
     usePatientForm(selectedPatient)
@@ -30,19 +23,6 @@ export default function BodyPatient() {
       setSelectedPatient(patientUpdated)
     }
     toggleEnable()
-  }
-
-  const handleLogBookUpdate = (selectedPatient) => {
-    if (logbookInput.trim() !== "") {
-      const newEntry = { content: logbookInput, date: dateFr(new Date()) }
-      const updatedPatient = {
-        ...selectedPatient,
-        logbook: [...selectedPatient.logbook, "hr", newEntry],
-      }
-      updateLogBook(selectedPatient, logbookInput)
-      setSelectedPatient(updatedPatient)
-      setLogbookInput("")
-    }
   }
 
   const getInputsValue = (name) => {
@@ -92,32 +72,8 @@ export default function BodyPatient() {
         </div>
       </div>
       <BilansPatient selectedPatient={selectedPatient} />
-      <LogBookPatient selectedPatient={selectedPatient} />
-
-      <TextArea
-        label={"Ajouter au journal de bord"}
-        onChange={(e) => setLogbookInput(e.target.value)}
-        value={logbookInput}
-        name={"logbook"}
-        rows={5}
-        placeholder={"Contenu des séances hors bilan..."}
-      />
-      <div className="contact-buttons">
-        <div className="actions">
-          <Button
-            version="cancel"
-            label={"Annuler"}
-            onClick={togglePatient}
-            disabled={!isModifEnabled}
-          />
-          <Button
-            version="submit"
-            label={"Enregistrer le journal de bord"}
-            onClick={() => handleLogBookUpdate(selectedPatient)}
-            disabled={!isModifEnabled}
-          />
-        </div>
-      </div>
+      <LogBookHistory selectedPatient={selectedPatient} />
+      <Logbook isModifEnabled={isModifEnabled} togglePatient={togglePatient} />
     </BodyPatientStyled>
   )
 }
@@ -128,7 +84,8 @@ const BodyPatientStyled = styled.div`
   flex-direction: column;
   gap: 20px;
 
-  .contact-buttons {
+  .contact-buttons,
+  .logbook-buttons {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
