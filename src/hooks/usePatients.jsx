@@ -18,7 +18,9 @@ export const usePatients = () => {
         patient.id === patienToUpdate.id ? patienToUpdate : patient
       )
     )
-    toastInfo("Dossier du patient mis à jour.")
+    toastInfo(
+      `Dossier du patient ${patienToUpdate.lastName} ${patienToUpdate.firstName} mis à jour.`
+    )
   }
 
   const updateLogBook = (patientToUpdate, newEntry) => {

@@ -3,7 +3,7 @@ import styled from "styled-components"
 export default function LogBookHistory({ selectedPatient }) {
   return (
     <LogBookHistoryStyled>
-      <h3>Journal de bord</h3>
+      <h3>Comptes rendus</h3>
       {selectedPatient.logbook.map((entry, index) =>
         entry === "hr" ? (
           <div key={index}>
