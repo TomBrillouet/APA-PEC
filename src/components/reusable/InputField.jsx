@@ -38,6 +38,10 @@ const InputFieldStyled = styled.div`
     width: 100%;
     transition: border-color 0.15s, box-shadow 0.15s;
 
+    &:disabled {
+      border-color: black;
+    }
+
     &::placeholder {
       color: #a0bcd4;
     }

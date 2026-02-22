@@ -7,11 +7,13 @@ export default function TextArea({
   rows,
   className,
   placeholder,
+  value,
 }) {
   return (
     <InputField className={className}>
       <label>{label}</label>
       <textarea
+        value={value}
         name={name}
         placeholder={placeholder}
         rows={rows}

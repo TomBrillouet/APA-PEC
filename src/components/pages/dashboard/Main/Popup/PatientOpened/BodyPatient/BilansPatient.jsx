@@ -2,8 +2,9 @@ import styled from "styled-components"
 import { dateFr } from "../../../../../../../utils/math"
 
 export default function BilansPatient({ selectedPatient }) {
-  const handleOpenBilan = (bilanId) => {
-    alert(bilanId)
+  const handleOpenBilan = (bilan) => {
+    const bilanOpened = { ...selectedPatient, bilans: bilan }
+    alert(JSON.stringify(bilanOpened))
   }
 
   return (
@@ -11,8 +12,8 @@ export default function BilansPatient({ selectedPatient }) {
       <ul>
         {selectedPatient.bilans.map((bilan) => {
           return (
-            <li key={bilan.id} onClick={() => handleOpenBilan(bilan.id)}>
-              Bilan {bilan.type} - {dateFr(bilan.date)}
+            <li key={bilan.id} onClick={() => handleOpenBilan(bilan)}>
+              Voir le bilan {bilan.type} - {dateFr(bilan.date)}
             </li>
           )
         })}
@@ -22,10 +23,13 @@ export default function BilansPatient({ selectedPatient }) {
 }
 
 const BilansPatientStyled = styled.div`
-  li {
-    &:hover {
-      cursor: pointer;
-      font-weight: bold;
+  ul {
+    display: inline-block;
+    li {
+      &:hover {
+        cursor: pointer;
+        font-weight: bold;
+      }
     }
   }
 `

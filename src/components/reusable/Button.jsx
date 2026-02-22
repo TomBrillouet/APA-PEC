@@ -25,10 +25,12 @@ const ButtonStyled = styled.button`
   font-size: 13.5px;
   font-weight: 600;
   border-radius: 6px;
-  cursor: pointer;
   border: none;
   font-family: inherit;
   transition: background 0.15s, transform 0.1s;
+  &:not(:disabled) {
+    cursor: pointer;
+  }
   &:disabled {
     opacity: 0.2;
   }

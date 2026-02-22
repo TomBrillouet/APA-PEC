@@ -1,20 +1,12 @@
 import styled from "styled-components"
 import { contactInputs } from "../../AddPatient/config/contactInputs"
 import Input from "../../../../../../reusable/Input"
-import { usePatientForm } from "../../../../../../../hooks/usePatientForm"
-import { useContext } from "react"
-import { MainContext } from "../../../../../../../context/MainContext"
 
-export default function ContactPatient({ isModifEnabled }) {
-  const { selectedPatient } = useContext(MainContext)
-  const { inputsValue, handleChange } = usePatientForm(selectedPatient)
-
-  const getValue = (name) => {
-    const addressFields = ["street", "city", "cp"]
-    if (addressFields.includes(name)) return inputsValue.address[name]
-    return inputsValue[name]
-  }
-
+export default function ContactPatient({
+  isModifEnabled,
+  getInputsValue,
+  handleChange,
+}) {
   return (
     <>
       <ContactPatientStyled className="contact-infos">
@@ -25,7 +17,7 @@ export default function ContactPatient({ isModifEnabled }) {
             type={input.type}
             name={input.name}
             onChange={handleChange}
-            value={getValue(input.name)}
+            value={getInputsValue(input.name)}
             disabled={isModifEnabled}
           />
         ))}

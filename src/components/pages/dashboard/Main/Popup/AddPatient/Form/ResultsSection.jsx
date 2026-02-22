@@ -19,7 +19,7 @@ export default function ResultsSection({
               key={field}
               type="number"
               label={field}
-              value={value}
+              value={value ? value : ""}
               className="field"
               placeholder={field}
               onChange={(e) => onChange(test.name, field, e.target.value)}

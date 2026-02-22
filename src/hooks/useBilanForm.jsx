@@ -13,6 +13,10 @@ export const useBilanForm = () => {
   const testsSelectChange = (testsSelected) => {
     const formattedTests = testsSelected.map((option) => {
       const testConfig = tests.find((t) => t.name === option.value)
+      const existingTests = bilanData.tests.find(
+        (element) => element.name === option.value
+      )
+      if (existingTests) return existingTests
       return {
         name: option.value,
         remarques: "",

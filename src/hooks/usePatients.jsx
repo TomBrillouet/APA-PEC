@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { fakePatients } from "../datas/fakePatients"
 import { toastInfo, toastSuccess } from "../datas/toastmessages"
+import { dateFr } from "../utils/math"
 
 export const usePatients = () => {
   const [patients, setPatients] = useState(fakePatients)
@@ -17,12 +18,30 @@ export const usePatients = () => {
         patient.id === patienToUpdate.id ? patienToUpdate : patient
       )
     )
-    toastInfo("Informations du patient mises à jour.")
+    toastInfo("Dossier du patient mis à jour.")
+  }
+
+  const updateLogBook = (patientToUpdate, newEntry) => {
+    setPatients((prev) =>
+      prev.map((patient) =>
+        patient.id === patientToUpdate.id
+          ? {
+              ...patient,
+              logbook: [
+                ...patient.logbook,
+                "hr",
+                { content: newEntry, date: dateFr(new Date()) },
+              ],
+            }
+          : patient
+      )
+    )
   }
 
   return {
     addNewPatient,
     updatePatients,
     patients,
+    updateLogBook,
   }
 }

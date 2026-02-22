@@ -13,7 +13,8 @@ export default function Main() {
   const [patientOpen, setPatientOpen] = useState(false)
   const [selectedPatient, setSelectedPatient] = useState(null)
   const [search, setSearch] = useState("")
-  const { addNewPatient, updatePatients, patients } = usePatients()
+  const { addNewPatient, updatePatients, patients, updateLogBook } =
+    usePatients()
 
   const toggleAddPatient = () => {
     setAddPatient(!addPatient)
@@ -26,8 +27,9 @@ export default function Main() {
 
   const patientsFiltered = patients.filter(
     (patient) =>
-      patient.lastName.toLowerCase().includes(search.toLowerCase()) ||
-      patient.firstName.toLowerCase().includes(search.toLowerCase())
+      patient.archived === false &&
+      (patient.lastName.toLowerCase().includes(search.toLowerCase()) ||
+        patient.firstName.toLowerCase().includes(search.toLowerCase()))
   )
 
   const patientsSorted = [...patientsFiltered].sort((a, b) =>
@@ -40,6 +42,8 @@ export default function Main() {
     toggleAddPatient,
     togglePatient,
     selectedPatient,
+    setSelectedPatient,
+    updateLogBook,
   }
 
   return (

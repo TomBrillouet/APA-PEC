@@ -23,5 +23,6 @@ export const usePatientForm = (initialValues = EMPTY_PATIENT) => {
     inputsValue,
     sexSelectChange,
     handleChange,
+    setInputsValue,
   }
 }
