@@ -15,11 +15,11 @@ export const usePatients = () => {
   const updatePatients = (patienToUpdate) => {
     setPatients((prev) =>
       prev.map((patient) =>
-        patient.id === patienToUpdate.id ? patienToUpdate : patient
-      )
+        patient.id === patienToUpdate.id ? patienToUpdate : patient,
+      ),
     )
     toastInfo(
-      `Dossier du patient ${patienToUpdate.lastName} ${patienToUpdate.firstName} mis à jour.`
+      `Dossier du patient ${patienToUpdate.lastName} ${patienToUpdate.firstName} mis à jour.`,
     )
   }
 
@@ -35,8 +35,8 @@ export const usePatients = () => {
                 { content: newEntry, date: dateFr(new Date()) },
               ],
             }
-          : patient
-      )
+          : patient,
+      ),
     )
   }
 

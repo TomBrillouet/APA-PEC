@@ -1,12 +1,19 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { EMPTY_PATIENT } from "../enums/patient"
+import { MainContext } from "../context/MainContext"
 
 export const usePatientAdd = (initialValues = EMPTY_PATIENT) => {
   const [inputsValue, setInputsValue] = useState(initialValues)
+  const { handleBilanDataChange } = useContext(MainContext)
 
   const handleChange = (e) => {
     const { name, value } = e.target
     const addressFields = ["street", "city", "cp"]
+    const imcFields = ["height", "weight"]
+    if (imcFields.includes(name)) {
+      handleBilanDataChange(e)
+      return
+    }
 
     setInputsValue((prev) => {
       if (addressFields.includes(name)) {

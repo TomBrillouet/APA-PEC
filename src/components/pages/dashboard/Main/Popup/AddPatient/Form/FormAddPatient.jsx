@@ -11,19 +11,19 @@ import TestsFormSection from "./TestsFormSection.jsx"
 import FormBottom from "../footer/FormBottom.jsx"
 import ResultsSection from "./ResultsSection.jsx"
 import { MainContext } from "../../../../../../../context/MainContext.jsx"
-import { useBilanForm } from "../../../../../../../hooks/useBilanForm.jsx"
 import { usePatientAdd } from "../../../../../../../hooks/usePatientAdd.jsx"
 
 export default function FormAddPatient() {
-  const { toggleAddPatient, addNewPatient } = useContext(MainContext)
-
   const {
+    toggleAddPatient,
+    addNewPatient,
+    bilanData,
+    handleBilanDataChange,
     handleResultChange,
     handleRemarquesChange,
     testsSelectChange,
-    handleBilanDateChange,
-    bilanData,
-  } = useBilanForm()
+  } = useContext(MainContext)
+
   const { inputsValue, sexSelectChange, handleChange } = usePatientAdd()
 
   const handleSubmit = (e) => {
@@ -72,7 +72,7 @@ export default function FormAddPatient() {
   return (
     <FormAddPatientStyled action="submit" onSubmit={handleSubmit}>
       <Input
-        onChange={handleBilanDateChange}
+        onChange={handleBilanDataChange}
         type={"date"}
         label={"Date du bilan initial"}
         value={bilanData.date}

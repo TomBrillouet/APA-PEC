@@ -10,4 +10,9 @@ export const MainContext = createContext({
   isNewBilan: false,
   selectedPatient: {},
   updateLogBook: () => {},
+  handleBilanDataChange: () => {},
+  bilanData: {},
+  handleResultChange: () => {},
+  handleRemarquesChange: () => {},
+  testsSelectChange: () => {},
 })

@@ -8,6 +8,7 @@ import { usePatients } from "../../../../hooks/usePatients.jsx"
 import PatientOpened from "./Popup/PatientOpened/PatientOpened.jsx"
 import AddPatient from "./Popup/AddPatient/AddPatient.jsx"
 import ProInfo from "./Popup/ProInfo/ProInfo.jsx"
+import { useBilanForm } from "../../../../hooks/useBilanForm.jsx"
 
 export default function Main() {
   const [addPatient, setAddPatient] = useState(false)
@@ -18,6 +19,13 @@ export default function Main() {
   const [isNewBilan, setIsNewBilan] = useState(false)
   const { addNewPatient, updatePatients, patients, updateLogBook } =
     usePatients()
+  const {
+    handleBilanDataChange,
+    bilanData,
+    handleResultChange,
+    handleRemarquesChange,
+    testsSelectChange,
+  } = useBilanForm()
 
   const toggleAddPatient = () => {
     setAddPatient(!addPatient)
@@ -45,11 +53,11 @@ export default function Main() {
     (patient) =>
       patient.archived === false &&
       (patient.lastName.toLowerCase().includes(search.toLowerCase()) ||
-        patient.firstName.toLowerCase().includes(search.toLowerCase()))
+        patient.firstName.toLowerCase().includes(search.toLowerCase())),
   )
 
   const patientsSorted = [...patientsFiltered].sort((a, b) =>
-    a.lastName.localeCompare(b.lastName)
+    a.lastName.localeCompare(b.lastName),
   )
 
   const MainContextValue = {
@@ -62,7 +70,12 @@ export default function Main() {
     isNewBilan,
     selectedPatient,
     handleSelectedPatient,
+    handleBilanDataChange,
     updateLogBook,
+    bilanData,
+    handleResultChange,
+    handleRemarquesChange,
+    testsSelectChange,
   }
 
   return (

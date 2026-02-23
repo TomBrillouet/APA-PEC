@@ -5,16 +5,20 @@ export const useBilanForm = () => {
   const [bilanData, setBilanData] = useState({
     date: new Date().toISOString().split("T")[0],
     tests: [],
+    height: 0,
+    weight: 0,
   })
 
-  const handleBilanDateChange = (e) =>
-    setBilanData((prev) => ({ ...prev, date: e.target.value }))
+  const handleBilanDataChange = (e) => {
+    const { name, value } = e.target
+    setBilanData((prev) => ({ ...prev, [name]: value }))
+  }
 
   const testsSelectChange = (testsSelected) => {
     const formattedTests = testsSelected.map((option) => {
       const testConfig = tests.find((t) => t.name === option.value)
       const existingTests = bilanData.tests.find(
-        (element) => element.name === option.value
+        (element) => element.name === option.value,
       )
       if (existingTests) return existingTests
       return {
@@ -30,7 +34,7 @@ export const useBilanForm = () => {
     setBilanData((prev) => ({
       ...prev,
       tests: prev.tests.map((test) =>
-        test.name === testName ? { ...test, remarques: value } : test
+        test.name === testName ? { ...test, remarques: value } : test,
       ),
     }))
   }
@@ -43,10 +47,10 @@ export const useBilanForm = () => {
           ? {
               ...test,
               results: test.results.map((result) =>
-                result.field === field ? { ...result, value } : result
+                result.field === field ? { ...result, value } : result,
               ),
             }
-          : test
+          : test,
       ),
     }))
   }
@@ -54,7 +58,7 @@ export const useBilanForm = () => {
     handleResultChange,
     handleRemarquesChange,
     testsSelectChange,
-    handleBilanDateChange,
+    handleBilanDataChange,
     bilanData,
   }
 }

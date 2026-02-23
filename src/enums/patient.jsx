@@ -10,8 +10,7 @@ export const EMPTY_PATIENT = {
   problems: "",
   history: "",
   goals: "",
-  height: 0,
-  weight: 0,
   bilans: [],
   logbook: [],
+  archived: false,
 }
