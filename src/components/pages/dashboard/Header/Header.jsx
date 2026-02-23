@@ -16,7 +16,6 @@ export default function Header() {
   return (
     <HeaderStyled>
       <div className="pro-infos">
-        <img src={pro.image} alt={pro.firstName} />
         <div className="pro-details">
           <div className="pro-name">
             {pro.firstName} {pro.lastName}
