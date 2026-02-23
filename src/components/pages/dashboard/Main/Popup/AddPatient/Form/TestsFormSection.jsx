@@ -3,7 +3,7 @@ import Select from "react-select"
 import FormSection from "./FormSection"
 import InputField from "../../../../../../reusable/InputField"
 
-export default function TestsFormSection({ onChange }) {
+export default function TestsFormSection({ onChange, defaultValue }) {
   const testOptions = tests.map((test) => ({
     value: test.name,
     label: test.name,
@@ -14,6 +14,7 @@ export default function TestsFormSection({ onChange }) {
         <Select
           isMulti
           name="tests"
+          defaultValue={defaultValue}
           options={testOptions}
           classNamePrefix="select"
           placeholder="Sélectionner des tests…"

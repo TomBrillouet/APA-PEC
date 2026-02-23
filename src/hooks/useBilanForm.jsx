@@ -1,17 +1,30 @@
 import { useState } from "react"
 import { tests } from "../datas/tests"
+import { getImc } from "../utils/math"
 
-export const useBilanForm = () => {
+export const useBilanForm = (initialvalues) => {
   const [bilanData, setBilanData] = useState({
     date: new Date().toISOString().split("T")[0],
-    tests: [],
+    tests:
+      initialvalues?.map((test) => ({
+        ...test,
+        results: test.results.map((result) => ({ ...result, value: "" })),
+        remarques: "",
+      })) || [],
     height: 0,
     weight: 0,
+    imc: 0,
   })
 
   const handleBilanDataChange = (e) => {
     const { name, value } = e.target
-    setBilanData((prev) => ({ ...prev, [name]: value }))
+    setBilanData((prev) => {
+      const updated = { ...prev, [name]: value }
+      return {
+        ...updated,
+        imc: getImc(updated.weight, updated.height),
+      }
+    })
   }
 
   const testsSelectChange = (testsSelected) => {

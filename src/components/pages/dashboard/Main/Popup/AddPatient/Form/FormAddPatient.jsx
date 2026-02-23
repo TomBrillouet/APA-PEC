@@ -5,13 +5,13 @@ import { identityInputs } from "../config/identityInputs.jsx"
 import { contactInputs } from "../config/contactInputs.jsx"
 import { medicArea } from "../config/medicArea.jsx"
 import Input from "../../../../../../reusable/Input.jsx"
-import InputSection from "./InputSection.jsx"
 import IdentityFormSection from "./IdentityFormSection.jsx"
 import TestsFormSection from "./TestsFormSection.jsx"
 import FormBottom from "../footer/FormBottom.jsx"
 import ResultsSection from "./ResultsSection.jsx"
 import { MainContext } from "../../../../../../../context/MainContext.jsx"
 import { usePatientAdd } from "../../../../../../../hooks/usePatientAdd.jsx"
+import InputSection from "../../../../../../reusable/InputSection.jsx"
 
 export default function FormAddPatient() {
   const {
