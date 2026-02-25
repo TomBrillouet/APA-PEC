@@ -8,6 +8,7 @@ export default function TextArea({
   className,
   placeholder,
   value,
+  disabled,
 }) {
   return (
     <InputField className={className}>
@@ -15,6 +16,7 @@ export default function TextArea({
       <textarea
         value={value}
         name={name}
+        disabled={disabled}
         placeholder={placeholder}
         rows={rows}
         onChange={onChange}

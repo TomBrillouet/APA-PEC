@@ -6,7 +6,7 @@ import Button from "../../../reusable/Button"
 export default function TopMainBar({ onChange, onClick }) {
   return (
     <TopMainBarStyled>
-      <SectionTitle label={"PEC en cours"} />
+      <SectionTitle label={"Prise en charge en cours"} />
       <Searchbar onChange={onChange} />
       <Button label={"Ajouter un patient"} onClick={onClick} />
     </TopMainBarStyled>

@@ -6,6 +6,7 @@ export default function ResultsSection({
   bilanData,
   onChange,
   onRemarquesChange,
+  disabled,
 }) {
   if (!bilanData.tests) return null
 
@@ -20,6 +21,7 @@ export default function ResultsSection({
               <Input
                 key={field}
                 type="number"
+                disabled={disabled}
                 label={field}
                 value={value ? value : ""}
                 className="field"
@@ -33,6 +35,7 @@ export default function ResultsSection({
             rows={3}
             label="Remarques"
             className="field full"
+            disabled={disabled}
             value={test.remarques ?? ""}
             onChange={(e) => onRemarquesChange(test.name, e.target.value)}
             placeholder="Remarques"

@@ -59,7 +59,7 @@ const BilanForm = forwardRef(
         <NewImc bilanData={bilanData} />
         <ImcGraph selectedPatient={selectedPatient} />
 
-        {!isFinal ? (
+        {isFinal ? (
           <FinalSection mapTextAreas={mapTextAreas} />
         ) : (
           <IntermediarySection mapTextAreas={mapTextAreas} />

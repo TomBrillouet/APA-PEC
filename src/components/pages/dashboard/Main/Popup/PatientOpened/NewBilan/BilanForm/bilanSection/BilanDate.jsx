@@ -1,6 +1,10 @@
 import Input from "../../../../../../../../reusable/Input"
 
-export default function BilanDate({ handleBilanDataChange, bilanData }) {
+export default function BilanDate({
+  handleBilanDataChange,
+  bilanData,
+  disabled,
+}) {
   return (
     <Input
       onChange={handleBilanDataChange}
@@ -8,6 +12,7 @@ export default function BilanDate({ handleBilanDataChange, bilanData }) {
       label={"Date du bilan"}
       value={bilanData.date}
       name={"date"}
+      disabled={disabled}
     />
   )
 }

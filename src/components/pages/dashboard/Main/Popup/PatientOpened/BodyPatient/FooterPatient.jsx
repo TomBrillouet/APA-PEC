@@ -1,12 +1,17 @@
 import { useContext } from "react"
 import { MainContext } from "../../../../../../../context/MainContext"
 import Button from "../../../../../../reusable/Button"
+import styled from "styled-components"
 
 export default function FooterPatient() {
   const { toggleNewBilan } = useContext(MainContext)
   return (
-    <div>
+    <FooterPatientStyled>
       <Button onClick={toggleNewBilan} label={"Faire un bilan"} />
-    </div>
+    </FooterPatientStyled>
   )
 }
+
+const FooterPatientStyled = styled.div`
+  margin-top: -51px;
+`

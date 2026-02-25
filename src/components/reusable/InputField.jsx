@@ -36,10 +36,12 @@ const InputFieldStyled = styled.div`
     font-family: inherit;
     box-sizing: border-box;
     width: 100%;
-    transition: border-color 0.15s, box-shadow 0.15s;
+    transition:
+      border-color 0.15s,
+      box-shadow 0.15s;
 
     &:disabled {
-      border-color: black;
+      pointer-events: none;
     }
 
     &::placeholder {
@@ -64,7 +66,9 @@ const InputFieldStyled = styled.div`
     font-size: 13.5px;
     min-height: 38px;
     box-shadow: none;
-    transition: border-color 0.15s, box-shadow 0.15s;
+    transition:
+      border-color 0.15s,
+      box-shadow 0.15s;
 
     &:hover {
       border-color: #4a90c4;

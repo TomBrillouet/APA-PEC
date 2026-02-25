@@ -5,9 +5,17 @@ import HeaderPatient from "../HeaderPopup.jsx"
 import BodyPatient from "./BodyPatient/BodyPatient.jsx"
 import { getAge } from "../../../../../../utils/math.js"
 import NewBilan from "./NewBilan/NewBilan.jsx"
+import OldBilan from "./OldBilan/OldBilan.jsx"
 
 export default function PatientOpened() {
-  const { togglePatient, selectedPatient, isNewBilan } = useContext(MainContext)
+  const { togglePatient, selectedPatient, isNewBilan, isOldBilanOpened } =
+    useContext(MainContext)
+
+  const renderBilan = () => {
+    if (isNewBilan) return <NewBilan />
+    if (isOldBilanOpened) return <OldBilan />
+    return <BodyPatient />
+  }
   return (
     <Popup>
       <HeaderPatient
@@ -17,7 +25,7 @@ export default function PatientOpened() {
         } (${getAge(selectedPatient.birth)} ans)`}
         onClick={togglePatient}
       />
-      {isNewBilan ? <NewBilan /> : <BodyPatient />}
+      {renderBilan()}
     </Popup>
   )
 }

@@ -15,4 +15,8 @@ export const MainContext = createContext({
   handleResultChange: () => {},
   handleRemarquesChange: () => {},
   testsSelectChange: () => {},
+  isOldBilanOpened: false,
+  toggleOldBilan: () => {},
+  selectedBilan: null,
+  handleSelectedBilan: () => {},
 })

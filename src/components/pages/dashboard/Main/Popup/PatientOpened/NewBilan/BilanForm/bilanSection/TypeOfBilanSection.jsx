@@ -2,7 +2,7 @@ import Select from "react-select"
 import InputField from "../../../../../../../../reusable/InputField"
 import FormSection from "../../../../AddPatient/Form/FormSection"
 
-export default function TypeOfBilanSection({ handleChangeIsFinal }) {
+export default function TypeOfBilanSection({ handleChangeIsFinal, disabled }) {
   const isFinalOptions = [
     { value: true, label: "Final" },
     { value: false, label: "Intermédiaire" },
@@ -12,6 +12,7 @@ export default function TypeOfBilanSection({ handleChangeIsFinal }) {
       <InputField className="field full" label={"Type de bilan"}>
         <Select
           name="isFinal"
+          isDisabled={disabled}
           defaultValue={isFinalOptions[1]}
           options={isFinalOptions}
           classNamePrefix="select"

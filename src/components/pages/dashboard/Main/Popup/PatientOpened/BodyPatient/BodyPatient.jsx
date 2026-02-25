@@ -32,9 +32,9 @@ export default function BodyPatient() {
 
 const BodyPatientStyled = styled.div`
   display: flex;
-  padding: 30px;
+  padding: 25px;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
 
   .contact-buttons,
   .logbook-buttons {

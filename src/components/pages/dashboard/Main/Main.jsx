@@ -15,8 +15,10 @@ export default function Main() {
   const [patientOpen, setPatientOpen] = useState(false)
   const [proInfo, setProInfo] = useState(false)
   const [selectedPatient, setSelectedPatient] = useState(null)
+  const [selectedBilan, setSelectedBilan] = useState(null)
   const [search, setSearch] = useState("")
   const [isNewBilan, setIsNewBilan] = useState(false)
+  const [isOldBilanOpened, setIsOldBilanOpened] = useState(false)
   const { addNewPatient, updatePatients, patients, updateLogBook } =
     usePatients()
   const {
@@ -39,14 +41,23 @@ export default function Main() {
     setPatientOpen(!patientOpen)
     handleSelectedPatient(patientToOpen)
     setIsNewBilan(false)
+    setIsOldBilanOpened(false)
   }
 
   const toggleNewBilan = () => {
     setIsNewBilan(!isNewBilan)
   }
 
+  const toggleOldBilan = () => {
+    setIsOldBilanOpened(!isOldBilanOpened)
+  }
+
   const handleSelectedPatient = (selectedPatient) => {
     setSelectedPatient(selectedPatient)
+  }
+
+  const handleSelectedBilan = (selectedBilan) => {
+    setSelectedBilan(selectedBilan)
   }
 
   const patientsFiltered = patients.filter(
@@ -76,6 +87,10 @@ export default function Main() {
     handleResultChange,
     handleRemarquesChange,
     testsSelectChange,
+    isOldBilanOpened,
+    toggleOldBilan,
+    handleSelectedBilan,
+    selectedBilan,
   }
 
   return (

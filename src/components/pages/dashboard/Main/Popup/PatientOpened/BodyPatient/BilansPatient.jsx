@@ -1,10 +1,15 @@
 import styled from "styled-components"
 import { dateFr } from "../../../../../../../utils/math"
+import { MainContext } from "../../../../../../../context/MainContext"
+import { useContext } from "react"
+import { theme } from "../../../../../../../theme"
 
 export default function BilansPatient({ selectedPatient }) {
+  const { toggleOldBilan, handleSelectedBilan } = useContext(MainContext)
+
   const handleOpenBilan = (bilan) => {
-    const bilanOpened = { ...selectedPatient, bilans: bilan }
-    alert(JSON.stringify(bilanOpened))
+    toggleOldBilan()
+    handleSelectedBilan(bilan)
   }
 
   return (
@@ -26,9 +31,10 @@ const BilansPatientStyled = styled.div`
   ul {
     display: inline-block;
     li {
+      transition: 0.2s ease;
       &:hover {
         cursor: pointer;
-        font-weight: bold;
+        color: ${theme.colors.primary};
       }
     }
   }
