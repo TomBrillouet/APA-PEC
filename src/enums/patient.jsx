@@ -7,6 +7,8 @@ export const EMPTY_PATIENT = {
   mail: "",
   phone: "",
   birth: "",
+  height: 0,
+  weight: 0,
   problems: "",
   history: "",
   goals: "",

@@ -1,3 +1,4 @@
+import styled from "styled-components"
 import Input from "../../../../../../reusable/Input"
 import TextArea from "../../../../../../reusable/TextArea"
 
@@ -9,22 +10,24 @@ export default function ResultsSection({
   if (!bilanData.tests) return null
 
   return (
-    <div className="results">
+    <ResultsSectionStyled className="results">
       {bilanData.tests.map((test) => (
         <div key={test.name}>
           <h4>{test.name}</h4>
 
-          {test.results.map(({ field, value }) => (
-            <Input
-              key={field}
-              type="number"
-              label={field}
-              value={value ? value : ""}
-              className="field"
-              placeholder={field}
-              onChange={(e) => onChange(test.name, field, e.target.value)}
-            />
-          ))}
+          <div className="grid-results">
+            {test.results.map(({ field, value }) => (
+              <Input
+                key={field}
+                type="number"
+                label={field}
+                value={value ? value : ""}
+                className="field"
+                placeholder={field}
+                onChange={(e) => onChange(test.name, field, e.target.value)}
+              />
+            ))}
+          </div>
 
           <TextArea
             rows={3}
@@ -36,6 +39,13 @@ export default function ResultsSection({
           />
         </div>
       ))}
-    </div>
+    </ResultsSectionStyled>
   )
 }
+
+const ResultsSectionStyled = styled.div`
+  .grid-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+`
