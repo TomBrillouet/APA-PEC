@@ -29,7 +29,7 @@ export default function ContactPatient({
     handleSpecificInputsValue(
       selectedPatient,
       "logbook",
-      selectedPatient.logbook
+      selectedPatient.logbook,
     )
     toastError("Les informations du contact n'ont pas été modifiées.")
   }
@@ -89,7 +89,7 @@ export default function ContactPatient({
 const ContactPatientStyled = styled.div`
   .contact-infos {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
     column-gap: 20px;
   }
 `
