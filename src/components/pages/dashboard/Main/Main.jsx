@@ -9,10 +9,14 @@ import PatientOpened from "./Popup/PatientOpened/PatientOpened.jsx"
 import AddPatient from "./Popup/AddPatient/AddPatient.jsx"
 import ProInfo from "./Popup/ProInfo/ProInfo.jsx"
 import { useBilanForm } from "../../../../hooks/useBilanForm.jsx"
+import { theme } from "../../../../theme/index.js"
+import { fakePro } from "../../../../datas/fakePro.js"
+import { useParams } from "react-router"
 
 export default function Main() {
   const [addPatient, setAddPatient] = useState(false)
   const [patientOpen, setPatientOpen] = useState(false)
+  const [pro, setPro] = useState(fakePro)
   const [proInfo, setProInfo] = useState(false)
   const [selectedPatient, setSelectedPatient] = useState(null)
   const [selectedBilan, setSelectedBilan] = useState(null)
@@ -29,12 +33,19 @@ export default function Main() {
     testsSelectChange,
   } = useBilanForm()
 
+  const { status } = useParams()
+  const archived = status === "archived"
+
   const toggleAddPatient = () => {
     setAddPatient(!addPatient)
   }
 
   const toggleProInfo = () => {
     setProInfo(!proInfo)
+  }
+
+  const proSubmit = (newProInfos) => {
+    setPro(newProInfos)
   }
 
   const togglePatient = (patientToOpen) => {
@@ -62,7 +73,7 @@ export default function Main() {
 
   const patientsFiltered = patients.filter(
     (patient) =>
-      patient.archived === false &&
+      patient.archived === archived &&
       (patient.lastName.toLowerCase().includes(search.toLowerCase()) ||
         patient.firstName.toLowerCase().includes(search.toLowerCase())),
   )
@@ -91,6 +102,8 @@ export default function Main() {
     toggleOldBilan,
     handleSelectedBilan,
     selectedBilan,
+    pro,
+    proSubmit,
   }
 
   return (
@@ -119,6 +132,7 @@ export default function Main() {
           <TopMainBar
             onChange={(e) => setSearch(e.target.value)}
             onClick={toggleAddPatient}
+            archived={archived}
           />
 
           <PatientsGrid
@@ -135,14 +149,14 @@ const MainStyled = styled.main`
   flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: #f1f1f1;
+  background-color: ${theme.colors.background};
 
   .overlay {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     left: 0;
     top: 0;
-    position: absolute;
+    position: fixed;
     z-index: 1;
     background-color: #1e2a3878;
   }

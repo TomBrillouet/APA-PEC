@@ -4,6 +4,10 @@ import { IoStatsChartOutline } from "react-icons/io5"
 
 export const navItems = [
   { label: "Accueil", icon: <IoMdHome />, path: "/dashboard" },
-  { label: "PEC terminées", icon: <AiOutlineFileDone /> },
-  { label: "Stats", icon: <IoStatsChartOutline /> },
+  {
+    label: "PEC terminées",
+    icon: <AiOutlineFileDone />,
+    path: "/dashboard/archived",
+  },
+  { label: "Stats", icon: <IoStatsChartOutline />, path: "/stats" },
 ]
