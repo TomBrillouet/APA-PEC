@@ -89,9 +89,25 @@ const extraStyleRed = css`
   }
 `
 
+const extraStyleMinimalist = css`
+  padding: 0 10px;
+  font-size: 12px;
+  font-weight: 600;
+  background: transparent;
+  border: 1.5px solid #b8d8f0;
+  color: #4a90c4;
+  &:not(:disabled):hover {
+    background: #daedf9;
+  }
+  &:not(:disabled):active {
+    background: transparent;
+  }
+`
+
 const extraStyle = {
   cancel: extraStyleCancel,
   submit: extraStyleSubmit,
   primary: extraStylePrimary,
   red: extraStyleRed,
+  minimalist: extraStyleMinimalist,
 }

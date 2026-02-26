@@ -19,8 +19,13 @@ export default function BilansPatient({ selectedPatient }) {
       <ul>
         {selectedPatient.bilans.map((bilan) => {
           return (
-            <li key={bilan.id} onClick={() => handleOpenBilan(bilan)}>
-              Voir le bilan {bilan.type} - {dateFr(bilan.date)}
+            <li key={bilan.id}>
+              Bilan {bilan.type} - {dateFr(bilan.date)}
+              <Button
+                label={"Ouvrir"}
+                onClick={() => handleOpenBilan(bilan)}
+                version="minimalist"
+              />
             </li>
           )
         })}
@@ -36,12 +41,9 @@ const BilansPatientStyled = styled.div`
   align-items: flex-start;
   ul {
     display: inline-block;
-    li {
-      transition: 0.2s ease;
-      &:hover {
-        cursor: pointer;
-        color: ${theme.colors.primary};
-      }
+    list-style-type: disclosure-closed;
+    button {
+      margin-left: 10px;
     }
   }
 `
