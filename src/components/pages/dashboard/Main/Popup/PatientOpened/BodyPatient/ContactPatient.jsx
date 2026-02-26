@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { contactInputs } from "../../AddPatient/config/contactInputs"
 import Input from "../../../../../../reusable/Input"
-import { usePatientAdd } from "../../../../../../../hooks/usePatientAdd"
+import { useForm } from "../../../../../../../hooks/useForm"
 import { useContext } from "react"
 import { MainContext } from "../../../../../../../context/MainContext"
 import { toastError } from "../../../../../../../datas/toastmessages"
@@ -14,7 +14,7 @@ export default function ContactPatient({
 }) {
   const { handleSelectedPatient, updatePatients } = useContext(MainContext)
   const { inputsValue, handleChange, handleSpecificInputsValue } =
-    usePatientAdd(selectedPatient)
+    useForm(selectedPatient)
 
   const handleSubmitModification = (patientUpdated) => {
     if (JSON.stringify(patientUpdated) !== JSON.stringify(selectedPatient)) {

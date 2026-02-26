@@ -17,7 +17,7 @@ export default function Main() {
   const [addPatient, setAddPatient] = useState(false)
   const [patientOpen, setPatientOpen] = useState(false)
   const [pro, setPro] = useState(fakePro)
-  const [proInfo, setProInfo] = useState(false)
+  const [isProOpen, setIsProOpen] = useState(false)
   const [selectedPatient, setSelectedPatient] = useState(null)
   const [selectedBilan, setSelectedBilan] = useState(null)
   const [search, setSearch] = useState("")
@@ -41,7 +41,7 @@ export default function Main() {
   }
 
   const toggleProInfo = () => {
-    setProInfo(!proInfo)
+    setIsProOpen(!isProOpen)
   }
 
   const proSubmit = (newProInfos) => {
@@ -122,7 +122,7 @@ export default function Main() {
             <PatientOpened />
           </>
         )}
-        {proInfo && (
+        {isProOpen && (
           <>
             <div className="overlay" onClick={toggleProInfo}></div>
             <ProInfo />

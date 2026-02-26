@@ -4,11 +4,11 @@ import Button from "../../../../../../reusable/Button.jsx"
 import styled from "styled-components"
 import { MainContext } from "../../../../../../../context/MainContext.jsx"
 import { useContext } from "react"
-import { usePatientAdd } from "../../../../../../../hooks/usePatientAdd.jsx"
+import { useForm } from "../../../../../../../hooks/useForm.jsx"
 import { toastInfo } from "../../../../../../../datas/toastmessages.js"
 export default function BodyPro() {
   const { pro, proSubmit, toggleProInfo } = useContext(MainContext)
-  const { inputsValue, handleChange } = usePatientAdd(pro)
+  const { inputsValue, handleChange } = useForm(pro)
 
   const handleSubmit = (inputsValue) => {
     toggleProInfo()

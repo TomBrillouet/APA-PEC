@@ -10,7 +10,7 @@ import TestsFormSection from "./TestsFormSection.jsx"
 import FormBottom from "../footer/FormBottom.jsx"
 import ResultsSection from "./ResultsSection.jsx"
 import { MainContext } from "../../../../../../../context/MainContext.jsx"
-import { usePatientAdd } from "../../../../../../../hooks/usePatientAdd.jsx"
+import { useForm } from "../../../../../../../hooks/useForm.jsx"
 import InputSection from "../../../../../../reusable/InputSection.jsx"
 
 export default function FormAddPatient() {
@@ -24,7 +24,7 @@ export default function FormAddPatient() {
     testsSelectChange,
   } = useContext(MainContext)
 
-  const { inputsValue, sexSelectChange, handleChange } = usePatientAdd()
+  const { inputsValue, sexSelectChange, handleChange } = useForm()
 
   const handleSubmit = (e) => {
     e.preventDefault()

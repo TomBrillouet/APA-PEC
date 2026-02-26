@@ -2,7 +2,7 @@ import { useContext, useState } from "react"
 import { EMPTY_PATIENT } from "../enums/patient"
 import { MainContext } from "../context/MainContext"
 
-export const usePatientAdd = (initialValues = EMPTY_PATIENT) => {
+export const useForm = (initialValues = EMPTY_PATIENT) => {
   const [inputsValue, setInputsValue] = useState(initialValues)
   const { handleBilanDataChange } = useContext(MainContext)
 

@@ -10,12 +10,12 @@ import ResultsSection from "../../../AddPatient/Form/ResultsSection.jsx"
 import BilanDate from "./bilanSection/BilanDate.jsx"
 import TypeOfBilanSection from "./bilanSection/TypeOfBilanSection.jsx"
 import PreviousShapeValues from "./patientSection/PreviousShapeValues.jsx"
-import { usePatientAdd } from "../../../../../../../../hooks/usePatientAdd.jsx"
+import { useForm } from "../../../../../../../../hooks/useForm.jsx"
 import { forwardRef, useImperativeHandle } from "react"
 
 const BilanForm = forwardRef(
   ({ selectedPatient, handleChangeIsFinal, isFinal, onTestsChange }, ref) => {
-    const { inputsValue, handleChange } = usePatientAdd(selectedPatient)
+    const { inputsValue, handleChange } = useForm(selectedPatient)
     const {
       bilanData,
       handleBilanDataChange,
