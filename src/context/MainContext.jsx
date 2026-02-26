@@ -19,4 +19,6 @@ export const MainContext = createContext({
   toggleOldBilan: () => {},
   selectedBilan: null,
   handleSelectedBilan: () => {},
+  pro: {},
+  proSubmit: () => {},
 })

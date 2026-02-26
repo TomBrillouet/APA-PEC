@@ -1,13 +1,11 @@
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import styled from "styled-components"
-import { fakePro } from "../../../../datas/fakePro"
 import { theme } from "../../../../theme"
 import { FaUserEdit } from "react-icons/fa"
 import { MainContext } from "../../../../context/MainContext"
 
 export default function Header() {
-  const [pro, setPro] = useState(fakePro)
-  const { toggleProInfo } = useContext(MainContext)
+  const { toggleProInfo, pro } = useContext(MainContext)
 
   const handleClick = () => {
     toggleProInfo()
@@ -24,8 +22,9 @@ export default function Header() {
           <div className="pro-meta">
             <span>{pro.mail}</span>
             <span>{pro.phone}</span>
-            <span>{pro.society}</span>
-            <span>{pro.website}</span>
+            <a href={pro.website} target="_blank">
+              {pro.society}
+            </a>
           </div>
         </div>
       </div>
@@ -39,9 +38,10 @@ export default function Header() {
 const HeaderStyled = styled.div`
   display: flex;
   align-items: center;
-  background-color: ${theme.colors.primary};
+  background-color: ${theme.colors.white};
   padding: 18px 32px;
   justify-content: space-between;
+  color: #111827;
 
   .pro-infos {
     display: flex;
@@ -65,13 +65,12 @@ const HeaderStyled = styled.div`
     .pro-name {
       font-size: 1rem;
       font-weight: 600;
-      color: #fff;
     }
 
     .pro-job {
       font-size: 0.8rem;
       font-weight: 500;
-      color: rgba(255, 255, 255, 0.75);
+      color: #111827ab;
       text-transform: uppercase;
       letter-spacing: 0.06em;
     }
@@ -82,19 +81,23 @@ const HeaderStyled = styled.div`
       margin-top: 2px;
       flex-wrap: wrap;
 
-      span {
+      span,
+      a {
         font-size: 0.78rem;
-        color: rgba(255, 255, 255, 0.6);
+        color: #11182782;
+      }
+      a:hover {
+        color: ${theme.colors.primary};
       }
     }
   }
   .pro-modification {
     font-size: 30px;
-    color: rgba(255, 255, 255, 0.75);
+    color: #6b7280;
     cursor: pointer;
     transition: ease 0.2s;
     &:hover {
-      color: #fff;
+      color: ${theme.colors.primary};
       transform: scale(0.95);
     }
   }
