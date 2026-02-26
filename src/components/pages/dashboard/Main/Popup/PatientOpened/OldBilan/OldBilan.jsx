@@ -1,6 +1,5 @@
 import { useContext } from "react"
 import { MainContext } from "../../../../../../../context/MainContext"
-import TypeOfBilanSection from "../NewBilan/BilanForm/bilanSection/TypeOfBilanSection.jsx"
 import BilanDate from "../NewBilan/BilanForm/bilanSection/BilanDate.jsx"
 import PreviousShapeValues from "../NewBilan/BilanForm/patientSection/PreviousShapeValues.jsx"
 import ResultsSection from "../../AddPatient/Form/ResultsSection.jsx"
@@ -10,7 +9,7 @@ import { medicArea } from "../../AddPatient/config/medicArea.jsx"
 import TextArea from "../../../../../../reusable/TextArea.jsx"
 import InputSection from "../../../../../../reusable/InputSection.jsx"
 import IntermediarySection from "../NewBilan/BilanForm/questionsSection/IntermediarySection.jsx"
-import Button from "../../../../../../reusable/Button.jsx"
+import Export from "./Export.jsx"
 
 export default function OldBilan() {
   const { selectedBilan, selectedPatient } = useContext(MainContext)
@@ -52,10 +51,10 @@ export default function OldBilan() {
       <PreviousShapeValues selectedPatient={selectedPatient} />
       {SectionBilanType()}
       <ResultsSection bilanData={selectedBilan} disabled />
-      <Button
-        label={"Télécharger le bilan"}
-        version="submit"
-        onClick={() => {}}
+      <Export
+        selectedBilan={selectedBilan}
+        selectedPatient={selectedPatient}
+        SectionBilanType={SectionBilanType}
       />
     </OldBilanStyled>
   )

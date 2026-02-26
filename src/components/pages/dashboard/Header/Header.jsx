@@ -4,7 +4,7 @@ import { theme } from "../../../../theme"
 import { FaUserEdit } from "react-icons/fa"
 import { MainContext } from "../../../../context/MainContext"
 
-export default function Header() {
+export default function Header({ print }) {
   const { toggleProInfo, pro } = useContext(MainContext)
 
   const handleClick = () => {
@@ -28,9 +28,11 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <div className="pro-modification" onClick={handleClick}>
-        <FaUserEdit />
-      </div>
+      {!print && (
+        <div className="pro-modification" onClick={handleClick}>
+          <FaUserEdit />
+        </div>
+      )}
     </HeaderStyled>
   )
 }

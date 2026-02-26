@@ -94,14 +94,10 @@ export default function Main() {
         {popupConfig.map(
           (popup, index) =>
             popup.condition && (
-              <>
-                <div
-                  className="overlay"
-                  key={index}
-                  onClick={popup.toggle}
-                ></div>
+              <div key={index}>
+                <div className="overlay" onClick={popup.toggle}></div>
                 {popup.Content}
-              </>
+              </div>
             ),
         )}
         <div className="main-background">

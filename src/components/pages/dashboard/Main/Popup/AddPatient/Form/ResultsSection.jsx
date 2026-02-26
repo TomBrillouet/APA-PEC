@@ -1,12 +1,14 @@
 import styled from "styled-components"
 import Input from "../../../../../../reusable/Input"
 import TextArea from "../../../../../../reusable/TextArea"
+import { tests } from "../../../../../../../datas/tests"
 
 export default function ResultsSection({
   bilanData,
   onChange,
   onRemarquesChange,
   disabled,
+  print,
 }) {
   if (!bilanData.tests) return null
 
@@ -40,6 +42,15 @@ export default function ResultsSection({
             onChange={(e) => onRemarquesChange(test.name, e.target.value)}
             placeholder="Remarques"
           />
+          {print && (
+            <TextArea
+              rows={3}
+              label="Description"
+              className="field full"
+              disabled={disabled}
+              value={tests.find((t) => t.name === test.name).description ?? ""}
+            />
+          )}
         </div>
       ))}
     </ResultsSectionStyled>
