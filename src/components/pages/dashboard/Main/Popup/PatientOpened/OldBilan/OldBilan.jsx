@@ -14,7 +14,6 @@ import Button from "../../../../../../reusable/Button.jsx"
 
 export default function OldBilan() {
   const { selectedBilan, selectedPatient } = useContext(MainContext)
-  console.log(selectedBilan)
 
   const mapTextAreas = (array) =>
     array.map((textarea) => {

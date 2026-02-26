@@ -5,14 +5,28 @@ import { useContext, useState } from "react"
 import BilansPatient from "./BilansPatient.jsx"
 import LogBookHistory from "./LogBookHistory.jsx"
 import Logbook from "./Logbook.jsx"
-import FooterPatient from "./FooterPatient.jsx"
+import Button from "../../../../../../reusable/Button.jsx"
 
 export default function BodyPatient() {
-  const { selectedPatient } = useContext(MainContext)
+  const {
+    selectedPatient,
+    updatePatients,
+    handleSelectedPatient,
+    togglePatient,
+  } = useContext(MainContext)
   const [isModifEnabled, setIsModifEnabled] = useState(true)
 
   const handleModifEnabled = (value) => {
     setIsModifEnabled(value)
+  }
+  const toggleArchived = () => {
+    const patientToUpdate = {
+      ...selectedPatient,
+      archived: !selectedPatient.archived,
+    }
+    updatePatients(patientToUpdate)
+    handleSelectedPatient(patientToUpdate)
+    togglePatient()
   }
 
   return (
@@ -25,7 +39,15 @@ export default function BodyPatient() {
       <BilansPatient selectedPatient={selectedPatient} />
       <LogBookHistory selectedPatient={selectedPatient} />
       <Logbook isModifEnabled={isModifEnabled} />
-      <FooterPatient />
+      <Button
+        label={
+          selectedPatient.archived
+            ? "Reprendre la prise en charge"
+            : "Terminer la prise en charge"
+        }
+        onClick={toggleArchived}
+        version="red"
+      />
     </BodyPatientStyled>
   )
 }

@@ -3,9 +3,11 @@ import { dateFr } from "../../../../../../../utils/math"
 import { MainContext } from "../../../../../../../context/MainContext"
 import { useContext } from "react"
 import { theme } from "../../../../../../../theme"
+import Button from "../../../../../../reusable/Button"
 
 export default function BilansPatient({ selectedPatient }) {
-  const { toggleOldBilan, handleSelectedBilan } = useContext(MainContext)
+  const { toggleOldBilan, handleSelectedBilan, toggleNewBilan } =
+    useContext(MainContext)
 
   const handleOpenBilan = (bilan) => {
     toggleOldBilan()
@@ -23,11 +25,15 @@ export default function BilansPatient({ selectedPatient }) {
           )
         })}
       </ul>
+      <Button onClick={toggleNewBilan} label={"Faire un bilan"} />
     </BilansPatientStyled>
   )
 }
 
 const BilansPatientStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   ul {
     display: inline-block;
     li {

@@ -38,8 +38,17 @@ export default function NewBilan() {
       ],
     }
     handleSelectedPatient(patientToUpdate)
+    console.log(patientToUpdate)
     updatePatients(patientToUpdate)
     toggleNewBilan()
+  }
+
+  const handleSelectedTests = (testSelected) => {
+    const selectedValues = testSelected.map((test) => test.value)
+    const testsAndResults = selectedPatient.bilans[0].tests.filter((test) =>
+      selectedValues.includes(test.name),
+    )
+    setSelectedTests(testsAndResults)
   }
 
   return (
@@ -49,7 +58,7 @@ export default function NewBilan() {
         selectedPatient={selectedPatient}
         handleChangeIsFinal={handleChangeIsFinal}
         isFinal={isFinal}
-        onTestsChange={setSelectedTests}
+        onTestsChange={handleSelectedTests}
       />
       <GraphResults
         selectedPatient={selectedPatient}
