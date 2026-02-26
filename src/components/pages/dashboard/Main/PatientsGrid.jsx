@@ -1,9 +1,13 @@
 import styled from "styled-components"
 import PatientCard from "./PatientCard"
+import { MainContext } from "../../../../context/MainContext"
+import { useContext } from "react"
 
 export default function PatientsGrid({ patients, togglePatient }) {
+  const { handleSelectedPatient } = useContext(MainContext)
   const handleOpen = (id) => {
     const patientToOpen = patients.find((item) => id === item.id)
+    handleSelectedPatient(patientToOpen)
     togglePatient(patientToOpen)
   }
 

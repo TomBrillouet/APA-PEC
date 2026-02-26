@@ -5,24 +5,17 @@ import { MainContext } from "../../../../context/MainContext.jsx"
 import PatientsGrid from "./PatientsGrid.jsx"
 import TopMainBar from "./TopMainBar.jsx"
 import { usePatients } from "../../../../hooks/usePatients.jsx"
-import PatientOpened from "./Popup/PatientOpened/PatientOpened.jsx"
-import AddPatient from "./Popup/AddPatient/AddPatient.jsx"
-import ProInfo from "./Popup/ProInfo/ProInfo.jsx"
 import { useBilanForm } from "../../../../hooks/useBilanForm.jsx"
 import { theme } from "../../../../theme/index.js"
 import { fakePro } from "../../../../datas/fakePro.js"
 import { useParams } from "react-router"
+import { usePopup } from "../../../../hooks/usePopup.jsx"
 
 export default function Main() {
-  const [addPatient, setAddPatient] = useState(false)
-  const [patientOpen, setPatientOpen] = useState(false)
   const [pro, setPro] = useState(fakePro)
-  const [isProOpen, setIsProOpen] = useState(false)
   const [selectedPatient, setSelectedPatient] = useState(null)
   const [selectedBilan, setSelectedBilan] = useState(null)
   const [search, setSearch] = useState("")
-  const [isNewBilan, setIsNewBilan] = useState(false)
-  const [isOldBilanOpened, setIsOldBilanOpened] = useState(false)
   const { addNewPatient, updatePatients, patients, updateLogBook } =
     usePatients()
   const {
@@ -33,34 +26,19 @@ export default function Main() {
     testsSelectChange,
   } = useBilanForm()
 
-  const { status } = useParams()
-  const archived = status === "archived"
-
-  const toggleAddPatient = () => {
-    setAddPatient(!addPatient)
-  }
-
-  const toggleProInfo = () => {
-    setIsProOpen(!isProOpen)
-  }
+  const {
+    toggleProInfo,
+    togglePatient,
+    toggleNewBilan,
+    toggleOldBilan,
+    toggleAddPatient,
+    isNewBilan,
+    isOldBilanOpened,
+    popupConfig,
+  } = usePopup()
 
   const proSubmit = (newProInfos) => {
     setPro(newProInfos)
-  }
-
-  const togglePatient = (patientToOpen) => {
-    setPatientOpen(!patientOpen)
-    handleSelectedPatient(patientToOpen)
-    setIsNewBilan(false)
-    setIsOldBilanOpened(false)
-  }
-
-  const toggleNewBilan = () => {
-    setIsNewBilan(!isNewBilan)
-  }
-
-  const toggleOldBilan = () => {
-    setIsOldBilanOpened(!isOldBilanOpened)
   }
 
   const handleSelectedPatient = (selectedPatient) => {
@@ -70,6 +48,9 @@ export default function Main() {
   const handleSelectedBilan = (selectedBilan) => {
     setSelectedBilan(selectedBilan)
   }
+
+  const { status } = useParams()
+  const archived = status === "archived"
 
   const patientsFiltered = patients.filter(
     (patient) =>
@@ -110,23 +91,18 @@ export default function Main() {
     <MainStyled>
       <MainContext.Provider value={MainContextValue}>
         <Header />
-        {addPatient && (
-          <>
-            <div className="overlay" onClick={toggleAddPatient}></div>
-            <AddPatient addNewPatient={addNewPatient} />
-          </>
-        )}
-        {patientOpen && (
-          <>
-            <div className="overlay" onClick={togglePatient}></div>
-            <PatientOpened />
-          </>
-        )}
-        {isProOpen && (
-          <>
-            <div className="overlay" onClick={toggleProInfo}></div>
-            <ProInfo />
-          </>
+        {popupConfig.map(
+          (popup, index) =>
+            popup.condition && (
+              <>
+                <div
+                  className="overlay"
+                  key={index}
+                  onClick={popup.toggle}
+                ></div>
+                {popup.Content}
+              </>
+            ),
         )}
         <div className="main-background">
           <TopMainBar
