@@ -27,7 +27,9 @@ const ButtonStyled = styled.button`
   border-radius: 6px;
   border: none;
   font-family: inherit;
-  transition: background 0.15s, transform 0.1s;
+  transition:
+    background 0.15s,
+    transform 0.1s;
   &:not(:disabled) {
     cursor: pointer;
   }
@@ -64,9 +66,22 @@ const extraStyleSubmit = css`
 const extraStylePrimary = css`
   background: ${theme.colors.primary};
   color: #fff;
-  box-shadow: 0 3px 10px rgba(196, 74, 74, 0.3);
+  box-shadow: 0 3px 10px rgba(74, 196, 80, 0.3);
   &:not(:disabled):hover {
-    background: #8a1717;
+    background: #48a64b;
+    transform: translateY(-1px);
+  }
+  &:not(:disabled):active {
+    transform: translateY(0);
+  }
+`
+
+const extraStyleRed = css`
+  background: #c75b58;
+  color: #fff;
+  box-shadow: 0 3px 10px rgba(196, 94, 74, 0.3);
+  &:not(:disabled):hover {
+    background: #a64b48;
     transform: translateY(-1px);
   }
   &:not(:disabled):active {
@@ -78,4 +93,5 @@ const extraStyle = {
   cancel: extraStyleCancel,
   submit: extraStyleSubmit,
   primary: extraStylePrimary,
+  red: extraStyleRed,
 }

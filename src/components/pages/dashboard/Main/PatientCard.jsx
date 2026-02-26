@@ -30,9 +30,13 @@ const PatientCardStyled = styled.div`
   padding: 41px 12px 41px 12px;
   border-radius: 10px;
   border: 1.5px solid #e9ecf0;
-  background: #fafafa;
+  background: ${theme.colors.white};
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
   cursor: pointer;
-  transition: transform 0.16s, box-shadow 0.16s, border-color 0.16s;
+  transition:
+    transform 0.16s,
+    box-shadow 0.16s,
+    border-color 0.16s;
 
   &:hover {
     transform: translateY(-3px);
@@ -47,11 +51,11 @@ const PatientCardStyled = styled.div`
     width: 52px;
     height: 52px;
     border-radius: 50%;
-    background-color: ${theme.colors.primary}22;
+    background-color: #c321212f;
 
     svg {
       font-size: 2.2rem;
-      color: ${theme.colors.primary};
+      color: #c32121;
     }
 
     &.man {

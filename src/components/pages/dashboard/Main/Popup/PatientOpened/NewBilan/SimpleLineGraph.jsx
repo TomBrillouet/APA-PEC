@@ -34,7 +34,7 @@ export default function SimpleLineGraph({ data, x, y, legend, width }) {
       <Line
         type="monotone"
         dataKey={y}
-        stroke="#8884d8"
+        stroke="#4CAF50"
         activeDot={{ r: 8 }}
         name={legend}
       />

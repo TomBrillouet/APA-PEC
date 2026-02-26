@@ -42,7 +42,7 @@ const HeaderPopupStyled = styled.div`
   padding: 22px 28px 18px;
   position: sticky;
   top: 0;
-  background-color: aliceblue;
+  background-color: ${theme.colors.white};
   z-index: 1;
 
   .back-arrow,
