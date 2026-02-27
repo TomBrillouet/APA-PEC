@@ -4,19 +4,14 @@ export default function LogBookHistory({ selectedPatient }) {
   return (
     <LogBookHistoryStyled>
       <h3>Comptes rendus</h3>
-      {selectedPatient.logbook.map((entry, index) =>
-        entry === "hr" ? (
-          <div key={index}>
-            <hr />
-          </div>
-        ) : (
-          <div key={index}>
-            <b>{entry.date}</b>
-            <br />
-            <p>{entry.content}</p>
-          </div>
-        )
-      )}
+      {selectedPatient.logbook.map((entry, index) => (
+        <div key={index}>
+          <hr />
+          <b>{entry.date}</b>
+          <br />
+          <p>{entry.content}</p>
+        </div>
+      ))}
     </LogBookHistoryStyled>
   )
 }

@@ -18,6 +18,12 @@ export const proInputs = [
     isRequired: true,
   },
   {
+    label: "Mail",
+    type: "email",
+    name: "mail",
+    isRequired: true,
+  },
+  {
     label: "Téléphone",
     type: "tel",
     name: "phone",

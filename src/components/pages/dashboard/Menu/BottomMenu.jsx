@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router"
 import Button from "../../../reusable/Button"
+import { signOut } from "firebase/auth"
+import { auth } from "../../../../api/firebase-config"
 
 export default function BottomMenu() {
   const navigate = useNavigate()
-  return (
-    <Button
-      label={"Se déconnecter"}
-      onClick={() => navigate("/")}
-      version="red"
-    />
-  )
+  const logout = async () => {
+    await signOut(auth)
+    navigate("/login")
+  }
+  return <Button label={"Se déconnecter"} onClick={logout} version="red" />
 }

@@ -6,6 +6,9 @@ import { MainContext } from "../../../../context/MainContext"
 
 export default function Header({ print }) {
   const { toggleProInfo, pro } = useContext(MainContext)
+  if (!pro) {
+    return null
+  }
 
   const handleClick = () => {
     toggleProInfo()
@@ -22,9 +25,13 @@ export default function Header({ print }) {
           <div className="pro-meta">
             <span>{pro.mail}</span>
             <span>{pro.phone}</span>
-            <a href={pro.website} target="_blank">
-              {pro.society}
-            </a>
+            {pro.website && pro.society ? (
+              <a href={pro.website} target="_blank">
+                {pro.society}
+              </a>
+            ) : (
+              <span>{pro.society}</span>
+            )}
           </div>
         </div>
       </div>

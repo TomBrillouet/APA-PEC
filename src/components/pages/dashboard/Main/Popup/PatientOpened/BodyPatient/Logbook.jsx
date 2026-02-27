@@ -16,7 +16,7 @@ export default function Logbook({ isModifEnabled }) {
       const newEntry = { content: logbookInput, date: dateFr(new Date()) }
       const updatedPatient = {
         ...selectedPatient,
-        logbook: [...selectedPatient.logbook, "hr", newEntry],
+        logbook: [...selectedPatient.logbook, newEntry],
       }
       updateLogBook(selectedPatient, logbookInput)
       handleSelectedPatient(updatedPatient)

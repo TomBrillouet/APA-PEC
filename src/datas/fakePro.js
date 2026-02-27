@@ -1,9 +1,9 @@
 export const fakePro = {
-  lastName: "Brillouet",
-  firstName: "Tom",
-  mail: "tom.brillouet@outlook.fr",
-  phone: "0695289332",
-  website: "https://codicoda.fr",
-  job: "Développeur web",
-  society: "Codicoda ",
+  lastName: "Doe",
+  firstName: "John",
+  mail: "john.doe@gmail.com",
+  phone: "0612345678",
+  website: "https://fraise-moi-rever.vercel.app",
+  job: "Kinésithérapeute",
+  society: "Move with John",
 }

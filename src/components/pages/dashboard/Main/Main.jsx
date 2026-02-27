@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Header from "../Header/Header.jsx"
 import { MainContext } from "../../../../context/MainContext.jsx"
 import PatientsGrid from "./PatientsGrid.jsx"
@@ -7,17 +7,27 @@ import TopMainBar from "./TopMainBar.jsx"
 import { usePatients } from "../../../../hooks/usePatients.jsx"
 import { useBilanForm } from "../../../../hooks/useBilanForm.jsx"
 import { theme } from "../../../../theme/index.js"
-import { fakePro } from "../../../../datas/fakePro.js"
 import { useParams } from "react-router"
 import { usePopup } from "../../../../hooks/usePopup.jsx"
+import { syncBothPro } from "../../../../api/pro.js"
+import { useAuth } from "../../../../context/AuthContext.jsx"
+import { initialiseUserSession } from "./helpers/initialiseUserSession"
+import Loader from "../../../reusable/Loader.jsx"
 
 export default function Main() {
-  const [pro, setPro] = useState(fakePro)
+  const { currentUser } = useAuth()
+  const userId = currentUser?.uid
+  const [pro, setPro] = useState()
   const [selectedPatient, setSelectedPatient] = useState(null)
   const [selectedBilan, setSelectedBilan] = useState(null)
   const [search, setSearch] = useState("")
-  const { addNewPatient, updatePatients, patients, updateLogBook } =
-    usePatients()
+  const {
+    addNewPatient,
+    updatePatients,
+    setPatients,
+    patients,
+    updateLogBook,
+  } = usePatients()
   const {
     handleBilanDataChange,
     bilanData,
@@ -37,8 +47,14 @@ export default function Main() {
     popupConfig,
   } = usePopup()
 
+  useEffect(() => {
+    if (!userId) return
+    initialiseUserSession(userId, setPro, setPatients)
+  }, [userId])
+
   const proSubmit = (newProInfos) => {
     setPro(newProInfos)
+    syncBothPro(userId, newProInfos)
   }
 
   const handleSelectedPatient = (selectedPatient) => {
@@ -51,6 +67,7 @@ export default function Main() {
 
   const { status } = useParams()
   const archived = status === "archived"
+  if (!patients) return <Loader />
 
   const patientsFiltered = patients.filter(
     (patient) =>

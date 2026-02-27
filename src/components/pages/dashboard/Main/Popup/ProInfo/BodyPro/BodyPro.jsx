@@ -28,7 +28,7 @@ export default function BodyPro() {
             type={input.type}
             key={input.name}
             placeholder={input.label}
-            value={inputsValue[input.name]}
+            value={inputsValue[input.name] ?? ""}
           />
         ))}
       </div>
