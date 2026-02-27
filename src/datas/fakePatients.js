@@ -308,4 +308,85 @@ export const fakePatients = [
       },
     ],
   },
+  {
+    id: "5",
+    sex: "man",
+    lastName: "Paul",
+    firstName: "Raymond",
+    address: { cp: "75000", city: "Paris", street: "22 rue des bateaux" },
+    mail: "Raymond.Paul@wanadoo.fr",
+    phone: "0686392766",
+    birth: "1955-04-22",
+    height: 169,
+    weight: 84,
+    problems: "Douleurs bas du dos et posture",
+    history: "Très sédentaire",
+    goals: "Renforcement dos et correction posture",
+    archived: true,
+    bilans: [
+      {
+        id: "5-final",
+        type: "final",
+        height: 169,
+        weight: 77,
+        imc: 23.5,
+        avis: "Posture nettement améliorée, douleurs disparues.",
+        raisonFin: "Disparition symptômes",
+        objectifsconclusion: "Maintien renforcement 2x/semaine",
+        date: "2026-04-18",
+        tests: [
+          {
+            name: "Assis-debout",
+            remarques: "Exécution fluide",
+            results: [
+              { field: "Répétitions", chart: true, value: "20" },
+              { field: "FC initiale", value: "68" },
+              { field: "FC finale", value: "88" },
+              { field: "FC après délai", value: "70" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "5-init",
+        type: "initial",
+        height: 169,
+        weight: 79,
+        imc: 24.4,
+        date: "2026-01-12",
+        tests: [
+          {
+            name: "Assis-debout",
+            remarques: "Raideur dorsale",
+            results: [
+              { field: "Répétitions", chart: true, value: "12" },
+              { field: "FC initiale", value: "72" },
+              { field: "FC finale", value: "98" },
+              { field: "FC après délai", value: "80" },
+            ],
+          },
+        ],
+      },
+    ],
+    logbook: [
+      "hr",
+      {
+        content:
+          "Bilan postural effectué. Raideur dorsale notable. Exercices de mobilité introduits.",
+        date: "20 janvier 2026",
+      },
+      "hr",
+      {
+        content:
+          "Séance renforcement dos et épaules. Patient signale moins de tensions en fin de journée.",
+        date: "10 février 2026",
+      },
+      "hr",
+      {
+        content:
+          "Correction posturale en nette progression. Douleurs épaules quasi absentes.",
+        date: "15 mars 2026",
+      },
+    ],
+  },
 ]
