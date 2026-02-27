@@ -9,9 +9,10 @@ import TestsFormSection from "../../../AddPatient/Form/TestsFormSection.jsx"
 import ResultsSection from "../../../AddPatient/Form/ResultsSection.jsx"
 import BilanDate from "./bilanSection/BilanDate.jsx"
 import TypeOfBilanSection from "./bilanSection/TypeOfBilanSection.jsx"
-import PreviousShapeValues from "./patientSection/PreviousShapeValues.jsx"
 import { useForm } from "../../../../../../../../hooks/useForm.jsx"
 import { forwardRef, useImperativeHandle } from "react"
+import { NEW_BILAN_LABELS } from "../../../../../../../../enums/patient.jsx"
+import ShapeCard from "../../../../../../../reusable/ShapeCard.jsx"
 
 const BilanForm = forwardRef(
   ({ selectedPatient, handleChangeIsFinal, isFinal, onTestsChange }, ref) => {
@@ -51,7 +52,7 @@ const BilanForm = forwardRef(
           handleBilanDataChange={handleBilanDataChange}
           bilanData={bilanData}
         />
-        <PreviousShapeValues selectedPatient={selectedPatient} />
+        <ShapeCard dataShape={selectedPatient} labels={NEW_BILAN_LABELS} />
         <NewShapeValues
           handleChange={handleChange}
           handleBilanDataChange={handleBilanDataChange}
