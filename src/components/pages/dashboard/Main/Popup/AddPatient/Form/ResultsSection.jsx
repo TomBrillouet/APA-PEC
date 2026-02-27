@@ -61,5 +61,6 @@ const ResultsSectionStyled = styled.div`
   .grid-results {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
   }
 `

@@ -2,7 +2,6 @@ import styled from "styled-components"
 import { dateFr } from "../../../../../../../utils/math"
 import { MainContext } from "../../../../../../../context/MainContext"
 import { useContext } from "react"
-import { theme } from "../../../../../../../theme"
 import Button from "../../../../../../reusable/Button"
 
 export default function BilansPatient({ selectedPatient }) {
@@ -20,7 +19,8 @@ export default function BilansPatient({ selectedPatient }) {
         {selectedPatient.bilans.map((bilan) => {
           return (
             <li key={bilan.id}>
-              Bilan {bilan.type} - {dateFr(bilan.date)}
+              Bilan <BilanType type={bilan.type}>{bilan.type}</BilanType> -{" "}
+              {dateFr(bilan.date)}
               <Button
                 label={"Ouvrir"}
                 onClick={() => handleOpenBilan(bilan)}
@@ -30,7 +30,11 @@ export default function BilansPatient({ selectedPatient }) {
           )
         })}
       </ul>
-      <Button onClick={toggleNewBilan} label={"Faire un bilan"} />
+      <Button
+        onClick={toggleNewBilan}
+        label={"Faire un bilan"}
+        version="submit"
+      />
     </BilansPatientStyled>
   )
 }
@@ -39,11 +43,29 @@ const BilansPatientStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  max-width: 500px;
+
   ul {
     display: inline-block;
     list-style-type: disclosure-closed;
-    button {
-      margin-left: 10px;
+    li {
+      button {
+        margin-left: 10px;
+      }
     }
   }
+
+  @media screen and (min-width: 768px) {
+    margin-top: -6em;
+  }
 `
+
+const BilanType = styled.span`
+  color: ${({ type }) => colors[type] || "inherit"};
+`
+
+const colors = {
+  initial: "green",
+  intermediaire: "orange",
+  final: "red",
+}

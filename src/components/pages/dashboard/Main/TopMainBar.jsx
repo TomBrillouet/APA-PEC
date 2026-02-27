@@ -18,6 +18,7 @@ export default function TopMainBar({ onChange, onClick, archived }) {
 const TopMainBarStyled = styled.div`
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
   font-size: 1.5rem;
   font-weight: 600;

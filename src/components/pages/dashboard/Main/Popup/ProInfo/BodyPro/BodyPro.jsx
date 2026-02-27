@@ -18,18 +18,20 @@ export default function BodyPro() {
   }
   return (
     <BodyProStyled>
-      {proInputs.map((input) => (
-        <Input
-          isRequired={input.isRequired}
-          label={input.label}
-          name={input.name}
-          onChange={handleChange}
-          type={input.type}
-          key={input.name}
-          placeholder={input.label}
-          value={inputsValue[input.name]}
-        />
-      ))}
+      <div className="inputs">
+        {proInputs.map((input) => (
+          <Input
+            isRequired={input.isRequired}
+            label={input.label}
+            name={input.name}
+            onChange={handleChange}
+            type={input.type}
+            key={input.name}
+            placeholder={input.label}
+            value={inputsValue[input.name]}
+          />
+        ))}
+      </div>
       <Button
         label={"Enregistrer les informations du professionnel"}
         onClick={() => handleSubmit(inputsValue)}
@@ -43,5 +45,10 @@ const BodyProStyled = styled.div`
   padding: 8px 28px 28px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 20px;
+  .inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
 `

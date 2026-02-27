@@ -12,13 +12,14 @@ export default function InputField({ label, children, className }) {
 const InputFieldStyled = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 5px;
 
   &.full {
     grid-column: 1 / -1;
   }
 
   label {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
     color: #2c5282;
     letter-spacing: 0.02em;
@@ -30,7 +31,7 @@ const InputFieldStyled = styled.div`
     border: 1.5px solid #b8d8f0;
     border-radius: 6px;
     background: #fff;
-    font-size: 13.5px;
+    font-size: 13px;
     color: #1a3a5c;
     outline: none;
     font-family: inherit;
@@ -41,7 +42,8 @@ const InputFieldStyled = styled.div`
       box-shadow 0.15s;
 
     &:disabled {
-      pointer-events: none;
+      cursor: not-allowed;
+      background-color: #f0f4f8;
     }
 
     &::placeholder {

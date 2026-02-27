@@ -20,6 +20,8 @@ export default function ContactPatient({
     if (JSON.stringify(patientUpdated) !== JSON.stringify(selectedPatient)) {
       updatePatients(patientUpdated)
       handleSelectedPatient(patientUpdated)
+    } else {
+      toastError("Les informations du contact n'ont pas été modifiées.")
     }
     toggleEnable()
   }
@@ -62,7 +64,7 @@ export default function ContactPatient({
 
       <div className="contact-buttons">
         <Button
-          version="submit"
+          version="cancel"
           label={"Modifier les informations de contact"}
           onClick={toggleEnable}
           disabled={!isModifEnabled}

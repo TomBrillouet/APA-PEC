@@ -15,7 +15,7 @@ export default function Button({
       version={version}
       disabled={disabled}
     >
-      {label}
+      <span>{label}</span>
     </ButtonStyled>
   )
 }
