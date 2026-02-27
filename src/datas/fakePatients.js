@@ -91,7 +91,32 @@ export const fakePatients = [
         ],
       },
     ],
-    logbook: [],
+    logbook: [
+      "hr",
+      {
+        content:
+          "Séance de 45 min. Travail cardio sur vélo. Patient essoufflé mais motivé.",
+        date: "20 janvier 2026",
+      },
+      "hr",
+      {
+        content:
+          "Bonne séance, introduction des exercices assis-debout. 9 répétitions réalisées.",
+        date: "3 février 2026",
+      },
+      "hr",
+      {
+        content:
+          "Patient rapporte moins d'essoufflement au quotidien. Augmentation de la durée cardio.",
+        date: "17 février 2026",
+      },
+      "hr",
+      {
+        content:
+          "Séance axée renforcement membres inférieurs. Bonne tolérance à l'effort.",
+        date: "3 mars 2026",
+      },
+    ],
   },
 
   {
@@ -180,7 +205,26 @@ export const fakePatients = [
         ],
       },
     ],
-    logbook: [],
+    logbook: [
+      "hr",
+      {
+        content:
+          "Première séance de rééducation post-opératoire. Travail proprioception légère.",
+        date: "15 janvier 2026",
+      },
+      "hr",
+      {
+        content:
+          "Amélioration de la stabilité côté droit. Exercices unipodaux introduits.",
+        date: "1 février 2026",
+      },
+      "hr",
+      {
+        content:
+          "Patient rapporte une meilleure confiance dans l'appui droit. Ajout pliométrie légère.",
+        date: "10 mars 2026",
+      },
+    ],
   },
 
   {
@@ -243,6 +287,25 @@ export const fakePatients = [
         ],
       },
     ],
-    logbook: [],
+    logbook: [
+      "hr",
+      {
+        content:
+          "Bilan postural effectué. Raideur dorsale notable. Exercices de mobilité introduits.",
+        date: "20 janvier 2026",
+      },
+      "hr",
+      {
+        content:
+          "Séance renforcement dos et épaules. Patient signale moins de tensions en fin de journée.",
+        date: "10 février 2026",
+      },
+      "hr",
+      {
+        content:
+          "Correction posturale en nette progression. Douleurs épaules quasi absentes.",
+        date: "15 mars 2026",
+      },
+    ],
   },
 ]
