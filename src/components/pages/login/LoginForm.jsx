@@ -3,12 +3,63 @@ import { theme } from "../../../theme"
 import { IoLockClosedOutline } from "react-icons/io5"
 import { GoPerson } from "react-icons/go"
 import { useNavigate } from "react-router"
+import { useState } from "react"
+import {
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
+} from "firebase/auth"
+import { auth } from "../../../api/firebase-config"
 
 export default function LoginForm() {
+  const [logInputs, setLogInputs] = useState({
+    username: "",
+    password: "",
+  })
+  const [error, setError] = useState("")
+  const [success, setSuccess] = useState("")
+
   const navigate = useNavigate()
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    navigate("/dashboard")
+    setError("")
+    setSuccess("")
+    try {
+      await signInWithEmailAndPassword(
+        auth,
+        logInputs.username,
+        logInputs.password,
+      )
+      navigate("/dashboard")
+    } catch (error) {
+      switch (error.code) {
+        case "auth/invalid-credential":
+          setError("Identifiant ou mot de passe incorrect")
+          break
+        case "auth/too-many-requests":
+          setError("Trop de tentatives, réessaie plus tard")
+          break
+        default:
+          setError("Une erreur est survenue")
+      }
+    }
+  }
+
+  const handleForgotPassword = async (e) => {
+    e.preventDefault()
+    setError("")
+    setSuccess("")
+    if (!logInputs.username) {
+      setError("Entrez votre email pour réinitialiser votre mot de passe")
+      return
+    }
+    try {
+      await sendPasswordResetEmail(auth, logInputs.username)
+      setSuccess(
+        "Si vous avez un compte, vous reçevrez un mail pour modifier votre mot de passe.",
+      )
+    } catch {
+      setError("Aucun compte trouvé avec cet email.")
+    }
   }
   return (
     <LoginFormStyled>
@@ -16,7 +67,6 @@ export default function LoginForm() {
         <h2>Bienvenue !</h2>
         <p>Identifiez-vous pour accéder à votre espace</p>
       </div>
-
       <form onSubmit={handleSubmit}>
         <div className="input-group">
           <label htmlFor="username">
@@ -26,6 +76,10 @@ export default function LoginForm() {
             id="username"
             type="text"
             autoComplete="username"
+            value={logInputs.username}
+            onChange={(e) =>
+              setLogInputs({ ...logInputs, username: e.target.value })
+            }
             placeholder="Entrez votre identifiant"
             required
           />
@@ -39,19 +93,21 @@ export default function LoginForm() {
             id="password"
             autoComplete="curren-password"
             type="password"
+            value={logInputs.password}
+            onChange={(e) =>
+              setLogInputs({ ...logInputs, password: e.target.value })
+            }
             placeholder="Entrez votre mot de passe"
           />
         </div>
 
         <div className="form-options">
-          <label className="remember-me">
-            <input type="checkbox" />
-            <span>Se souvenir de moi</span>
-          </label>
-          <a href="#" className="forgot-password">
+          <a onClick={handleForgotPassword} className="forgot-password">
             Mot de passe oublié ?
           </a>
         </div>
+        <div className="error">{error}</div>
+        <div className="success">{success}</div>
 
         <button type="submit" className="submit-btn">
           <span>Se connecter</span>
@@ -66,12 +122,6 @@ export default function LoginForm() {
           </svg>
         </button>
       </form>
-
-      <div className="form-footer">
-        <p>
-          Pas encore de compte ? <a href="#">Contactez l'administrateur</a>
-        </p>
-      </div>
     </LoginFormStyled>
   )
 }
@@ -176,8 +226,15 @@ const LoginFormStyled = styled.div`
         &:hover {
           color: ${theme.colors.primary}dd;
           text-decoration: underline;
+          cursor: pointer;
         }
       }
+    }
+    .error {
+      color: red;
+    }
+    .success {
+      color: blue;
     }
 
     .submit-btn {
@@ -216,31 +273,6 @@ const LoginFormStyled = styled.div`
 
       &:active {
         transform: translateY(0);
-      }
-    }
-  }
-
-  .form-footer {
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid #e2e8f0;
-    text-align: center;
-
-    p {
-      font-size: 0.9rem;
-      color: ${theme.colors.text};
-      margin: 0;
-
-      a {
-        color: ${theme.colors.primary};
-        text-decoration: none;
-        font-weight: 600;
-        transition: color 0.2s ease;
-
-        &:hover {
-          color: ${theme.colors.primary}dd;
-          text-decoration: underline;
-        }
       }
     }
   }

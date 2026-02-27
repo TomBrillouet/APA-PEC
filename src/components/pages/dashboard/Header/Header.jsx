@@ -1,26 +1,45 @@
-import { useState } from "react"
+import { useContext } from "react"
 import styled from "styled-components"
-import { fakePro } from "../../../../datas/fakePro"
 import { theme } from "../../../../theme"
+import { FaUserEdit } from "react-icons/fa"
+import { MainContext } from "../../../../context/MainContext"
 
-export default function Header() {
-  const [pro, setPro] = useState(fakePro)
+export default function Header({ print }) {
+  const { toggleProInfo, pro } = useContext(MainContext)
+  if (!pro) {
+    return null
+  }
+
+  const handleClick = () => {
+    toggleProInfo()
+  }
 
   return (
     <HeaderStyled>
-      <img src={pro.image} alt={pro.firstName} />
-      <div className="pro-details">
-        <div className="pro-name">
-          {pro.firstName} {pro.lastName}
-        </div>
-        <b className="pro-job">{pro.job}</b>
-        <div className="pro-meta">
-          <span>{pro.mail}</span>
-          <span>{pro.phone}</span>
-          <span>{pro.society}</span>
-          <span>{pro.website}</span>
+      <div className="pro-infos">
+        <div className="pro-details">
+          <div className="pro-name">
+            {pro.firstName} {pro.lastName}
+          </div>
+          <b className="pro-job">{pro.job}</b>
+          <div className="pro-meta">
+            <span>{pro.mail}</span>
+            <span>{pro.phone}</span>
+            {pro.website && pro.society ? (
+              <a href={pro.website} target="_blank">
+                {pro.society}
+              </a>
+            ) : (
+              <span>{pro.society}</span>
+            )}
+          </div>
         </div>
       </div>
+      {!print && (
+        <div className="pro-modification" onClick={handleClick}>
+          <FaUserEdit />
+        </div>
+      )}
     </HeaderStyled>
   )
 }
@@ -28,48 +47,67 @@ export default function Header() {
 const HeaderStyled = styled.div`
   display: flex;
   align-items: center;
-  gap: 20px;
-  background-color: ${theme.colors.primary};
+  background-color: ${theme.colors.white};
   padding: 18px 32px;
+  justify-content: space-between;
+  color: #111827;
 
-  img {
-    height: 56px;
-    width: 56px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid rgba(255, 255, 255, 0.4);
-    flex-shrink: 0;
-  }
-
-  .pro-details {
+  .pro-infos {
     display: flex;
-    flex-direction: column;
-    gap: 4px;
+    gap: 20px;
+
+    img {
+      height: 56px;
+      width: 56px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      flex-shrink: 0;
+    }
+
+    .pro-details {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .pro-name {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .pro-job {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #111827ab;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .pro-meta {
+      display: flex;
+      gap: 16px;
+      margin-top: 2px;
+      flex-wrap: wrap;
+
+      span,
+      a {
+        font-size: 0.78rem;
+        color: #11182782;
+      }
+      a:hover {
+        color: ${theme.colors.primary};
+      }
+    }
   }
-
-  .pro-name {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #fff;
-  }
-
-  .pro-job {
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.75);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  .pro-meta {
-    display: flex;
-    gap: 16px;
-    margin-top: 2px;
-    flex-wrap: wrap;
-
-    span {
-      font-size: 0.78rem;
-      color: rgba(255, 255, 255, 0.6);
+  .pro-modification {
+    font-size: 30px;
+    color: #6b7280;
+    cursor: pointer;
+    transition: ease 0.2s;
+    &:hover {
+      color: ${theme.colors.primary};
+      transform: scale(0.95);
     }
   }
 `

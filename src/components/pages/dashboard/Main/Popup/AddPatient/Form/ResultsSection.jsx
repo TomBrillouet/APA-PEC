@@ -1,41 +1,66 @@
+import styled from "styled-components"
 import Input from "../../../../../../reusable/Input"
 import TextArea from "../../../../../../reusable/TextArea"
+import { tests } from "../../../../../../../datas/tests"
 
 export default function ResultsSection({
   bilanData,
   onChange,
   onRemarquesChange,
+  disabled,
+  print,
 }) {
   if (!bilanData.tests) return null
 
   return (
-    <div className="results">
+    <ResultsSectionStyled className="results">
       {bilanData.tests.map((test) => (
         <div key={test.name}>
           <h4>{test.name}</h4>
 
-          {test.results.map(({ field, value }) => (
-            <Input
-              key={field}
-              type="number"
-              label={field}
-              value={value}
-              className="field"
-              placeholder={field}
-              onChange={(e) => onChange(test.name, field, e.target.value)}
-            />
-          ))}
+          <div className="grid-results">
+            {test.results.map(({ field, value }) => (
+              <Input
+                key={field}
+                type="number"
+                disabled={disabled}
+                label={field}
+                value={value ? value : ""}
+                className="field"
+                placeholder={field}
+                onChange={(e) => onChange(test.name, field, e.target.value)}
+              />
+            ))}
+          </div>
 
           <TextArea
             rows={3}
             label="Remarques"
             className="field full"
+            disabled={disabled}
             value={test.remarques ?? ""}
             onChange={(e) => onRemarquesChange(test.name, e.target.value)}
             placeholder="Remarques"
           />
+          {print && (
+            <TextArea
+              rows={3}
+              label="Description"
+              className="field full"
+              disabled={disabled}
+              value={tests.find((t) => t.name === test.name).description ?? ""}
+            />
+          )}
         </div>
       ))}
-    </div>
+    </ResultsSectionStyled>
   )
 }
+
+const ResultsSectionStyled = styled.div`
+  .grid-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+  }
+`

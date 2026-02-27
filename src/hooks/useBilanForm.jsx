@@ -1,18 +1,39 @@
 import { useState } from "react"
 import { tests } from "../datas/tests"
+import { getImc } from "../utils/math"
 
-export const useBilanForm = () => {
+export const useBilanForm = (initialvalues) => {
   const [bilanData, setBilanData] = useState({
     date: new Date().toISOString().split("T")[0],
-    tests: [],
+    tests:
+      initialvalues?.map((test) => ({
+        ...test,
+        results: test.results.map((result) => ({ ...result, value: "" })),
+        remarques: "",
+      })) || [],
+    height: 0,
+    weight: 0,
+    imc: 0,
   })
 
-  const handleBilanDateChange = (e) =>
-    setBilanData((prev) => ({ ...prev, date: e.target.value }))
+  const handleBilanDataChange = (e) => {
+    const { name, value } = e.target
+    setBilanData((prev) => {
+      const updated = { ...prev, [name]: value }
+      return {
+        ...updated,
+        imc: getImc(updated.weight, updated.height),
+      }
+    })
+  }
 
   const testsSelectChange = (testsSelected) => {
     const formattedTests = testsSelected.map((option) => {
       const testConfig = tests.find((t) => t.name === option.value)
+      const existingTests = bilanData.tests.find(
+        (element) => element.name === option.value,
+      )
+      if (existingTests) return existingTests
       return {
         name: option.value,
         remarques: "",
@@ -26,7 +47,7 @@ export const useBilanForm = () => {
     setBilanData((prev) => ({
       ...prev,
       tests: prev.tests.map((test) =>
-        test.name === testName ? { ...test, remarques: value } : test
+        test.name === testName ? { ...test, remarques: value } : test,
       ),
     }))
   }
@@ -39,10 +60,10 @@ export const useBilanForm = () => {
           ? {
               ...test,
               results: test.results.map((result) =>
-                result.field === field ? { ...result, value } : result
+                result.field === field ? { ...result, value } : result,
               ),
             }
-          : test
+          : test,
       ),
     }))
   }
@@ -50,7 +71,7 @@ export const useBilanForm = () => {
     handleResultChange,
     handleRemarquesChange,
     testsSelectChange,
-    handleBilanDateChange,
+    handleBilanDataChange,
     bilanData,
   }
 }

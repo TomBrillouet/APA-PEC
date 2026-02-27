@@ -1,4 +1,3 @@
-import React from "react"
 import Logo from "../../../reusable/Logo.jsx"
 import styled from "styled-components"
 import BodyMenu from "./BodyMenu.jsx"
@@ -20,11 +19,10 @@ const MenuStyled = styled.aside`
   display: flex;
   flex-direction: column;
   padding: 28px 16px;
-  background-color: #252525;
+  background-color: #fff;
   position: sticky;
   top: 0;
   height: 100vh;
-  white-space: nowrap;
 
   .logo {
     white-space: nowrap;

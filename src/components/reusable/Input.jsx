@@ -13,7 +13,7 @@ export default function Input({
 }) {
   return (
     <InputField className={className}>
-      <label>{label}</label>
+      {label && <label>{label}</label>}
       <input
         type={type}
         name={name}

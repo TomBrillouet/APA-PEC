@@ -1,12 +1,18 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { EMPTY_PATIENT } from "../enums/patient"
+import { MainContext } from "../context/MainContext"
 
-export const usePatientForm = (initialValues = EMPTY_PATIENT) => {
+export const useForm = (initialValues = EMPTY_PATIENT) => {
   const [inputsValue, setInputsValue] = useState(initialValues)
+  const { handleBilanDataChange } = useContext(MainContext)
 
   const handleChange = (e) => {
     const { name, value } = e.target
     const addressFields = ["street", "city", "cp"]
+    const imcFields = ["height", "weight"]
+    if (imcFields.includes(name)) {
+      handleBilanDataChange(e)
+    }
 
     setInputsValue((prev) => {
       if (addressFields.includes(name)) {
@@ -19,9 +25,14 @@ export const usePatientForm = (initialValues = EMPTY_PATIENT) => {
   const sexSelectChange = (sexSelected) =>
     setInputsValue((prev) => ({ ...prev, sex: sexSelected.value }))
 
+  const handleSpecificInputsValue = (globalValue, key, specificValue) => {
+    setInputsValue({ ...globalValue, [key]: specificValue })
+  }
+
   return {
     inputsValue,
     sexSelectChange,
     handleChange,
+    handleSpecificInputsValue,
   }
 }

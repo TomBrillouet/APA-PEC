@@ -1,37 +1,83 @@
 import styled from "styled-components"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Header from "../Header/Header.jsx"
 import { MainContext } from "../../../../context/MainContext.jsx"
 import PatientsGrid from "./PatientsGrid.jsx"
 import TopMainBar from "./TopMainBar.jsx"
 import { usePatients } from "../../../../hooks/usePatients.jsx"
-import PatientOpened from "./Popup/PatientOpened/PatientOpened.jsx"
-import AddPatient from "./Popup/AddPatient/AddPatient.jsx"
+import { useBilanForm } from "../../../../hooks/useBilanForm.jsx"
+import { theme } from "../../../../theme/index.js"
+import { useParams } from "react-router"
+import { usePopup } from "../../../../hooks/usePopup.jsx"
+import { syncBothPro } from "../../../../api/pro.js"
+import { useAuth } from "../../../../context/AuthContext.jsx"
+import { initialiseUserSession } from "./helpers/initialiseUserSession"
+import Loader from "../../../reusable/Loader.jsx"
 
 export default function Main() {
-  const [addPatient, setAddPatient] = useState(false)
-  const [patientOpen, setPatientOpen] = useState(false)
+  const { currentUser } = useAuth()
+  const userId = currentUser?.uid
+  const [pro, setPro] = useState()
   const [selectedPatient, setSelectedPatient] = useState(null)
+  const [selectedBilan, setSelectedBilan] = useState(null)
   const [search, setSearch] = useState("")
-  const { addNewPatient, updatePatients, patients } = usePatients()
+  const {
+    addNewPatient,
+    updatePatients,
+    setPatients,
+    patients,
+    updateLogBook,
+  } = usePatients()
+  const {
+    handleBilanDataChange,
+    bilanData,
+    handleResultChange,
+    handleRemarquesChange,
+    testsSelectChange,
+  } = useBilanForm()
 
-  const toggleAddPatient = () => {
-    setAddPatient(!addPatient)
+  const {
+    toggleProInfo,
+    togglePatient,
+    toggleNewBilan,
+    toggleOldBilan,
+    toggleAddPatient,
+    isNewBilan,
+    isOldBilanOpened,
+    popupConfig,
+  } = usePopup()
+
+  useEffect(() => {
+    if (!userId) return
+    initialiseUserSession(userId, setPro, setPatients)
+  }, [userId])
+
+  const proSubmit = (newProInfos) => {
+    setPro(newProInfos)
+    syncBothPro(userId, newProInfos)
   }
 
-  const togglePatient = (patientToOpen) => {
-    setPatientOpen(!patientOpen)
-    setSelectedPatient(patientToOpen)
+  const handleSelectedPatient = (selectedPatient) => {
+    setSelectedPatient(selectedPatient)
   }
+
+  const handleSelectedBilan = (selectedBilan) => {
+    setSelectedBilan(selectedBilan)
+  }
+
+  const { status } = useParams()
+  const archived = status === "archived"
+  if (!patients) return <Loader />
 
   const patientsFiltered = patients.filter(
     (patient) =>
-      patient.lastName.toLowerCase().includes(search.toLowerCase()) ||
-      patient.firstName.toLowerCase().includes(search.toLowerCase())
+      patient.archived === archived &&
+      (patient.lastName.toLowerCase().includes(search.toLowerCase()) ||
+        patient.firstName.toLowerCase().includes(search.toLowerCase())),
   )
 
   const patientsSorted = [...patientsFiltered].sort((a, b) =>
-    a.lastName.localeCompare(b.lastName)
+    a.lastName.localeCompare(b.lastName),
   )
 
   const MainContextValue = {
@@ -39,28 +85,43 @@ export default function Main() {
     updatePatients,
     toggleAddPatient,
     togglePatient,
+    toggleProInfo,
+    toggleNewBilan,
+    isNewBilan,
+    selectedPatient,
+    handleSelectedPatient,
+    handleBilanDataChange,
+    updateLogBook,
+    bilanData,
+    handleResultChange,
+    handleRemarquesChange,
+    testsSelectChange,
+    isOldBilanOpened,
+    toggleOldBilan,
+    handleSelectedBilan,
+    selectedBilan,
+    pro,
+    proSubmit,
   }
 
   return (
     <MainStyled>
       <MainContext.Provider value={MainContextValue}>
         <Header />
-        {addPatient && (
-          <>
-            <div className="overlay" onClick={toggleAddPatient}></div>
-            <AddPatient addNewPatient={addNewPatient} />
-          </>
-        )}
-        {patientOpen && (
-          <>
-            <div className="overlay" onClick={togglePatient}></div>
-            <PatientOpened selectedPatient={selectedPatient} />
-          </>
+        {popupConfig.map(
+          (popup, index) =>
+            popup.condition && (
+              <div key={index}>
+                <div className="overlay" onClick={popup.toggle}></div>
+                {popup.Content}
+              </div>
+            ),
         )}
         <div className="main-background">
           <TopMainBar
             onChange={(e) => setSearch(e.target.value)}
             onClick={toggleAddPatient}
+            archived={archived}
           />
 
           <PatientsGrid
@@ -77,14 +138,14 @@ const MainStyled = styled.main`
   flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: #f1f1f1;
+  background-color: ${theme.colors.background};
 
   .overlay {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     left: 0;
     top: 0;
-    position: absolute;
+    position: fixed;
     z-index: 1;
     background-color: #1e2a3878;
   }

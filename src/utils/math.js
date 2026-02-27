@@ -4,7 +4,6 @@ export const getAge = (birthDate) => {
 
   let age = today.getFullYear() - birth.getFullYear()
 
-  // Ajustement si l'anniversaire n'est pas encore passé cette année
   const hasHadBirthdayThisYear =
     today.getMonth() > birth.getMonth() ||
     (today.getMonth() === birth.getMonth() &&
@@ -16,5 +15,12 @@ export const getAge = (birthDate) => {
 }
 
 export const getImc = (weight, height) => {
-  parseFloat(weight / (height / 100) ** 2).toFixed(2)
+  return parseFloat(weight / (height / 100) ** 2).toFixed(2)
 }
+
+export const dateFr = (date) =>
+  new Intl.DateTimeFormat("fr-FR", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  }).format(new Date(date))

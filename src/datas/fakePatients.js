@@ -1,103 +1,388 @@
 export const fakePatients = [
   {
-    id: "1",
-    sex: "man",
-    lastName: "Dupont",
-    firstName: "Alain",
-    address: {
-      cp: "67960",
-      city: "Entzheim",
-      street: "52B route de Strasbourg",
-    },
-    mail: "adupont@gmail.com",
-    phone: "0612345678",
-    birth: "1965-03-14",
-    problems: "Douleurs chroniques au genou droit",
-    history: "Chute à vélo en 2018, opération du ménisque en 2019",
-    goals: "Retrouver de la mobilité pour reprendre la randonnée",
-    height: 180,
-    weight: 82,
-    bilans: [],
-  },
-  {
     id: "2",
-    sex: "woman",
-    lastName: "Marchand",
-    firstName: "Sophie",
-    address: {
-      cp: "75011",
-      city: "Paris",
-      street: "14 rue de la Roquette",
-    },
-    mail: "sophie.marchand@gmail.com",
-    phone: "0698765432",
-    birth: "1982-07-22",
-    problems: "Douleurs à l'épaule gauche post-opératoire",
-    history: "Rupture de la coiffe des rotateurs, opérée en janvier 2025",
-    goals: "Reprendre le tennis en compétition",
-    height: 168,
-    weight: 62,
-    bilans: [],
+    sex: "man",
+    lastName: "Dubois",
+    firstName: "Laurent",
+    address: { cp: "67000", city: "Strasbourg", street: "8 rue du Moulin" },
+    mail: "laurent.dubois@gmail.com",
+    phone: "0611223344",
+    birth: "1965-03-14",
+    height: 175,
+    weight: 80,
+    problems: "Surpoids et déconditionnement à l'effort",
+    history: "Hypertension traitée",
+    goals: "Perte de poids et amélioration endurance",
+    archived: false,
+    bilans: [
+      {
+        id: "2-final",
+        type: "final",
+        height: 175,
+        weight: 80,
+        imc: 26.1,
+        avis: "Perte de poids significative et amélioration cardio-respiratoire.",
+        raisonFin: "Objectifs atteints",
+        objectifsconclusion: "Poursuite activité autonome conseillée",
+        date: "2026-04-15",
+        tests: [
+          {
+            name: "Assis-debout",
+            remarques: "Bonne endurance",
+            results: [
+              { field: "Répétitions", chart: true, value: "18" },
+              { field: "FC initiale", value: "72" },
+              { field: "FC finale", value: "95" },
+              { field: "FC après délai", value: "78" },
+              { field: "Sat initiale", value: "98" },
+              { field: "Sat finale", value: "97" },
+              { field: "Sat après délai", value: "98" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "2-int",
+        type: "intermediaire",
+        height: 175,
+        weight: 83,
+        imc: 27.1,
+        ajustement: "Augmentation durée cardio",
+        evolution: "Capacité aérobie en hausse",
+        ressenti: "Moins essoufflé",
+        date: "2026-03-10",
+        tests: [
+          {
+            name: "Assis-debout",
+            remarques: "Amélioration",
+            results: [
+              { field: "Répétitions", chart: true, value: "14" },
+              { field: "FC initiale", value: "75" },
+              { field: "FC finale", value: "105" },
+              { field: "FC après délai", value: "85" },
+              { field: "Sat initiale", value: "98" },
+              { field: "Sat finale", value: "96" },
+              { field: "Sat après délai", value: "97" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "2-init",
+        type: "initial",
+        height: 175,
+        weight: 88,
+        imc: 28.7,
+        date: "2026-01-20",
+        tests: [
+          {
+            name: "Assis-debout",
+            remarques: "Essoufflement rapide",
+            results: [
+              { field: "Répétitions", chart: true, value: "9" },
+              { field: "FC initiale", value: "80" },
+              { field: "FC finale", value: "115" },
+              { field: "FC après délai", value: "95" },
+              { field: "Sat initiale", value: "97" },
+              { field: "Sat finale", value: "95" },
+              { field: "Sat après délai", value: "96" },
+            ],
+          },
+        ],
+      },
+    ],
+    logbook: [
+      {
+        content:
+          "Séance de 45 min. Travail cardio sur vélo. Patient essoufflé mais motivé.",
+        date: "20 janvier 2026",
+      },
+
+      {
+        content:
+          "Bonne séance, introduction des exercices assis-debout. 9 répétitions réalisées.",
+        date: "3 février 2026",
+      },
+
+      {
+        content:
+          "Patient rapporte moins d'essoufflement au quotidien. Augmentation de la durée cardio.",
+        date: "17 février 2026",
+      },
+
+      {
+        content:
+          "Séance axée renforcement membres inférieurs. Bonne tolérance à l'effort.",
+        date: "3 mars 2026",
+      },
+    ],
   },
+
   {
     id: "3",
-    sex: "man",
+    sex: "woman",
     lastName: "Bernard",
-    firstName: "Luc",
-    address: {
-      cp: "69003",
-      city: "Lyon",
-      street: "8 avenue Félix Faure",
-    },
-    mail: "luc.bernard@hotmail.fr",
-    phone: "0645231789",
-    birth: "1955-11-30",
-    problems: "BPCO stade 2, fatigabilité à l'effort",
-    history:
-      "Fumeur pendant 30 ans, arrêt en 2010. Hospitalisation pour pneumonie en 2022",
-    goals: "Améliorer l'endurance pour les activités quotidiennes",
-    height: 172,
-    weight: 78,
-    bilans: [],
+    firstName: "Claire",
+    address: { cp: "67200", city: "Strasbourg", street: "3 avenue de Colmar" },
+    mail: "claire.bernard@yahoo.fr",
+    phone: "0677889900",
+    birth: "1988-11-02",
+    height: 168,
+    weight: 67,
+    problems: "Rééducation post ligamentoplastie genou droit",
+    history: "Rupture LCA 2025",
+    goals: "Reprise course à pied",
+    archived: false,
+    bilans: [
+      {
+        id: "3-final",
+        type: "final",
+        height: 168,
+        weight: 67,
+        imc: 23.7,
+        avis: "Stabilité retrouvée, reprise progressive de la course validée.",
+        raisonFin: "Objectif fonctionnel atteint",
+        objectifsconclusion: "Programme prévention rechute",
+        date: "2026-04-12",
+        tests: [
+          {
+            name: "Test d'équilibre unipodal",
+            remarques: "Symétrie retrouvée",
+            results: [
+              { field: "Durée gauche", chart: true, value: "30" },
+              { field: "Durée droite", chart: true, value: "29" },
+              { field: "FC initiale", value: "65" },
+              { field: "FC finale", value: "72" },
+              { field: "FC après délai", value: "66" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "3-int",
+        type: "intermediaire",
+        height: 168,
+        weight: 68,
+        imc: 24.1,
+        ajustement: "Ajout pliométrie légère",
+        evolution: "Stabilité en amélioration",
+        ressenti: "Genou plus stable",
+        date: "2026-03-01",
+        tests: [
+          {
+            name: "Test d'équilibre unipodal",
+            remarques: "Bonne progression",
+            results: [
+              { field: "Durée gauche", chart: true, value: "24" },
+              { field: "Durée droite", chart: true, value: "22" },
+              { field: "FC initiale", value: "67" },
+              { field: "FC finale", value: "74" },
+              { field: "FC après délai", value: "68" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "3-init",
+        type: "initial",
+        height: 168,
+        weight: 69,
+        imc: 24.4,
+        date: "2026-01-10",
+        tests: [
+          {
+            name: "Test d'équilibre unipodal",
+            remarques: "Instabilité marquée côté droit",
+            results: [
+              { field: "Durée gauche", chart: true, value: "18" },
+              { field: "Durée droite", chart: true, value: "12" },
+              { field: "FC initiale", value: "70" },
+              { field: "FC finale", value: "78" },
+              { field: "FC après délai", value: "72" },
+            ],
+          },
+        ],
+      },
+    ],
+    logbook: [
+      {
+        content:
+          "Première séance de rééducation post-opératoire. Travail proprioception légère.",
+        date: "15 janvier 2026",
+      },
+
+      {
+        content:
+          "Amélioration de la stabilité côté droit. Exercices unipodaux introduits.",
+        date: "1 février 2026",
+      },
+
+      {
+        content:
+          "Patient rapporte une meilleure confiance dans l'appui droit. Ajout pliométrie légère.",
+        date: "10 mars 2026",
+      },
+    ],
   },
+
   {
     id: "4",
-    sex: "woman",
-    lastName: "Petit",
-    firstName: "Camille",
-    address: {
-      cp: "33000",
-      city: "Bordeaux",
-      street: "3 rue des Chartrons",
-    },
-    mail: "camille.petit@gmail.com",
-    phone: "0556123456",
-    birth: "1998-04-05",
-    problems: "Entorse de cheville récidivante côté gauche",
-    history: "3 entorses en 2 ans, kinésithérapie classique insuffisante",
-    goals: "Stabiliser la cheville pour reprendre le basket",
-    height: 165,
-    weight: 58,
-    bilans: [],
+    sex: "man",
+    lastName: "Schmidt",
+    firstName: "Julien",
+    address: { cp: "67300", city: "Schiltigheim", street: "22 rue des Vignes" },
+    mail: "julien.schmidt@orange.fr",
+    phone: "0688997766",
+    birth: "1995-06-18",
+    height: 180,
+    weight: 76,
+    problems: "Douleurs épaules et posture",
+    history: "Travail sédentaire",
+    goals: "Renforcement dos et correction posture",
+    archived: false,
+    bilans: [
+      {
+        id: "4-final",
+        type: "final",
+        height: 180,
+        weight: 76,
+        imc: 23.5,
+        avis: "Posture nettement améliorée, douleurs disparues.",
+        raisonFin: "Disparition symptômes",
+        objectifsconclusion: "Maintien renforcement 2x/semaine",
+        date: "2026-04-18",
+        tests: [
+          {
+            name: "Assis-debout",
+            remarques: "Exécution fluide",
+            results: [
+              { field: "Répétitions", chart: true, value: "20" },
+              { field: "FC initiale", value: "68" },
+              { field: "FC finale", value: "88" },
+              { field: "FC après délai", value: "70" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "4-init",
+        type: "initial",
+        height: 180,
+        weight: 79,
+        imc: 24.4,
+        date: "2026-01-12",
+        tests: [
+          {
+            name: "Assis-debout",
+            remarques: "Raideur dorsale",
+            results: [
+              { field: "Répétitions", chart: true, value: "12" },
+              { field: "FC initiale", value: "72" },
+              { field: "FC finale", value: "98" },
+              { field: "FC après délai", value: "80" },
+            ],
+          },
+        ],
+      },
+    ],
+    logbook: [
+      {
+        content:
+          "Bilan postural effectué. Raideur dorsale notable. Exercices de mobilité introduits.",
+        date: "20 janvier 2026",
+      },
+
+      {
+        content:
+          "Séance renforcement dos et épaules. Patient signale moins de tensions en fin de journée.",
+        date: "10 février 2026",
+      },
+
+      {
+        content:
+          "Correction posturale en nette progression. Douleurs épaules quasi absentes.",
+        date: "15 mars 2026",
+      },
+    ],
   },
   {
     id: "5",
     sex: "man",
-    lastName: "Nguyen",
-    firstName: "Thomas",
-    address: {
-      cp: "31000",
-      city: "Toulouse",
-      street: "22 rue du Taur",
-    },
-    mail: "thomas.nguyen@gmail.com",
-    phone: "0561987654",
-    birth: "1975-09-18",
-    problems: "Lombalgies chroniques, hernie discale L4-L5",
-    history: "Sédentarité prolongée, travail de bureau. IRM en 2023",
-    goals: "Réduire les douleurs et reprendre le vélo",
-    height: 176,
-    weight: 88,
-    bilans: [],
+    lastName: "Paul",
+    firstName: "Raymond",
+    address: { cp: "75000", city: "Paris", street: "22 rue des bateaux" },
+    mail: "Raymond.Paul@wanadoo.fr",
+    phone: "0686392766",
+    birth: "1955-04-22",
+    height: 169,
+    weight: 84,
+    problems: "Douleurs bas du dos et posture",
+    history: "Très sédentaire",
+    goals: "Renforcement dos et correction posture",
+    archived: true,
+    bilans: [
+      {
+        id: "5-final",
+        type: "final",
+        height: 169,
+        weight: 77,
+        imc: 23.5,
+        avis: "Posture nettement améliorée, douleurs disparues.",
+        raisonFin: "Disparition symptômes",
+        objectifsconclusion: "Maintien renforcement 2x/semaine",
+        date: "2026-04-18",
+        tests: [
+          {
+            name: "Assis-debout",
+            remarques: "Exécution fluide",
+            results: [
+              { field: "Répétitions", chart: true, value: "20" },
+              { field: "FC initiale", value: "68" },
+              { field: "FC finale", value: "88" },
+              { field: "FC après délai", value: "70" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "5-init",
+        type: "initial",
+        height: 169,
+        weight: 79,
+        imc: 24.4,
+        date: "2026-01-12",
+        tests: [
+          {
+            name: "Assis-debout",
+            remarques: "Raideur dorsale",
+            results: [
+              { field: "Répétitions", chart: true, value: "12" },
+              { field: "FC initiale", value: "72" },
+              { field: "FC finale", value: "98" },
+              { field: "FC après délai", value: "80" },
+            ],
+          },
+        ],
+      },
+    ],
+    logbook: [
+      {
+        content:
+          "Bilan postural effectué. Raideur dorsale notable. Exercices de mobilité introduits.",
+        date: "20 janvier 2026",
+      },
+
+      {
+        content:
+          "Séance renforcement dos et épaules. Patient signale moins de tensions en fin de journée.",
+        date: "10 février 2026",
+      },
+
+      {
+        content:
+          "Correction posturale en nette progression. Douleurs épaules quasi absentes.",
+        date: "15 mars 2026",
+      },
+    ],
   },
 ]

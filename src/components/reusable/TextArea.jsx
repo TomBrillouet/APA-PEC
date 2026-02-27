@@ -7,12 +7,16 @@ export default function TextArea({
   rows,
   className,
   placeholder,
+  value,
+  disabled,
 }) {
   return (
     <InputField className={className}>
       <label>{label}</label>
       <textarea
+        value={value}
         name={name}
+        disabled={disabled}
         placeholder={placeholder}
         rows={rows}
         onChange={onChange}

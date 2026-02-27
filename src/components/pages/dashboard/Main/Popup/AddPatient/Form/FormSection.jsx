@@ -1,11 +1,11 @@
 import styled from "styled-components"
 import TitleSection from "../../../../../../reusable/TitleSection"
 
-export default function FormSection({ label, children }) {
+export default function FormSection({ label, children, block }) {
   return (
     <FormSectionStyled>
       <TitleSection label={label} />
-      <div className="grid">{children}</div>
+      <div className={block ? "block" : "grid"}>{children}</div>
     </FormSectionStyled>
   )
 }

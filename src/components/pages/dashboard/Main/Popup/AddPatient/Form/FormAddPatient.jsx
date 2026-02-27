@@ -5,26 +5,26 @@ import { identityInputs } from "../config/identityInputs.jsx"
 import { contactInputs } from "../config/contactInputs.jsx"
 import { medicArea } from "../config/medicArea.jsx"
 import Input from "../../../../../../reusable/Input.jsx"
-import InputSection from "./InputSection.jsx"
 import IdentityFormSection from "./IdentityFormSection.jsx"
 import TestsFormSection from "./TestsFormSection.jsx"
 import FormBottom from "../footer/FormBottom.jsx"
 import ResultsSection from "./ResultsSection.jsx"
 import { MainContext } from "../../../../../../../context/MainContext.jsx"
-import { useBilanForm } from "../../../../../../../hooks/useBilanForm.jsx"
-import { usePatientForm } from "../../../../../../../hooks/usePatientForm.jsx"
+import { useForm } from "../../../../../../../hooks/useForm.jsx"
+import InputSection from "../../../../../../reusable/InputSection.jsx"
 
 export default function FormAddPatient() {
-  const { toggleAddPatient, addNewPatient } = useContext(MainContext)
-
   const {
+    toggleAddPatient,
+    addNewPatient,
+    bilanData,
+    handleBilanDataChange,
     handleResultChange,
     handleRemarquesChange,
     testsSelectChange,
-    handleBilanDateChange,
-    bilanData,
-  } = useBilanForm()
-  const { inputsValue, sexSelectChange, handleChange } = usePatientForm()
+  } = useContext(MainContext)
+
+  const { inputsValue, sexSelectChange, handleChange } = useForm()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -39,7 +39,6 @@ export default function FormAddPatient() {
         },
       ],
     }
-    console.log(newPatient)
     addNewPatient(newPatient)
     toggleAddPatient()
   }
@@ -73,7 +72,7 @@ export default function FormAddPatient() {
   return (
     <FormAddPatientStyled action="submit" onSubmit={handleSubmit}>
       <Input
-        onChange={handleBilanDateChange}
+        onChange={handleBilanDataChange}
         type={"date"}
         label={"Date du bilan initial"}
         value={bilanData.date}

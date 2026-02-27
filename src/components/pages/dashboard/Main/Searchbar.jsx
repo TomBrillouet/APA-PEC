@@ -1,13 +1,22 @@
+import { CiSearch } from "react-icons/ci"
 import Input from "../../../reusable/Input"
+import styled from "styled-components"
 
 export default function Searchbar({ onChange }) {
   return (
-    <div>
+    <SearchbarStyled>
       <Input
         type={"text"}
         placeholder={"Rechercher un patient..."}
         onChange={onChange}
       />
-    </div>
+      <CiSearch />
+    </SearchbarStyled>
   )
 }
+
+const SearchbarStyled = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`

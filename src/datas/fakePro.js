@@ -1,10 +1,9 @@
 export const fakePro = {
-  lastName: "Page",
-  firstName: "Sibylle",
-  image: "images/biboule.webp",
-  mail: "sibylle.page@gmail.com",
-  phone: "0123456789",
-  website: "url du site https://codicoda.fr",
-  job: "Enseignant en activité physique adaptée (EAPA)",
-  society: "Sibyréeduc ",
+  lastName: "Doe",
+  firstName: "John",
+  mail: "john.doe@gmail.com",
+  phone: "0612345678",
+  website: "https://fraise-moi-rever.vercel.app",
+  job: "Kinésithérapeute",
+  society: "Move with John",
 }
