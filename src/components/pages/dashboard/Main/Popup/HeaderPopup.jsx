@@ -44,6 +44,7 @@ const HeaderPopupStyled = styled.div`
   top: 0;
   background-color: ${theme.colors.white};
   z-index: 1;
+  box-shadow: -1px 4px 20px 0px rgba(0, 0, 0, 0.2);
 
   .back-arrow,
   .close {

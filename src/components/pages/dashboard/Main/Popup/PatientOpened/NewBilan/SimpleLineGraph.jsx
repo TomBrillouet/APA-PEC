@@ -7,6 +7,7 @@ import {
   LineChart,
   Line,
 } from "recharts"
+import { theme } from "../../../../../../../theme"
 export default function SimpleLineGraph({ data, x, y, legend, width }) {
   return (
     <LineChart
@@ -15,7 +16,7 @@ export default function SimpleLineGraph({ data, x, y, legend, width }) {
         maxWidth: width,
         height: "100%",
         maxHeight: "40vh",
-        aspectRatio: 1.618,
+        aspectRatio: 1,
       }}
       responsive
       data={data}
@@ -26,7 +27,7 @@ export default function SimpleLineGraph({ data, x, y, legend, width }) {
         bottom: 5,
       }}
     >
-      <CartesianGrid strokeDasharray="3 3" />
+      <CartesianGrid strokeDasharray="1 1" />
       <XAxis dataKey={x} tick={{ fontSize: 10 }} />
       <YAxis width="auto" dataKey={y} tick={{ fontSize: 10 }} />
       <Tooltip />
@@ -34,8 +35,8 @@ export default function SimpleLineGraph({ data, x, y, legend, width }) {
       <Line
         type="monotone"
         dataKey={y}
-        stroke="#4CAF50"
-        activeDot={{ r: 8 }}
+        stroke={theme.colors.primary}
+        activeDot={{ r: 6 }}
         name={legend}
       />
     </LineChart>

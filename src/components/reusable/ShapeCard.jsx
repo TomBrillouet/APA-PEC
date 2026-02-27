@@ -15,20 +15,20 @@ export default function ShapeCard({ dataShape, labels }) {
           {" "}
           <FaWeightScale />
           <span>
-            {labels.weight} {weight}
+            {labels.weight} <b>{weight}</b>
           </span>
         </div>
         <div>
           {" "}
           <GiBodyHeight />
           <span>
-            {labels.height} {height}
+            {labels.height} <b>{height}</b>
           </span>
         </div>
         <div>
           <IoIosBody />
           <span>
-            {labels.imc} {getImc(weight, height)}
+            {labels.imc} <b>{getImc(weight, height)}</b>
           </span>
         </div>
       </div>
