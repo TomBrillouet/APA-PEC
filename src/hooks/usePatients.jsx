@@ -9,7 +9,6 @@ export const usePatients = () => {
   const addNewPatient = (newPatient) => {
     setPatients((prev) => [newPatient, ...prev])
     toastSuccess("Patient ajouté !")
-    console.log(newPatient)
   }
 
   const updatePatients = (patienToUpdate) => {

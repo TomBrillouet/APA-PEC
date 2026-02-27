@@ -38,7 +38,6 @@ export default function NewBilan() {
       ],
     }
     handleSelectedPatient(patientToUpdate)
-    console.log(patientToUpdate)
     updatePatients(patientToUpdate)
     toggleNewBilan()
   }
