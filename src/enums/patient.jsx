@@ -19,12 +19,12 @@ export const EMPTY_PATIENT = {
 
 export const NEW_BILAN_LABELS = {
   weight: "Dernier poids connu:",
-  height: "Dernière taille connue",
-  imc: "Dernier IMC connu",
+  height: "Dernière taille connue:",
+  imc: "Dernier IMC connu:",
 }
 
 export const BILAN_LABELS = {
   weight: "Poids enregistré:",
-  height: "Taille enregistrée",
-  imc: "IMC calculé",
+  height: "Taille enregistrée:",
+  imc: "IMC calculé:",
 }
