@@ -1,7 +1,5 @@
 import styled from "styled-components"
 import { theme } from "../../../theme"
-import { IoLockClosedOutline } from "react-icons/io5"
-import { GoPerson } from "react-icons/go"
 import { useNavigate } from "react-router"
 import { useState } from "react"
 import {
@@ -9,11 +7,14 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth"
 import { auth } from "../../../api/firebase-config"
+import Input from "../../reusable/Input"
+import { IoMdArrowForward } from "react-icons/io"
+import { inputsLogin } from "./config/inputsLogin"
 
 export default function LoginForm() {
   const [logInputs, setLogInputs] = useState({
-    username: "",
-    password: "",
+    username: "demo@demo.fr",
+    password: "@Demo123",
   })
   const [error, setError] = useState("")
   const [success, setSuccess] = useState("")
@@ -61,6 +62,9 @@ export default function LoginForm() {
       setError("Aucun compte trouvé avec cet email.")
     }
   }
+  const handleChange = (e) => {
+    setLogInputs({ ...logInputs, [e.target.name]: e.target.value })
+  }
   return (
     <LoginFormStyled>
       <div className="form-header">
@@ -68,58 +72,23 @@ export default function LoginForm() {
         <p>Identifiez-vous pour accéder à votre espace</p>
       </div>
       <form onSubmit={handleSubmit}>
-        <div className="input-group">
-          <label htmlFor="username">
-            Identifiant <GoPerson />
-          </label>
-          <input
-            id="username"
-            type="text"
-            autoComplete="username"
-            value={logInputs.username}
-            onChange={(e) =>
-              setLogInputs({ ...logInputs, username: e.target.value })
-            }
-            placeholder="Entrez votre identifiant"
-            required
+        {inputsLogin.map(({ name, ...props }) => (
+          <Input
+            name={name}
+            key={name}
+            {...props}
+            value={logInputs[name]}
+            onChange={handleChange}
           />
-        </div>
-
-        <div className="input-group">
-          <label htmlFor="password">
-            Mot de passe <IoLockClosedOutline />
-          </label>
-          <input
-            id="password"
-            autoComplete="curren-password"
-            type="password"
-            value={logInputs.password}
-            onChange={(e) =>
-              setLogInputs({ ...logInputs, password: e.target.value })
-            }
-            placeholder="Entrez votre mot de passe"
-          />
-        </div>
-
-        <div className="form-options">
-          <a onClick={handleForgotPassword} className="forgot-password">
-            Mot de passe oublié ?
-          </a>
-        </div>
-        <div className="error">{error}</div>
-        <div className="success">{success}</div>
-
+        ))}
+        <a onClick={handleForgotPassword} className="forgot-password">
+          Mot de passe oublié ?
+        </a>
+        {error && <div className="error">{error}</div>}
+        {success && <div className="success">{success}</div>}
         <button type="submit" className="submit-btn">
           <span>Se connecter</span>
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path
-              d="M4 10h12m0 0l-4-4m4 4l-4 4"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <IoMdArrowForward className={"arrow"} />
         </button>
       </form>
     </LoginFormStyled>
@@ -152,84 +121,19 @@ const LoginFormStyled = styled.div`
     flex-direction: column;
     gap: 1.5rem;
 
-    .input-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
+    .forgot-password {
+      color: ${theme.colors.primary};
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
 
-      label {
-        font-size: 0.875rem;
-        font-weight: 600;
-        color: #334155;
-        letter-spacing: 0.3px;
-      }
-
-      input[type="text"],
-      input[type="password"] {
-        padding: 0.875rem 1rem;
-        border: 2px solid #e2e8f0;
-        border-radius: 12px;
-        font-size: 1rem;
-        color: #1e293b;
-        background: white;
-        transition: all 0.2s ease;
-
-        &::placeholder {
-          color: #94a3b8;
-        }
-
-        &:focus {
-          outline: none;
-          border-color: ${theme.colors.primary};
-          box-shadow: 0 0 0 4px ${theme.colors.primary}15;
-          transform: translateY(-1px);
-        }
-
-        &:hover {
-          border-color: #cbd5e1;
-        }
-      }
-    }
-
-    .form-options {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.875rem;
-      margin-top: -0.5rem;
-
-      .remember-me {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
+      &:hover {
+        color: ${theme.colors.primary}dd;
+        text-decoration: underline;
         cursor: pointer;
-        color: #475569;
-
-        input[type="checkbox"] {
-          width: 18px;
-          height: 18px;
-          cursor: pointer;
-          accent-color: ${theme.colors.primary};
-        }
-
-        span {
-          user-select: none;
-        }
-      }
-
-      .forgot-password {
-        color: ${theme.colors.primary};
-        text-decoration: none;
-        font-weight: 600;
-        transition: color 0.2s ease;
-
-        &:hover {
-          color: ${theme.colors.primary}dd;
-          text-decoration: underline;
-          cursor: pointer;
-        }
       }
     }
+
     .error {
       color: red;
     }
@@ -238,11 +142,7 @@ const LoginFormStyled = styled.div`
     }
 
     .submit-btn {
-      background: linear-gradient(
-        135deg,
-        ${theme.colors.primary} 0%,
-        ${theme.colors.primary}dd 100%
-      );
+      background-color: ${theme.colors.primary};
       color: white;
       border: none;
       padding: 1rem 1.5rem;
@@ -251,22 +151,21 @@ const LoginFormStyled = styled.div`
       font-weight: 600;
       cursor: pointer;
       display: flex;
-      align-items: center;
       justify-content: center;
       gap: 0.75rem;
       transition: all 0.3s ease;
       box-shadow: 0 4px 15px ${theme.colors.primary}40;
-      margin-top: 0.5rem;
 
-      svg {
+      .arrow {
         transition: transform 0.3s ease;
+        font-size: 20px;
       }
 
       &:hover {
         transform: translateY(-2px);
         box-shadow: 0 6px 20px ${theme.colors.primary}50;
 
-        svg {
+        .arrow {
           transform: translateX(4px);
         }
       }

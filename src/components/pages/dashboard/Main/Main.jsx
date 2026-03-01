@@ -9,17 +9,16 @@ import { useBilanForm } from "../../../../hooks/useBilanForm.jsx"
 import { theme } from "../../../../theme/index.js"
 import { useParams } from "react-router"
 import { usePopup } from "../../../../hooks/usePopup.jsx"
-import { syncBothPro } from "../../../../api/pro.js"
 import { useAuth } from "../../../../context/AuthContext.jsx"
 import { initialiseUserSession } from "./helpers/initialiseUserSession"
 import Loader from "../../../reusable/Loader.jsx"
+import { usePro } from "../../../../hooks/usePro.jsx"
+import { useSelectedBilan } from "../../../../hooks/useSelectedBilan.jsx"
+import { useSelectedPatient } from "../../../../hooks/useSelectedPatient.jsx"
 
 export default function Main() {
   const { currentUser } = useAuth()
   const userId = currentUser?.uid
-  const [pro, setPro] = useState()
-  const [selectedPatient, setSelectedPatient] = useState(null)
-  const [selectedBilan, setSelectedBilan] = useState(null)
   const [search, setSearch] = useState("")
   const {
     addNewPatient,
@@ -35,7 +34,7 @@ export default function Main() {
     handleRemarquesChange,
     testsSelectChange,
   } = useBilanForm()
-
+  const { pro, setPro, proSubmit } = usePro()
   const {
     toggleProInfo,
     togglePatient,
@@ -46,24 +45,13 @@ export default function Main() {
     isOldBilanOpened,
     popupConfig,
   } = usePopup()
+  const { selectedBilan, handleSelectedBilan } = useSelectedBilan()
+  const { selectedPatient, handleSelectedPatient } = useSelectedPatient()
 
   useEffect(() => {
     if (!userId) return
     initialiseUserSession(userId, setPro, setPatients)
   }, [userId])
-
-  const proSubmit = (newProInfos) => {
-    setPro(newProInfos)
-    syncBothPro(userId, newProInfos)
-  }
-
-  const handleSelectedPatient = (selectedPatient) => {
-    setSelectedPatient(selectedPatient)
-  }
-
-  const handleSelectedBilan = (selectedBilan) => {
-    setSelectedBilan(selectedBilan)
-  }
 
   const { status } = useParams()
   const archived = status === "archived"
