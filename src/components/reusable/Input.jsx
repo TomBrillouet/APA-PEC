@@ -10,11 +10,13 @@ export default function Input({
   className,
   value,
   disabled,
+  autoComplete,
 }) {
   return (
     <InputField className={className}>
       {label && <label>{label}</label>}
       <input
+        autoComplete={autoComplete}
         type={type}
         name={name}
         onChange={onChange}

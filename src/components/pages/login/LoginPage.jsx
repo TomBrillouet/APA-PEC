@@ -1,9 +1,23 @@
 import styled from "styled-components"
 import Aside from "./Aside"
+import { useEffect, useRef } from "react"
+import ModalInfo from "../../reusable/ModalInfo"
 
 export default function LoginPage() {
+  const modal = useRef()
+
+  useEffect(() => {
+    modal.current.showModal()
+  }, [])
+
   return (
     <LoginPageStyled>
+      <ModalInfo
+        ref={modal}
+        text={
+          "L'identifiant et le mot de passe sont pré-remplis pour accéder à la démo."
+        }
+      />
       <Aside />
     </LoginPageStyled>
   )
@@ -19,7 +33,8 @@ const LoginPageStyled = styled.div`
 
   &::before {
     content: "";
-    background: url("/images/login-bg.webp"),
+    background:
+      url("/images/login-bg.webp"),
       linear-gradient(135deg, rgba(30, 29, 39, 0.7), rgba(30, 29, 39, 0.5));
     background-size: contain;
     background-blend-mode: darken;
