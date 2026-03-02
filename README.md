@@ -14,24 +14,6 @@
 
 ---
 
-## Table of Contents
-
-- [About](#about)
-- [Demo](#demo)
-- [Features](#features)
-- [Technologies](#technologies)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Environment Variables](#environment-variables)
-- [Tests](#tests)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
-
----
-
 ## About
 
 **APA-PEC** is a web application designed for physical therapists and adapted physical activity (APA) instructors.
@@ -40,7 +22,7 @@ The application also generates printable reports, facilitating communication bet
 
 ---
 
-## 🚀 Demo
+## Demo
 
 <!-- Ajouter screenshot -->
 
