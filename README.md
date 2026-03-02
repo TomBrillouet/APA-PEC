@@ -40,13 +40,20 @@ The application also generates printable reports, facilitating communication bet
 
 ---
 
-## Demo
+## 🚀 Demo
 
-<!--![Dashboard](lien-vers-image-ou-gif)-->
+<!-- Ajouter screenshot -->
 
-🔗 [Live Demo](https://apa-pec.vercel.app)
+[Live Demo](https://apa-pec.vercel.app)
 
 > ⚠️ The application interface is currently available in French only.
+
+A demo account is available with the following credentials:
+
+| Field    | Value        |
+| -------- | ------------ |
+| Email    | demo@demo.fr |
+| Password | @Demo123     |
 
 ---
 
