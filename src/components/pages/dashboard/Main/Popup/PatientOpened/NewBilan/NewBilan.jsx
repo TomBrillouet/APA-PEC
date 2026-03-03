@@ -1,6 +1,5 @@
 import { useContext, useRef, useState } from "react"
 import { MainContext } from "../../../../../../../context/MainContext"
-import styled from "styled-components"
 import GraphResults from "./GraphResults.jsx"
 import BilanForm from "./BilanForm/BilanForm.jsx"
 import Button from "../../../../../../reusable/Button.jsx"
@@ -51,7 +50,7 @@ export default function NewBilan() {
   }
 
   return (
-    <NewBilanStyled>
+    <div>
       <BilanForm
         ref={datasToSubmit}
         selectedPatient={selectedPatient}
@@ -73,13 +72,6 @@ export default function NewBilan() {
         }
         version="submit"
       />
-    </NewBilanStyled>
+    </div>
   )
 }
-
-const NewBilanStyled = styled.div`
-  display: flex;
-  padding: 30px;
-  flex-direction: column;
-  gap: 20px;
-`

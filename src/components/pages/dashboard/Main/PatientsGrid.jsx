@@ -37,4 +37,8 @@ const PatientsGridStyled = styled.div`
   gap: 16px;
   padding: 24px;
   min-height: 71%;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  }
 `

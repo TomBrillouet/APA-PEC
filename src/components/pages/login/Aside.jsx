@@ -17,8 +17,7 @@ const AsideStyled = styled.aside`
   position: relative;
   z-index: 1;
   height: 100vh;
-  width: 100%;
-  max-width: 25vw;
+  width: 25%;
   background: linear-gradient(165deg, #ffffff 0%, #f8f9fa 100%);
   padding: 0 2rem;
   display: flex;
@@ -27,7 +26,7 @@ const AsideStyled = styled.aside`
   box-shadow: inset 0px -6px 20px 4px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 768px) {
-    max-width: 100%;
+    width: 100%;
   }
 
   .tagline {
