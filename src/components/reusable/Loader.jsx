@@ -13,4 +13,5 @@ const LoaderStyled = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
+  transform: translateX(-50%);
 `

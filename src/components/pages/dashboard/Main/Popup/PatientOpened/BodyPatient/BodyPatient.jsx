@@ -53,11 +53,6 @@ export default function BodyPatient() {
 }
 
 const BodyPatientStyled = styled.div`
-  display: flex;
-  padding: 25px;
-  flex-direction: column;
-  gap: 15px;
-
   .contact-buttons,
   .logbook-buttons {
     display: flex;

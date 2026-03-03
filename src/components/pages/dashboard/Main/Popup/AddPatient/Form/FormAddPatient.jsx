@@ -70,7 +70,7 @@ export default function FormAddPatient() {
     ))
 
   return (
-    <FormAddPatientStyled action="submit" onSubmit={handleSubmit}>
+    <form action="submit" onSubmit={handleSubmit}>
       <Input
         onChange={handleBilanDataChange}
         type={"date"}
@@ -94,13 +94,6 @@ export default function FormAddPatient() {
         onRemarquesChange={handleRemarquesChange}
       />
       <FormBottom />
-    </FormAddPatientStyled>
+    </form>
   )
 }
-
-const FormAddPatientStyled = styled.form`
-  padding: 8px 28px 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-`

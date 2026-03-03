@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { navItems } from "./navItems.jsx"
 import NavItem from "./NavItem"
 
-export default function BodyMenu() {
+export default function BodyMenu({ onClick }) {
   return (
     <BodyMenuStyled>
       {navItems.map((navItem) => {
@@ -12,6 +12,7 @@ export default function BodyMenu() {
             label={navItem.label}
             key={navItem.label}
             to={navItem.path}
+            onClick={onClick}
           />
         )
       })}

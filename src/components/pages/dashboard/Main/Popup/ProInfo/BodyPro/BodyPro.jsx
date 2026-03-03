@@ -42,10 +42,6 @@ export default function BodyPro() {
 }
 
 const BodyProStyled = styled.div`
-  padding: 8px 28px 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
   .inputs {
     display: flex;
     flex-direction: column;

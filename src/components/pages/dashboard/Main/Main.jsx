@@ -137,10 +137,15 @@ const MainStyled = styled.main`
     z-index: 1;
     background-color: #1e2a3878;
   }
-
   .main-background {
     padding: 28px 32px;
     flex: 1;
     box-shadow: inset 0 12px 16px rgba(0, 0, 0, 0.09);
+  }
+
+  @media screen and (max-width: 768px) {
+    .main-background {
+      padding: 14px;
+    }
   }
 `

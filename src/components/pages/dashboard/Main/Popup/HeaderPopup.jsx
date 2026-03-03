@@ -70,4 +70,13 @@ const HeaderPopupStyled = styled.div`
     color: #1a3a5c;
     letter-spacing: 0.01em;
   }
+
+  @media screen and (max-width: 768px) {
+    padding: 14px;
+
+    h2 {
+      font-size: 16px;
+      text-align: center;
+    }
+  }
 `

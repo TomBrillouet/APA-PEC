@@ -6,7 +6,7 @@ export default function Popup({ children }) {
 }
 
 const PopupStyled = styled.div`
-  position: absolute;
+  position: fixed;
   top: 5%;
   max-height: 90%;
   left: 17%;
@@ -18,7 +18,17 @@ const PopupStyled = styled.div`
   overflow-y: auto;
   scrollbar-color: grey transparent;
 
+  > :nth-child(2) {
+    padding: 8px 28px 28px;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
   @media (max-width: 768px) {
     left: 11%;
+    > :nth-child(2) {
+      padding: 16px;
+    }
   }
 `

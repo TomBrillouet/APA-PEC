@@ -2,7 +2,6 @@ import { useContext } from "react"
 import { MainContext } from "../../../../../../../context/MainContext"
 import BilanDate from "../NewBilan/BilanForm/bilanSection/BilanDate.jsx"
 import ResultsSection from "../../AddPatient/Form/ResultsSection.jsx"
-import styled from "styled-components"
 import FinalSection from "../NewBilan/BilanForm/questionsSection/FinalSection.jsx"
 import { medicArea } from "../../AddPatient/config/medicArea.jsx"
 import TextArea from "../../../../../../reusable/TextArea.jsx"
@@ -47,7 +46,7 @@ export default function OldBilan() {
   }
 
   return (
-    <OldBilanStyled>
+    <div>
       <h2 className="type-bilan">Bilan {selectedBilan?.type}</h2>
       <BilanDate bilanData={selectedBilan} disabled />
       <ShapeCard dataShape={selectedBilan} labels={BILAN_LABELS} />
@@ -57,13 +56,6 @@ export default function OldBilan() {
         selectedBilan={selectedBilan}
         SectionBilanType={SectionBilanType}
       />
-    </OldBilanStyled>
+    </div>
   )
 }
-
-const OldBilanStyled = styled.div`
-  display: flex;
-  padding: 30px;
-  flex-direction: column;
-  gap: 20px;
-`
