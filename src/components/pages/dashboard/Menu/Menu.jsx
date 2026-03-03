@@ -48,6 +48,7 @@ const MenuStyled = styled.aside`
   position: sticky;
   top: 0;
   height: 100vh;
+  height: -webkit-fill-available;
 
   .logo {
     white-space: nowrap;
