@@ -7,7 +7,7 @@ export default function TopMainBar({ onChange, onClick, archived }) {
   return (
     <TopMainBarStyled>
       <SectionTitle
-        label={`Prise en charge ${archived ? "terminée" : "en cours"}`}
+        label={`Prises en charge ${archived ? "terminées" : "en cours"}`}
       />
       <Searchbar onChange={onChange} />
       <Button label={"Ajouter un patient"} onClick={onClick} />
