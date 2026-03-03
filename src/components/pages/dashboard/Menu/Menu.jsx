@@ -48,7 +48,6 @@ const MenuStyled = styled.aside`
   position: sticky;
   top: 0;
   height: 100vh;
-  height: -webkit-fill-available;
 
   .logo {
     white-space: nowrap;
@@ -62,6 +61,10 @@ const MenuStyled = styled.aside`
   @media screen and (max-width: 768px) {
     min-width: 100%;
     position: fixed;
+    height: 100vh;
+    height: -webkit-fill-available;
+    height: 100dvh;
+    overflow-y: auto;
     transform: translateX(-100%);
     opacity: 0;
     &.open {
