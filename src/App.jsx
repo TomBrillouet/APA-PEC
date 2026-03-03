@@ -5,6 +5,7 @@ import Dashboard from "./components/pages/dashboard/Dashboard"
 import Stats from "./components/pages/dashboard/stats/Stats"
 import { useAuth } from "./context/AuthContext"
 import Loader from "./components/reusable/Loader"
+import Tests from "./components/pages/dashboard/tests/Tests"
 
 export default function App() {
   const { currentUser, loading } = useAuth()
@@ -20,6 +21,7 @@ export default function App() {
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/dashboard/:status" element={<Dashboard />} />
       <Route path="/stats" element={<Stats />} />
+      <Route path="/tests" element={<Tests />} />
       <Route path="*" element={<ErrorPage />} />
     </Routes>
   )
