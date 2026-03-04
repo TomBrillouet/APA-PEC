@@ -6,7 +6,7 @@ import { MdOutlineSettingsInputComposite } from "react-icons/md"
 export const navItems = [
   { label: "Mes patients", icon: <IoMdHome />, path: "/dashboard" },
   {
-    label: "PEC terminées",
+    label: "Anciens patients",
     icon: <AiOutlineFileDone />,
     path: "/dashboard/archived",
   },
