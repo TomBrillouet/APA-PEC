@@ -41,6 +41,11 @@ export default function Tests() {
     toastInfo("Le test n'a pas été modifié")
   }
 
+  const handleTestDelete = (idToDelete) => {
+    const listFiltered = listTests.filter((test) => test.id !== idToDelete)
+    setListTests(listFiltered)
+  }
+
   return (
     <TestsStyled>
       <Menu />
@@ -49,8 +54,10 @@ export default function Tests() {
           <Button label={"Ajouter un test"} />
           <ListWithButton
             buttonLabel={"Modifier"}
+            secondButtonLabel={"Supprimer"}
             datas={listTests}
             onClick={handleOpenTest}
+            onClickSecondButton={handleTestDelete}
             renderItem={(test) => <>{test.name}</>}
           />
         </div>

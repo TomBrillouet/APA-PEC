@@ -6,6 +6,8 @@ export default function ListWithButton({
   onClick,
   buttonLabel,
   renderItem,
+  secondButtonLabel,
+  onClickSecondButton,
 }) {
   return (
     <ListWithButtonStyled>
@@ -18,6 +20,13 @@ export default function ListWithButton({
               onClick={() => onClick(item)}
               version="minimalist"
             />
+            {secondButtonLabel && onClickSecondButton && (
+              <Button
+                label={secondButtonLabel}
+                onClick={() => onClickSecondButton(item.id)}
+                version="minimalistred"
+              />
+            )}
           </li>
         )
       })}

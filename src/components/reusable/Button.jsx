@@ -104,10 +104,26 @@ const extraStyleMinimalist = css`
   }
 `
 
+const extraStyleMinimalistred = css`
+  padding: 0 10px;
+  font-size: 12px;
+  font-weight: 600;
+  background: transparent;
+  border: 1.5px solid #c75b58;
+  color: #c75b58;
+  &:not(:disabled):hover {
+    background: #a64b481c;
+  }
+  &:not(:disabled):active {
+    background: transparent;
+  }
+`
+
 const extraStyle = {
   cancel: extraStyleCancel,
   submit: extraStyleSubmit,
   primary: extraStylePrimary,
   red: extraStyleRed,
   minimalist: extraStyleMinimalist,
+  minimalistred: extraStyleMinimalistred,
 }
