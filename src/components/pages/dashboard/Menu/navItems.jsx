@@ -11,5 +11,9 @@ export const navItems = [
     path: "/dashboard/archived",
   },
   { label: "Stats", icon: <IoStatsChartOutline />, path: "/stats" },
-  { label: "Tests", icon: <MdOutlineSettingsInputComposite />, path: "/tests" },
+  {
+    label: "Configuration des tests",
+    icon: <MdOutlineSettingsInputComposite />,
+    path: "/tests",
+  },
 ]

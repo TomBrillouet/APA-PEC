@@ -2,10 +2,10 @@ import { Navigate, Route, Routes } from "react-router"
 import ErrorPage from "./components/pages/error/ErrorPage"
 import LoginPage from "./components/pages/login/LoginPage"
 import Dashboard from "./components/pages/dashboard/Dashboard"
-import Stats from "./components/pages/dashboard/stats/Stats"
 import { useAuth } from "./context/AuthContext"
 import Loader from "./components/reusable/Loader"
-import Tests from "./components/pages/dashboard/tests/Tests"
+import Stats from "./components/pages/dashboard/Stats/Stats"
+import Tests from "./components/pages/dashboard/Tests/Tests"
 
 export default function App() {
   const { currentUser, loading } = useAuth()
