@@ -5,6 +5,7 @@ import { theme } from "../../../../../theme"
 import Button from "../../../../reusable/Button"
 import { MdOutlineDeleteOutline } from "react-icons/md"
 import GeneralTestSection from "./GeneralTestSection"
+import ResultsTestSection from "./ResultsTestSection"
 
 export default function TestForm({
   testSelected,
@@ -26,34 +27,11 @@ export default function TestForm({
         handleChange={handleChange}
       />
       <hr />
-      {inputsValue.results.map((result, index) => {
-        return (
-          <div className="result" key={index}>
-            <MdOutlineDeleteOutline
-              className="delete-icon"
-              onClick={() => handleDeleteTest(index)}
-            />
-            <Input
-              name={"field"}
-              label={"Nom du résultat"}
-              value={result.field}
-              onChange={(e) => handleChange(e, index)}
-              type={"text"}
-              required={result.field === "" ? true : false}
-            />
-            <div>
-              <input
-                type="checkbox"
-                name="chart"
-                value={result.chart}
-                checked={result.chart}
-                onChange={(e) => handleChange(e, index)}
-              />
-              <label htmlFor="chart">Avec graphique</label>
-            </div>
-          </div>
-        )
-      })}
+      <ResultsTestSection
+        handleChange={handleChange}
+        handleDeleteTest={handleDeleteTest}
+        inputsValue={inputsValue}
+      />
       <Button
         label={"Ajouter un résultats attendu"}
         onClick={(e) => handleAddNewResult(e)}
@@ -72,17 +50,4 @@ const TestFormStyled = styled.form`
   flex-direction: column;
   padding: 30px;
   gap: 1em;
-
-  .result {
-    display: flex;
-    align-items: flex-end;
-    gap: 1em;
-    .delete-icon {
-      font-size: 25px;
-      cursor: pointer;
-      &:hover {
-        color: #c75b58;
-      }
-    }
-  }
 `
