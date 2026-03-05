@@ -1,4 +1,3 @@
-import styled from "styled-components"
 import TextArea from "../../../../../../reusable/TextArea.jsx"
 import { useContext } from "react"
 import { identityInputs } from "../config/identityInputs.jsx"
@@ -12,6 +11,7 @@ import ResultsSection from "./ResultsSection.jsx"
 import { MainContext } from "../../../../../../../context/MainContext.jsx"
 import { useForm } from "../../../../../../../hooks/useForm.jsx"
 import InputSection from "../../../../../../reusable/InputSection.jsx"
+import { EMPTY_PATIENT } from "../../../../../../../enums/patient.jsx"
 
 export default function FormAddPatient() {
   const {
@@ -24,7 +24,7 @@ export default function FormAddPatient() {
     testsSelectChange,
   } = useContext(MainContext)
 
-  const { inputsValue, sexSelectChange, handleChange } = useForm()
+  const { inputsValue, sexSelectChange, handleChange } = useForm(EMPTY_PATIENT)
 
   const handleSubmit = (e) => {
     e.preventDefault()
