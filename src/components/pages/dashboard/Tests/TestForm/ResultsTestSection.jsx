@@ -20,7 +20,7 @@ export default function ResultsTestSection({
           value={result.field}
           onChange={(e) => handleChange(e, index)}
           type={"text"}
-          required={result.field === "" ? true : false}
+          isRequired={result.field === ""}
         />
         <div>
           <input
