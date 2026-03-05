@@ -6,6 +6,7 @@ import Button from "../../../../reusable/Button"
 import { MdOutlineDeleteOutline } from "react-icons/md"
 import GeneralTestSection from "./GeneralTestSection"
 import ResultsTestSection from "./ResultsTestSection"
+import ActionTestSection from "./ActionTestSection"
 
 export default function TestForm({
   testSelected,
@@ -32,13 +33,10 @@ export default function TestForm({
         handleDeleteTest={handleDeleteTest}
         inputsValue={inputsValue}
       />
-      <Button
-        label={"Ajouter un résultats attendu"}
-        onClick={(e) => handleAddNewResult(e)}
-        version="cancel"
+      <ActionTestSection
+        handleAddNewResult={handleAddNewResult}
+        handleCancel={handleCancel}
       />
-      <Button label={"Enregistrer"} version="submit" type="submit" />
-      <Button label={"Annuler"} onClick={handleCancel} version={"red"} />
     </TestFormStyled>
   )
 }
