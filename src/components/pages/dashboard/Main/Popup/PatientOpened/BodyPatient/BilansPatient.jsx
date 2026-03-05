@@ -3,6 +3,7 @@ import { dateFr } from "../../../../../../../utils/math"
 import { MainContext } from "../../../../../../../context/MainContext"
 import { useContext } from "react"
 import Button from "../../../../../../reusable/Button"
+import ListWithButton from "../../../../../../reusable/ListWithButton"
 
 export default function BilansPatient({ selectedPatient }) {
   const { toggleOldBilan, handleSelectedBilan, toggleNewBilan } =
@@ -15,23 +16,17 @@ export default function BilansPatient({ selectedPatient }) {
 
   return (
     <BilansPatientStyled>
-      <ul>
-        {selectedPatient.bilans.map((bilan) => {
-          return (
-            <li key={bilan.id}>
-              <span>
-                Bilan <BilanType type={bilan.type}>{bilan.type}</BilanType> -{" "}
-                {dateFr(bilan.date)}
-              </span>
-              <Button
-                label={"Ouvrir"}
-                onClick={() => handleOpenBilan(bilan)}
-                version="minimalist"
-              />
-            </li>
-          )
-        })}
-      </ul>
+      <ListWithButton
+        buttonLabel={"Ouvrir"}
+        datas={selectedPatient.bilans}
+        onClick={handleOpenBilan}
+        renderItem={(bilan) => (
+          <>
+            Bilan <BilanType type={bilan.type}>{bilan.type}</BilanType> -{" "}
+            {dateFr(bilan.date)}
+          </>
+        )}
+      />
       <Button
         onClick={toggleNewBilan}
         label={"Faire un bilan"}
@@ -47,32 +42,8 @@ const BilansPatientStyled = styled.div`
   align-items: flex-start;
   max-width: 500px;
 
-  ul {
-    display: inline-block;
-    list-style-type: disclosure-closed;
-    li {
-      button {
-        margin-left: 10px;
-      }
-    }
-  }
-
   @media screen and (min-width: 768px) {
     margin-top: -6em;
-  }
-
-  @media screen and (max-width: 768px) {
-    ul {
-      list-style: none;
-      padding: 0;
-      li {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 4px;
-        margin-bottom: 5px;
-      }
-    }
   }
 `
 
