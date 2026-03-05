@@ -13,6 +13,7 @@ import {
 } from "../../../../datas/toastmessages"
 
 import TestForm from "./TestForm/TestForm.jsx"
+import { EMPTY_TEST } from "../../../../enums/test.jsx"
 
 export default function Tests() {
   const [listTests, setListTests] = useState(tests)
@@ -44,6 +45,14 @@ export default function Tests() {
   const handleTestDelete = (idToDelete) => {
     const listFiltered = listTests.filter((test) => test.id !== idToDelete)
     setListTests(listFiltered)
+    toastInfo("Le test a été supprimé")
+  }
+
+  const handleAddTest = () => {
+    const newTest = EMPTY_TEST
+    const listUpdated = [...listTests, newTest]
+    setTestSelected(newTest)
+    setListTests(listUpdated)
   }
 
   return (
@@ -51,7 +60,7 @@ export default function Tests() {
       <Menu />
       {!testSelected ? (
         <div className="main-test">
-          <Button label={"Ajouter un test"} />
+          <Button label={"Ajouter un test"} onClick={handleAddTest} />
           <ListWithButton
             buttonLabel={"Modifier"}
             secondButtonLabel={"Supprimer"}
