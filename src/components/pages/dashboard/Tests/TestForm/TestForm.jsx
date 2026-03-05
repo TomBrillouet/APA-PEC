@@ -1,10 +1,10 @@
 import styled from "styled-components"
-import { useForm } from "../../../../hooks/useForm"
-import Input from "../../../reusable/Input"
-import TextArea from "../../../reusable/TextArea"
-import { theme } from "../../../../theme"
-import Button from "../../../reusable/Button"
+import { useForm } from "../../../../../hooks/useForm"
+import Input from "../../../../reusable/Input"
+import { theme } from "../../../../../theme"
+import Button from "../../../../reusable/Button"
 import { MdOutlineDeleteOutline } from "react-icons/md"
+import GeneralTestSection from "./GeneralTestSection"
 
 export default function TestForm({
   testSelected,
@@ -21,18 +21,9 @@ export default function TestForm({
 
   return (
     <TestFormStyled onSubmit={(e) => handleChangeTest(e, inputsValue)}>
-      <Input
-        name={"name"}
-        label={"Nom du test"}
-        type={"text"}
-        value={inputsValue.name}
-        onChange={handleChange}
-      />
-      <TextArea
-        name={"description"}
-        label={"Description"}
-        value={inputsValue.description}
-        onChange={handleChange}
+      <GeneralTestSection
+        inputsValue={inputsValue}
+        handleChange={handleChange}
       />
       <hr />
       {inputsValue.results.map((result, index) => {

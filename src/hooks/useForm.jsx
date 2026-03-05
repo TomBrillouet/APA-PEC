@@ -51,7 +51,7 @@ export const useForm = (initialValues) => {
     setInputsValue((prev) => {
       return {
         ...prev,
-        results: prev.results.filter((result, i) => i !== index),
+        results: prev.results.filter((_, i) => i !== index),
       }
     })
   }

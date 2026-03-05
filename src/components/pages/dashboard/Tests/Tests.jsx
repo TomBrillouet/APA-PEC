@@ -12,7 +12,7 @@ import {
   toastSuccess,
 } from "../../../../datas/toastmessages"
 
-import TestForm from "./TestForm.jsx"
+import TestForm from "./TestForm/TestForm.jsx"
 
 export default function Tests() {
   const [listTests, setListTests] = useState(tests)
@@ -24,12 +24,10 @@ export default function Tests() {
 
   const handleChangeTest = (e, testChanged) => {
     e.preventDefault()
-    const oldTest = listTests.find((test) => test.name === testChanged.name)
+    const oldTest = listTests.find((test) => test.id === testChanged.id)
     if (oldTest !== testChanged) {
       setListTests((prev) =>
-        prev.map((test) =>
-          test.name === testChanged.name ? testChanged : test,
-        ),
+        prev.map((test) => (test.id === testChanged.id ? testChanged : test)),
       )
       toastSuccess("Le test a été modifié")
       setTestSelected()

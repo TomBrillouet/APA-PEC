@@ -1,5 +1,6 @@
 export const tests = [
   {
+    id: "1",
     name: "Assis-debout",
     description: "Evaluer la forme des membres inférieurs",
     results: [
@@ -13,6 +14,7 @@ export const tests = [
     ],
   },
   {
+    id: "2",
     name: "Test d'équilibre unipodal",
     description: "Evaluer la forme des membres inférieurs",
     results: [
