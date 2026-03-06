@@ -31,7 +31,7 @@ export default function Menu() {
         className={menuClass}
       />
       <MenuStyled className={menuClass}>
-        <Logo className={"logo"} />
+        <Logo />
         <BodyMenu onClick={() => toggleMenu()} />
         <BottomMenu />
       </MenuStyled>
@@ -48,6 +48,7 @@ const MenuStyled = styled.aside`
   position: sticky;
   top: 0;
   height: 100vh;
+  gap: 2em;
 
   .logo {
     white-space: nowrap;

@@ -52,7 +52,7 @@ const PatientCardStyled = styled.div`
     top: 10px;
     right: 10px;
     font-size: 12px;
-    background-color: red;
+    background-color: #e3534e;
     color: white;
     border-radius: 8px;
     padding: 0 7px;
