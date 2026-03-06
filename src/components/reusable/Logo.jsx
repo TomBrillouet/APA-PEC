@@ -9,11 +9,12 @@ export default function Logo() {
 }
 
 const LogoStyled = styled.div`
-  height: 90px;
-  display: flex;
-  justify-content: center;
+  height: 130px;
+  width: 200px;
+  align-self: center;
   overflow: hidden;
   img {
-    transform: scale(2.5);
+    height: 100%;
+    width: 100%;
   }
 `
