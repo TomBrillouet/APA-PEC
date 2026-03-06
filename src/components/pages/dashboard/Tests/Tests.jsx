@@ -25,7 +25,7 @@ export default function Tests() {
       {!testSelected ? (
         <div className="background">
           <div className="main-test">
-            <h2>Liste des tests</h2>
+            <h2>Liste des tests et protocoles normés</h2>
             <ListWithButton
               buttonLabel={"Modifier"}
               secondButtonLabel={"Supprimer"}
