@@ -10,22 +10,26 @@ import {
 } from "recharts"
 import { theme } from "../../../../../../../theme"
 import { memo } from "react"
-function SimpleLineGraph({ data, x, y, legend }) {
+function SimpleLineGraph({ data, y, legend }) {
   return (
     <ResponsiveContainer width="100%" height={300}>
       <LineChart
         data={data}
         margin={{
-          top: 5,
+          top: 10,
           right: 0,
           left: 0,
-          bottom: 5,
+          bottom: 60,
         }}
       >
         <CartesianGrid strokeDasharray="1 1" />
-        <XAxis dataKey={x} tick={{ fontSize: 10 }} />
+        <XAxis
+          dataKey="index"
+          tick={{ fontSize: 10 }}
+          tickFormatter={(value) => data[value].date}
+        />
         <YAxis width={30} dataKey={y} tick={{ fontSize: 10 }} />
-        <Tooltip />
+        <Tooltip labelFormatter={(value) => data[value].date} />
         <Legend />
         <Line
           type="monotone"
