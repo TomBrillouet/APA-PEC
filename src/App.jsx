@@ -9,8 +9,8 @@ import Tests from "./components/pages/dashboard/Tests/Tests"
 
 export default function App() {
   const { currentUser, loading } = useAuth()
-  if (loading) return <Loader />
 
+  if (loading) return <Loader />
   return (
     <Routes>
       <Route

@@ -2,73 +2,44 @@ import styled from "styled-components"
 import Menu from "../Menu/Menu"
 import Toast from "../Toast.jsx"
 import { theme } from "../../../../theme"
-import { useState } from "react"
 import Button from "../../../reusable/Button.jsx"
-import { tests } from "../../../../datas/tests"
 import ListWithButton from "../../../reusable/ListWithButton.jsx"
-import {
-  toastError,
-  toastInfo,
-  toastSuccess,
-} from "../../../../datas/toastmessages"
-
 import TestForm from "./TestForm/TestForm.jsx"
-import { EMPTY_TEST } from "../../../../enums/test.jsx"
+import { useTests } from "../../../../hooks/useTests.jsx"
+import Loader from "../../../reusable/Loader.jsx"
 
 export default function Tests() {
-  const [listTests, setListTests] = useState(tests)
-  const [testSelected, setTestSelected] = useState()
-
-  const handleOpenTest = (test) => {
-    setTestSelected(test)
-  }
-
-  const handleChangeTest = (e, testChanged) => {
-    e.preventDefault()
-    const oldTest = listTests.find((test) => test.id === testChanged.id)
-    if (oldTest !== testChanged) {
-      setListTests((prev) =>
-        prev.map((test) => (test.id === testChanged.id ? testChanged : test)),
-      )
-      toastSuccess("Le test a été modifié")
-      setTestSelected()
-      return
-    }
-    toastError("Aucune valeur n'a été modifiée")
-  }
-
-  const handleCancel = () => {
-    setTestSelected()
-    toastInfo("Le test n'a pas été modifié")
-  }
-
-  const handleTestDelete = (idToDelete) => {
-    const listFiltered = listTests.filter((test) => test.id !== idToDelete)
-    setListTests(listFiltered)
-    toastInfo("Le test a été supprimé")
-  }
-
-  const handleAddTest = () => {
-    const newTest = EMPTY_TEST
-    const listUpdated = [...listTests, newTest]
-    setTestSelected(newTest)
-    setListTests(listUpdated)
-  }
-
+  const {
+    handleAddTest,
+    handleCancel,
+    handleChangeTest,
+    handleOpenTest,
+    handleTestDelete,
+    listTests,
+    testSelected,
+  } = useTests()
+  if (!listTests) return <Loader />
   return (
     <TestsStyled>
       <Menu />
       {!testSelected ? (
-        <div className="main-test">
-          <Button label={"Ajouter un test"} onClick={handleAddTest} />
-          <ListWithButton
-            buttonLabel={"Modifier"}
-            secondButtonLabel={"Supprimer"}
-            datas={listTests}
-            onClick={handleOpenTest}
-            onClickSecondButton={handleTestDelete}
-            renderItem={(test) => <>{test.name}</>}
-          />
+        <div className="background">
+          <div className="main-test">
+            <h2>Liste des tests</h2>
+            <ListWithButton
+              buttonLabel={"Modifier"}
+              secondButtonLabel={"Supprimer"}
+              datas={listTests}
+              onClick={handleOpenTest}
+              onClickSecondButton={handleTestDelete}
+              renderItem={(test) => <>{test.name}</>}
+            />
+            <Button
+              label={"Ajouter un test"}
+              onClick={handleAddTest}
+              className={"add-test"}
+            />
+          </div>
         </div>
       ) : (
         <TestForm
@@ -85,10 +56,23 @@ export default function Tests() {
 const TestsStyled = styled.div`
   display: flex;
   min-height: 100vh;
-  .main-test {
+  .background {
     background-color: ${theme.colors.background};
     flex: 1;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+    .main-test {
+      background-color: ${theme.colors.white};
+      display: flex;
+      flex: 1;
+      padding: 30px;
+      flex-direction: column;
+      align-items: flex-start;
+      border-radius: 8px;
+      .add-test {
+        align-self: flex-end;
+      }
+    }
   }
 `
