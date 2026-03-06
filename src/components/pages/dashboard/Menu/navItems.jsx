@@ -10,10 +10,10 @@ export const navItems = [
     icon: <AiOutlineFileDone />,
     path: "/dashboard/archived",
   },
-  { label: "Stats", icon: <IoStatsChartOutline />, path: "/stats" },
   {
     label: "Configuration des tests",
     icon: <MdOutlineSettingsInputComposite />,
     path: "/tests",
   },
+  { label: "Stats", icon: <IoStatsChartOutline />, path: "/stats" },
 ]
