@@ -1,18 +1,20 @@
-export const tests = [
+export const fakeTests = [
   {
+    id: "1",
     name: "Assis-debout",
     description: "Evaluer la forme des membres inférieurs",
     results: [
-      { field: "FC initiale", value: null },
-      { field: "Sat initiale", value: null },
+      { field: "FC initiale", chart: false, value: null },
+      { field: "Sat initiale", chart: false, value: null },
       { field: "Répétitions", chart: true, value: null },
-      { field: "FC post", value: null },
-      { field: "Sat post", value: null },
-      { field: "FC post +2min", value: null },
-      { field: "Sat post +2min", value: null },
+      { field: "FC post", chart: false, value: null },
+      { field: "Sat post", chart: false, value: null },
+      { field: "FC post +2min", chart: false, value: null },
+      { field: "Sat post +2min", chart: false, value: null },
     ],
   },
   {
+    id: "2",
     name: "Test d'équilibre unipodal",
     description: "Evaluer la forme des membres inférieurs",
     results: [

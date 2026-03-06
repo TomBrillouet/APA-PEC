@@ -23,6 +23,8 @@ export default function NewShapeValues({
             onChange={handleChangeBoth}
             isRequired={input.isRequired}
             placeholder={input.placeholder}
+            min={input.min}
+            max={input.max}
           />
         )
       }

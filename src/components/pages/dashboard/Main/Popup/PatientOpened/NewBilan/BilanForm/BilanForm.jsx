@@ -10,29 +10,35 @@ import ResultsSection from "../../../AddPatient/Form/ResultsSection.jsx"
 import BilanDate from "./bilanSection/BilanDate.jsx"
 import TypeOfBilanSection from "./bilanSection/TypeOfBilanSection.jsx"
 import { useForm } from "../../../../../../../../hooks/useForm.jsx"
-import { forwardRef, useImperativeHandle } from "react"
+import { forwardRef, useCallback, useImperativeHandle } from "react"
 import { NEW_BILAN_LABELS } from "../../../../../../../../enums/patient.jsx"
 import ShapeCard from "../../../../../../../reusable/ShapeCard.jsx"
+import { useTests } from "../../../../../../../../hooks/useTests.jsx"
 
 const BilanForm = forwardRef(
   ({ selectedPatient, handleChangeIsFinal, isFinal, onTestsChange }, ref) => {
     const { inputsValue, handleChange } = useForm(selectedPatient)
+    const { listTests } = useTests()
     const {
       bilanData,
       handleBilanDataChange,
       testsSelectChange,
       handleResultChange,
       handleRemarquesChange,
-    } = useBilanForm(selectedPatient?.bilans[0]?.tests)
+    } = useBilanForm(selectedPatient?.bilans[0]?.tests, listTests)
 
     useImperativeHandle(ref, () => ({
       getData: () => ({ bilanData, inputsValue }),
     }))
 
-    const handleTestsChange = (newTests) => {
-      testsSelectChange(newTests)
-      onTestsChange(newTests)
-    }
+    const handleTestsChange = useCallback(
+      (newTests) => {
+        testsSelectChange(newTests)
+        onTestsChange(newTests)
+      },
+      [testsSelectChange, onTestsChange],
+    )
+
     const mapTextAreas = (array) =>
       array.map((textarea) => {
         return (

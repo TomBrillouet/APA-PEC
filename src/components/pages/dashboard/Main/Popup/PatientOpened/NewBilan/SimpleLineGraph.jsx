@@ -6,39 +6,41 @@ import {
   Legend,
   LineChart,
   Line,
+  ResponsiveContainer,
 } from "recharts"
 import { theme } from "../../../../../../../theme"
-export default function SimpleLineGraph({ data, x, y, legend, width }) {
+import { memo } from "react"
+function SimpleLineGraph({ data, y, legend }) {
   return (
-    <LineChart
-      style={{
-        width: "100%",
-        maxWidth: width,
-        height: "100%",
-        maxHeight: "40vh",
-        aspectRatio: 1,
-      }}
-      responsive
-      data={data}
-      margin={{
-        top: 5,
-        right: 0,
-        left: 0,
-        bottom: 5,
-      }}
-    >
-      <CartesianGrid strokeDasharray="1 1" />
-      <XAxis dataKey={x} tick={{ fontSize: 10 }} />
-      <YAxis width="auto" dataKey={y} tick={{ fontSize: 10 }} />
-      <Tooltip />
-      <Legend />
-      <Line
-        type="monotone"
-        dataKey={y}
-        stroke={theme.colors.primary}
-        activeDot={{ r: 6 }}
-        name={legend}
-      />
-    </LineChart>
+    <ResponsiveContainer width="100%" height={300}>
+      <LineChart
+        data={data}
+        margin={{
+          top: 10,
+          right: 0,
+          left: 0,
+          bottom: 60,
+        }}
+      >
+        <CartesianGrid strokeDasharray="1 1" />
+        <XAxis
+          dataKey="index"
+          tick={{ fontSize: 10 }}
+          tickFormatter={(value) => data[value].date}
+        />
+        <YAxis width={30} dataKey={y} tick={{ fontSize: 10 }} />
+        <Tooltip labelFormatter={(value) => data[value].date} />
+        <Legend />
+        <Line
+          type="monotone"
+          dataKey={y}
+          stroke={theme.colors.primary}
+          activeDot={{ r: 6 }}
+          name={legend}
+        />
+      </LineChart>
+    </ResponsiveContainer>
   )
 }
+
+export default memo(SimpleLineGraph)

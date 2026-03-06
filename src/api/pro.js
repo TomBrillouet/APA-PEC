@@ -9,6 +9,7 @@ export const syncBothPro = async (userId, proUpdated) => {
   // nouvelle entrée
   const newDoc = {
     patients: [...existing.patients],
+    listTests: [...existing.listTests],
     pro: proUpdated,
   }
   setDoc(docRef, newDoc) //chemin, nouvelle entrée en param

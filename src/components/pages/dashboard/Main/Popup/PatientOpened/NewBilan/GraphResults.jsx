@@ -14,7 +14,7 @@ function GraphResults({ selectedPatient, selectedTests }) {
 
         return result !== undefined
       })
-      .map((bilan) => {
+      .map((bilan, index) => {
         const test = bilan.tests.find((test) => test.name === testName)
         const result = test.results.find(
           (result) => result.field === resultField && result.value !== "",
@@ -23,6 +23,7 @@ function GraphResults({ selectedPatient, selectedTests }) {
         return {
           date: bilan.date,
           [resultField]: result.value,
+          index: index,
         }
       })
   }
@@ -35,7 +36,6 @@ function GraphResults({ selectedPatient, selectedTests }) {
           key={test.name + result.field}
           data={dataResults(test.name, result.field)}
           legend={`${test.name} - ${result.field}`}
-          x="date"
           y={result.field}
         />
       ))

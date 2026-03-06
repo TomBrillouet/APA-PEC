@@ -50,7 +50,14 @@ export default function NewBilan() {
   }
 
   return (
-    <div>
+    <form
+      onSubmit={() =>
+        handleSubmitBilan(
+          datasToSubmit.current.getData().bilanData,
+          datasToSubmit.current.getData().inputsValue,
+        )
+      }
+    >
       <BilanForm
         ref={datasToSubmit}
         selectedPatient={selectedPatient}
@@ -62,16 +69,7 @@ export default function NewBilan() {
         selectedPatient={selectedPatient}
         selectedTests={selectedTests}
       />
-      <Button
-        label={"Enregistrer le bilan"}
-        onClick={() =>
-          handleSubmitBilan(
-            datasToSubmit.current.getData().bilanData,
-            datasToSubmit.current.getData().inputsValue,
-          )
-        }
-        version="submit"
-      />
-    </div>
+      <Button label={"Enregistrer le bilan"} type="submit" version="submit" />
+    </form>
   )
 }

@@ -1,27 +1,27 @@
 import { doc, getDoc, setDoc } from "firebase/firestore"
 import { db } from "./firebase-config"
 
-export const syncBothPatients = async (userId, patientsUpdated) => {
+export const syncBothListTests = async (userId, listTestsUpdated) => {
   //chemin
   const docRef = doc(db, "users", userId)
   const docSnap = await getDoc(docRef)
   const existing = docSnap.data() || {}
   // nouvelle entrée
   const newDoc = {
+    patients: [...existing.patients],
     pro: { ...existing.pro },
-    listTests: [...existing.listTests],
-    patients: patientsUpdated,
+    listTests: listTestsUpdated,
   }
   setDoc(docRef, newDoc) //chemin, nouvelle entrée en param
 }
 
-export const getPatients = async (userId) => {
+export const getListTests = async (userId) => {
   //chemin
   const docRef = doc(db, "users", userId)
 
   const docSnapshot = await getDoc(docRef)
   if (docSnapshot.exists()) {
-    const { patients } = docSnapshot.data()
-    return patients
+    const { listTests } = docSnapshot.data()
+    return listTests
   }
 }

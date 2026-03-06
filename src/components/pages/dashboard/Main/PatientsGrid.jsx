@@ -21,6 +21,7 @@ export default function PatientsGrid({ patients, togglePatient }) {
           firstName={patient.firstName}
           lastName={patient.lastName}
           onClick={() => handleOpen(patient.id)}
+          isArchived={patient.archived}
         />
       ))}
     </PatientsGridStyled>

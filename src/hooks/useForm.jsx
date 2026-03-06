@@ -1,15 +1,15 @@
 import { useContext, useState } from "react"
-import { EMPTY_PATIENT } from "../enums/patient"
 import { MainContext } from "../context/MainContext"
 
-export const useForm = (initialValues = EMPTY_PATIENT) => {
+export const useForm = (initialValues) => {
   const [inputsValue, setInputsValue] = useState(initialValues)
   const { handleBilanDataChange } = useContext(MainContext)
 
-  const handleChange = (e) => {
-    const { name, value } = e.target
+  const handleChange = (e, index) => {
+    const { name, value, checked, type } = e.target
     const addressFields = ["street", "city", "cp"]
     const imcFields = ["height", "weight"]
+    const resultsFields = ["field", "chart"]
     if (imcFields.includes(name)) {
       handleBilanDataChange(e)
     }
@@ -17,6 +17,15 @@ export const useForm = (initialValues = EMPTY_PATIENT) => {
     setInputsValue((prev) => {
       if (addressFields.includes(name)) {
         return { ...prev, address: { ...prev.address, [name]: value } }
+      }
+      if (resultsFields.includes(name)) {
+        const isCheckbox = type === "checkbox"
+        const updatedResults = prev.results.map((result, i) => {
+          return i === index
+            ? { ...result, [name]: isCheckbox ? checked : value }
+            : result
+        })
+        return { ...prev, results: updatedResults }
       }
       return { ...prev, [name]: value }
     })
@@ -29,10 +38,30 @@ export const useForm = (initialValues = EMPTY_PATIENT) => {
     setInputsValue({ ...globalValue, [key]: specificValue })
   }
 
+  const handleAddNewTest = () => {
+    setInputsValue((prev) => {
+      return {
+        ...prev,
+        results: [...prev.results, { field: "", chart: false, value: null }],
+      }
+    })
+  }
+
+  const handleDeleteTest = (index) => {
+    setInputsValue((prev) => {
+      return {
+        ...prev,
+        results: prev.results.filter((_, i) => i !== index),
+      }
+    })
+  }
+
   return {
     inputsValue,
     sexSelectChange,
     handleChange,
     handleSpecificInputsValue,
+    handleAddNewTest,
+    handleDeleteTest,
   }
 }

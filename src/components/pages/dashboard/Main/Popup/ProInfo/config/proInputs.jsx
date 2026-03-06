@@ -4,18 +4,21 @@ export const proInputs = [
     type: "text",
     name: "firstName",
     isRequired: true,
+    minLength: 3,
   },
   {
     label: "Nom",
     type: "text",
     name: "lastName",
     isRequired: true,
+    minLength: 2,
   },
   {
     label: "Profession",
     type: "text",
     name: "job",
     isRequired: true,
+    minLength: 3,
   },
   {
     label: "Mail",
@@ -28,17 +31,20 @@ export const proInputs = [
     type: "tel",
     name: "phone",
     isRequired: false,
+    pattern: "^0[0-9]{9}$",
   },
   {
     label: "Entreprise",
     type: "text",
     name: "society",
     isRequired: false,
+    minLength: 2,
   },
   {
-    label: "Site Web",
+    label: "URL Site Web",
     type: "text",
     name: "website",
     isRequired: false,
+    minLength: 10,
   },
 ]

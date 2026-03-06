@@ -1,8 +1,7 @@
-import { useState } from "react"
-import { tests } from "../datas/tests"
+import { useCallback, useState } from "react"
 import { getImc } from "../utils/math"
 
-export const useBilanForm = (initialvalues) => {
+export const useBilanForm = (initialvalues, listTests) => {
   const [bilanData, setBilanData] = useState({
     date: new Date().toISOString().split("T")[0],
     tests:
@@ -29,7 +28,7 @@ export const useBilanForm = (initialvalues) => {
 
   const testsSelectChange = (testsSelected) => {
     const formattedTests = testsSelected.map((option) => {
-      const testConfig = tests.find((t) => t.name === option.value)
+      const testConfig = listTests?.find((t) => t.name === option.value)
       const existingTests = bilanData.tests.find(
         (element) => element.name === option.value,
       )
@@ -37,22 +36,22 @@ export const useBilanForm = (initialvalues) => {
       return {
         name: option.value,
         remarques: "",
-        results: testConfig.results.map((result) => ({ ...result })),
+        results: testConfig?.results.map((result) => ({ ...result })),
       }
     })
     setBilanData((prev) => ({ ...prev, tests: formattedTests }))
   }
 
-  const handleRemarquesChange = (testName, value) => {
+  const handleRemarquesChange = useCallback((testName, value) => {
     setBilanData((prev) => ({
       ...prev,
       tests: prev.tests.map((test) =>
         test.name === testName ? { ...test, remarques: value } : test,
       ),
     }))
-  }
+  }, [])
 
-  const handleResultChange = (testName, field, value) => {
+  const handleResultChange = useCallback((testName, field, value) => {
     setBilanData((prev) => ({
       ...prev,
       tests: prev.tests.map((test) =>
@@ -66,7 +65,7 @@ export const useBilanForm = (initialvalues) => {
           : test,
       ),
     }))
-  }
+  }, [])
   return {
     handleResultChange,
     handleRemarquesChange,

@@ -13,6 +13,7 @@ export default function BilanDate({
       value={bilanData.date}
       name={"date"}
       disabled={disabled}
+      max={new Date().toISOString().slice(0, 10)}
     />
   )
 }

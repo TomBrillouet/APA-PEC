@@ -24,7 +24,7 @@ The application also generates printable reports, facilitating communication bet
 
 ## Demo
 
-<!-- Ajouter screenshot -->
+![Screenshot Demo](/public/images/screenshot.png "Screenshot Demo")
 
 [Live Demo](https://apa-pec.vercel.app)
 

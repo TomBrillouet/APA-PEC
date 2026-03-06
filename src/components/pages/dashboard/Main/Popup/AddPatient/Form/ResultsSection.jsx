@@ -1,15 +1,17 @@
 import styled from "styled-components"
 import Input from "../../../../../../reusable/Input"
 import TextArea from "../../../../../../reusable/TextArea"
-import { tests } from "../../../../../../../datas/tests"
+import { useTests } from "../../../../../../../hooks/useTests"
+import { memo } from "react"
 
-export default function ResultsSection({
+function ResultsSection({
   bilanData,
   onChange,
   onRemarquesChange,
   disabled,
   print,
 }) {
+  const { listTests } = useTests()
   if (!bilanData.tests) return null
 
   return (
@@ -19,7 +21,7 @@ export default function ResultsSection({
           <h4>{test.name}</h4>
 
           <div className="grid-results">
-            {test.results.map(({ field, value }) => (
+            {test?.results?.map(({ field, value }) => (
               <Input
                 key={field}
                 type="number"
@@ -28,6 +30,7 @@ export default function ResultsSection({
                 value={value ? value : ""}
                 className="field"
                 placeholder={field}
+                min={0}
                 onChange={(e) => onChange(test.name, field, e.target.value)}
               />
             ))}
@@ -48,7 +51,9 @@ export default function ResultsSection({
               label="Description"
               className="field full"
               disabled={disabled}
-              value={tests.find((t) => t.name === test.name).description ?? ""}
+              value={
+                listTests?.find((t) => t.name === test.name).description ?? ""
+              }
             />
           )}
         </div>
@@ -64,3 +69,4 @@ const ResultsSectionStyled = styled.div`
     gap: 20px;
   }
 `
+export default memo(ResultsSection)

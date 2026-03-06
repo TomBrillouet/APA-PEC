@@ -13,6 +13,7 @@ import { useAuth } from "../../../../context/AuthContext.jsx"
 import { initialiseUserSession } from "./helpers/initialiseUserSession"
 import Loader from "../../../reusable/Loader.jsx"
 import { usePro } from "../../../../hooks/usePro.jsx"
+import { useTests } from "../../../../hooks/useTests.jsx"
 import { useSelectedBilan } from "../../../../hooks/useSelectedBilan.jsx"
 import { useSelectedPatient } from "../../../../hooks/useSelectedPatient.jsx"
 
@@ -27,13 +28,14 @@ export default function Main() {
     patients,
     updateLogBook,
   } = usePatients()
+  const { listTests } = useTests()
   const {
     handleBilanDataChange,
     bilanData,
     handleResultChange,
     handleRemarquesChange,
     testsSelectChange,
-  } = useBilanForm()
+  } = useBilanForm(null, listTests)
   const { pro, setPro, proSubmit } = usePro()
   const {
     toggleProInfo,
@@ -90,6 +92,7 @@ export default function Main() {
     selectedBilan,
     pro,
     proSubmit,
+    listTests,
   }
 
   return (
@@ -100,7 +103,7 @@ export default function Main() {
           (popup, index) =>
             popup.condition && (
               <div key={index}>
-                <div className="overlay" onClick={popup.toggle}></div>
+                <div className="overlay"></div>
                 {popup.Content}
               </div>
             ),
