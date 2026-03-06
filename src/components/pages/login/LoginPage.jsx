@@ -15,7 +15,7 @@ export default function LoginPage() {
       <ModalInfo
         ref={modal}
         text={
-          "L'identifiant et le mot de passe sont pré-remplis pour accéder à la démo."
+          "L'identifiant et le mot de passe sont préremplis pour accéder à la démo. N'entrez pas de données personnelles : vous n'êtes pas les seuls à y avoir accès."
         }
       />
       <Aside />
