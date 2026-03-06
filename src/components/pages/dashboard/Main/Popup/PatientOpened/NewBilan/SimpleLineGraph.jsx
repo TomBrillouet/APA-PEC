@@ -37,6 +37,7 @@ function SimpleLineGraph({ data, y, legend }) {
           stroke={theme.colors.primary}
           activeDot={{ r: 6 }}
           name={legend}
+          animationDuration={3000}
         />
       </LineChart>
     </ResponsiveContainer>
