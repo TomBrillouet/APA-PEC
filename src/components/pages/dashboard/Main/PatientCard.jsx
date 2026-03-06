@@ -8,9 +8,11 @@ export default function PatientCard({
   firstName,
   lastName,
   onClick,
+  isArchived,
 }) {
   return (
     <PatientCardStyled key={id} onClick={onClick}>
+      {isArchived && <span className="flag">PEC terminée</span>}
       <span className={`patient-icon ${isMan ? "man" : ""}`}>
         {isMan ? <IoIosMan /> : <IoIosWoman />}
       </span>
@@ -24,6 +26,7 @@ export default function PatientCard({
 
 const PatientCardStyled = styled.div`
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
   gap: 10px;
@@ -42,6 +45,17 @@ const PatientCardStyled = styled.div`
     transform: translateY(-3px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.09);
     border-color: ${theme.colors.primary};
+  }
+
+  .flag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 12px;
+    background-color: red;
+    color: white;
+    border-radius: 8px;
+    padding: 0 7px;
   }
 
   .patient-icon {
