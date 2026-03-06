@@ -15,18 +15,20 @@ export default function ListWithButton({
         return (
           <li key={item.id}>
             {renderItem ? <span>{renderItem(item)}</span> : null}
-            <Button
-              label={buttonLabel}
-              onClick={() => onClick(item)}
-              version="minimalist"
-            />
-            {secondButtonLabel && onClickSecondButton && (
+            <div>
               <Button
-                label={secondButtonLabel}
-                onClick={() => onClickSecondButton(item.id)}
-                version="minimalistred"
+                label={buttonLabel}
+                onClick={() => onClick(item)}
+                version="minimalist"
               />
-            )}
+              {secondButtonLabel && onClickSecondButton && (
+                <Button
+                  label={secondButtonLabel}
+                  onClick={() => onClickSecondButton(item.id)}
+                  version="minimalistred"
+                />
+              )}
+            </div>
           </li>
         )
       })}

@@ -19,7 +19,7 @@ const ToggleButtonStyled = styled.div`
   font-size: 30px;
   bottom: 20%;
   left: 0;
-  z-index: 1;
+  z-index: 2;
   &.open {
     right: 0;
     border-radius: 8px 0 0 8px;

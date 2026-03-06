@@ -49,6 +49,7 @@ const MenuStyled = styled.aside`
   top: 0;
   height: 100vh;
   gap: 2em;
+  z-index: 1;
 
   .logo {
     white-space: nowrap;
