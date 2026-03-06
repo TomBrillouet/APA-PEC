@@ -63,6 +63,8 @@ const MenuStyled = styled.aside`
   @media screen and (max-width: 768px) {
     min-width: 100%;
     position: fixed;
+    left: 0;
+    top: 0;
     height: 100vh;
     height: -webkit-fill-available;
     height: 100dvh;
