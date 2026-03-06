@@ -12,6 +12,7 @@ const LogoStyled = styled.div`
   height: 90px;
   display: flex;
   justify-content: center;
+  overflow: hidden;
   img {
     transform: scale(2.5);
   }
