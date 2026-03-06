@@ -18,7 +18,13 @@ export default function Tests() {
     listTests,
     testSelected,
   } = useTests()
-  if (!listTests) return <Loader />
+  if (!listTests)
+    return (
+      <TestsStyled>
+        <Menu />
+        <Loader />
+      </TestsStyled>
+    )
   return (
     <TestsStyled>
       <Menu />
