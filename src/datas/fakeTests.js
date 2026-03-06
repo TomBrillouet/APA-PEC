@@ -1,4 +1,4 @@
-export const tests = [
+export const fakeTests = [
   {
     id: "1",
     name: "Assis-debout",
