@@ -11,9 +11,9 @@ export default function ListWithButton({
 }) {
   return (
     <ListWithButtonStyled>
-      {datas.map((item) => {
+      {datas?.map((item) => {
         return (
-          <li key={item.id || item.name}>
+          <li key={item.id}>
             {renderItem ? <span>{renderItem(item)}</span> : null}
             <Button
               label={buttonLabel}
