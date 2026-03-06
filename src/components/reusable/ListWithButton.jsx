@@ -40,6 +40,7 @@ const ListWithButtonStyled = styled.ul`
   display: inline-block;
   list-style-type: disclosure-closed;
   li {
+    display: flex;
     button {
       margin-left: 10px;
     }
