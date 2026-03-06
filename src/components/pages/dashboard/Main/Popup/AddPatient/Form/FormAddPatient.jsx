@@ -54,6 +54,10 @@ export default function FormAddPatient() {
         onChange={handleChange}
         isRequired={input.isRequired}
         placeholder={input.placeholder}
+        min={input.min}
+        max={input.max}
+        minLength={input.minLength}
+        pattern={input.pattern}
       />
     ))
 
@@ -77,6 +81,7 @@ export default function FormAddPatient() {
         label={"Date du bilan initial"}
         value={bilanData.date}
         name={"date"}
+        min={new Date().toISOString().slice(0, 10)}
       />
       <IdentityFormSection
         onChange={sexSelectChange}

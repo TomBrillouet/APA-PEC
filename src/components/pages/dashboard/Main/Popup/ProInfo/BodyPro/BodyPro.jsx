@@ -17,7 +17,7 @@ export default function BodyPro() {
     toastInfo("Les informations du professionnel ont été modifiées")
   }
   return (
-    <BodyProStyled>
+    <BodyProStyled onSubmit={() => handleSubmit(inputsValue)}>
       <div className="inputs">
         {proInputs.map((input) => (
           <Input
@@ -29,19 +29,21 @@ export default function BodyPro() {
             key={input.name}
             placeholder={input.label}
             value={inputsValue[input.name] ?? ""}
+            minLength={input.minLength}
+            pattern={input.pattern}
           />
         ))}
       </div>
       <Button
         label={"Enregistrer les informations du professionnel"}
-        onClick={() => handleSubmit(inputsValue)}
         version="submit"
+        type="submit"
       />
     </BodyProStyled>
   )
 }
 
-const BodyProStyled = styled.div`
+const BodyProStyled = styled.form`
   .inputs {
     display: flex;
     flex-direction: column;

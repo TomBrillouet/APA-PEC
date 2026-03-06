@@ -11,6 +11,10 @@ export default function Input({
   value,
   disabled,
   autoComplete,
+  min,
+  max,
+  minLength,
+  pattern,
 }) {
   return (
     <InputField className={className}>
@@ -24,6 +28,10 @@ export default function Input({
         placeholder={placeholder}
         value={value}
         disabled={disabled}
+        min={min}
+        max={max}
+        minLength={minLength}
+        pattern={pattern}
       />
     </InputField>
   )

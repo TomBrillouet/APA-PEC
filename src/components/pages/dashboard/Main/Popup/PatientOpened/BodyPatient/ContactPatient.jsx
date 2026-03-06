@@ -58,6 +58,8 @@ export default function ContactPatient({
             onChange={handleChange}
             value={getInputsValue(input.name)}
             disabled={isModifEnabled}
+            minLength={input.minLength}
+            pattern={input.pattern}
           />
         ))}{" "}
       </div>

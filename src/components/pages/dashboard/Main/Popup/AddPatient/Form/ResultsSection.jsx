@@ -30,6 +30,7 @@ function ResultsSection({
                 value={value ? value : ""}
                 className="field"
                 placeholder={field}
+                min={0}
                 onChange={(e) => onChange(test.name, field, e.target.value)}
               />
             ))}
