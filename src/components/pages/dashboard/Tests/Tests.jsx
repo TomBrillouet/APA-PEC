@@ -81,4 +81,28 @@ const TestsStyled = styled.div`
       }
     }
   }
+
+  @media screen and (max-width: 768px) {
+    .background {
+      padding: 10px;
+      .main-test {
+        text-align: center;
+        align-items: center;
+        padding: 10px;
+        ul {
+          display: flex;
+          flex-direction: column;
+          gap: 2em;
+          li {
+            flex-direction: column;
+            gap: 2px;
+            button {
+              margin-left: 10px;
+              padding: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
 `
