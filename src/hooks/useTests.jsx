@@ -43,9 +43,11 @@ export const useTests = () => {
 
   const handleCancel = () => {
     if (testSelected.name === "") {
-      setListTests((prev) =>
-        prev.filter((test) => test.name !== testSelected.name),
+      const listFiltered = listTests.filter(
+        (test) => test.name !== testSelected.name,
       )
+      setListTests(listFiltered)
+      syncBothListTests(userId, listFiltered)
       setTestSelected()
       toastInfo("Le test n'a pas été créé")
       return
@@ -63,7 +65,7 @@ export const useTests = () => {
 
   const handleAddTest = () => {
     const newTest = { ...EMPTY_TEST, id: crypto.randomUUID() }
-    const listUpdated = [...(listTests ?? []), newTest] //si listTests est vide il n'est pas ittérable
+    const listUpdated = [...(listTests ?? []), newTest]
     setTestSelected(newTest)
     setListTests(listUpdated)
     syncBothListTests(userId, listUpdated)
