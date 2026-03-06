@@ -55,6 +55,12 @@ A demo account is available with the following credentials:
 - Track weight, height and BMI over time
 - Add free-text fields: patient feedback, problem progression, plan adjustments
 
+### Custom Tests
+
+- Create fully custom tests with any result fields you define
+- Enable **chart visualization** per result field to track evolution across assessments
+- Reuse custom tests across any patient's treatment plan
+
 ### Results & Charts
 
 - Visualize test results and physical data evolution through **interactive charts**
