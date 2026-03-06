@@ -7,6 +7,7 @@ export default function BottomMenu() {
   const navigate = useNavigate()
   const logout = async () => {
     await signOut(auth)
+    document.body.style.overflow = "auto"
     navigate("/login")
   }
   return <Button label={"Se déconnecter"} onClick={logout} version="red" />
