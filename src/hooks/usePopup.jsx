@@ -34,17 +34,14 @@ export const usePopup = () => {
   const popupConfig = [
     {
       condition: addPatient,
-      toggle: () => toggleAddPatient(),
       Content: <AddPatient />,
     },
     {
       condition: patientOpen,
-      toggle: () => togglePatient(),
       Content: <PatientOpened />,
     },
     {
       condition: isProOpen,
-      toggle: () => toggleProInfo(),
       Content: <ProInfo />,
     },
   ]

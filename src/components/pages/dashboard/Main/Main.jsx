@@ -103,7 +103,7 @@ export default function Main() {
           (popup, index) =>
             popup.condition && (
               <div key={index}>
-                <div className="overlay" onClick={popup.toggle}></div>
+                <div className="overlay"></div>
                 {popup.Content}
               </div>
             ),
