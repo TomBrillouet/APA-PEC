@@ -7,6 +7,7 @@ import ListWithButton from "../../../reusable/ListWithButton.jsx"
 import TestForm from "./TestForm/TestForm.jsx"
 import { useTests } from "../../../../hooks/useTests.jsx"
 import Loader from "../../../reusable/Loader.jsx"
+import { LiaFileMedicalAltSolid } from "react-icons/lia"
 
 export default function Tests() {
   const {
@@ -39,6 +40,8 @@ export default function Tests() {
               onClick={handleOpenTest}
               onClickSecondButton={handleTestDelete}
               renderItem={(test) => <>{test.name}</>}
+              icon={<LiaFileMedicalAltSolid />}
+              className={"li-tests"}
             />
             <Button
               label={"Ajouter un test"}
@@ -76,6 +79,12 @@ const TestsStyled = styled.div`
       flex-direction: column;
       align-items: flex-start;
       border-radius: 8px;
+      .li-tests {
+        font-size: 20px;
+        svg {
+          font-size: 26px;
+        }
+      }
       .add-test {
         align-self: flex-end;
       }
