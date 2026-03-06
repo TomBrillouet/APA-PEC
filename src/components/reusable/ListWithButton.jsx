@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import Button from "./Button"
+import { IoDocumentTextOutline } from "react-icons/io5"
 
 export default function ListWithButton({
   datas,
@@ -8,12 +9,15 @@ export default function ListWithButton({
   renderItem,
   secondButtonLabel,
   onClickSecondButton,
+  icon,
+  className,
 }) {
   return (
     <ListWithButtonStyled>
       {datas?.map((item) => {
         return (
-          <li key={item.id}>
+          <li key={item.id} className={className}>
+            {icon}
             {renderItem ? <span>{renderItem(item)}</span> : null}
             <div>
               <Button
@@ -38,7 +42,6 @@ export default function ListWithButton({
 
 const ListWithButtonStyled = styled.ul`
   display: inline-block;
-  list-style-type: disclosure-closed;
   li {
     display: flex;
     button {
