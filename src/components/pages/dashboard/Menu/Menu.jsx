@@ -48,8 +48,7 @@ const MenuStyled = styled.aside`
   position: sticky;
   top: 0;
   height: 100vh;
-  gap: 2em;
-  z-index: 1;
+  gap: 5em;
 
   .logo {
     white-space: nowrap;
@@ -61,7 +60,7 @@ const MenuStyled = styled.aside`
   }
 
   @media screen and (max-width: 768px) {
-    min-width: 100%;
+    width: 100%;
     position: fixed;
     left: 0;
     top: 0;
@@ -71,6 +70,8 @@ const MenuStyled = styled.aside`
     overflow-y: auto;
     transform: translateX(-100%);
     opacity: 0;
+    z-index: 1;
+
     &.open {
       animation: fade 0.2s ease forwards;
       display: flex;
