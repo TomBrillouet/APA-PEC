@@ -1,33 +1,29 @@
 import styled from "styled-components"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Header from "../Header/Header.jsx"
 import { MainContext } from "../../../../context/MainContext.jsx"
 import PatientsGrid from "./PatientsGrid.jsx"
 import TopMainBar from "./TopMainBar.jsx"
-import { usePatients } from "../../../../hooks/usePatients.jsx"
 import { useBilanForm } from "../../../../hooks/useBilanForm.jsx"
 import { theme } from "../../../../theme/index.js"
 import { useParams } from "react-router"
 import { usePopup } from "../../../../hooks/usePopup.jsx"
 import { useAuth } from "../../../../context/AuthContext.jsx"
-import { initialiseUserSession } from "./helpers/initialiseUserSession"
+import { initialisePro } from "./helpers/initialiseUserSession"
 import Loader from "../../../reusable/Loader.jsx"
 import { usePro } from "../../../../hooks/usePro.jsx"
 import { useTests } from "../../../../hooks/useTests.jsx"
 import { useSelectedBilan } from "../../../../hooks/useSelectedBilan.jsx"
 import { useSelectedPatient } from "../../../../hooks/useSelectedPatient.jsx"
+import { PatientsContext } from "../../../../context/PatientsContext.jsx"
 
 export default function Main() {
   const { currentUser } = useAuth()
   const userId = currentUser?.uid
   const [search, setSearch] = useState("")
-  const {
-    addNewPatient,
-    updatePatients,
-    setPatients,
-    patients,
-    updateLogBook,
-  } = usePatients()
+
+  const { addNewPatient, updatePatients, patients, updateLogBook } =
+    useContext(PatientsContext)
   const { listTests } = useTests()
   const {
     handleBilanDataChange,
@@ -52,7 +48,7 @@ export default function Main() {
 
   useEffect(() => {
     if (!userId) return
-    initialiseUserSession(userId, setPro, setPatients)
+    initialisePro(userId, setPro)
   }, [userId])
 
   const { status } = useParams()
