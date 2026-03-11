@@ -1,10 +1,14 @@
-import { NavLink } from "react-router"
+import styled from "styled-components"
+import { theme } from "../../../../theme"
+import Toast from "../Toast.jsx"
+import PageTemplate from "../PageTemplate.jsx"
 
 export default function Stats() {
   return (
-    <div>
-      <span>Cette section verra bientôt le jour. En attendant: </span>
-      <NavLink to={"/dashboard"}>Revenir en terrain connu.</NavLink>
-    </div>
+    <PageTemplate>
+      <h2>Statistiques</h2>
+      /////
+      <Toast />
+    </PageTemplate>
   )
 }
