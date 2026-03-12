@@ -1,6 +1,8 @@
 import styled from "styled-components"
 import { theme } from "../../../../theme"
 import { IoIosMan, IoIosWoman } from "react-icons/io"
+import IconTip from "./IconTip"
+import { iconTips } from "./data/iconTips"
 
 export default function PatientCard({
   id,
@@ -9,10 +11,25 @@ export default function PatientCard({
   lastName,
   onClick,
   isArchived,
+  isEarlyQuit,
+  isStagnant,
 }) {
   return (
     <PatientCardStyled key={id} onClick={onClick}>
-      {isArchived && <span className="flag">PEC terminée</span>}
+      <div className="flag">
+        {iconTips(isArchived, isEarlyQuit, isStagnant)
+          .filter((iconTip) => iconTip.condition)
+          .map((iconTip, i) => {
+            return (
+              <IconTip
+                className={iconTip.className}
+                label={iconTip.label}
+                icon={iconTip.icon}
+                key={i}
+              />
+            )
+          })}
+      </div>
       <span className={`patient-icon ${isMan ? "man" : ""}`}>
         {isMan ? <IoIosMan /> : <IoIosWoman />}
       </span>
@@ -49,11 +66,12 @@ const PatientCardStyled = styled.div`
 
   .flag {
     position: absolute;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
     top: 10px;
-    right: 10px;
-    font-size: 12px;
-    background-color: #e3534e;
-    color: white;
+    font-size: 18px;
+    color: black;
     border-radius: 8px;
     padding: 0 7px;
   }
