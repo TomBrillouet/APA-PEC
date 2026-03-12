@@ -53,7 +53,7 @@ export default function Main() {
 
   const { status } = useParams()
   const archived = status === "archived"
-  if (!patients) return <Loader />
+  if (!patients || !pro) return <Loader />
 
   const patientsFiltered = patients.filter(
     (patient) =>
