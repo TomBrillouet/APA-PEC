@@ -15,5 +15,5 @@ export const navItems = [
     icon: <MdOutlineSettingsInputComposite />,
     path: "/tests",
   },
-  { label: "Stats", icon: <IoStatsChartOutline />, path: "/stats" },
+  { label: "Statistiques", icon: <IoStatsChartOutline />, path: "/stats" },
 ]
