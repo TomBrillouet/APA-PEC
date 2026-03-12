@@ -18,6 +18,12 @@ export default function Menu() {
       return !prev
     })
   }
+
+  const closeMenu = () => {
+    setIsOpen(false)
+    document.body.style.overflow = "auto"
+  }
+
   let menuClass = ""
   if (hasToggled) {
     menuClass = isOpen ? "open" : "closed"
@@ -32,7 +38,7 @@ export default function Menu() {
       />
       <MenuStyled className={menuClass}>
         <Logo />
-        <BodyMenu onClick={() => toggleMenu()} />
+        <BodyMenu onClick={() => closeMenu()} />
         <BottomMenu />
       </MenuStyled>
     </>
