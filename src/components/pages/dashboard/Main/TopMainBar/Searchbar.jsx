@@ -1,5 +1,5 @@
 import { CiSearch } from "react-icons/ci"
-import Input from "../../../reusable/Input"
+import Input from "../../../../reusable/Input"
 import styled from "styled-components"
 
 export default function Searchbar({ onChange }) {

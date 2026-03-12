@@ -1,7 +1,7 @@
 import styled from "styled-components"
-import Searchbar from "./Searchbar"
-import SectionTitle from "./Popup/AddPatient/Form/SectionTitle.jsx"
-import Button from "../../../reusable/Button"
+import Searchbar from "./Searchbar.jsx"
+import SectionTitle from "../Popup/AddPatient/Form/SectionTitle.jsx"
+import Button from "../../../../reusable/Button.jsx"
 
 export default function TopMainBar({ onChange, onClick, archived }) {
   return (

@@ -2,8 +2,6 @@ import styled from "styled-components"
 import { useContext, useEffect, useState } from "react"
 import Header from "../Header/Header.jsx"
 import { MainContext } from "../../../../context/MainContext.jsx"
-import PatientsGrid from "./PatientsGrid.jsx"
-import TopMainBar from "./TopMainBar.jsx"
 import { useBilanForm } from "../../../../hooks/useBilanForm.jsx"
 import { theme } from "../../../../theme/index.js"
 import { useParams } from "react-router"
@@ -16,6 +14,8 @@ import { useTests } from "../../../../hooks/useTests.jsx"
 import { useSelectedBilan } from "../../../../hooks/useSelectedBilan.jsx"
 import { useSelectedPatient } from "../../../../hooks/useSelectedPatient.jsx"
 import { PatientsContext } from "../../../../context/PatientsContext.jsx"
+import TopMainBar from "./TopMainBar/TopMainBar.jsx"
+import PatientsGrid from "./PatientsGrid/PatientsGrid.jsx"
 
 export default function Main() {
   const { currentUser } = useAuth()

@@ -1,8 +1,8 @@
 import styled from "styled-components"
 import PatientCard from "./PatientCard"
-import { MainContext } from "../../../../context/MainContext"
+import { MainContext } from "../../../../../context/MainContext"
 import { useContext } from "react"
-import { getEarlyQuit, getStagnantPatients } from "../Stats/helpers/stats"
+import { getEarlyQuit, getStagnantPatients } from "../../Stats/helpers/stats"
 
 export default function PatientsGrid({ patients, togglePatient }) {
   const { handleSelectedPatient } = useContext(MainContext)
