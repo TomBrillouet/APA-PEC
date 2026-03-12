@@ -21,6 +21,43 @@ import GraphPie from "../body/GraphPie"
 
 export const SECTIONS = (patients) => [
   {
+    title: "Démographie",
+    cards: [
+      {
+        label: "Âge moyen des patients",
+        value: `${getAverageAge(patients)} ans`,
+        icon: <FiUser />,
+        accent: "#4CAF50",
+      },
+      {
+        label: "Patient le plus jeune",
+        value: `${getYounger(patients)} ans`,
+        icon: <FiUser />,
+        accent: "#4CAF50",
+      },
+      {
+        label: "Patient le plus âgé",
+        value: `${getOlder(patients)} ans`,
+        icon: <FiUser />,
+        accent: "#64748b",
+      },
+      {
+        label: "Répartitions Femme/Homme",
+        chart: (
+          <>
+            <GraphPie patients={patients} />
+          </>
+        ),
+        icon: (
+          <>
+            <BsGenderFemale /> <BsGenderMale />
+          </>
+        ),
+        accent: "#64748b",
+      },
+    ],
+  },
+  {
     title: "Patientèle",
     cards: [
       {
@@ -59,43 +96,6 @@ export const SECTIONS = (patients) => [
         icon: <FiTrendingDown />,
         accent: "#ef4444",
         patients: getStagnantPatients(patients),
-      },
-    ],
-  },
-  {
-    title: "Démographie",
-    cards: [
-      {
-        label: "Âge moyen des patients",
-        value: `${getAverageAge(patients)} ans`,
-        icon: <FiUser />,
-        accent: "#4CAF50",
-      },
-      {
-        label: "Patient le plus jeune",
-        value: `${getYounger(patients)} ans`,
-        icon: <FiUser />,
-        accent: "#4CAF50",
-      },
-      {
-        label: "Patient le plus âgé",
-        value: `${getOlder(patients)} ans`,
-        icon: <FiUser />,
-        accent: "#64748b",
-      },
-      {
-        label: "Répartitions Femme/Homme",
-        chart: (
-          <>
-            <GraphPie patients={patients} />
-          </>
-        ),
-        icon: (
-          <>
-            <BsGenderFemale /> <BsGenderMale />
-          </>
-        ),
-        accent: "#64748b",
       },
     ],
   },
