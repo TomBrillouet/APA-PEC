@@ -1,5 +1,5 @@
 import { Pie, PieChart, Tooltip } from "recharts"
-import { getMen, getWomen } from "./helpers/stats"
+import { getMen, getWomen } from "../helpers/stats"
 
 export default function GraphPie({ patients }) {
   const data = [
