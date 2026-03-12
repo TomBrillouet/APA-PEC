@@ -29,7 +29,6 @@ const PageTemplateStyled = styled.div`
       display: flex;
       flex: 1;
       padding: 30px;
-      flex-direction: column;
       align-items: flex-start;
       border-radius: 8px;
     }
