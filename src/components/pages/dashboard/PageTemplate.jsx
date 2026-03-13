@@ -2,13 +2,17 @@ import styled from "styled-components"
 import { theme } from "../../../theme"
 import Menu from "./Menu/Menu"
 import Toast from "./Toast.jsx"
+import Footer from "./Footer/Footer.jsx"
 
 export default function PageTemplate({ children }) {
   return (
     <PageTemplateStyled>
       <Menu />
-      <div className="background">
-        <div className="main">{children}</div>
+      <div className="column">
+        <div className="background">
+          <div className="main">{children}</div>
+        </div>
+        <Footer />
       </div>
       <Toast />
     </PageTemplateStyled>
@@ -18,19 +22,24 @@ export default function PageTemplate({ children }) {
 const PageTemplateStyled = styled.div`
   display: flex;
   min-height: 100vh;
-  .background {
-    background-color: ${theme.colors.background};
+  .column {
     flex: 1;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    padding: 30px;
-    .main {
-      background-color: ${theme.colors.white};
+    background-color: ${theme.colors.background};
+    .background {
+      background-color: ${theme.colors.background};
+      padding: 30px;
       display: flex;
       flex: 1;
-      padding: 30px;
-      align-items: flex-start;
-      border-radius: 8px;
+      .main {
+        background-color: ${theme.colors.white};
+        flex: 1;
+        padding: 30px;
+        align-items: flex-start;
+        border-radius: 8px;
+      }
     }
   }
 

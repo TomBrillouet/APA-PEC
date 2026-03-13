@@ -16,6 +16,7 @@ import { useSelectedPatient } from "../../../../hooks/useSelectedPatient.jsx"
 import { PatientsContext } from "../../../../context/PatientsContext.jsx"
 import TopMainBar from "./TopMainBar/TopMainBar.jsx"
 import PatientsGrid from "./PatientsGrid/PatientsGrid.jsx"
+import Footer from "../Footer/Footer.jsx"
 
 export default function Main() {
   const { currentUser } = useAuth()
@@ -116,6 +117,7 @@ export default function Main() {
             togglePatient={togglePatient}
           />
         </div>
+        <Footer />
       </MainContext.Provider>
     </MainStyled>
   )
