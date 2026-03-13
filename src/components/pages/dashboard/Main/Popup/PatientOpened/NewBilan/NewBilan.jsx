@@ -50,14 +50,7 @@ export default function NewBilan() {
   }
 
   return (
-    <form
-      onSubmit={() =>
-        handleSubmitBilan(
-          datasToSubmit.current.getData().bilanData,
-          datasToSubmit.current.getData().inputsValue,
-        )
-      }
-    >
+    <form onSubmit={() => handleSubmitBilan()}>
       <BilanForm
         ref={datasToSubmit}
         selectedPatient={selectedPatient}
