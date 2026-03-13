@@ -31,14 +31,19 @@ function GraphResults({ selectedPatient, selectedTests }) {
     .filter((t) => t.results)
     .map((test) => {
       const resultsWithGraph = test.results.filter((result) => result.chart)
-      return resultsWithGraph.map((result) => (
-        <SimpleLineGraph
-          key={test.name + result.field}
-          data={dataResults(test.name, result.field)}
-          legend={`${test.name} - ${result.field}`}
-          y={result.field}
-        />
-      ))
+      return resultsWithGraph.map((result) => {
+        const data = dataResults(test.name, result.field)
+        if (data.length > 1) {
+          return (
+            <SimpleLineGraph
+              key={test.name + result.field}
+              data={data}
+              legend={`${test.name} - ${result.field}`}
+              y={result.field}
+            />
+          )
+        }
+      })
     })
 
   return <>{graphResults}</>
