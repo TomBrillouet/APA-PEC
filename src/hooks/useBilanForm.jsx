@@ -5,11 +5,17 @@ export const useBilanForm = (initialvalues, listTests) => {
   const [bilanData, setBilanData] = useState({
     date: new Date().toISOString().split("T")[0],
     tests:
-      initialvalues?.map((test) => ({
-        ...test,
-        results: test.results.map((result) => ({ ...result, value: "" })),
-        remarques: "",
-      })) || [],
+      initialvalues?.map((test) => {
+        const testConfig = listTests?.find((t) => t.name === test.name)
+        return {
+          ...test,
+          results: (testConfig?.results ?? test.results).map((result) => ({
+            ...result,
+            value: "",
+          })),
+          remarques: "",
+        }
+      }) || [],
     height: 0,
     weight: 0,
     imc: 0,

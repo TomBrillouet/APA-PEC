@@ -13,12 +13,14 @@ import { useForm } from "../../../../../../../../hooks/useForm.jsx"
 import { forwardRef, useCallback, useImperativeHandle } from "react"
 import { NEW_BILAN_LABELS } from "../../../../../../../../enums/patient.jsx"
 import ShapeCard from "../../../../../../../reusable/ShapeCard.jsx"
-import { useTests } from "../../../../../../../../hooks/useTests.jsx"
 
 const BilanForm = forwardRef(
-  ({ selectedPatient, handleChangeIsFinal, isFinal, onTestsChange }, ref) => {
+  (
+    { selectedPatient, handleChangeIsFinal, isFinal, onTestsChange, listTests },
+    ref,
+  ) => {
     const { inputsValue, handleChange } = useForm(selectedPatient)
-    const { listTests } = useTests()
+
     const {
       bilanData,
       handleBilanDataChange,

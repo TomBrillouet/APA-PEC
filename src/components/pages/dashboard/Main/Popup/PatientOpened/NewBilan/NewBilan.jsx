@@ -3,6 +3,8 @@ import { MainContext } from "../../../../../../../context/MainContext"
 import GraphResults from "./GraphResults.jsx"
 import BilanForm from "./BilanForm/BilanForm.jsx"
 import Button from "../../../../../../reusable/Button.jsx"
+import { useTests } from "../../../../../../../hooks/useTests.jsx"
+import Loader from "../../../../../../reusable/Loader.jsx"
 
 export default function NewBilan() {
   const [isFinal, setIsFinal] = useState(false)
@@ -15,8 +17,9 @@ export default function NewBilan() {
   const [selectedTests, setSelectedTests] = useState(
     selectedPatient?.bilans[0]?.tests,
   )
-
+  const { listTests } = useTests()
   const datasToSubmit = useRef()
+  if (!listTests) return <Loader />
 
   const handleChangeIsFinal = (selectedOption) => {
     setIsFinal(selectedOption.value)
@@ -57,6 +60,7 @@ export default function NewBilan() {
         handleChangeIsFinal={handleChangeIsFinal}
         isFinal={isFinal}
         onTestsChange={handleSelectedTests}
+        listTests={listTests}
       />
       <GraphResults
         selectedPatient={selectedPatient}
