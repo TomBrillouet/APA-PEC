@@ -6,6 +6,7 @@ import { useAuth } from "./context/AuthContext"
 import Loader from "./components/reusable/Loader"
 import Stats from "./components/pages/dashboard/Stats/Stats"
 import Tests from "./components/pages/dashboard/Tests/Tests"
+import ProtectedLayout from "./components/pages/ProtectedLayout"
 
 export default function App() {
   const { currentUser, loading } = useAuth()
@@ -18,11 +19,13 @@ export default function App() {
         element={<Navigate to={currentUser ? "/dashboard" : "/login"} />}
       />
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/dashboard/:status" element={<Dashboard />} />
-      <Route path="/stats" element={<Stats />} />
-      <Route path="/tests" element={<Tests />} />
-      <Route path="*" element={<ErrorPage />} />
+      <Route element={<ProtectedLayout />}>
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard/:status" element={<Dashboard />} />
+        <Route path="/stats" element={<Stats />} />
+        <Route path="/tests" element={<Tests />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Route>
     </Routes>
   )
 }

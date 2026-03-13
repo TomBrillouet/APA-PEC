@@ -26,7 +26,7 @@ export default function Header({ print }) {
             <span>{pro.mail}</span>
             <span>{pro.phone}</span>
             {pro.website && pro.society ? (
-              <a href={pro.website} target="_blank">
+              <a href={pro.website} target="_blank" rel="noopener noreferrer">
                 {pro.society}
               </a>
             ) : (

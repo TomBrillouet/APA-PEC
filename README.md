@@ -25,6 +25,8 @@ The application also generates printable reports, facilitating communication bet
 ## Demo
 
 ![Screenshot Demo](/public/images/screenshot.png "Screenshot Demo")
+![Screenshot Demo 3](/public/images/screenshot3.png "Screenshot Demo 3")
+![Screenshot Demo 4](/public/images/screenshot4.png "Screenshot Demo 4")
 ![Screenshot Demo 2](/public/images/screenshot2.png "Screenshot Demo 2")
 
 [Live Demo](https://apa-pec.vercel.app)
@@ -48,6 +50,10 @@ A demo account is available with the following credentials:
 - Assign standardized tests at creation to generate an automatic initial assessment
 - Update contact information at any time
 - Archive patients by closing their treatment plan
+- Visual indicators on each patient card for at-a-glance status:
+  - Patient showing stagnation in latest results
+  - Treatment completed with a final assessment
+  - Treatment ended without a final assessment (early dropout)
 
 ### Assessments
 
@@ -55,6 +61,7 @@ A demo account is available with the following credentials:
 - Dynamic result sections based on assigned tests
 - Track weight, height and BMI over time
 - Add free-text fields: patient feedback, problem progression, plan adjustments
+- **Practitioner recommendation field** completed after the initial assessment, summarizing clinical recommendations.Included in printed PDF reports
 
 ### Custom Tests
 
@@ -70,13 +77,25 @@ A demo account is available with the following credentials:
 ### Reports
 
 - Generate and save **printable reports**
-- Download assessments as **PDF** including patient data and practitioner information
+- Download assessments as **PDF** including patient data, practitioner information, and initial recommendations
+
+### Statistics
+
+- Overview dashboard with key activity metrics:
+  - Total, active, and archived patients
+  - Average age, youngest and oldest patient
+  - Gender distribution (chart)
+- Clinical alerts:
+  - Patients who ended treatment without a final assessment
+  - Patients showing stagnation or regression in their latest comparable results
 
 ### Practitioner Profile
 
 - Edit practitioner information (name, profession, contact, company, website)
 - Practitioner details automatically included in generated PDFs
 - Each practitioner manages their own isolated patient data
+
+---
 
 ## Technologies
 
@@ -155,7 +174,7 @@ APA-PEC/
 │   │   │   ├── login/          # Authentication page
 │   │   │   └── error/          # Error page
 │   │   └── reusable/           # Shared UI components (Button, Input, Loader…)
-│   ├── context/                # React contexts (Auth, Main app state)
+│   ├── context/                # React contexts (Auth, PatientsContext, Main app state)
 │   ├── datas/                  # Static data and app configuration
 │   ├── enums/                  # Enumerations and constants
 │   ├── hooks/                  # Custom React hooks
@@ -185,6 +204,13 @@ VITE_STORAGE_BUCKET =
 VITE_MESSAGING_SENDER_ID =
 VITE_APP_ID =
 ```
+
+---
+
+## Known Limitations
+
+- All patient, assessment, and test data is stored in a single Firestore document per user. Firestore enforces a **1 MB document size limit**, which may be reached by practitioners with a large number of patients and assessments over time. A future migration to subcollections is planned.
+- The application interface is currently available in **French only**.
 
 ---
 

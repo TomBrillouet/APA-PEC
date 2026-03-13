@@ -10,13 +10,14 @@ export default function GeneralTestSection({ inputsValue, handleChange }) {
         type={"text"}
         value={inputsValue.name}
         onChange={handleChange}
-        isRequired={true}
+        isRequired
       />
       <TextArea
         name={"description"}
         label={"Description"}
         value={inputsValue.description}
         onChange={handleChange}
+        isRequired
       />
     </>
   )

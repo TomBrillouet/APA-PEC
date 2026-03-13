@@ -2,7 +2,6 @@ import TextArea from "../../../../../../reusable/TextArea.jsx"
 import { useContext } from "react"
 import { identityInputs } from "../config/identityInputs.jsx"
 import { contactInputs } from "../config/contactInputs.jsx"
-import { medicArea } from "../config/medicArea.jsx"
 import Input from "../../../../../../reusable/Input.jsx"
 import IdentityFormSection from "./IdentityFormSection.jsx"
 import TestsFormSection from "./TestsFormSection.jsx"
@@ -12,6 +11,7 @@ import { MainContext } from "../../../../../../../context/MainContext.jsx"
 import { useForm } from "../../../../../../../hooks/useForm.jsx"
 import InputSection from "../../../../../../reusable/InputSection.jsx"
 import { EMPTY_PATIENT } from "../../../../../../../enums/patient.jsx"
+import { BILAN_FIELDS } from "../../../../../../../datas/bilanConfig.js"
 
 export default function FormAddPatient() {
   const {
@@ -89,7 +89,7 @@ export default function FormAddPatient() {
       />
       <InputSection datas={mapInputs(contactInputs)} label={"Contact"} />
       <InputSection
-        datas={mapTextArea(medicArea)}
+        datas={mapTextArea(BILAN_FIELDS.initial.textareas)}
         label={"Informations médicales"}
       />
       <TestsFormSection onChange={testsSelectChange} />

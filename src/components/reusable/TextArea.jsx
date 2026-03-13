@@ -9,6 +9,7 @@ export default function TextArea({
   placeholder,
   value,
   disabled,
+  isRequired,
 }) {
   return (
     <InputField className={className}>
@@ -20,6 +21,7 @@ export default function TextArea({
         placeholder={placeholder}
         rows={rows}
         onChange={onChange}
+        required={isRequired}
       />
     </InputField>
   )

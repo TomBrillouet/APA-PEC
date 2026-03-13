@@ -3,12 +3,12 @@ import { getPro } from "../../../../../api/pro"
 import { getListTests } from "../../../../../api/tests"
 import { fakeTests } from "../../../../../datas/fakeTests"
 
-const initialisePro = async (userId, setPro) => {
+export const initialisePro = async (userId, setPro) => {
   const proReceived = await getPro(userId)
   setPro(proReceived)
 }
 
-const initialisePatients = async (userId, setPatients) => {
+export const initialisePatients = async (userId, setPatients) => {
   const patientsReceived = await getPatients(userId)
   setPatients(patientsReceived)
 }

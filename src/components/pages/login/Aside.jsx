@@ -34,5 +34,6 @@ const AsideStyled = styled.aside`
     font-size: 0.95rem;
     margin-top: 0.5rem;
     font-weight: 500;
+    text-align: center;
   }
 `

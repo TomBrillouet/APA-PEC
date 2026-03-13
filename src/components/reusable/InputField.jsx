@@ -3,7 +3,7 @@ import styled from "styled-components"
 export default function InputField({ label, children, className }) {
   return (
     <InputFieldStyled className={className}>
-      <label>{label}</label>
+      {label && <label>{label}</label>}
       {children}
     </InputFieldStyled>
   )

@@ -16,7 +16,9 @@ export default function ImcGraph({ selectedPatient }) {
         }
       })
   }, [selectedPatient.bilans])
-  return (
-    <SimpleLineGraph data={dataImc} y="imc" legend={"IMC"} width={"100%"} />
-  )
+  if (dataImc.length > 1) {
+    return (
+      <SimpleLineGraph data={dataImc} y="imc" legend={"IMC"} width={"100%"} />
+    )
+  }
 }
