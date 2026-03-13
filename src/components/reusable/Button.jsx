@@ -7,6 +7,7 @@ export default function Button({
   type,
   disabled,
   version = "primary",
+  className,
 }) {
   return (
     <ButtonStyled
@@ -14,6 +15,7 @@ export default function Button({
       onClick={onClick}
       version={version}
       disabled={disabled}
+      className={className}
     >
       <span>{label}</span>
     </ButtonStyled>
