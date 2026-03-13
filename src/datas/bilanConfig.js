@@ -1,5 +1,20 @@
 export const BILAN_FIELDS = {
-  initial: {},
+  initial: {
+    textareas: [
+      {
+        label: "Problèmes",
+        name: "problems",
+      },
+      {
+        label: "Antécédents",
+        name: "history",
+      },
+      {
+        label: "Objectifs",
+        name: "goals",
+      },
+    ],
+  },
   intermediaire: {
     textareas: [
       {
