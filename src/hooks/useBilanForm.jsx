@@ -13,6 +13,7 @@ export const useBilanForm = (initialvalues, listTests) => {
     height: 0,
     weight: 0,
     imc: 0,
+    reco: "",
   })
 
   const handleBilanDataChange = (e) => {

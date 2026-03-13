@@ -1,7 +1,6 @@
 import styled from "styled-components"
 import Input from "../../../../../../reusable/Input"
 import TextArea from "../../../../../../reusable/TextArea"
-import { useTests } from "../../../../../../../hooks/useTests"
 import { memo } from "react"
 
 function ResultsSection({
@@ -9,9 +8,9 @@ function ResultsSection({
   onChange,
   onRemarquesChange,
   disabled,
-  print,
+  handleChange,
+  inputsValue,
 }) {
-  const { listTests } = useTests()
   if (!bilanData.tests) return null
 
   return (
@@ -45,19 +44,19 @@ function ResultsSection({
             onChange={(e) => onRemarquesChange(test.name, e.target.value)}
             placeholder="Remarques"
           />
-          {print && (
-            <TextArea
-              rows={3}
-              label="Description"
-              className="field full"
-              disabled={disabled}
-              value={
-                listTests?.find((t) => t.name === test.name).description ?? ""
-              }
-            />
-          )}
         </div>
       ))}
+      {bilanData.type === "initial" && (
+        <TextArea
+          rows={3}
+          name={"reco"}
+          label="Recommandations du professionnel"
+          className="field full"
+          placeholder="Recommandations du professionnel"
+          onChange={handleChange}
+          value={inputsValue.reco}
+        />
+      )}
     </ResultsSectionStyled>
   )
 }
