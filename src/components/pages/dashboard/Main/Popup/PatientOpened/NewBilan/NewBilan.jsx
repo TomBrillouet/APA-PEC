@@ -30,6 +30,7 @@ export default function NewBilan() {
     const { bilanData, inputsValue } = value
     const patientToUpdate = {
       ...inputsValue,
+      archived: isFinal,
       bilans: [
         {
           ...bilanData,
