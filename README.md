@@ -54,6 +54,7 @@ A demo account is available with the following credentials:
   - Patient showing stagnation in latest results
   - Treatment completed with a final assessment
   - Treatment ended without a final assessment (early dropout)
+  - Patient overdue for an assessment
 
 ### Assessments
 
