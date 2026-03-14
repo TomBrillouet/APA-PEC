@@ -8,6 +8,7 @@ import ToggleButton from "./ToggleButton.jsx"
 export default function Menu() {
   const [isOpen, setIsOpen] = useState(false)
   const [hasToggled, setHasToggled] = useState(false)
+  const [isHover, setIsHover] = useState(false)
 
   const toggleMenu = () => {
     setIsOpen((prev) => {
@@ -37,7 +38,7 @@ export default function Menu() {
         className={menuClass}
       />
       <MenuStyled className={menuClass}>
-        <Logo />
+        <Logo menuHover={isHover} setIsHover={setIsHover} />
         <BodyMenu onClick={() => closeMenu()} />
         <BottomMenu />
       </MenuStyled>
@@ -59,6 +60,7 @@ const MenuStyled = styled.aside`
   margin: 15px;
   border-radius: 10px;
   top: 15px;
+
   .logo {
     white-space: nowrap;
     text-align: center;
