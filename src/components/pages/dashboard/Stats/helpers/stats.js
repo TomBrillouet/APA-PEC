@@ -38,8 +38,7 @@ export const getMen = (patients) =>
 
 export const getEarlyQuit = (patients) => {
   const filterArchived = patients.filter((patient) => patient.archived)
-  const hasFinalBilan = (bilan) => bilan.type === "final"
-  return filterArchived.filter((patient) => !patient.bilans.some(hasFinalBilan))
+  return filterArchived.filter((patient) => patient.bilans[0].type !== "final")
 }
 
 const comparableResults = (patient, i) =>
