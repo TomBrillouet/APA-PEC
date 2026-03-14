@@ -5,14 +5,20 @@ import styled from "styled-components"
 import { MainContext } from "../../../../../../../context/MainContext.jsx"
 import { useContext } from "react"
 import { useForm } from "../../../../../../../hooks/useForm.jsx"
-import { toastInfo } from "../../../../../../../datas/toastmessages.js"
+import {
+  toastError,
+  toastInfo,
+} from "../../../../../../../datas/toastmessages.js"
 export default function BodyPro() {
   const { pro, proSubmit, toggleProInfo } = useContext(MainContext)
   const { inputsValue, handleChange } = useForm(pro)
 
   const handleSubmit = (inputsValue) => {
     toggleProInfo()
-    if (inputsValue === pro) return
+    if (inputsValue === pro) {
+      toastError("Les informations du contact n'ont pas été modifiées.")
+      return
+    }
     proSubmit(inputsValue)
     toastInfo("Les informations du professionnel ont été modifiées")
   }
