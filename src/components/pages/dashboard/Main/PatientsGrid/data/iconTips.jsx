@@ -1,7 +1,8 @@
 import { FaCheck, FaQuestion } from "react-icons/fa"
 import { FiTrendingDown } from "react-icons/fi"
+import { MdOutlineWarningAmber } from "react-icons/md"
 
-export const iconTips = (isArchived, isEarlyQuit, isStagnant) => [
+export const iconTips = (isArchived, isEarlyQuit, isStagnant, isInactive) => [
   {
     condition: isArchived && !isEarlyQuit,
     icon: <FaCheck />,
@@ -19,5 +20,11 @@ export const iconTips = (isArchived, isEarlyQuit, isStagnant) => [
     icon: <FiTrendingDown />,
     className: "trend-down",
     label: "Patient en stagnation/régression",
+  },
+  {
+    condition: isInactive && !isArchived && !isEarlyQuit,
+    icon: <MdOutlineWarningAmber />,
+    className: "warning",
+    label: "Prévoir un bilan",
   },
 ]

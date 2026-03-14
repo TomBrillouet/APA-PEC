@@ -13,11 +13,12 @@ export default function PatientCard({
   isArchived,
   isEarlyQuit,
   isStagnant,
+  isInactive,
 }) {
   return (
     <PatientCardStyled key={id} onClick={onClick}>
       <div className="flag">
-        {iconTips(isArchived, isEarlyQuit, isStagnant)
+        {iconTips(isArchived, isEarlyQuit, isStagnant, isInactive)
           .filter((iconTip) => iconTip.condition)
           .map((iconTip, i) => {
             return (
@@ -62,6 +63,7 @@ const PatientCardStyled = styled.div`
     transform: translateY(-3px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.09);
     border-color: ${theme.colors.primary};
+    z-index: 1;
   }
 
   .flag {
