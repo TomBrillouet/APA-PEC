@@ -39,7 +39,6 @@ export default function TestForm({
 }
 
 const TestFormStyled = styled.form`
-  background-color: ${theme.colors.background};
   flex: 1;
   display: flex;
   flex-direction: column;

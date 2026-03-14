@@ -60,7 +60,7 @@ const PatientCardStyled = styled.div`
     border-color 0.16s;
 
   &:hover {
-    transform: translateY(-3px);
+    transform: translateY(-1.5px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.09);
     border-color: ${theme.colors.primary};
     z-index: 1;

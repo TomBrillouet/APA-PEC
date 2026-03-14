@@ -23,13 +23,8 @@ export default function Stats() {
 }
 
 const StatsStyled = styled.div`
-  padding: 28px 32px;
   display: flex;
   flex-direction: column;
   gap: 36px;
   flex: 1;
-
-  @media screen and (max-width: 768px) {
-    padding: 14px;
-  }
 `

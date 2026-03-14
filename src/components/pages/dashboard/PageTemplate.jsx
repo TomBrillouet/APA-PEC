@@ -30,7 +30,7 @@ const PageTemplateStyled = styled.div`
     flex-direction: column;
     justify-content: center;
     .background {
-      padding: 30px;
+      padding: 15px 15px 30px 0;
       display: flex;
       flex: 1;
       .main {
@@ -44,12 +44,14 @@ const PageTemplateStyled = styled.div`
   }
 
   @media screen and (max-width: 768px) {
-    .background {
-      padding: 10px;
-      .main {
-        text-align: center;
-        align-items: center;
-        padding: 10px;
+    .column {
+      .background {
+        padding: 14px;
+        .main {
+          text-align: center;
+          align-items: center;
+          padding: 10px;
+        }
       }
     }
   }

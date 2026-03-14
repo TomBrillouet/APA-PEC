@@ -6,6 +6,7 @@ import { useTests } from "../../../../hooks/useTests.jsx"
 import Loader from "../../../reusable/Loader.jsx"
 import { LiaFileMedicalAltSolid } from "react-icons/lia"
 import PageTemplate from "../PageTemplate.jsx"
+import { theme } from "../../../../theme/index.js"
 
 export default function Tests() {
   const {
@@ -28,6 +29,9 @@ export default function Tests() {
       {!testSelected ? (
         <TestsStyled>
           <h2>Liste des tests et protocoles normés</h2>
+          <p className="subtitle">
+            Configurez les tests utilisés dans vos bilans
+          </p>
           <ListWithButton
             buttonLabel={"Modifier"}
             secondButtonLabel={"Supprimer"}
@@ -59,6 +63,18 @@ const TestsStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: start;
+  h2 {
+    text-align: center;
+    font-size: ${theme.fonts.size.P4};
+    color: #2c5282;
+    font-weight: 400;
+    margin: 0 0 4px 0;
+  }
+  .subtitle {
+    color: #64748b;
+    font-size: 14px;
+    margin: 0;
+  }
   .li-tests {
     font-size: 20px;
     svg {

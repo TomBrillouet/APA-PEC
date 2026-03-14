@@ -21,7 +21,6 @@ const TopMainBarStyled = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 1.5rem;
-  font-weight: 600;
   color: #1e2a38;
   margin-bottom: 20px;
   gap: 30px;
@@ -30,5 +29,6 @@ const TopMainBarStyled = styled.div`
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    gap: 20px;
   }
 `

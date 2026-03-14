@@ -138,7 +138,7 @@ const MainStyled = styled.main`
     background-color: #1e2a3878;
   }
   .main-background {
-    padding: 28px 32px;
+    padding: 28px 15px 28px 0px;
     flex: 1;
   }
 
