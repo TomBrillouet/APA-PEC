@@ -15,6 +15,8 @@ const FooterStyled = styled.footer`
   flex-direction: column;
   justify-content: center;
   padding-bottom: 15px;
+  background-color: transparent;
+
   hr {
     background-color: ${theme.colors.primary};
     border: none;

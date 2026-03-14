@@ -51,6 +51,8 @@ const HeaderStyled = styled.div`
   padding: 18px 32px;
   justify-content: space-between;
   color: #111827;
+  border-radius: 8px;
+  margin: 10px 10px 0 0;
 
   .pro-infos {
     display: flex;

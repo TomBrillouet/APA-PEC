@@ -27,7 +27,7 @@ const NavItemStyled = styled.div`
     gap: 10px;
     padding: 11px 14px;
     color: #747474;
-    font-size: ${theme.fonts.size.P2};
+    font-size: ${theme.fonts.size.P1};
     border-radius: ${theme.borderRadius.round};
     text-decoration: none;
     cursor: pointer;

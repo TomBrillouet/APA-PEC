@@ -55,7 +55,10 @@ const MenuStyled = styled.aside`
   top: 0;
   height: 100vh;
   gap: 5em;
-
+  height: 97vh;
+  margin: 10px;
+  border-radius: 10px;
+  top: 10px;
   .logo {
     white-space: nowrap;
     text-align: center;
