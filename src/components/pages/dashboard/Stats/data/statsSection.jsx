@@ -15,7 +15,7 @@ import {
   getStagnantPatients,
   getTotalPatients,
   getYounger,
-} from "../helpers/stats"
+} from "../../helpers/stats"
 import { BsGenderFemale, BsGenderMale } from "react-icons/bs"
 import GraphPie from "../body/GraphPie"
 
