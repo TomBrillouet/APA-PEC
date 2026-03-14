@@ -1,4 +1,4 @@
-import { getAge } from "../../../../../utils/math"
+import { getAge } from "../../../../utils/math"
 
 export const getTotalPatients = (patients) => patients.length
 
@@ -38,8 +38,7 @@ export const getMen = (patients) =>
 
 export const getEarlyQuit = (patients) => {
   const filterArchived = patients.filter((patient) => patient.archived)
-  const hasFinalBilan = (bilan) => bilan.type === "final"
-  return filterArchived.filter((patient) => !patient.bilans.some(hasFinalBilan))
+  return filterArchived.filter((patient) => patient.bilans[0].type !== "final")
 }
 
 const comparableResults = (patient, i) =>
@@ -60,3 +59,13 @@ const isStagnant = (patient) => {
 
 export const getStagnantPatients = (patients) =>
   patients.filter((patient) => patient.bilans.length > 1).filter(isStagnant)
+
+export const getInactivesPatients = (patients) => {
+  const isInactive = (patient) => {
+    if (!patient.bilans?.length) return true
+    const today = new Date()
+    const target = new Date(patient.bilans[0].date)
+    return today - target > 120 * 24 * 60 * 60 * 1000
+  }
+  return patients.filter(isInactive)
+}

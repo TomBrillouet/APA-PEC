@@ -22,14 +22,14 @@ export default function PageTemplate({ children }) {
 const PageTemplateStyled = styled.div`
   display: flex;
   min-height: 100vh;
+  background-color: ${theme.colors.background};
+
   .column {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: ${theme.colors.background};
     .background {
-      background-color: ${theme.colors.background};
       padding: 30px;
       display: flex;
       flex: 1;

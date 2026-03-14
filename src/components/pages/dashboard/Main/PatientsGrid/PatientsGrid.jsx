@@ -2,7 +2,11 @@ import styled from "styled-components"
 import PatientCard from "./PatientCard"
 import { MainContext } from "../../../../../context/MainContext"
 import { useContext } from "react"
-import { getEarlyQuit, getStagnantPatients } from "../../Stats/helpers/stats"
+import {
+  getEarlyQuit,
+  getStagnantPatients,
+  getInactivesPatients,
+} from "../../helpers/stats.js"
 
 export default function PatientsGrid({ patients, togglePatient }) {
   const { handleSelectedPatient } = useContext(MainContext)
@@ -27,6 +31,9 @@ export default function PatientsGrid({ patients, togglePatient }) {
             (el) => el.id === patient.id,
           )}
           isStagnant={getStagnantPatients(patients).find(
+            (el) => el.id === patient.id,
+          )}
+          isInactive={getInactivesPatients(patients).find(
             (el) => el.id === patient.id,
           )}
         />

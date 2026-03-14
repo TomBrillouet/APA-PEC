@@ -56,36 +56,33 @@ export default function Tests() {
 }
 
 const TestsStyled = styled.div`
-display: flex;
-flex-direction: column;
-align-items: start;
-      .li-tests {
-        font-size: 20px;
-        svg {
-          font-size: 26px;
-        }
-      }
-      .add-test {
-        align-self: flex-end;
-      }
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  .li-tests {
+    font-size: 20px;
+    svg {
+      font-size: 26px;
     }
   }
 
   @media screen and (max-width: 768px) {
-        ul {
-          display: flex;
-          flex-direction: column;
-          gap: 2em;
-          li {
-            flex-direction: column;
-            gap: 2px;
-            button {
-              margin-left: 10px;
-              padding: 15px;
-            }
-          }
+    align-items: center;
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 2em;
+      li {
+        flex-direction: column;
+        gap: 2px;
+        button {
+          margin-left: 10px;
+          padding: 15px;
         }
       }
+    }
+    .add-test {
+      align-self: center;
     }
   }
 `

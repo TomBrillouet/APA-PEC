@@ -24,6 +24,9 @@ const IconTipStyled = styled.div`
   .trend-down {
     color: red;
   }
+  .warning {
+    color: #f59e0b;
+  }
 
   .tooltiptext {
     visibility: hidden;
