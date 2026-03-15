@@ -13,6 +13,7 @@ const InputFieldStyled = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
+  min-width: 0;
 
   &.full {
     grid-column: 1 / -1;
@@ -39,6 +40,7 @@ const InputFieldStyled = styled.div`
     width: 100%;
     max-width: 100%;
     min-width: 0;
+    flex: 1;
     transition:
       border-color 0.15s,
       box-shadow 0.15s;
@@ -56,6 +58,13 @@ const InputFieldStyled = styled.div`
       border-color: #4a90c4;
       box-shadow: 0 0 0 3px rgba(74, 144, 196, 0.15);
     }
+  }
+
+  input[type="date"] {
+    -webkit-appearance: none;
+    appearance: none;
+    min-width: 0;
+    width: 100%;
   }
 
   textarea {
