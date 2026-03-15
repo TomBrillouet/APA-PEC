@@ -26,7 +26,11 @@ const PopupStyled = styled.div`
   }
 
   @media (max-width: 768px) {
-    left: 11%;
+    left: 0;
+    top: 0;
+    border-radius: 0;
+    width: 100vw;
+    max-height: 100%;
     > :nth-child(2) {
       padding: 16px;
     }
