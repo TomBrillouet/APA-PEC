@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { theme } from "../../../../../theme"
 
 export default function StatsHeader() {
   return (
@@ -11,9 +12,9 @@ export default function StatsHeader() {
 
 const StatsHeaderStyled = styled.div`
   h2 {
-    font-size: 28px;
-    font-weight: 700;
-    color: #1e293b;
+    font-size: ${theme.fonts.size.P4};
+    color: #2c5282;
+    font-weight: 400;
     margin: 0 0 4px 0;
   }
   .subtitle {

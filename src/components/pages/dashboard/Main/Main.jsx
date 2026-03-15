@@ -3,7 +3,6 @@ import { useContext, useEffect, useState } from "react"
 import Header from "../Header/Header.jsx"
 import { MainContext } from "../../../../context/MainContext.jsx"
 import { useBilanForm } from "../../../../hooks/useBilanForm.jsx"
-import { theme } from "../../../../theme/index.js"
 import { useParams } from "react-router"
 import { usePopup } from "../../../../hooks/usePopup.jsx"
 import { useAuth } from "../../../../context/AuthContext.jsx"
@@ -138,7 +137,7 @@ const MainStyled = styled.main`
     background-color: #1e2a3878;
   }
   .main-background {
-    padding: 28px 32px;
+    padding: 28px 15px 28px 0px;
     flex: 1;
   }
 

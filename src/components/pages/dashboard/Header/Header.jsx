@@ -52,7 +52,7 @@ const HeaderStyled = styled.div`
   justify-content: space-between;
   color: #111827;
   border-radius: 8px;
-  margin: 10px 10px 0 0;
+  margin: 15px 15px 0 0;
 
   .pro-infos {
     display: flex;
@@ -111,5 +111,9 @@ const HeaderStyled = styled.div`
       color: ${theme.colors.primary};
       transform: scale(0.95);
     }
+  }
+
+  @media screen and (max-width: 768px) {
+    margin-left: 10px;
   }
 `

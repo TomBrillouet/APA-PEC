@@ -14,6 +14,7 @@ const PrintStyles = createGlobalStyle`
 .print-only { 
   background-color: #f9f7f4;
   min-height: 100vh;
+  line-height: normal;
 
   .header {
     display: flex;
