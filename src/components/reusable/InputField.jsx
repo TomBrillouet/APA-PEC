@@ -37,6 +37,8 @@ const InputFieldStyled = styled.div`
     font-family: inherit;
     box-sizing: border-box;
     width: 100%;
+    max-width: 100%;
+    min-width: 0;
     transition:
       border-color 0.15s,
       box-shadow 0.15s;
