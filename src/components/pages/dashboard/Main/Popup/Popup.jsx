@@ -16,6 +16,7 @@ const PopupStyled = styled.div`
   border-radius: 10px;
   box-shadow: 0 8px 32px rgba(100, 149, 200, 0.18);
   overflow-y: auto;
+  overflow-x: hidden;
   scrollbar-color: grey transparent;
 
   > :nth-child(2) {
