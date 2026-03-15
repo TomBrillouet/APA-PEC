@@ -4,8 +4,11 @@ import { theme } from "../../theme"
 import { toastInfo } from "../../datas/toastmessages"
 import { getRandom } from "../../utils/array"
 import { sweetMessages } from "../../datas/sweetMessages"
+import { useState } from "react"
 
-export default function Logo({ menuHover, setIsHover }) {
+export default function Logo() {
+  const [isHover, setIsHover] = useState(false)
+
   const handleLogoClick = () => {
     toastInfo(getRandom(sweetMessages))
   }
@@ -17,7 +20,7 @@ export default function Logo({ menuHover, setIsHover }) {
     >
       <span className="text">APA </span>
       <span>
-        <FaHeart className={menuHover ? "animate heart" : "heart"} />
+        <FaHeart className={isHover ? "animate heart" : "heart"} />
       </span>
       <span className="text"> PEC</span>
       <hr />
