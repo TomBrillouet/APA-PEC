@@ -8,7 +8,6 @@ import ToggleButton from "./ToggleButton.jsx"
 export default function Menu() {
   const [isOpen, setIsOpen] = useState(false)
   const [hasToggled, setHasToggled] = useState(false)
-  const [isHover, setIsHover] = useState(false)
 
   const toggleMenu = () => {
     setIsOpen((prev) => {
@@ -38,7 +37,7 @@ export default function Menu() {
         className={menuClass}
       />
       <MenuStyled className={menuClass}>
-        <Logo menuHover={isHover} setIsHover={setIsHover} />
+        <Logo />
         <BodyMenu onClick={() => closeMenu()} />
         <BottomMenu />
       </MenuStyled>
