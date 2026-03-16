@@ -21,7 +21,7 @@ export default function PageTemplate({ children }) {
 
 const PageTemplateStyled = styled.div`
   display: flex;
-  min-height: 100vh;
+  min-height: 100dvh;
   background-color: ${theme.colors.background};
 
   .column {
