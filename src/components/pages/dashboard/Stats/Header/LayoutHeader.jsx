@@ -1,11 +1,11 @@
 import styled from "styled-components"
 import { theme } from "../../../../../theme"
 
-export default function StatsHeader() {
+export default function LayoutHeader({ title, subtitle }) {
   return (
     <StatsHeaderStyled className="page-header">
-      <h2>Statistiques</h2>
-      <p className="subtitle">Vue d'ensemble de votre activité</p>
+      <h2>{title}</h2>
+      <p className="subtitle">{subtitle}</p>
     </StatsHeaderStyled>
   )
 }

@@ -67,7 +67,7 @@ const HeaderPopupStyled = styled.div`
     margin: 0;
     font-size: 20px;
     font-weight: 700;
-    color: #1a3a5c;
+    color: ${theme.colors.darkBlue};
     letter-spacing: 0.01em;
   }
 

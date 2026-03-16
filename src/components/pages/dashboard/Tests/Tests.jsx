@@ -7,6 +7,7 @@ import Loader from "../../../reusable/Loader.jsx"
 import { LiaFileMedicalAltSolid } from "react-icons/lia"
 import PageTemplate from "../PageTemplate.jsx"
 import { theme } from "../../../../theme/index.js"
+import LayoutHeader from "../Stats/Header/LayoutHeader.jsx"
 
 export default function Tests() {
   const {
@@ -28,10 +29,10 @@ export default function Tests() {
     <PageTemplate>
       {!testSelected ? (
         <TestsStyled>
-          <h2>Liste des tests et protocoles normés</h2>
-          <p className="subtitle">
-            Configurez les tests utilisés dans vos bilans
-          </p>
+          <LayoutHeader
+            title={"Configuration des tests"}
+            subtitle={"Administrez les tests utilisés dans vos bilans"}
+          />
           <ListWithButton
             buttonLabel={"Modifier"}
             secondButtonLabel={"Supprimer"}

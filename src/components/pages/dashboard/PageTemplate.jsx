@@ -30,7 +30,7 @@ const PageTemplateStyled = styled.div`
     flex-direction: column;
     justify-content: center;
     .background {
-      padding: 15px 15px 30px 0;
+      padding: 15px 15px 0px 0;
       display: flex;
       flex: 1;
       .main {
@@ -39,6 +39,14 @@ const PageTemplateStyled = styled.div`
         padding: 30px;
         align-items: flex-start;
         border-radius: 8px;
+        height: 90vh;
+        overflow-y: auto;
+        scrollbar-color: transparent transparent;
+        scrollbar-width: thin;
+
+        &:hover {
+          scrollbar-color: initial;
+        }
       }
     }
   }
@@ -46,11 +54,11 @@ const PageTemplateStyled = styled.div`
   @media screen and (max-width: 768px) {
     .column {
       .background {
-        padding: 14px;
+        padding: 14px 14px 0 14px;
         .main {
           text-align: center;
           align-items: center;
-          padding: 10px;
+          padding: 30px;
         }
       }
     }

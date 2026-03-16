@@ -14,7 +14,7 @@ const FooterStyled = styled.footer`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-bottom: 15px;
+  padding-bottom: 9px;
   background-color: transparent;
 
   hr {
