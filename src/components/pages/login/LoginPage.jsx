@@ -31,7 +31,7 @@ const LoginPageStyled = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  min-height: 100vh;
+  min-height: 100dvh;
   position: relative;
   overflow: hidden;
 
