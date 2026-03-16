@@ -7,6 +7,7 @@ import Loader from "./components/reusable/Loader"
 import Stats from "./components/pages/dashboard/Stats/Stats"
 import Tests from "./components/pages/dashboard/Tests/Tests"
 import ProtectedLayout from "./components/pages/ProtectedLayout"
+import Rules from "./components/pages/dashboard/Rules/Rules"
 
 export default function App() {
   const { currentUser, loading } = useAuth()
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/dashboard/:status" element={<Dashboard />} />
         <Route path="/stats" element={<Stats />} />
+        <Route path="/rules" element={<Rules />} />
         <Route path="/tests" element={<Tests />} />
         <Route path="*" element={<ErrorPage />} />
       </Route>
