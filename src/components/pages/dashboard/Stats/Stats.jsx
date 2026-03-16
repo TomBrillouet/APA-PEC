@@ -4,8 +4,8 @@ import { PatientsContext } from "../../../../context/PatientsContext.jsx"
 import Loader from "../../../reusable/Loader.jsx"
 import Toast from "../Toast.jsx"
 import PageTemplate from "../PageTemplate.jsx"
-import StatsHeader from "./Header/StatsHeader.jsx"
 import StatsSections from "./body/StatsSections.jsx"
+import LayoutHeader from "./Header/LayoutHeader.jsx"
 
 export default function Stats() {
   const { patients } = useContext(PatientsContext)
@@ -14,7 +14,10 @@ export default function Stats() {
   return (
     <PageTemplate>
       <StatsStyled>
-        <StatsHeader />
+        <LayoutHeader
+          title={"Statistiques"}
+          subtitle={"Vue d'ensemble de votre activité"}
+        />
         <StatsSections patients={patients} />
       </StatsStyled>
       <Toast />
