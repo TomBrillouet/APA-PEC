@@ -16,6 +16,6 @@ export default function Dashboard() {
 
 const DashboardStyled = styled.div`
   display: flex;
-  min-height: 100vh;
+  min-height: 100dvh;
   background-color: ${theme.colors.background};
 `
