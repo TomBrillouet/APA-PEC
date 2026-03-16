@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { theme } from "../../theme"
 
 export default function InputField({ label, children, className }) {
   return (
@@ -33,7 +34,7 @@ const InputFieldStyled = styled.div`
     border-radius: 6px;
     background: #fff;
     font-size: 13px;
-    color: #1a3a5c;
+    color: ${theme.colors.darkBlue};
     outline: none;
     font-family: inherit;
     box-sizing: border-box;
@@ -96,14 +97,14 @@ const InputFieldStyled = styled.div`
     color: #a0bcd4;
   }
   .select__single-value {
-    color: #1a3a5c;
+    color: ${theme.colors.darkBlue};
   }
 
   .select__option {
     font-size: 13.5px;
     &--is-focused {
       background: #e8f2fb;
-      color: #1a3a5c;
+      color: ${theme.colors.darkBlue};
     }
     &--is-selected {
       background: #4a90c4;
@@ -115,12 +116,12 @@ const InputFieldStyled = styled.div`
     background: #daedf9;
     border-radius: 4px;
     &__label {
-      color: #1a3a5c;
+      color: ${theme.colors.darkBlue};
       font-size: 12.5px;
     }
     &__remove:hover {
       background: #b8d8f0;
-      color: #1a3a5c;
+      color: ${theme.colors.darkBlue};
     }
   }
 

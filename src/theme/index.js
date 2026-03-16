@@ -3,6 +3,8 @@ const colors = {
   text: "#64748b",
   background: "#6c82a32a",
   white: "#fff",
+  border: "#e5e7eb",
+  darkBlue: "#1a3a5c",
 }
 
 const spacing = {
