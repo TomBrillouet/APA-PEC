@@ -39,7 +39,7 @@ const PageTemplateStyled = styled.div`
         padding: 30px;
         align-items: flex-start;
         border-radius: 8px;
-        height: 90vh;
+        height: 90dvh;
         overflow-y: auto;
         scrollbar-color: transparent transparent;
         scrollbar-width: thin;
