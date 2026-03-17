@@ -12,17 +12,20 @@ import { useForm } from "../../../../../../../hooks/useForm.jsx"
 import InputSection from "../../../../../../reusable/InputSection.jsx"
 import { EMPTY_PATIENT } from "../../../../../../../enums/patient.jsx"
 import { BILAN_FIELDS } from "../../../../../../../datas/bilanConfig.js"
+import { useBilanForm } from "../../../../../../../hooks/useBilanForm.jsx"
+import { useTests } from "../../../../../../../hooks/useTests.jsx"
 
 export default function FormAddPatient() {
+  const { toggleAddPatient, addNewPatient } = useContext(MainContext)
+  const { listTests } = useTests()
+
   const {
-    toggleAddPatient,
-    addNewPatient,
     bilanData,
     handleBilanDataChange,
     handleResultChange,
     handleRemarquesChange,
     testsSelectChange,
-  } = useContext(MainContext)
+  } = useBilanForm(null, listTests)
 
   const { inputsValue, sexSelectChange, handleChange } = useForm(EMPTY_PATIENT)
 
