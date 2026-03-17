@@ -13,11 +13,9 @@ import InputSection from "../../../../../../reusable/InputSection.jsx"
 import { EMPTY_PATIENT } from "../../../../../../../enums/patient.jsx"
 import { BILAN_FIELDS } from "../../../../../../../datas/bilanConfig.js"
 import { useBilanForm } from "../../../../../../../hooks/useBilanForm.jsx"
-import { useTests } from "../../../../../../../hooks/useTests.jsx"
 
 export default function FormAddPatient() {
-  const { toggleAddPatient, addNewPatient } = useContext(MainContext)
-  const { listTests } = useTests()
+  const { toggleAddPatient, addNewPatient, listTests } = useContext(MainContext)
 
   const {
     bilanData,
