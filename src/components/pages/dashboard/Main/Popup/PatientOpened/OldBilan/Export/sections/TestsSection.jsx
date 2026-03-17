@@ -16,7 +16,7 @@ export default function TestsSection({ className, selectedBilan }) {
           return (
             <div className="test-container" key={i}>
               <div className="test-number">
-                <b>Test n°{i + 1}</b>
+                <b>Test {i + 1}</b>
               </div>
               <div className="test-infos">
                 <b className="test-name">{test.name}</b>
