@@ -6,7 +6,7 @@ import Button from "../../../../../../reusable/Button"
 import ListWithButton from "../../../../../../reusable/ListWithButton"
 import { IoDocumentTextOutline } from "react-icons/io5"
 
-export default function BilansPatient({ selectedPatient }) {
+export default function BilansPatient({ selectedPatient, toggleArchived }) {
   const { toggleOldBilan, handleSelectedBilan, toggleNewBilan } =
     useContext(MainContext)
 
@@ -30,11 +30,18 @@ export default function BilansPatient({ selectedPatient }) {
           </>
         )}
       />
-      <Button
-        onClick={toggleNewBilan}
-        label={"Faire un bilan"}
-        version="submit"
-      />
+      <div className="actions">
+        <Button
+          onClick={toggleNewBilan}
+          label={"Faire un bilan"}
+          version="submit"
+        />
+        <Button
+          label={selectedPatient.archived ? "Reprendre PEC" : "Terminer PEC"}
+          onClick={toggleArchived}
+          version="red"
+        />
+      </div>
     </BilansPatientStyled>
   )
 }
@@ -49,6 +56,11 @@ const BilansPatientStyled = styled.div`
     svg {
       font-size: 22px;
     }
+  }
+
+  .actions {
+    display: flex;
+    gap: 20px;
   }
 
   @media screen and (min-width: 768px) {

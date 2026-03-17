@@ -36,18 +36,12 @@ export default function BodyPatient() {
         isModifEnabled={isModifEnabled}
         handleModifEnabled={handleModifEnabled}
       />
-      <BilansPatient selectedPatient={selectedPatient} />
+      <BilansPatient
+        selectedPatient={selectedPatient}
+        toggleArchived={toggleArchived}
+      />
       <LogBookHistory selectedPatient={selectedPatient} />
       <Logbook isModifEnabled={isModifEnabled} />
-      <Button
-        label={
-          selectedPatient.archived
-            ? "Reprendre la prise en charge"
-            : "Terminer la prise en charge"
-        }
-        onClick={toggleArchived}
-        version="red"
-      />
     </BodyPatientStyled>
   )
 }
