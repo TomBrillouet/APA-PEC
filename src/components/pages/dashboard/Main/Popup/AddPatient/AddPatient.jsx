@@ -6,7 +6,6 @@ import HeaderPatient from "../HeaderPopup.jsx"
 
 export default function AddPatient() {
   const { toggleAddPatient } = useContext(MainContext)
-  //render
   return (
     <Popup>
       <HeaderPatient
