@@ -53,7 +53,12 @@ export default function Main() {
 
   const { status } = useParams()
   const archived = status === "archived"
-  if (!patients || !pro) return <Loader />
+  if (!patients || !pro)
+    return (
+      <MainStyled>
+        <Loader />
+      </MainStyled>
+    )
 
   const patientsFiltered = patients.filter(
     (patient) =>
@@ -126,6 +131,7 @@ const MainStyled = styled.main`
   flex: 1;
   display: flex;
   flex-direction: column;
+  position: relative;
 
   .overlay {
     width: 100%;

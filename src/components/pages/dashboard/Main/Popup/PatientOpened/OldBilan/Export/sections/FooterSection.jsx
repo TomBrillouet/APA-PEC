@@ -1,6 +1,6 @@
-export default function FooterSection({ pro }) {
+export default function FooterSection({ pro, className }) {
   return (
-    <>
+    <footer className={className}>
       <p>
         Ce bilan constitue le point de départ de votre accompagnement.
         L'objectif est de progresser à votre rythme en toute sécurité.
@@ -18,6 +18,6 @@ export default function FooterSection({ pro }) {
           </em>
         </p>
       </div>
-    </>
+    </footer>
   )
 }

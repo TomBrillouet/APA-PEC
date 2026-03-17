@@ -2,15 +2,16 @@ export const BILAN_FIELDS = {
   initial: {
     textareas: [
       {
-        label: "Problèmes",
+        label:
+          "Problèmes (pathologies, douleurs, limitations fonctionnelles, quotidien ...)",
         name: "problems",
       },
       {
-        label: "Antécédents",
+        label: "Antécédents (maladies, blessures, traitements ...)",
         name: "history",
       },
       {
-        label: "Objectifs",
+        label: "Objectifs (en APA, dans le quotidien)",
         name: "goals",
       },
     ],

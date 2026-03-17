@@ -16,7 +16,7 @@
 
 ## What is APA-PEC ?
 
-**APA-PEC** is a web application designed for physical therapists and adapted physical activity (APA) instructors.
+**APA-PEC** is a web application designed for adapted physical activity (APA) instructors.
 It centralizes patient monitoring by allowing users to create and manage treatment plans, perform assessments (initial, intermediate, and final) using standardized tests, and view results in graph form to track progress over time.
 The application also generates printable reports, facilitating communication between practitioners and their patients.
 

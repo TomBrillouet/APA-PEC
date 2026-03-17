@@ -1,10 +1,7 @@
 import { useBilanForm } from "../../../../../../../../hooks/useBilanForm"
-import TextArea from "../../../../../../../reusable/TextArea.jsx"
 import ImcGraph from "./patientSection/ImcGraph.jsx"
 import NewShapeValues from "./patientSection/NewShapeValues.jsx"
 import NewImc from "./patientSection/NewImc.jsx"
-import FinalSection from "./questionsSection/FinalSection.jsx"
-import IntermediarySection from "./questionsSection/IntermediarySection.jsx"
 import TestsFormSection from "../../../AddPatient/Form/TestsFormSection.jsx"
 import ResultsSection from "../../../AddPatient/Form/ResultsSection.jsx"
 import BilanDate from "./bilanSection/BilanDate.jsx"
@@ -13,6 +10,7 @@ import { useForm } from "../../../../../../../../hooks/useForm.jsx"
 import { forwardRef, useCallback, useImperativeHandle } from "react"
 import { NEW_BILAN_LABELS } from "../../../../../../../../enums/patient.jsx"
 import ShapeCard from "../../../../../../../reusable/ShapeCard.jsx"
+import TypeBilanSection from "./TextAreasSection/TypeBilanSection.jsx"
 
 const BilanForm = forwardRef(
   (
@@ -41,18 +39,6 @@ const BilanForm = forwardRef(
       [testsSelectChange, onTestsChange],
     )
 
-    const mapTextAreas = (array) =>
-      array.map((textarea) => {
-        return (
-          <TextArea
-            name={textarea.name}
-            label={textarea.label}
-            rows={3}
-            onChange={handleBilanDataChange}
-            key={textarea.name}
-          />
-        )
-      })
     return (
       <>
         <TypeOfBilanSection handleChangeIsFinal={handleChangeIsFinal} />
@@ -68,11 +54,13 @@ const BilanForm = forwardRef(
         <NewImc bilanData={bilanData} />
         <ImcGraph selectedPatient={selectedPatient} />
 
-        {isFinal ? (
-          <FinalSection mapTextAreas={mapTextAreas} />
-        ) : (
-          <IntermediarySection mapTextAreas={mapTextAreas} />
-        )}
+        <TypeBilanSection
+          type={isFinal ? "final" : "intermediaire"}
+          selectedPatient={selectedPatient}
+          onChange={handleBilanDataChange}
+          bilanData={bilanData}
+        />
+
         <TestsFormSection
           onChange={handleTestsChange}
           selectedPatient={selectedPatient}

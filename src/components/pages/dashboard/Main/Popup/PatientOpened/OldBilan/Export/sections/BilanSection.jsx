@@ -1,6 +1,5 @@
 import InfosPatientsSection from "./InfosPatientsSection"
 import TestsSection from "./TestsSection"
-import FooterSection from "./FooterSection.jsx"
 import { dateFr } from "../../../../../../../../../utils/math.js"
 
 export default function BilanSection({ selectedBilan, selectedPatient, pro }) {
@@ -45,7 +44,6 @@ export default function BilanSection({ selectedBilan, selectedPatient, pro }) {
       )}
 
       <br />
-      <FooterSection pro={pro} />
     </section>
   )
 }

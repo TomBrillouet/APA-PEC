@@ -9,7 +9,12 @@ import LayoutHeader from "./Header/LayoutHeader.jsx"
 
 export default function Stats() {
   const { patients } = useContext(PatientsContext)
-  if (!patients) return <Loader />
+  if (!patients)
+    return (
+      <PageTemplate>
+        <Loader />
+      </PageTemplate>
+    )
 
   return (
     <PageTemplate>
