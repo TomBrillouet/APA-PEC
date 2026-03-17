@@ -33,6 +33,7 @@ const PageTemplateStyled = styled.div`
       padding: 15px 15px 0px 0;
       display: flex;
       flex: 1;
+      position: relative;
       .main {
         background-color: ${theme.colors.white};
         flex: 1;

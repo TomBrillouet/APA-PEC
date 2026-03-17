@@ -10,7 +10,7 @@ export default function Loader() {
 }
 
 const LoaderStyled = styled.div`
-  position: fixed;
+  position: absolute;
   bottom: 50%;
   left: 50%;
   transform: translateX(-50%);
