@@ -3,7 +3,6 @@ import { MainContext } from "../../../../../../../context/MainContext"
 import GraphResults from "./GraphResults.jsx"
 import BilanForm from "./BilanForm/BilanForm.jsx"
 import Button from "../../../../../../reusable/Button.jsx"
-import { useTests } from "../../../../../../../hooks/useTests.jsx"
 import Loader from "../../../../../../reusable/Loader.jsx"
 
 export default function NewBilan() {
@@ -13,11 +12,11 @@ export default function NewBilan() {
     handleSelectedPatient,
     updatePatients,
     toggleNewBilan,
+    listTests,
   } = useContext(MainContext)
   const [selectedTests, setSelectedTests] = useState(
     selectedPatient?.bilans[0]?.tests,
   )
-  const { listTests } = useTests()
   const datasToSubmit = useRef()
   if (!listTests) return <Loader />
 
