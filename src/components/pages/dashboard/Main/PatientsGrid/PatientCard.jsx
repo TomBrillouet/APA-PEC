@@ -59,7 +59,7 @@ const PatientCardStyled = styled.div`
     box-shadow 0.16s,
     border-color 0.16s;
 
-  &:hover {
+  &:hover:not(:has(.flag:hover)) {
     transform: translateY(-1.5px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.09);
     border-color: ${theme.colors.primary};

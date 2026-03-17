@@ -1,11 +1,17 @@
 import styled from "styled-components"
 import { theme } from "../../../../../theme"
+import { NavLink } from "react-router"
 
 export default function IconTip({ className, icon, label }) {
   return (
-    <IconTipStyled>
+    <IconTipStyled onClick={(e) => e.stopPropagation()}>
       <span className={className}>{icon}</span>
-      <span className="tooltiptext">{label}</span>
+      <span className="tooltiptext">
+        {label} <br />
+        <NavLink to={"/rules"} className={"more"}>
+          En savoir plus
+        </NavLink>
+      </span>
     </IconTipStyled>
   )
 }
@@ -13,7 +19,6 @@ export default function IconTip({ className, icon, label }) {
 const IconTipStyled = styled.div`
   position: relative;
   display: inline-block;
-  cursor: pointer;
   pointer-events: auto;
   .archived {
     color: ${theme.colors.primary};
@@ -43,6 +48,16 @@ const IconTipStyled = styled.div`
     position: absolute;
     z-index: 1;
     white-space: normal;
+    cursor: initial;
+    user-select: none;
+
+    .more {
+      color: white;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   &:hover .tooltiptext {
