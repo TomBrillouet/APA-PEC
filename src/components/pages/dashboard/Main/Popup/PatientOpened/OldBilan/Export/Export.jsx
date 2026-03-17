@@ -7,14 +7,17 @@ import { MainContext } from "../../../../../../../../context/MainContext.jsx"
 import ExportHeader from "./Header/ExportHeader.jsx"
 import BilanSection from "./sections/BilanSection.jsx"
 import ProSection from "./sections/ProSection.jsx"
+import FooterSection from "./sections/FooterSection.jsx"
 
 const PrintStyles = createGlobalStyle`
   @media print {
 .no-print { display: none;  }
 .print-only { 
   background-color: #f9f7f4;
-  min-height: 100vh;
+  height: 200vh;
+  overflow-y: hidden;
   line-height: normal;
+  position: relative;
 
   .header {
     display: flex;
@@ -24,10 +27,10 @@ const PrintStyles = createGlobalStyle`
     text-align: center;
     gap: 10px;
     background-color: #efe8e1;
-    padding: 30px;
+    padding: 15px;
   h1{
     color: #3e5c6f;
-    font-size: 36px;
+    font-size: 32px;
     font-family:Georgia, 'Times New Roman', Times, serif;
     font-weight: 400;
     margin:0
@@ -87,9 +90,10 @@ const PrintStyles = createGlobalStyle`
       .test-number {
         border-right: solid #3e5c6f 1px;
         min-height: 100%;
-        padding-right: 15px;
+        padding: 0 8px 0 8px;
         display: flex;
         align-items: center;
+        justify-content: center;
         color: #3e5c6f
       }
       .test-infos {
@@ -107,6 +111,22 @@ const PrintStyles = createGlobalStyle`
         }
       }
     }}
+    .footer {
+      position: absolute;
+      bottom: 0;
+    }
+    .num1 {
+      position: absolute;
+      bottom: calc(50% + 10px);
+      right: 10px;
+      font-size: 16px;
+    }
+    .num2 {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      font-size: 16px;
+    }
   }
   }}
 `
@@ -128,6 +148,8 @@ export default function Export({ selectedBilan, selectedPatient }) {
         <div className="print-only" ref={ref}>
           <ExportHeader className={"header"} selectedBilan={selectedBilan} />
           <main>
+            <span className="num1">1</span>
+            <span className="num2">2</span>
             <ProSection className={"pro"} pro={pro} />
             <hr />
             <BilanSection
@@ -135,6 +157,7 @@ export default function Export({ selectedBilan, selectedPatient }) {
               selectedBilan={selectedBilan}
               selectedPatient={selectedPatient}
             />
+            <FooterSection className={"footer"} pro={pro} />
           </main>
         </div>
       </ExportStyled>
