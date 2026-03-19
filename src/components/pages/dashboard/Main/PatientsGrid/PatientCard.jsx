@@ -10,15 +10,12 @@ export default function PatientCard({
   firstName,
   lastName,
   onClick,
-  isArchived,
-  isEarlyQuit,
-  isStagnant,
-  isInactive,
+  flags,
 }) {
   return (
-    <PatientCardStyled key={id} onClick={onClick}>
+    <PatientCardStyled key={id} onClick={onClick} className="patient-card">
       <div className="flag">
-        {iconTips(isArchived, isEarlyQuit, isStagnant, isInactive)
+        {iconTips(flags)
           .filter((iconTip) => iconTip.condition)
           .map((iconTip, i) => {
             return (
