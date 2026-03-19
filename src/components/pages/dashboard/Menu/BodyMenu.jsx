@@ -13,6 +13,7 @@ export default function BodyMenu({ onClick }) {
             key={navItem.label}
             to={navItem.path}
             onClick={onClick}
+            id={navItem.id}
           />
         )
       })}
