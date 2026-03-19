@@ -2,9 +2,9 @@ import { NavLink } from "react-router"
 import styled from "styled-components"
 import { theme } from "../../../../theme"
 
-export default function NavItem({ label, icon, to, onClick }) {
+export default function NavItem({ label, icon, to, onClick, id }) {
   return (
-    <NavItemStyled>
+    <NavItemStyled id={id}>
       <NavLink
         onClick={onClick}
         className={({ isActive }) =>

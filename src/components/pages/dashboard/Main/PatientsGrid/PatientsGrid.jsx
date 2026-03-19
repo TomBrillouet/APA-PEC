@@ -16,28 +16,31 @@ export default function PatientsGrid({ patients, togglePatient }) {
     togglePatient(patientToOpen)
   }
 
+  const earlyQuits = getEarlyQuit(patients)
+  const stagnants = getStagnantPatients(patients)
+  const inactives = getInactivesPatients(patients)
+
   return (
     <PatientsGridStyled>
-      {patients.map((patient) => (
-        <PatientCard
-          id={patient.id}
-          key={patient.id}
-          isMan={patient.sex === "man"}
-          firstName={patient.firstName}
-          lastName={patient.lastName}
-          onClick={() => handleOpen(patient.id)}
-          isArchived={patient.archived}
-          isEarlyQuit={getEarlyQuit(patients).find(
-            (el) => el.id === patient.id,
-          )}
-          isStagnant={getStagnantPatients(patients).find(
-            (el) => el.id === patient.id,
-          )}
-          isInactive={getInactivesPatients(patients).find(
-            (el) => el.id === patient.id,
-          )}
-        />
-      ))}
+      {patients.map((patient) => {
+        const flags = {
+          isArchived: patient.archived,
+          isEarlyQuit: earlyQuits.find((el) => el.id === patient.id),
+          isStagnant: stagnants.find((el) => el.id === patient.id),
+          isInactive: inactives.find((el) => el.id === patient.id),
+        }
+        return (
+          <PatientCard
+            id={patient.id}
+            key={patient.id}
+            isMan={patient.sex === "man"}
+            firstName={patient.firstName}
+            lastName={patient.lastName}
+            onClick={() => handleOpen(patient.id)}
+            flags={flags}
+          />
+        )
+      })}
     </PatientsGridStyled>
   )
 }

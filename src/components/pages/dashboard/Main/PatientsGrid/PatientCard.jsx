@@ -10,15 +10,12 @@ export default function PatientCard({
   firstName,
   lastName,
   onClick,
-  isArchived,
-  isEarlyQuit,
-  isStagnant,
-  isInactive,
+  flags,
 }) {
   return (
-    <PatientCardStyled key={id} onClick={onClick}>
+    <PatientCardStyled key={id} onClick={onClick} className="patient-card">
       <div className="flag">
-        {iconTips(isArchived, isEarlyQuit, isStagnant, isInactive)
+        {iconTips(flags)
           .filter((iconTip) => iconTip.condition)
           .map((iconTip, i) => {
             return (
@@ -59,7 +56,7 @@ const PatientCardStyled = styled.div`
     box-shadow 0.16s,
     border-color 0.16s;
 
-  &:hover {
+  &:hover:not(:has(.flag:hover)) {
     transform: translateY(-1.5px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.09);
     border-color: ${theme.colors.primary};

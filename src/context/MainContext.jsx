@@ -22,4 +22,6 @@ export const MainContext = createContext({
   selectedBilan: null,
   pro: {},
   proSubmit: () => {},
+  tourCompleted: false,
+  completeTour: () => {},
 })

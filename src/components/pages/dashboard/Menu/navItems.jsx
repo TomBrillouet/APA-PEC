@@ -16,6 +16,7 @@ export const navItems = [
     label: "Configuration des tests",
     icon: <MdOutlineSettingsInputComposite />,
     path: "/tests",
+    id: "tests",
   },
   { label: "Règles de suivi", icon: <SlBookOpen />, path: "/rules" },
 ]

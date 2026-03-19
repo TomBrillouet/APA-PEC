@@ -2,7 +2,12 @@ import { FaCheck, FaQuestion } from "react-icons/fa"
 import { FiTrendingDown } from "react-icons/fi"
 import { MdOutlineWarningAmber } from "react-icons/md"
 
-export const iconTips = (isArchived, isEarlyQuit, isStagnant, isInactive) => [
+export const iconTips = ({
+  isArchived,
+  isEarlyQuit,
+  isStagnant,
+  isInactive,
+}) => [
   {
     condition: isArchived && !isEarlyQuit,
     icon: <FaCheck />,

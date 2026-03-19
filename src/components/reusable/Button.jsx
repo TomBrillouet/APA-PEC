@@ -8,6 +8,7 @@ export default function Button({
   disabled,
   version = "primary",
   className,
+  icon,
 }) {
   return (
     <ButtonStyled
@@ -17,7 +18,10 @@ export default function Button({
       disabled={disabled}
       className={className}
     >
-      <span>{label}</span>
+      <span>
+        {label}
+        {icon}
+      </span>
     </ButtonStyled>
   )
 }
@@ -37,6 +41,15 @@ const ButtonStyled = styled.button`
   }
   &:disabled {
     opacity: 0.2;
+  }
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5px;
+    svg {
+      font-size: 18px;
+    }
   }
 
   ${({ version }) => extraStyle[version]}

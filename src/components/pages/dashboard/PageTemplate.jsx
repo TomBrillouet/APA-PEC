@@ -1,13 +1,11 @@
 import styled from "styled-components"
 import { theme } from "../../../theme"
-import Menu from "./Menu/Menu"
 import Toast from "./Toast.jsx"
 import Footer from "./Footer/Footer.jsx"
 
 export default function PageTemplate({ children }) {
   return (
     <PageTemplateStyled>
-      <Menu />
       <div className="column">
         <div className="background">
           <div className="main">{children}</div>
@@ -22,7 +20,8 @@ export default function PageTemplate({ children }) {
 const PageTemplateStyled = styled.div`
   display: flex;
   height: 100dvh;
-  background-color: ${theme.colors.background};
+  padding-left: 15px;
+  flex: 1;
 
   .column {
     flex: 1;
@@ -55,7 +54,6 @@ const PageTemplateStyled = styled.div`
   @media screen and (max-width: 768px) {
     .column {
       .background {
-        padding: 14px 14px 0 14px;
         .main {
           text-align: center;
           align-items: center;
