@@ -22,7 +22,7 @@ const SearchbarStyled = styled.div`
   position: relative;
   .input-container {
     input {
-      padding: 8px 30px 8px 15px;
+      padding: 8px 50px 8px 15px;
     }
   }
   svg {
