@@ -2,6 +2,7 @@ import styled from "styled-components"
 import Searchbar from "./Searchbar.jsx"
 import SectionTitle from "../Popup/AddPatient/Form/SectionTitle.jsx"
 import Button from "../../../../reusable/Button.jsx"
+import { IoMdAddCircle } from "react-icons/io"
 
 export default function TopMainBar({ onChange, onClick, archived }) {
   return (
@@ -11,7 +12,7 @@ export default function TopMainBar({ onChange, onClick, archived }) {
       />
       <div className="flex-container">
         <Searchbar onChange={onChange} />
-        <Button label={"Ajouter un patient"} onClick={onClick} />
+        <Button label={"Patient"} icon={<IoMdAddCircle />} onClick={onClick} />
       </div>
     </TopMainBarStyled>
   )
@@ -26,10 +27,8 @@ const TopMainBarStyled = styled.div`
   gap: 15px;
   .flex-container {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
   }
 
   @media screen and (max-width: 768px) {
