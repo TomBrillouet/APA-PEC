@@ -2,12 +2,18 @@ import Logo from "../../../reusable/Logo.jsx"
 import styled from "styled-components"
 import BodyMenu from "./BodyMenu.jsx"
 import BottomMenu from "./BottomMenu.jsx"
-import { useState } from "react"
 import ToggleButton from "./ToggleButton.jsx"
 
-export default function Menu() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [hasToggled, setHasToggled] = useState(false)
+export default function Menu({ isOpen, setIsOpen, hasToggled, setHasToggled }) {
+  const closeMenu = () => {
+    setIsOpen(false)
+    document.body.style.overflow = "auto"
+  }
+
+  let menuClass = ""
+  if (hasToggled) {
+    menuClass = isOpen ? "open" : "closed"
+  }
 
   const toggleMenu = () => {
     setIsOpen((prev) => {
@@ -17,16 +23,6 @@ export default function Menu() {
       setHasToggled(true)
       return !prev
     })
-  }
-
-  const closeMenu = () => {
-    setIsOpen(false)
-    document.body.style.overflow = "auto"
-  }
-
-  let menuClass = ""
-  if (hasToggled) {
-    menuClass = isOpen ? "open" : "closed"
   }
 
   return (
@@ -53,7 +49,6 @@ const MenuStyled = styled.aside`
   background-color: #fff;
   position: sticky;
   top: 0;
-  height: 100vh;
   gap: 5em;
   height: 95vh;
   margin: 15px;

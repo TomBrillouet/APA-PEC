@@ -30,7 +30,7 @@ export default function Dashboard() {
   const { openMenu } = useOutletContext()
   const { currentUser } = useAuth()
   const userId = currentUser?.uid
-  const { pro, setPro } = usePro()
+  const { pro, setPro, proSubmit } = usePro()
 
   useEffect(() => {
     if (!userId) return
@@ -55,7 +55,7 @@ export default function Dashboard() {
   return (
     <DashboardStyled>
       <TourStyles />
-      <Main pro={pro} setPro={setPro} />
+      <Main pro={pro} proSubmit={proSubmit} />
       <Toast />
     </DashboardStyled>
   )

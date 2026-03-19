@@ -1,14 +1,11 @@
 import styled from "styled-components"
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import Header from "../Header/Header.jsx"
 import { MainContext } from "../../../../context/MainContext.jsx"
 import { useBilanForm } from "../../../../hooks/useBilanForm.jsx"
 import { useParams } from "react-router"
 import { usePopup } from "../../../../hooks/usePopup.jsx"
-import { useAuth } from "../../../../context/AuthContext.jsx"
-import { initialisePro } from "./helpers/initialiseUserSession"
 import Loader from "../../../reusable/Loader.jsx"
-import { usePro } from "../../../../hooks/usePro.jsx"
 import { useTests } from "../../../../hooks/useTests.jsx"
 import { useSelectedBilan } from "../../../../hooks/useSelectedBilan.jsx"
 import { useSelectedPatient } from "../../../../hooks/useSelectedPatient.jsx"
@@ -17,9 +14,7 @@ import TopMainBar from "./TopMainBar/TopMainBar.jsx"
 import PatientsGrid from "./PatientsGrid/PatientsGrid.jsx"
 import Footer from "../Footer/Footer.jsx"
 
-export default function Main() {
-  const { currentUser } = useAuth()
-  const userId = currentUser?.uid
+export default function Main({ pro, proSubmit }) {
   const [search, setSearch] = useState("")
 
   const { addNewPatient, updatePatients, patients, updateLogBook } =
@@ -32,7 +27,6 @@ export default function Main() {
     handleRemarquesChange,
     testsSelectChange,
   } = useBilanForm(null, listTests)
-  const { pro, setPro, proSubmit } = usePro()
   const {
     toggleProInfo,
     togglePatient,
@@ -45,11 +39,6 @@ export default function Main() {
   } = usePopup()
   const { selectedBilan, handleSelectedBilan } = useSelectedBilan()
   const { selectedPatient, handleSelectedPatient } = useSelectedPatient()
-
-  useEffect(() => {
-    if (!userId) return
-    initialisePro(userId, setPro)
-  }, [userId])
 
   const { status } = useParams()
   const archived = status === "archived"
@@ -145,11 +134,5 @@ const MainStyled = styled.main`
   .main-background {
     padding: 28px 15px 28px 0px;
     flex: 1;
-  }
-
-  @media screen and (max-width: 768px) {
-    .main-background {
-      padding: 14px;
-    }
   }
 `
