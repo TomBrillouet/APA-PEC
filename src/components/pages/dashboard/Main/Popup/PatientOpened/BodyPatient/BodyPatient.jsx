@@ -5,7 +5,6 @@ import { useContext, useState } from "react"
 import BilansPatient from "./BilansPatient.jsx"
 import LogBookHistory from "./LogBookHistory.jsx"
 import Logbook from "./Logbook.jsx"
-import Button from "../../../../../../reusable/Button.jsx"
 
 export default function BodyPatient() {
   const {

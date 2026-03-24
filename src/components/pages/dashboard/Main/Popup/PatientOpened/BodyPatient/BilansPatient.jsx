@@ -5,6 +5,7 @@ import { useContext } from "react"
 import Button from "../../../../../../reusable/Button"
 import ListWithButton from "../../../../../../reusable/ListWithButton"
 import { IoDocumentTextOutline } from "react-icons/io5"
+import { PATIENT_LABELS } from "../../../../../../../constants/labels/patient"
 
 export default function BilansPatient({ selectedPatient, toggleArchived }) {
   const { toggleOldBilan, handleSelectedBilan, toggleNewBilan } =
@@ -18,14 +19,15 @@ export default function BilansPatient({ selectedPatient, toggleArchived }) {
   return (
     <BilansPatientStyled>
       <ListWithButton
-        buttonLabel={"Ouvrir"}
+        buttonLabel={PATIENT_LABELS.open}
         datas={selectedPatient.bilans}
         onClick={handleOpenBilan}
         className={"li-bilans"}
         icon={<IoDocumentTextOutline />}
         renderItem={(bilan) => (
           <>
-            Bilan <BilanType type={bilan.type}>{bilan.type}</BilanType> -{" "}
+            {PATIENT_LABELS.bilan}{" "}
+            <BilanType type={bilan.type}>{bilan.type}</BilanType> -{" "}
             {dateFr(bilan.date)}
           </>
         )}
@@ -33,11 +35,15 @@ export default function BilansPatient({ selectedPatient, toggleArchived }) {
       <div className="actions">
         <Button
           onClick={toggleNewBilan}
-          label={"Faire un bilan"}
+          label={PATIENT_LABELS.makeBilan}
           version="submit"
         />
         <Button
-          label={selectedPatient.archived ? "Reprendre PEC" : "Terminer PEC"}
+          label={
+            selectedPatient.archived
+              ? PATIENT_LABELS.resumeCare
+              : PATIENT_LABELS.finishCare
+          }
           onClick={toggleArchived}
           version="red"
         />

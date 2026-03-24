@@ -10,9 +10,10 @@ import ResultsSection from "./ResultsSection.jsx"
 import { MainContext } from "../../../../../../../context/MainContext.jsx"
 import { useForm } from "../../../../../../../hooks/useForm.jsx"
 import InputSection from "../../../../../../reusable/InputSection.jsx"
-import { EMPTY_PATIENT } from "../../../../../../../enums/patient.jsx"
+import { EMPTY_PATIENT } from "../../../../../../../constants/models/patient"
 import { BILAN_FIELDS } from "../../../../../../../datas/bilanConfig.js"
 import { useBilanForm } from "../../../../../../../hooks/useBilanForm.jsx"
+import { PATIENT_LABELS } from "../../../../../../../constants/labels/patient.jsx"
 
 export default function FormAddPatient() {
   const { toggleAddPatient, addNewPatient, listTests } = useContext(MainContext)
@@ -79,7 +80,7 @@ export default function FormAddPatient() {
       <Input
         onChange={handleBilanDataChange}
         type={"date"}
-        label={"Date du bilan initial"}
+        label={PATIENT_LABELS.date}
         value={bilanData.date}
         name={"date"}
         min={new Date().toISOString().slice(0, 10)}
@@ -88,10 +89,13 @@ export default function FormAddPatient() {
         onChange={sexSelectChange}
         datas={mapInputs(identityInputs)}
       />
-      <InputSection datas={mapInputs(contactInputs)} label={"Contact"} />
+      <InputSection
+        datas={mapInputs(contactInputs)}
+        label={PATIENT_LABELS.contact}
+      />
       <InputSection
         datas={mapTextArea(BILAN_FIELDS.initial.textareas)}
-        label={"Informations médicales"}
+        label={PATIENT_LABELS.medicInfos}
       />
       <TestsFormSection onChange={testsSelectChange} />
       <ResultsSection

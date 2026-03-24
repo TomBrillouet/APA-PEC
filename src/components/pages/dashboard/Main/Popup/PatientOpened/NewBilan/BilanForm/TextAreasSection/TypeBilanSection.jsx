@@ -1,3 +1,4 @@
+import { PATIENT_LABELS } from "../../../../../../../../../constants/labels/patient"
 import { BILAN_FIELDS } from "../../../../../../../../../datas/bilanConfig"
 import InputSection from "../../../../../../../../reusable/InputSection"
 import TextArea from "../../../../../../../../reusable/TextArea"
@@ -40,13 +41,13 @@ export default function TypeBilanSection({
     <>
       <InputSection
         datas={initialMedicInfos}
-        label={"Informations du bilan initial"}
+        label={PATIENT_LABELS.initialInfos}
         block
       />
       {type !== "initial" && (
         <InputSection
           datas={bilanFields}
-          label={"Développement du patient"}
+          label={PATIENT_LABELS.developmentPatient}
           block
         />
       )}

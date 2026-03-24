@@ -1,12 +1,11 @@
+import { PATIENT_LABELS } from "../../../../../../../../../constants/labels/patient.jsx"
 export default function ExportHeader({ className, selectedBilan }) {
   return (
     <div className={className}>
       <h1>
-        Bilan {selectedBilan.type} en <br /> Activité Physique Adaptée
+        {PATIENT_LABELS.bilan} {selectedBilan.type} {PATIENT_LABELS.apa}
       </h1>
-      <span>
-        Faire le point sur votre condition physique et définir vos objectifs.
-      </span>
+      <span>{PATIENT_LABELS.exportTagline} </span>
     </div>
   )
 }

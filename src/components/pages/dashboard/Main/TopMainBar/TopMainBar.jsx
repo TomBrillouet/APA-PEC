@@ -3,16 +3,24 @@ import Searchbar from "./Searchbar.jsx"
 import SectionTitle from "../Popup/AddPatient/Form/SectionTitle.jsx"
 import Button from "../../../../reusable/Button.jsx"
 import { IoMdAddCircle } from "react-icons/io"
+import { DASHBOARD_LABELS } from "../../../../../constants/labels/dashboard.jsx"
 
 export default function TopMainBar({ onChange, onClick, archived }) {
   return (
     <TopMainBarStyled>
       <SectionTitle
-        label={`Prises en charge ${archived ? "terminées" : "en cours"}`}
+        label={
+          DASHBOARD_LABELS.topMainBarTitle +
+          ` ${archived ? "terminées" : "en cours"}`
+        }
       />
       <div className="flex-container">
         <Searchbar onChange={onChange} />
-        <Button label={"Patient"} icon={<IoMdAddCircle />} onClick={onClick} />
+        <Button
+          label={DASHBOARD_LABELS.addPatient}
+          icon={<IoMdAddCircle />}
+          onClick={onClick}
+        />
       </div>
     </TopMainBarStyled>
   )

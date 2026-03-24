@@ -1,3 +1,4 @@
+import { TESTS_LABELS } from "../../../../../constants/labels/tests"
 import Input from "../../../../reusable/Input"
 import TextArea from "../../../../reusable/TextArea"
 
@@ -6,7 +7,7 @@ export default function GeneralTestSection({ inputsValue, handleChange }) {
     <>
       <Input
         name={"name"}
-        label={"Nom du test"}
+        label={TESTS_LABELS.testName}
         type={"text"}
         value={inputsValue.name}
         onChange={handleChange}
@@ -14,7 +15,7 @@ export default function GeneralTestSection({ inputsValue, handleChange }) {
       />
       <TextArea
         name={"description"}
-        label={"Description"}
+        label={TESTS_LABELS.description}
         value={inputsValue.description}
         onChange={handleChange}
         isRequired

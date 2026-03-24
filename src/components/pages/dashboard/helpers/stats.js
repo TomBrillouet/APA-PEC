@@ -1,4 +1,4 @@
-import { periodMaxDays } from "../../../../constants/rules"
+import { periodMaxDays } from "../../../../constants/config/rules"
 import { getAge } from "../../../../utils/math"
 
 export const getTotalPatients = (patients) => patients.length

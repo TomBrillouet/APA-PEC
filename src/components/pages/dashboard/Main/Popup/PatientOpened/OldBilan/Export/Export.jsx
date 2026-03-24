@@ -8,6 +8,7 @@ import ExportHeader from "./Header/ExportHeader.jsx"
 import BilanSection from "./sections/BilanSection.jsx"
 import ProSection from "./sections/ProSection.jsx"
 import FooterSection from "./sections/FooterSection.jsx"
+import { PATIENT_LABELS } from "../../../../../../../../constants/labels/patient.jsx"
 
 const PrintStyles = createGlobalStyle`
   @media print {
@@ -140,7 +141,7 @@ export default function Export({ selectedBilan, selectedPatient }) {
       <PrintStyles />
       <ExportStyled>
         <Button
-          label={"Télécharger le bilan"}
+          label={PATIENT_LABELS.downloadBilan}
           version="submit"
           onClick={print}
           className="no-print"

@@ -3,6 +3,7 @@ import { toastInfo, toastSuccess } from "../datas/toastmessages"
 import { dateFr } from "../utils/math"
 import { syncBothPatients } from "../api/patients"
 import { useAuth } from "../context/AuthContext"
+import { TOAST_LABELS } from "../constants/labels/toasts"
 
 export const usePatients = () => {
   const { currentUser } = useAuth()
@@ -15,7 +16,7 @@ export const usePatients = () => {
       syncBothPatients(userId, updatedPatients)
       return updatedPatients
     })
-    toastSuccess("Patient ajouté !")
+    toastSuccess(`${TOAST_LABELS.newPatient}`)
   }
 
   const updatePatients = (patienToUpdate) => {
@@ -27,7 +28,7 @@ export const usePatients = () => {
       return updatedPatients
     })
     toastInfo(
-      `Dossier du patient ${patienToUpdate.lastName} ${patienToUpdate.firstName} mis à jour.`,
+      `${TOAST_LABELS.recordPatient} ${patienToUpdate.lastName} ${patienToUpdate.firstName} ${TOAST_LABELS.updated}`,
     )
   }
 

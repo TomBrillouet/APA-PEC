@@ -1,13 +1,14 @@
 import { CiSearch } from "react-icons/ci"
 import Input from "../../../../reusable/Input"
 import styled from "styled-components"
+import { DASHBOARD_LABELS } from "../../../../../constants/labels/dashboard"
 
 export default function Searchbar({ onChange }) {
   return (
     <SearchbarStyled>
       <Input
         type={"text"}
-        placeholder={"Rechercher un patient..."}
+        placeholder={DASHBOARD_LABELS.search}
         onChange={onChange}
         className={"input-container"}
       />

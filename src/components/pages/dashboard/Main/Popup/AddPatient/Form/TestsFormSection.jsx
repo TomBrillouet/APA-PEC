@@ -3,6 +3,7 @@ import FormSection from "./FormSection"
 import InputField from "../../../../../../reusable/InputField"
 import React, { useContext, useMemo } from "react"
 import { MainContext } from "../../../../../../../context/MainContext.jsx"
+import { PATIENT_LABELS } from "../../../../../../../constants/labels/patient.jsx"
 
 const selectStyles = {
   menuList: (base) => ({
@@ -32,15 +33,15 @@ function TestsFormSection({ onChange, selectedPatient }) {
   }
 
   return (
-    <FormSection label={"Tests assignés"}>
-      <InputField className="field full" label={"Tests"}>
+    <FormSection label={PATIENT_LABELS.assignedTests}>
+      <InputField className="field full" label={PATIENT_LABELS.tests}>
         <Select
           isMulti
           name="tests"
           defaultValue={assignedTests()}
           options={testOptions}
           classNamePrefix="select"
-          placeholder="Sélectionner des tests…"
+          placeholder={PATIENT_LABELS.selectTests}
           onChange={onChange}
           styles={selectStyles}
         />

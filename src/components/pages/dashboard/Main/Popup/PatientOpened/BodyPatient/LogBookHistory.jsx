@@ -1,9 +1,10 @@
 import styled from "styled-components"
+import { PATIENT_LABELS } from "../../../../../../../constants/labels/patient"
 
 export default function LogBookHistory({ selectedPatient }) {
   return (
     <LogBookHistoryStyled>
-      <h3>Comptes rendus</h3>
+      <h3>{PATIENT_LABELS.logbook}</h3>
       {selectedPatient.logbook.map((entry, index) => (
         <div key={index}>
           <hr />

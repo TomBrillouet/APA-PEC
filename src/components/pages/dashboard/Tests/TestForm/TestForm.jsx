@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import { useForm } from "../../../../../hooks/useForm"
-import { theme } from "../../../../../theme"
 import GeneralTestSection from "./GeneralTestSection"
 import ResultsTestSection from "./ResultsTestSection"
 import ActionTestSection from "./ActionTestSection"

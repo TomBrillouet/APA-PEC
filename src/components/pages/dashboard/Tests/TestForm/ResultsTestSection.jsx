@@ -1,6 +1,7 @@
 import { MdOutlineDeleteOutline } from "react-icons/md"
 import styled from "styled-components"
 import Input from "../../../../reusable/Input"
+import { TESTS_LABELS } from "../../../../../constants/labels/tests"
 
 export default function ResultsTestSection({
   inputsValue,
@@ -16,7 +17,7 @@ export default function ResultsTestSection({
         />
         <Input
           name={"field"}
-          label={"Nom du résultat"}
+          label={TESTS_LABELS.resultName}
           value={result.field}
           onChange={(e) => handleChange(e, index)}
           type={"text"}
@@ -30,7 +31,7 @@ export default function ResultsTestSection({
             checked={result.chart}
             onChange={(e) => handleChange(e, index)}
           />
-          <label htmlFor="chart">Avec graphique</label>
+          <label htmlFor="chart">{TESTS_LABELS.chart}</label>
         </div>
       </ResultsTestSectionStyled>
     )

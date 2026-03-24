@@ -6,6 +6,8 @@ import { useContext } from "react"
 import { MainContext } from "../../../../../../../context/MainContext"
 import { toastError } from "../../../../../../../datas/toastmessages"
 import Button from "../../../../../../reusable/Button"
+import { TOAST_LABELS } from "../../../../../../../constants/labels/toasts"
+import { PATIENT_LABELS } from "../../../../../../../constants/labels/patient"
 
 export default function ContactPatient({
   isModifEnabled,
@@ -21,7 +23,7 @@ export default function ContactPatient({
       updatePatients(patientUpdated)
       handleSelectedPatient(patientUpdated)
     } else {
-      toastError("Les informations du contact n'ont pas été modifiées.")
+      toastError(`${TOAST_LABELS.contactNotModified}`)
     }
     toggleEnable()
   }
@@ -33,7 +35,7 @@ export default function ContactPatient({
       "logbook",
       selectedPatient.logbook,
     )
-    toastError("Les informations du contact n'ont pas été modifiées.")
+    toastError(`${TOAST_LABELS.contactNotModified}`)
   }
 
   const toggleEnable = () => {
@@ -67,20 +69,20 @@ export default function ContactPatient({
       <div className="contact-buttons">
         <Button
           version="cancel"
-          label={"Modifier les informations de contact"}
+          label={PATIENT_LABELS.modifyContact}
           onClick={toggleEnable}
           disabled={!isModifEnabled}
         />
         <div className="actions">
           <Button
             version="cancel"
-            label={"Annuler"}
+            label={PATIENT_LABELS.cancel}
             onClick={cancelContactInputsChange}
             disabled={isModifEnabled}
           />
           <Button
             version="submit"
-            label={"Enregistrer les modifications"}
+            label={PATIENT_LABELS.submitModif}
             onClick={() => handleSubmitModification(inputsValue)}
             disabled={isModifEnabled}
           />

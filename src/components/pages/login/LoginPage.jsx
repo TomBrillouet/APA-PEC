@@ -2,6 +2,7 @@ import styled from "styled-components"
 import Aside from "./Aside"
 import { useEffect, useRef } from "react"
 import ModalInfo from "../../reusable/ModalInfo"
+import { LOGINPAGE_LABELS } from "../../../constants/labels/loginPage"
 
 export default function LoginPage() {
   const modal = useRef()
@@ -12,16 +13,7 @@ export default function LoginPage() {
 
   return (
     <LoginPageStyled>
-      <ModalInfo
-        ref={modal}
-        text={
-          <>
-            Les identifiants sont préremplis pour accéder à la démo.
-            <br /> Merci de ne pas saisir de données personnelles : cet
-            environnement est partagé.
-          </>
-        }
-      />
+      <ModalInfo ref={modal} text={LOGINPAGE_LABELS.modal} />
       <Aside />
     </LoginPageStyled>
   )

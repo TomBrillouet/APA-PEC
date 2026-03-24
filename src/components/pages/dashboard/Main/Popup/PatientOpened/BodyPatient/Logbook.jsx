@@ -4,6 +4,8 @@ import { dateFr } from "../../../../../../../utils/math"
 import TextArea from "../../../../../../reusable/TextArea"
 import Button from "../../../../../../reusable/Button"
 import { toastSuccess } from "../../../../../../../datas/toastmessages"
+import { TOAST_LABELS } from "../../../../../../../constants/labels/toasts"
+import { PATIENT_LABELS } from "../../../../../../../constants/labels/patient"
 
 export default function Logbook({ isModifEnabled }) {
   const [logbookInput, setLogbookInput] = useState("")
@@ -21,24 +23,24 @@ export default function Logbook({ isModifEnabled }) {
       updateLogBook(selectedPatient, logbookInput)
       handleSelectedPatient(updatedPatient)
       setLogbookInput("")
-      toastSuccess(`Nouveau compte rendu ajouté pour ${patientFullName}.`)
+      toastSuccess(`${TOAST_LABELS.newLogBook} ${patientFullName}.`)
     }
   }
   return (
     <div>
       <TextArea
-        label={"Ajouter un compte rendu"}
+        label={PATIENT_LABELS.addLogbook}
         onChange={(e) => setLogbookInput(e.target.value)}
         value={logbookInput}
         name={"logbook"}
         rows={5}
-        placeholder={"Contenu des séances hors bilan..."}
+        placeholder={PATIENT_LABELS.contentSessions}
       />
       <div className="logbook-buttons">
         <div className="actions">
           <Button
             version="submit"
-            label={"Enregistrer un nouveau compte rendu"}
+            label={PATIENT_LABELS.submitNewLogbook}
             onClick={() => handleLogBookUpdate(selectedPatient)}
             disabled={!isModifEnabled}
           />
