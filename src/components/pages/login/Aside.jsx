@@ -2,12 +2,13 @@ import styled from "styled-components"
 import { theme } from "../../../theme"
 import Logo from "../../reusable/Logo"
 import LoginForm from "./LoginForm"
+import { LOGINPAGE_LABELS } from "../../../constants/labels/loginPage.jsx"
 
 export default function Aside() {
   return (
     <AsideStyled>
       <Logo />
-      <p className="tagline">Gestion et suivi personnalisé des patients</p>
+      <p className="tagline">{LOGINPAGE_LABELS.tagline}</p>
       <LoginForm />
     </AsideStyled>
   )

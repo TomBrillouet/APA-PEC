@@ -8,6 +8,7 @@ import { LiaFileMedicalAltSolid } from "react-icons/lia"
 import PageTemplate from "../PageTemplate.jsx"
 import { theme } from "../../../../theme/index.js"
 import LayoutHeader from "../Stats/Header/LayoutHeader.jsx"
+import { TESTS_LABELS } from "../../../../constants/labels/tests.jsx"
 
 export default function Tests() {
   const {
@@ -30,12 +31,12 @@ export default function Tests() {
       {!testSelected ? (
         <TestsStyled>
           <LayoutHeader
-            title={"Configuration des tests"}
-            subtitle={"Administrez les tests utilisés dans vos bilans"}
+            title={TESTS_LABELS.title}
+            subtitle={TESTS_LABELS.subtitle}
           />
           <ListWithButton
-            buttonLabel={"Modifier"}
-            secondButtonLabel={"Supprimer"}
+            buttonLabel={TESTS_LABELS.modify}
+            secondButtonLabel={TESTS_LABELS.delete}
             datas={listTests}
             onClick={handleOpenTest}
             onClickSecondButton={handleTestDelete}
@@ -44,7 +45,7 @@ export default function Tests() {
             className={"li-tests"}
           />
           <Button
-            label={"Ajouter un test"}
+            label={TESTS_LABELS.add}
             onClick={handleAddTest}
             className={"add-test"}
           />

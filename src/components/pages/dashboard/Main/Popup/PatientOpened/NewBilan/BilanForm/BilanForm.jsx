@@ -8,9 +8,9 @@ import BilanDate from "./bilanSection/BilanDate.jsx"
 import TypeOfBilanSection from "./bilanSection/TypeOfBilanSection.jsx"
 import { useForm } from "../../../../../../../../hooks/useForm.jsx"
 import { forwardRef, useCallback, useImperativeHandle } from "react"
-import { NEW_BILAN_LABELS } from "../../../../../../../../enums/patient.jsx"
 import ShapeCard from "../../../../../../../reusable/ShapeCard.jsx"
 import TypeBilanSection from "./TextAreasSection/TypeBilanSection.jsx"
+import { PATIENT_LABELS } from "../../../../../../../../constants/labels/patient.jsx"
 
 const BilanForm = forwardRef(
   (
@@ -46,7 +46,10 @@ const BilanForm = forwardRef(
           handleBilanDataChange={handleBilanDataChange}
           bilanData={bilanData}
         />
-        <ShapeCard dataShape={selectedPatient} labels={NEW_BILAN_LABELS} />
+        <ShapeCard
+          dataShape={selectedPatient}
+          labels={PATIENT_LABELS.OLD_BILAN_LABELS}
+        />
         <NewShapeValues
           handleChange={handleChange}
           handleBilanDataChange={handleBilanDataChange}

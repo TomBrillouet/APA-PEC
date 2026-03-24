@@ -2,18 +2,23 @@ import styled from "styled-components"
 import Button from "../../../../../../reusable/Button.jsx"
 import { MainContext } from "../../../../../../../context/MainContext.jsx"
 import { useContext } from "react"
+import { PATIENT_LABELS } from "../../../../../../../constants/labels/patient.jsx"
 
 export default function FormBottom() {
   const { toggleAddPatient } = useContext(MainContext)
   return (
     <FormBottomStyled className="actions">
       <Button
-        label={"Annuler"}
+        label={PATIENT_LABELS.cancel}
         onClick={toggleAddPatient}
         version={"cancel"}
         type={"button"}
       />
-      <Button label={"Enregistrer"} version={"submit"} type={"submit"} />
+      <Button
+        label={PATIENT_LABELS.submitNewPatient}
+        version={"submit"}
+        type={"submit"}
+      />
     </FormBottomStyled>
   )
 }

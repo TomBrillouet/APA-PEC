@@ -1,3 +1,4 @@
+import { TESTS_LABELS } from "../../../../../constants/labels/tests"
 import Button from "../../../../reusable/Button"
 
 export default function ActionTestSection({
@@ -7,12 +8,16 @@ export default function ActionTestSection({
   return (
     <>
       <Button
-        label={"Ajouter un résultats attendu"}
+        label={TESTS_LABELS.addResult}
         onClick={(e) => handleAddNewResult(e)}
         version="cancel"
       />
-      <Button label={"Enregistrer"} version="submit" type="submit" />
-      <Button label={"Annuler"} onClick={handleCancel} version={"red"} />
+      <Button label={TESTS_LABELS.submit} version="submit" type="submit" />
+      <Button
+        label={TESTS_LABELS.cancel}
+        onClick={handleCancel}
+        version={"red"}
+      />
     </>
   )
 }

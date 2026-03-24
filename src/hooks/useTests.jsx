@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import { toastError, toastInfo, toastSuccess } from "../datas/toastmessages"
-import { EMPTY_TEST } from "../enums/test"
+import { EMPTY_TEST } from "../constants/models/test"
 import { useAuth } from "../context/AuthContext.jsx"
 import { initialiseListTests } from "../components/pages/dashboard/Main/helpers/initialiseUserSession.js"
 import { syncBothListTests } from "../api/tests.js"
+import { TOAST_LABELS } from "../constants/labels/toasts.jsx"
 
 export const useTests = () => {
   const { currentUser } = useAuth()
@@ -30,15 +31,15 @@ export const useTests = () => {
       setListTests(newList)
       syncBothListTests(userId, newList)
       if (oldTest.name === "") {
-        toastSuccess("Le test a été ajouté")
+        toastSuccess(`${TOAST_LABELS.testAdded}`)
         setTestSelected()
         return
       }
-      toastSuccess("Le test a été modifié")
+      toastSuccess(`${TOAST_LABELS.testModified}`)
       setTestSelected()
       return
     }
-    toastError("Aucune valeur n'a été modifiée")
+    toastError(`${TOAST_LABELS.notModified}`)
   }
 
   const handleCancel = () => {
@@ -49,18 +50,18 @@ export const useTests = () => {
       setListTests(listFiltered)
       syncBothListTests(userId, listFiltered)
       setTestSelected()
-      toastInfo("Le test n'a pas été créé")
+      toastInfo(`${TOAST_LABELS.testNotCreated}`)
       return
     }
     setTestSelected()
-    toastInfo("Le test n'a pas été modifié")
+    toastInfo(`${TOAST_LABELS.testNotModified}`)
   }
 
   const handleTestDelete = (idToDelete) => {
     const listFiltered = listTests.filter((test) => test.id !== idToDelete)
     setListTests(listFiltered)
     syncBothListTests(userId, listFiltered)
-    toastInfo("Le test a été supprimé")
+    toastInfo(`${TOAST_LABELS.testDeleted}`)
   }
 
   const handleAddTest = () => {

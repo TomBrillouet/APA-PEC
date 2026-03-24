@@ -4,6 +4,7 @@ import GraphResults from "./GraphResults.jsx"
 import BilanForm from "./BilanForm/BilanForm.jsx"
 import Button from "../../../../../../reusable/Button.jsx"
 import Loader from "../../../../../../reusable/Loader.jsx"
+import { PATIENT_LABELS } from "../../../../../../../constants/labels/patient.jsx"
 
 export default function NewBilan() {
   const [isFinal, setIsFinal] = useState(false)
@@ -66,7 +67,11 @@ export default function NewBilan() {
         selectedPatient={selectedPatient}
         selectedTests={selectedTests}
       />
-      <Button label={"Enregistrer le bilan"} type="submit" version="submit" />
+      <Button
+        label={PATIENT_LABELS.submitBilan}
+        type="submit"
+        version="submit"
+      />
     </form>
   )
 }

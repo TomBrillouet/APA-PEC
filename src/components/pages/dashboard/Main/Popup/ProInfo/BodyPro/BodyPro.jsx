@@ -9,6 +9,7 @@ import {
   toastError,
   toastInfo,
 } from "../../../../../../../datas/toastmessages.js"
+import { TOAST_LABELS } from "../../../../../../../constants/labels/toasts.jsx"
 export default function BodyPro() {
   const { pro, proSubmit, toggleProInfo } = useContext(MainContext)
   const { inputsValue, handleChange } = useForm(pro)
@@ -16,11 +17,11 @@ export default function BodyPro() {
   const handleSubmit = (inputsValue) => {
     toggleProInfo()
     if (inputsValue === pro) {
-      toastError("Les informations du contact n'ont pas été modifiées.")
+      toastError(`${TOAST_LABELS.proNotModified}`)
       return
     }
     proSubmit(inputsValue)
-    toastInfo("Les informations du professionnel ont été modifiées")
+    toastInfo(`${TOAST_LABELS.proModified}`)
   }
   return (
     <BodyProStyled onSubmit={() => handleSubmit(inputsValue)}>

@@ -1,8 +1,8 @@
 import { FaCheck, FaQuestion } from "react-icons/fa"
 import { FiTrendingDown } from "react-icons/fi"
 import { MdOutlineWarningAmber } from "react-icons/md"
-import { periodMaxDays } from "../../../../../constants/rules"
 import { theme } from "../../../../../theme"
+import { periodMaxDays } from "../../../../../constants/config/rules"
 
 export const INDICATORS = [
   {

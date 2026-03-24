@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { theme } from "../../../../theme"
+import { FOOTER_LABELS } from "../../../../constants/labels/footer"
 
 export default function Footer() {
   const restartDemo = () => {
@@ -10,14 +11,16 @@ export default function Footer() {
     <FooterStyled>
       <hr />
       <div>
-        <span>APA-PEC · {__APP_VERSION__} · Développé par Tom Brillouet</span>
+        <span>
+          {FOOTER_LABELS.appName + __APP_VERSION__ + FOOTER_LABELS.developer}
+        </span>
         <a
           href="/dashboard"
           onClick={() => {
             restartDemo()
           }}
         >
-          <span>Revoir la démo</span>
+          <span>{FOOTER_LABELS.newDemo}</span>
         </a>
       </div>
     </FooterStyled>

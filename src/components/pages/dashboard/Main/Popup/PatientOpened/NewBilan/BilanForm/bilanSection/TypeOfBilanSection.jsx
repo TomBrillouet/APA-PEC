@@ -1,6 +1,7 @@
 import Select from "react-select"
 import InputField from "../../../../../../../../reusable/InputField"
 import FormSection from "../../../../AddPatient/Form/FormSection"
+import { PATIENT_LABELS } from "../../../../../../../../../constants/labels/patient"
 
 export default function TypeOfBilanSection({ handleChangeIsFinal, disabled }) {
   const isFinalOptions = [
@@ -8,15 +9,15 @@ export default function TypeOfBilanSection({ handleChangeIsFinal, disabled }) {
     { value: false, label: "Intermédiaire" },
   ]
   return (
-    <FormSection label={"Type de bilan"}>
-      <InputField className="field full" label={"Type de bilan"}>
+    <FormSection>
+      <InputField className="field full" label={PATIENT_LABELS.bilanType}>
         <Select
           name="isFinal"
           isDisabled={disabled}
           defaultValue={isFinalOptions[1]}
           options={isFinalOptions}
           classNamePrefix="select"
-          placeholder="Sélectionner le type de bilan…"
+          placeholder={PATIENT_LABELS.selectBilanType}
           onChange={handleChangeIsFinal}
           styles={{
             menuList: (base) => ({

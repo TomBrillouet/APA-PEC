@@ -1,0 +1,15 @@
+export const TOAST_LABELS = {
+  newLogBook: "Nouveau compte rendu ajouté pour",
+  newPatient: "Patient ajouté !",
+  testAdded: "Le test a été ajouté",
+  testModified: "Le test a été modifié",
+  contactNotModified: "Les informations du contact n'ont pas été modifiées.",
+  proModified: "Les informations du professionnel ont été modifiées",
+  proNotModified: "Les informations du professionnel n'ont pas été modifiées.",
+  notModified: "Aucune valeur n'a été modifiée",
+  testNotCreated: "Le test n'a pas été créé",
+  testNotModified: "Le test n'a pas été modifié",
+  testDeleted: "Le test a été supprimé",
+  recordPatient: "Dossier du patient",
+  updated: "mis à jour.",
+}

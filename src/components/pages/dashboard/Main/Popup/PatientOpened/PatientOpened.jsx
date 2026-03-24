@@ -6,6 +6,7 @@ import BodyPatient from "./BodyPatient/BodyPatient.jsx"
 import { getAge } from "../../../../../../utils/math.js"
 import NewBilan from "./NewBilan/NewBilan.jsx"
 import OldBilan from "./OldBilan/OldBilan.jsx"
+import { PATIENT_LABELS } from "../../../../../../constants/labels/patient.jsx"
 
 export default function PatientOpened() {
   const { togglePatient, selectedPatient, isNewBilan, isOldBilanOpened } =
@@ -19,7 +20,7 @@ export default function PatientOpened() {
   return (
     <Popup>
       <HeaderPatient
-        title={"Prise en charge - "}
+        title={PATIENT_LABELS.care}
         patientFullName={`${selectedPatient.firstName} ${
           selectedPatient.lastName
         } (${getAge(selectedPatient.birth)} ans)`}

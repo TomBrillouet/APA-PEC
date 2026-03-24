@@ -1,3 +1,4 @@
+import { PATIENT_LABELS } from "../../../../../../../../../constants/labels/patient"
 import Input from "../../../../../../../../reusable/Input"
 
 export default function BilanDate({
@@ -9,7 +10,7 @@ export default function BilanDate({
     <Input
       onChange={handleBilanDataChange}
       type={"date"}
-      label={"Date du bilan"}
+      label={PATIENT_LABELS.dateBilan}
       value={bilanData.date}
       name={"date"}
       disabled={disabled}

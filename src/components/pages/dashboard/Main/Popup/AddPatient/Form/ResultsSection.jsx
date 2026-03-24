@@ -2,6 +2,7 @@ import styled from "styled-components"
 import Input from "../../../../../../reusable/Input"
 import TextArea from "../../../../../../reusable/TextArea"
 import { memo } from "react"
+import { PATIENT_LABELS } from "../../../../../../../constants/labels/patient"
 
 function ResultsSection({
   bilanData,
@@ -37,12 +38,12 @@ function ResultsSection({
 
           <TextArea
             rows={3}
-            label="Remarques"
+            label={PATIENT_LABELS.remarks}
             className="field full"
             disabled={disabled}
             value={test.remarques ?? ""}
             onChange={(e) => onRemarquesChange(test.name, e.target.value)}
-            placeholder="Remarques"
+            placeholder={PATIENT_LABELS.remarks}
           />
         </div>
       ))}
@@ -50,9 +51,9 @@ function ResultsSection({
         <TextArea
           rows={3}
           name={"reco"}
-          label="Recommandations du professionnel"
+          label={PATIENT_LABELS.recommandations}
           className="field full"
-          placeholder="Recommandations du professionnel"
+          placeholder={PATIENT_LABELS.recommandations}
           onChange={handleChange}
           value={inputsValue.reco}
         />

@@ -10,6 +10,7 @@ import { auth } from "../../../api/firebase-config"
 import Input from "../../reusable/Input"
 import { IoMdArrowForward } from "react-icons/io"
 import { inputsLogin } from "./config/inputsLogin"
+import { LOGINPAGE_LABELS } from "../../../constants/labels/loginPage"
 
 export default function LoginForm() {
   const [logInputs, setLogInputs] = useState({
@@ -34,13 +35,13 @@ export default function LoginForm() {
     } catch (error) {
       switch (error.code) {
         case "auth/invalid-credential":
-          setError("Identifiant ou mot de passe incorrect")
+          setError(LOGINPAGE_LABELS.wrongIds)
           break
         case "auth/too-many-requests":
-          setError("Trop de tentatives, réessaie plus tard")
+          setError(LOGINPAGE_LABELS.retryLater)
           break
         default:
-          setError("Une erreur est survenue")
+          setError(LOGINPAGE_LABELS.error)
       }
     }
   }
@@ -50,16 +51,14 @@ export default function LoginForm() {
     setError("")
     setSuccess("")
     if (!logInputs.username) {
-      setError("Entrez votre email pour réinitialiser votre mot de passe")
+      setError(LOGINPAGE_LABELS.emptyMail)
       return
     }
     try {
       await sendPasswordResetEmail(auth, logInputs.username)
-      setSuccess(
-        "Si vous avez un compte, vous reçevrez un mail pour modifier votre mot de passe.",
-      )
+      setSuccess(LOGINPAGE_LABELS.mailSend)
     } catch {
-      setError("Aucun compte trouvé avec cet email.")
+      setError(LOGINPAGE_LABELS.notFound)
     }
   }
   const handleChange = (e) => {
@@ -68,8 +67,8 @@ export default function LoginForm() {
   return (
     <LoginFormStyled>
       <div className="form-header">
-        <h2>Bienvenue !</h2>
-        <p>Identifiez-vous pour accéder à votre espace</p>
+        <h2>{LOGINPAGE_LABELS.welcome}</h2>
+        <p>{LOGINPAGE_LABELS.logYou}</p>
       </div>
       <form onSubmit={handleSubmit}>
         {inputsLogin.map(({ name, ...props }) => (
@@ -82,12 +81,12 @@ export default function LoginForm() {
           />
         ))}
         <a onClick={handleForgotPassword} className="forgot-password">
-          Mot de passe oublié ?
+          {LOGINPAGE_LABELS.forgotten}
         </a>
         {error && <div className="error">{error}</div>}
         {success && <div className="success">{success}</div>}
         <button type="submit" className="submit-btn">
-          <span>Se connecter</span>
+          <span>{LOGINPAGE_LABELS.logIn}</span>
           <IoMdArrowForward className={"arrow"} />
         </button>
       </form>
