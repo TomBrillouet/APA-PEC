@@ -108,6 +108,7 @@ A demo account is available with the following credentials:
 | Firebase Auth      | 12.9    | User authentication         |
 | Firebase Firestore | 12.9    | Real-time database          |
 | Recharts           | 3.7     | Charts & data visualization |
+| Driver.js          | 1.4.0   | Demo tour                   |
 | React Select       | 5.10    | Custom select inputs        |
 | React Toastify     | 11.0    | Notifications               |
 | React Icons        | 5.5     | Icon library                |
@@ -177,7 +178,10 @@ APA-PEC/
 │   │   └── reusable/           # Shared UI components (Button, Input, Loader…)
 │   ├── context/                # React contexts (Auth, PatientsContext, Main app state)
 │   ├── datas/                  # Static data and app configuration
-│   ├── enums/                  # Enumerations and constants
+│   ├── constants/
+│   ├── config/                 # Global application configuration
+│   ├── labels/                 # UI display text
+│   ├── models/                 # Default object templates and initial states
 │   ├── hooks/                  # Custom React hooks
 │   ├── theme/                  # Styled Components global theme
 │   ├── utils/                  # Utility functions (math helpers…)
