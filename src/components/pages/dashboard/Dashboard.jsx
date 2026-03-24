@@ -2,7 +2,7 @@ import styled, { createGlobalStyle } from "styled-components"
 import Main from "./Main/Main"
 import Toast from "./Toast.jsx"
 import { theme } from "../../../theme/index.js"
-import { useEffect } from "react"
+import { useContext, useEffect } from "react"
 import { driver } from "driver.js"
 import { tourSteps } from "../../../datas/tourSteps.js"
 import { useTour } from "../../../hooks/useTour.jsx"
@@ -11,6 +11,7 @@ import { useAuth } from "../../../context/AuthContext.jsx"
 import { usePro } from "../../../hooks/usePro.jsx"
 import "driver.js/dist/driver.css"
 import { useOutletContext } from "react-router"
+import { PatientsContext } from "../../../context/PatientsContext.jsx"
 
 const TourStyles = createGlobalStyle`
 .driver-popover {
@@ -26,6 +27,7 @@ const TourStyles = createGlobalStyle`
   }}
 `
 export default function Dashboard() {
+  const { patients } = useContext(PatientsContext)
   const { tourCompleted, completeTour } = useTour()
   const { openMenu } = useOutletContext()
   const { currentUser } = useAuth()
@@ -38,6 +40,7 @@ export default function Dashboard() {
   }, [userId])
 
   useEffect(() => {
+    if (!pro || !patients) return
     const driverObj = driver({
       steps: tourSteps(openMenu),
       onDestroyStarted: () => {
@@ -50,12 +53,12 @@ export default function Dashboard() {
       progressText: `{{current}} sur {{total}}`,
     })
     !tourCompleted && driverObj.drive()
-  }, [pro])
+  }, [pro, patients])
 
   return (
     <DashboardStyled>
       <TourStyles />
-      <Main pro={pro} proSubmit={proSubmit} />
+      <Main pro={pro} proSubmit={proSubmit} patients={patients} />
       <Toast />
     </DashboardStyled>
   )

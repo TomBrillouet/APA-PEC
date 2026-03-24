@@ -14,10 +14,10 @@ import TopMainBar from "./TopMainBar/TopMainBar.jsx"
 import PatientsGrid from "./PatientsGrid/PatientsGrid.jsx"
 import Footer from "../Footer/Footer.jsx"
 
-export default function Main({ pro, proSubmit }) {
+export default function Main({ pro, proSubmit, patients }) {
   const [search, setSearch] = useState("")
 
-  const { addNewPatient, updatePatients, patients, updateLogBook } =
+  const { addNewPatient, updatePatients, updateLogBook } =
     useContext(PatientsContext)
   const { listTests } = useTests()
   const {
