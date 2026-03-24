@@ -39,6 +39,7 @@ const HeaderPopupStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
   padding: 22px 28px 18px;
   position: sticky;
   top: 0;
@@ -72,7 +73,7 @@ const HeaderPopupStyled = styled.div`
   }
 
   @media screen and (max-width: 768px) {
-    padding: 14px;
+    padding: 16px;
 
     h2 {
       font-size: 16px;
