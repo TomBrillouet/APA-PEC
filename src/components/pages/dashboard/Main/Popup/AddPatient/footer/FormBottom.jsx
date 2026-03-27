@@ -15,7 +15,7 @@ export default function FormBottom() {
         type={"button"}
       />
       <Button
-        label={PATIENT_LABELS.submitNewPatient}
+        label={PATIENT_LABELS.submit}
         version={"submit"}
         type={"submit"}
       />
