@@ -8,6 +8,7 @@
 ![Last commit](https://img.shields.io/github/last-commit/TomBrillouet/APA-PEC)
 
 ![React](https://img.shields.io/badge/React_19-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)
 ![Styled Components](https://img.shields.io/badge/Styled--Components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
@@ -104,6 +105,7 @@ A demo account is available with the following credentials:
 | ------------------ | ------- | --------------------------- |
 | React              | 19.2    | UI framework                |
 | React Router       | 7.13    | Client-side routing         |
+| TypeScript         | 5.9     | Static typing               |
 | Styled Components  | 6.3     | Component styling           |
 | Firebase Auth      | 12.9    | User authentication         |
 | Firebase Firestore | 12.9    | Real-time database          |
@@ -177,20 +179,18 @@ APA-PEC/
 │   │   │   └── error/          # Error page
 │   │   └── reusable/           # Shared UI components (Button, Input, Loader…)
 │   ├── context/                # React contexts (Auth, PatientsContext, Main app state)
+│   ├── types/                  # TypeScript type definitions
 │   ├── datas/                  # Static data and app configuration
-│   ├── constants/
-│   ├── config/                 # Global application configuration
-│   ├── labels/                 # UI display text
-│   ├── models/                 # Default object templates and initial states
+│   ├── constants/              # App configuration, UI labels, and data models
 │   ├── hooks/                  # Custom React hooks
 │   ├── theme/                  # Styled Components global theme
 │   ├── utils/                  # Utility functions (math helpers…)
-│   ├── App.jsx
-│   └── main.jsx
+│   ├── App.tsx
+│   └── main.tsx
 ├── .env.example                # Environment variables template
 ├── .eslint.config.js
 ├── vercel.json
-├── vite.config.js
+├── vite.config.ts
 ├── package.json
 └── README.md
 ```
@@ -216,6 +216,7 @@ VITE_APP_ID =
 
 - All patient, assessment, and test data is stored in a single Firestore document per user. Firestore enforces a **1 MB document size limit**, which may be reached by practitioners with a large number of patients and assessments over time. A future migration to subcollections is planned.
 - The application interface is currently available in **French only**.
+- The codebase has been fully migrated to TypeScript (v2.5.0+). All source files use .ts / .tsx extensions.
 
 ---
 
