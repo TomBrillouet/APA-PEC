@@ -1,0 +1,68 @@
+export const PATIENT_LABELS = {
+  newPatient: "Nouveau patient",
+  date: "Date du bilan initial",
+  contact: "Contact",
+  identity: "Identité",
+  sex: "Sexe",
+  man: "Homme",
+  woman: "Femme",
+  medicInfos: "Informations médicales",
+  assignedTests: "Tests assignés",
+  selectTests: "Sélectionner des tests…",
+  remarks: "Remarques",
+  recommandations: "Recommandations",
+  submit: "Enregistrer",
+  cancel: "Annuler",
+  care: "Prise en charge - ",
+  addLogbook: "Ajouter un compte rendu",
+  contentSessions: "Contenu des séances hors bilan...",
+  submitNewLogbook: "Enregistrer un nouveau compte rendu",
+  logbook: "Comptes rendus",
+  open: "Ouvrir",
+  bilan: "Bilan",
+  makeBilan: "Faire un bilan",
+  finishCare: "Terminer PEC",
+  resumeCare: "Reprendre PEC",
+  modifyContact: "Modifier les informations de contact",
+  submitModif: "Enregistrer les modifications",
+  submitBilan: "Enregistrer le bilan",
+  initialInfos: "Informations du bilan initial",
+  developmentPatient: "Développement du patient",
+  newImc: "Nouvel IMC : ",
+  BILAN_LABELS: {
+    weight: "Poids enregistré:",
+    height: "Taille enregistrée:",
+    imc: "IMC calculé:",
+  },
+  OLD_BILAN_LABELS: {
+    weight: "Dernier poids connu:",
+    height: "Dernière taille connue:",
+    imc: "Dernier IMC connu:",
+  },
+  dateBilan: "Date du bilan",
+  bilanType: "Type de bilan",
+  selectBilanType: "Sélectionner le type de bilan…",
+  downloadBilan: "Télécharger le bilan",
+  startCare:
+    "Ce bilan constitue le point de départ de votre accompagnement. L'objectif est de progresser à votre rythme en toute sécurité.",
+  thanks:
+    "Merci de votre confiance. Pour toute question ou pour planifier la prochaine séance, n'hésitez pas à me contacter.",
+  documentInfo:
+    "Document remis au patient à l'issue du bilan initial en Activité Physique Adaptée - ",
+  apa: (
+    <>
+      en <br /> Activité Physique Adaptée
+    </>
+  ),
+  exportTagline:
+    "Faire le point sur votre condition physique et définir vos objectifs.",
+  reportBilan: "Compte rendu du bilan",
+  realised: "réalisé le",
+  evolution: "Évolution de la problématique / Atteinte de l'objectif:",
+  felt: "Ressenti du patient:",
+  analyze: "Analyse professionnelle et recommandations:",
+  adjust: "Bilan et ajustement de la prise en charge",
+  reached: "Les objectifs de la prise en charge ont-ils été atteints ?",
+  reason: "Raison de fin d'accompagnement/quelle direction pour le patient",
+  opinion: "Bilan de la prise en charge et avis du patient",
+}
