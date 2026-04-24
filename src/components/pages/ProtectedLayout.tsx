@@ -73,5 +73,4 @@ export default function ProtectedLayout() {
 
 const ProtectedLayoutStyled = styled.div`
   display: flex;
-  background-color: ${theme.colors.background};
 `
