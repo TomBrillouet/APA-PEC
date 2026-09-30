@@ -7,7 +7,6 @@ import { usePatients } from "../../hooks/usePatients"
 import { PatientsContext } from "../../context/PatientsContext.js"
 import Menu from "./dashboard/Menu/Menu.js"
 import styled from "styled-components"
-import { theme } from "../../theme/index.js"
 import PageTemplate from "./dashboard/PageTemplate"
 
 export default function ProtectedLayout() {
