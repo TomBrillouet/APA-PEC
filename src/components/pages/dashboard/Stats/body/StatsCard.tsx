@@ -24,15 +24,15 @@ const StatCard = styled.div<{ $accent: string }>`
   flex-direction: column;
   gap: 12px;
   border: 1px solid #e2e8f0;
-  border-left: 4px solid ${({ $accent }) => $accent};
+  border: 1px solid ${({ $accent }) => $accent};
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
   transition:
     box-shadow 0.2s ease,
     transform 0.2s ease;
 
   &:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transform: translateY(-1px);
   }
 
   .card-icon {
