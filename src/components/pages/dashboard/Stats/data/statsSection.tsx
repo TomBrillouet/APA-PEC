@@ -22,6 +22,23 @@ import { PatientsType } from "../../../../../types"
 
 export const SECTIONS = (patients: PatientsType) => [
   {
+    title: "Alertes",
+    cards: [
+      {
+        label: "Arrêts prématurés de la prise en charge",
+        value: getEarlyQuit(patients).length,
+        icon: <FiAlertTriangle />,
+        accent: "#f59e0b",
+      },
+      {
+        label: "Patients en stagnation/régression",
+        value: getStagnantPatients(patients).length,
+        icon: <FiTrendingDown />,
+        accent: "#ef4444",
+      },
+    ],
+  },
+  {
     title: "Démographie",
     cards: [
       {
@@ -78,23 +95,6 @@ export const SECTIONS = (patients: PatientsType) => [
         value: getArchivedPatients(patients),
         icon: <FiArchive />,
         accent: "#64748b",
-      },
-    ],
-  },
-  {
-    title: "Alertes",
-    cards: [
-      {
-        label: "Arrêts prématurés de la prise en charge",
-        value: getEarlyQuit(patients).length,
-        icon: <FiAlertTriangle />,
-        accent: "#f59e0b",
-      },
-      {
-        label: "Patients en stagnation/régression",
-        value: getStagnantPatients(patients).length,
-        icon: <FiTrendingDown />,
-        accent: "#ef4444",
       },
     ],
   },
